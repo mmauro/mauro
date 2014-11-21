@@ -173,6 +173,16 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap resword {
+            get {
+                object obj = ResourceManager.GetObject("resword", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sw {
             get {
                 object obj = ResourceManager.GetObject("sw", resourceCulture);

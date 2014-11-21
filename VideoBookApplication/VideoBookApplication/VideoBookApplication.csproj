@@ -60,6 +60,7 @@
     <Compile Include="common\dao\IGenericOutDao.cs" />
     <Compile Include="common\dao\ReservedDao.cs" />
     <Compile Include="common\dao\UserDao.cs" />
+    <Compile Include="common\enums\ActivityType.cs" />
     <Compile Include="common\enums\ApplicationErrorType.cs" />
     <Compile Include="common\enums\OperationType.cs" />
     <Compile Include="common\enums\ReservedType.cs" />
@@ -79,6 +80,12 @@
     </Compile>
     <Compile Include="common\view\LogoutPanel.designer.cs">
       <DependentUpon>LogoutPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="common\view\MenuReserved.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="common\view\MenuReserved.designer.cs">
+      <DependentUpon>MenuReserved.cs</DependentUpon>
     </Compile>
     <Compile Include="common\view\MainMenuPanel.cs">
       <SubType>Component</SubType>
@@ -114,6 +121,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="common\view\LogoutPanel.resx">
       <DependentUpon>LogoutPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="common\view\MenuReserved.resx">
+      <DependentUpon>MenuReserved.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="common\view\MainMenuPanel.resx">
       <DependentUpon>MainMenuPanel.cs</DependentUpon>
@@ -165,6 +175,7 @@
     <Content Include="img\logout.png" />
     <Content Include="img\Movie.png" />
     <Content Include="img\music.png" />
+    <None Include="img\resword.png" />
     <Content Include="img\sw.png" />
     <Content Include="img\[Originals]\Books.png" />
     <Content Include="img\[Originals]\Info.png" />

@@ -9,6 +9,9 @@ namespace VideoBookApplication.common.utility
 {
     public class LayoutManager
     {
+
+        public static int menuHeight = 137;
+
         public static Color getColorWindow()
         {
             return Color.Lavender;

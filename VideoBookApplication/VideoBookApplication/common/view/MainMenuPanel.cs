@@ -32,7 +32,7 @@ namespace VideoBookApplication.common.view
         private void initPanel()
         {
             this.BackColor = LayoutManager.getMenuColor();
-            this.Size = new Size(137, (numButton*90)+(5*(numButton+1)));
+            this.Size = new Size(LayoutManager.menuHeight, (numButton*90)+(5*(numButton+1)));
 
             //Button changeApp
             buttonChangeApp.Location = new Point(5, 5);
@@ -56,6 +56,8 @@ namespace VideoBookApplication.common.view
         private void buttonChangeApp_Click(object sender, EventArgs e)
         {
             parent.Visible = false;
+            globalObject.operation = enums.OperationType.UNDEFINED;
+            globalObject.activity = enums.ActivityType.UNDEFINED;
             WindowsMainActivity mainActivity = new WindowsMainActivity(ref globalObject);
             mainActivity.ShowDialog();
         }

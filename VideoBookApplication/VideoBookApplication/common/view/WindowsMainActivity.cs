@@ -71,31 +71,37 @@ namespace VideoBookApplication.common.view
 
         private void buttonAdvanced_Click(object sender, EventArgs e)
         {
+            globalObject.activity = ActivityType.ADVANCED;
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonInfo_Click(object sender, EventArgs e)
         {
+            globalObject.activity = ActivityType.INFO;
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonSoftware_Click(object sender, EventArgs e)
         {
+            globalObject.activity = ActivityType.SOFTWARE;
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonMusic_Click(object sender, EventArgs e)
         {
+            globalObject.activity = ActivityType.MUSIC;
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonMovie_Click(object sender, EventArgs e)
         {
+            globalObject.activity = ActivityType.MOVIE;
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonLibrary_Click(object sender, EventArgs e)
         {
+            globalObject.activity = ActivityType.LIBRARY;
             this.Visible = false;
             LibraryActivityWindow libWin = new LibraryActivityWindow(ref globalObject);
             libWin.ShowDialog();

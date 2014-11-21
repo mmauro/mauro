@@ -13,6 +13,8 @@ namespace VideoBookApplication.common.model
         public UsersModel user { get; set;}
         public OperationType operation { get; set; }
 
+        public ActivityType activity { get; set; }
+
         public GlobalApplicationObject() 
         {
             operation = OperationType.UNDEFINED;
@@ -23,6 +25,7 @@ namespace VideoBookApplication.common.model
         {
             user = null;
             operation = OperationType.UNDEFINED;
+            activity = ActivityType.UNDEFINED;
         }
     }
 }

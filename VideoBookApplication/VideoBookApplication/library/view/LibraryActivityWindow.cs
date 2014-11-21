@@ -41,14 +41,19 @@ namespace VideoBookApplication.library.view
 
             //Panel for menu
             panelMenu1.BackColor = LayoutManager.getMenuColor();
-            panelMenu1.Size = new System.Drawing.Size(137, this.Size.Height - logoutPanel.Size.Height);
+            panelMenu1.Size = new System.Drawing.Size(LayoutManager.menuHeight, this.Size.Height - logoutPanel.Size.Height);
             panelMenu1.Location = new Point(0, logoutPanel.Size.Height);
             this.Controls.Add(panelMenu1);
 
-
+            //Main Menu
             MainMenuPanel mainMenu = new MainMenuPanel(ref globalObject, this);
             mainMenu.Location = new Point(0, 0);
             panelMenu1.Controls.Add(mainMenu);
+
+            //Reserved Menu
+            MenuReserved reservedMenu = new MenuReserved(ref globalObject, this);
+            reservedMenu.Location = new Point(0, mainMenu.Location.Y + mainMenu.Size.Height + 20);
+            panelMenu1.Controls.Add(reservedMenu);
 
         }
     }
