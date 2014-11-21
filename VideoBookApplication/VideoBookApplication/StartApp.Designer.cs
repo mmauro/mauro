@@ -1,6 +1,6 @@
 ﻿namespace VideoBookApplication
 {
-    partial class Form1
+    partial class StartApp
     {
         /// <summary>
         /// Required designer variable.

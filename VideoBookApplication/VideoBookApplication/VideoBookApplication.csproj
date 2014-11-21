@@ -73,11 +73,11 @@
     <Compile Include="common\utility\LayoutManager.cs" />
     <Compile Include="common\utility\Utility.cs" />
     <Compile Include="common\utility\VideoBookException.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="StartApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="StartApp.Designer.cs">
+      <DependentUpon>StartApp.cs</DependentUpon>
     </Compile>
     <Compile Include="library\controls\CategoryControls.cs" />
     <Compile Include="library\controls\PositionControl.cs" />
@@ -87,8 +87,8 @@
     <Compile Include="library\model\database\PositionModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="StartApp.resx">
+      <DependentUpon>StartApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
