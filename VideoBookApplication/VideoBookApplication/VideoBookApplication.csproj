@@ -73,6 +73,19 @@
     <Compile Include="common\utility\LayoutManager.cs" />
     <Compile Include="common\utility\Utility.cs" />
     <Compile Include="common\utility\VideoBookException.cs" />
+    <Compile Include="common\view\DisplayManager.cs" />
+    <Compile Include="common\view\LogoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="common\view\LogoutPanel.designer.cs">
+      <DependentUpon>LogoutPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="common\view\WindowsMainActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="common\view\WindowsMainActivity.designer.cs">
+      <DependentUpon>WindowsMainActivity.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +100,12 @@
     <Compile Include="library\model\database\PositionModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="common\view\LogoutPanel.resx">
+      <DependentUpon>LogoutPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="common\view\WindowsMainActivity.resx">
+      <DependentUpon>WindowsMainActivity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StartApp.resx">
       <DependentUpon>StartApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +135,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\advancedsettings.png" />
+    <Content Include="img\Books.png" />
+    <Content Include="img\button_cancel.png" />
+    <Content Include="img\button_ok.png" />
+    <Content Include="img\changeapp.png" />
+    <Content Include="img\close2.png" />
+    <Content Include="img\exit.png" />
+    <Content Include="img\Info.png" />
+    <Content Include="img\login.png" />
+    <Content Include="img\logout.png" />
+    <Content Include="img\Movie.png" />
+    <Content Include="img\music.png" />
+    <Content Include="img\sw.png" />
+    <Content Include="img\[Originals]\Books.png" />
+    <Content Include="img\[Originals]\Info.png" />
+    <Content Include="img\[Originals]\Movie.png" />
+    <Content Include="img\[Originals]\music.png" />
+    <Content Include="img\[Originals]\sw.png" />
     <Content Include="resources\VideoBookApplication.sql" />
   </ItemGroup>
   <ItemGroup />
