@@ -80,11 +80,23 @@
     <Compile Include="common\view\LogoutPanel.designer.cs">
       <DependentUpon>LogoutPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="common\view\MainMenuPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="common\view\MainMenuPanel.designer.cs">
+      <DependentUpon>MainMenuPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="common\view\WindowsMainActivity.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="common\view\WindowsMainActivity.designer.cs">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="library\view\LibraryActivityWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="library\view\LibraryActivityWindow.Designer.cs">
+      <DependentUpon>LibraryActivityWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="StartApp.cs">
       <SubType>Form</SubType>
@@ -103,8 +115,14 @@
     <EmbeddedResource Include="common\view\LogoutPanel.resx">
       <DependentUpon>LogoutPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="common\view\MainMenuPanel.resx">
+      <DependentUpon>MainMenuPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="common\view\WindowsMainActivity.resx">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\LibraryActivityWindow.resx">
+      <DependentUpon>LibraryActivityWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartApp.resx">
       <DependentUpon>StartApp.cs</DependentUpon>

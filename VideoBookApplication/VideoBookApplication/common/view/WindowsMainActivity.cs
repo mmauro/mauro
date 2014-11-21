@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
+using VideoBookApplication.library.view;
 
 
 namespace VideoBookApplication.common.view
@@ -95,13 +96,12 @@ namespace VideoBookApplication.common.view
 
         private void buttonLibrary_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
-            //this.Visible = false;
-            //LibraryActivityWindows libWin = new LibraryActivityWindows(ref globalObject);
-            //libWin.ShowDialog();
+            this.Visible = false;
+            LibraryActivityWindow libWin = new LibraryActivityWindow(ref globalObject);
+            libWin.ShowDialog();
 
-            ////At this point close Application
-            //Utility.closeApplication();
+            //At this point close Application
+            Utility.closeApplication();
         }
     }
 }
