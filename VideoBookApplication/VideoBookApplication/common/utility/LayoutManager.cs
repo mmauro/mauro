@@ -26,5 +26,10 @@ namespace VideoBookApplication.common.utility
         {
             return Color.OldLace;
         }
+
+        public static Color getPanelColor()
+        {
+            return Color.AliceBlue;
+        }
     }
 }

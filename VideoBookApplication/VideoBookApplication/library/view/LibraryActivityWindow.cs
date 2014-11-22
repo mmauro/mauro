@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
 using VideoBookApplication.common.model;
+using VideoBookApplication.common.enums;
 
 namespace VideoBookApplication.library.view
 {
@@ -17,6 +18,8 @@ namespace VideoBookApplication.library.view
     {
 
         private GlobalApplicationObject globalObject;
+        private ReservedPanel reservedPanel = null;
+        LogoutPanel logoutPanel = null;
 
         public LibraryActivityWindow(ref GlobalApplicationObject globalObject)
         {
@@ -35,7 +38,7 @@ namespace VideoBookApplication.library.view
             this.Text = Utility.getFrameStringBorder();
 
             //Logout Panel
-            LogoutPanel logoutPanel = new LogoutPanel(ref globalObject, this);
+            logoutPanel = new LogoutPanel(ref globalObject, this);
             logoutPanel.Location = new Point(0, 0);
             this.Controls.Add(logoutPanel);
 
@@ -55,6 +58,46 @@ namespace VideoBookApplication.library.view
             reservedMenu.Location = new Point(0, mainMenu.Location.Y + mainMenu.Size.Height + 20);
             panelMenu1.Controls.Add(reservedMenu);
 
+        }
+
+        public void openPanel(GlobalOperation operation)
+        {
+            switch (operation)
+            {
+                case GlobalOperation.RESERVED:
+                    if (reservedPanel == null)
+                    {
+                        reservedPanel = new ReservedPanel();
+                        reservedPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(reservedPanel);
+                    }
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                    break;
+            }
+        }
+
+        public void closePanel()
+        {
+            closePanel(GlobalOperation.RESERVED);
+        }
+
+        public void closePanel(GlobalOperation operation)
+        {
+            switch (operation)
+            {
+                case GlobalOperation.RESERVED:
+                    if (reservedPanel != null)
+                    {
+                        reservedPanel.Visible = false;
+                        reservedPanel = null;
+                    }
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                    break;
+            }
         }
     }
 }

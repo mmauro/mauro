@@ -11,6 +11,7 @@ using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.enums;
+using VideoBookApplication.library.view;
 
 
 namespace VideoBookApplication.common.view
@@ -46,7 +47,21 @@ namespace VideoBookApplication.common.view
 
         private void buttonReserved_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            openPanel();
+        }
+
+        private void openPanel()
+        {
+            switch (globalObject.activity)
+            {
+                case ActivityType.LIBRARY:
+                    LibraryActivityWindow mainWin = (LibraryActivityWindow)parent;
+                    mainWin.openPanel(GlobalOperation.RESERVED);
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                    break;
+            }
         }
 
     }

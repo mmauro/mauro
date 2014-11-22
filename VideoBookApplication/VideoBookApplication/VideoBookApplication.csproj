@@ -62,6 +62,7 @@
     <Compile Include="common\dao\UserDao.cs" />
     <Compile Include="common\enums\ActivityType.cs" />
     <Compile Include="common\enums\ApplicationErrorType.cs" />
+    <Compile Include="common\enums\GlobalOperation.cs" />
     <Compile Include="common\enums\OperationType.cs" />
     <Compile Include="common\enums\ReservedType.cs" />
     <Compile Include="common\model\database\ReservedModel.cs" />
@@ -72,6 +73,12 @@
     <Compile Include="common\operations\InitDatabase.cs" />
     <Compile Include="common\utility\Configurator.cs" />
     <Compile Include="common\utility\LayoutManager.cs" />
+    <Compile Include="common\view\TitlePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="common\view\TitlePanel.Designer.cs">
+      <DependentUpon>TitlePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="common\utility\Utility.cs" />
     <Compile Include="common\utility\VideoBookException.cs" />
     <Compile Include="common\view\DisplayManager.cs" />
@@ -92,6 +99,12 @@
     </Compile>
     <Compile Include="common\view\MainMenuPanel.designer.cs">
       <DependentUpon>MainMenuPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="common\view\ReservedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="common\view\ReservedPanel.Designer.cs">
+      <DependentUpon>ReservedPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="common\view\WindowsMainActivity.cs">
       <SubType>Form</SubType>
@@ -119,6 +132,9 @@
     <Compile Include="library\model\database\PositionModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="common\view\TitlePanel.resx">
+      <DependentUpon>TitlePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="common\view\LogoutPanel.resx">
       <DependentUpon>LogoutPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="common\view\MainMenuPanel.resx">
       <DependentUpon>MainMenuPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="common\view\ReservedPanel.resx">
+      <DependentUpon>ReservedPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="common\view\WindowsMainActivity.resx">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
