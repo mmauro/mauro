@@ -56,7 +56,6 @@ namespace VideoBookApplication.common.view
         private void buttonChangeApp_Click(object sender, EventArgs e)
         {
             parent.Visible = false;
-            globalObject.operation = enums.OperationType.UNDEFINED;
             globalObject.activity = enums.ActivityType.UNDEFINED;
             WindowsMainActivity mainActivity = new WindowsMainActivity(ref globalObject);
             mainActivity.ShowDialog();

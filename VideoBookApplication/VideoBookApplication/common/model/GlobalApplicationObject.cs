@@ -11,20 +11,18 @@ namespace VideoBookApplication.common.model
     public class GlobalApplicationObject : IApplicationObject
     {
         public UsersModel user { get; set;}
-        public OperationType operation { get; set; }
 
         public ActivityType activity { get; set; }
 
         public GlobalApplicationObject() 
         {
-            operation = OperationType.UNDEFINED;
+            activity = ActivityType.UNDEFINED;
             user = null;
         }
 
         public void destroy()
         {
             user = null;
-            operation = OperationType.UNDEFINED;
             activity = ActivityType.UNDEFINED;
         }
     }
