@@ -113,6 +113,16 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap document {
+            get {
+                object obj = ResourceManager.GetObject("document", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exit {
             get {
                 object obj = ResourceManager.GetObject("exit", resourceCulture);
@@ -126,6 +136,16 @@ namespace VideoBookApplication.Properties {
         internal static System.Drawing.Bitmap Info {
             get {
                 object obj = ResourceManager.GetObject("Info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kchart {
+            get {
+                object obj = ResourceManager.GetObject("kchart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +203,39 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap search {
+            get {
+                object obj = ResourceManager.GetObject("search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sw {
             get {
                 object obj = ResourceManager.GetObject("sw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TextEdit {
+            get {
+                object obj = ResourceManager.GetObject("TextEdit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash {
+            get {
+                object obj = ResourceManager.GetObject("trash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -211,6 +261,16 @@ namespace VideoBookApplication.Properties {
         internal static string Videobook {
             get {
                 return ResourceManager.GetString("Videobook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap write {
+            get {
+                object obj = ResourceManager.GetObject("write", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

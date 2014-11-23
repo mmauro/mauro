@@ -29,14 +29,24 @@
         private void InitializeComponent()
         {
             this.panelMenu1 = new System.Windows.Forms.Panel();
+            this.panelMenu2 = new System.Windows.Forms.Panel();
+            this.panelMenu1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu1
             // 
+            this.panelMenu1.Controls.Add(this.panelMenu2);
             this.panelMenu1.Location = new System.Drawing.Point(33, 53);
             this.panelMenu1.Name = "panelMenu1";
             this.panelMenu1.Size = new System.Drawing.Size(200, 100);
             this.panelMenu1.TabIndex = 0;
+            // 
+            // panelMenu2
+            // 
+            this.panelMenu2.Location = new System.Drawing.Point(26, 85);
+            this.panelMenu2.Name = "panelMenu2";
+            this.panelMenu2.Size = new System.Drawing.Size(200, 100);
+            this.panelMenu2.TabIndex = 1;
             // 
             // LibraryActivityWindow
             // 
@@ -48,6 +58,7 @@
             this.Name = "LibraryActivityWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LibraryActivityWindow";
+            this.panelMenu1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -55,5 +66,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panelMenu1;
+        private System.Windows.Forms.Panel panelMenu2;
     }
 }

@@ -119,6 +119,12 @@
     <Compile Include="library\view\LibraryActivityWindow.Designer.cs">
       <DependentUpon>LibraryActivityWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\MainMenuLibrary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\MainMenuLibrary.designer.cs">
+      <DependentUpon>MainMenuLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\LibraryActivityWindow.resx">
       <DependentUpon>LibraryActivityWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\MainMenuLibrary.resx">
+      <DependentUpon>MainMenuLibrary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartApp.resx">
       <DependentUpon>StartApp.cs</DependentUpon>
@@ -189,14 +198,20 @@
     <Content Include="img\button_ok.png" />
     <Content Include="img\changeapp.png" />
     <Content Include="img\close2.png" />
+    <None Include="img\document.png" />
     <Content Include="img\exit.png" />
     <Content Include="img\Info.png" />
+    <None Include="img\kchart.png" />
     <Content Include="img\login.png" />
     <Content Include="img\logout.png" />
     <Content Include="img\Movie.png" />
     <Content Include="img\music.png" />
     <None Include="img\resword.png" />
+    <None Include="img\search.png" />
     <Content Include="img\sw.png" />
+    <None Include="img\write.png" />
+    <None Include="img\trash.png" />
+    <None Include="img\TextEdit.png" />
     <Content Include="img\[Originals]\Books.png" />
     <Content Include="img\[Originals]\Info.png" />
     <Content Include="img\[Originals]\Movie.png" />

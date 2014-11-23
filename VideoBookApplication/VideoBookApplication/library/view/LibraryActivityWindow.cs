@@ -48,6 +48,11 @@ namespace VideoBookApplication.library.view
             panelMenu1.Location = new Point(0, logoutPanel.Size.Height);
             this.Controls.Add(panelMenu1);
 
+            panelMenu2.BackColor = LayoutManager.getMenuColor();
+            panelMenu2.Size = new System.Drawing.Size(LayoutManager.menuHeight, this.Size.Height - logoutPanel.Size.Height);
+            panelMenu2.Location = new Point(this.Size.Width - panelMenu2.Size.Width, logoutPanel.Size.Height);
+            this.Controls.Add(panelMenu2);
+
             //Main Menu
             MainMenuPanel mainMenu = new MainMenuPanel(ref globalObject, this);
             mainMenu.Location = new Point(0, 0);
@@ -58,6 +63,9 @@ namespace VideoBookApplication.library.view
             reservedMenu.Location = new Point(0, mainMenu.Location.Y + mainMenu.Size.Height + 20);
             panelMenu1.Controls.Add(reservedMenu);
 
+            MainMenuLibrary mainLibrary = new MainMenuLibrary(ref globalObject, this);
+            mainLibrary.Location = new Point(0, reservedMenu.Location.Y + reservedMenu.Size.Height + 20);
+            panelMenu1.Controls.Add(mainLibrary);
         }
 
         public void openPanel(GlobalOperation operation)
