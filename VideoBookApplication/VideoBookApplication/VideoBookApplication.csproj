@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -74,6 +89,12 @@
     <Compile Include="common\operations\InitDatabase.cs" />
     <Compile Include="common\utility\Configurator.cs" />
     <Compile Include="common\utility\LayoutManager.cs" />
+    <Compile Include="common\view\AboutVideoBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="common\view\AboutVideoBook.Designer.cs">
+      <DependentUpon>AboutVideoBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="common\view\TitlePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -119,6 +140,12 @@
     <Compile Include="library\view\LibraryActivityWindow.Designer.cs">
       <DependentUpon>LibraryActivityWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\InsertMenuLibrary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\InsertMenuLibrary.designer.cs">
+      <DependentUpon>InsertMenuLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\MainMenuLibrary.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -139,6 +166,9 @@
     <Compile Include="library\model\database\PositionModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="common\view\AboutVideoBook.resx">
+      <DependentUpon>AboutVideoBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="common\view\TitlePanel.resx">
       <DependentUpon>TitlePanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\LibraryActivityWindow.resx">
       <DependentUpon>LibraryActivityWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\InsertMenuLibrary.resx">
+      <DependentUpon>InsertMenuLibrary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\MainMenuLibrary.resx">
       <DependentUpon>MainMenuLibrary.cs</DependentUpon>
@@ -204,6 +237,7 @@
     <None Include="img\kchart.png" />
     <Content Include="img\login.png" />
     <Content Include="img\logout.png" />
+    <None Include="img\mauro.jpg" />
     <Content Include="img\Movie.png" />
     <Content Include="img\music.png" />
     <None Include="img\resword.png" />
@@ -219,7 +253,23 @@
     <Content Include="img\[Originals]\sw.png" />
     <Content Include="resources\VideoBookApplication.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

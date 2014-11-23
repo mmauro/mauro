@@ -78,7 +78,9 @@ namespace VideoBookApplication.common.view
         private void buttonInfo_Click(object sender, EventArgs e)
         {
             globalObject.activity = ActivityType.INFO;
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            AboutVideoBook infoWin = new AboutVideoBook();
+            infoWin.ShowDialog();
+            globalObject.activity = ActivityType.UNDEFINED;
         }
 
         private void buttonSoftware_Click(object sender, EventArgs e)
