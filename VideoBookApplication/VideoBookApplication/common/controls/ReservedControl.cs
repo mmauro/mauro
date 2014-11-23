@@ -68,7 +68,6 @@ namespace VideoBookApplication.common.controls
                 default:
                     throw new VideoBookException(ApplicationErrorType.ERROR_RESERVED);
             }
-
             return items;
         }
     }
