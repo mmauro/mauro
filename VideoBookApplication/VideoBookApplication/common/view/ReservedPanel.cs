@@ -11,6 +11,7 @@ using VideoBookApplication.common.utility;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.library.view;
+using VideoBookApplication.common.controls;
 
 namespace VideoBookApplication.common.view
 {
@@ -18,14 +19,27 @@ namespace VideoBookApplication.common.view
     {
 
         private GlobalApplicationObject globalObject;
+        private ReservedControl control = new ReservedControl();
         private Form parent;
+        private List<ItemCombo> listItems = null;
 
         public ReservedPanel(ref GlobalApplicationObject globalObject, Form parent)
         {
             InitializeComponent();
             this.globalObject = globalObject;
             this.parent = parent;
-            initPanel();
+
+            try
+            {
+                listItems = control.getItemsControl(this.globalObject.activity);
+                initPanel();
+            }
+            catch (VideoBookException e)
+            {
+                DisplayManager.displayError(e.errorType);
+                closePanel();
+                
+            }
         }
 
         private void initPanel()
@@ -53,6 +67,13 @@ namespace VideoBookApplication.common.view
             comboTypeReserved.Location = new Point(95, labelType.Location.Y - 4);
             this.Controls.Add(comboTypeReserved);
 
+            //Add item to ComboBox
+            foreach (ItemCombo item in listItems)
+            {
+                comboTypeReserved.Items.Add(item);
+                comboTypeReserved.SelectedIndex = 0;
+            }
+
             //Buttons
             buttonClose.Location = new Point(this.Size.Width - (20 + buttonClose.Size.Width), this.Size.Height - (20 + buttonClose.Size.Width));
             this.Controls.Add(buttonClose);
@@ -63,9 +84,16 @@ namespace VideoBookApplication.common.view
             //Tooltip
             toolTip1.SetToolTip(buttonOk, "Inserisci Rieservata");
             toolTip1.SetToolTip(buttonClose, "Annulla");
+
+
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
+        {
+            closePanel();
+        }
+
+        private void closePanel()
         {
             switch (globalObject.activity)
             {
@@ -77,7 +105,6 @@ namespace VideoBookApplication.common.view
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
             }
-
         }
 
         private void buttonOk_Click(object sender, EventArgs e)

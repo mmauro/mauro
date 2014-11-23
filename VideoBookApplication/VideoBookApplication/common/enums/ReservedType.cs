@@ -10,18 +10,16 @@ namespace VideoBookApplication.common.enums
     {
 
         public int type { get; private set; }
-        public OperationType operation { get; private set; }
 
         public string description { get; private set; }
 
-        private ReservedType(int type, OperationType operation, string description)
+        private ReservedType(int type, string description)
         {
             this.type = type;
-            this.operation = operation;
             this.description = description;
         }
 
-        public static ReservedType TITLE_BOOK_RESERVED = new ReservedType(0, OperationType.LIBRARY, "Titoli");
-        public static ReservedType AUTHOR_BOOK_RESERVED = new ReservedType(1, OperationType.LIBRARY, "Autori");
+        public static ReservedType TITLE_BOOK_RESERVED = new ReservedType(0, "Titoli");
+        public static ReservedType AUTHOR_BOOK_RESERVED = new ReservedType(1, "Autori");
     }
 }

@@ -27,6 +27,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType INVALID_INIT = new ApplicationErrorType(4, "Application not Properly Initialized");
         public static ApplicationErrorType EMPTY_RESERVED = new ApplicationErrorType(5, "Reserved can't be Null or Empty");
         public static ApplicationErrorType NOT_ALLOWED = new ApplicationErrorType(6, "Operation is not Allowed");
+        public static ApplicationErrorType ERROR_RESERVED = new ApplicationErrorType(7, "Error Get Reserved");
 
         /** DATABASE ERROR 31 - 50 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(31, "Failure Connection to Database");

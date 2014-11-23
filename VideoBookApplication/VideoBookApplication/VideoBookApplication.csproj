@@ -70,6 +70,7 @@
     <Compile Include="common\model\database\UsersModel.cs" />
     <Compile Include="common\model\GlobalApplicationObject.cs" />
     <Compile Include="common\model\IApplicationObject.cs" />
+    <Compile Include="common\model\ItemCombo.cs" />
     <Compile Include="common\operations\InitDatabase.cs" />
     <Compile Include="common\utility\Configurator.cs" />
     <Compile Include="common\utility\LayoutManager.cs" />
