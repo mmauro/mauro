@@ -109,7 +109,23 @@ namespace VideoBookApplication.common.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ItemCombo comboValue = (ItemCombo)comboTypeReserved.SelectedItem;
+            if (comboValue != null)
+            {
+                ApplicationErrorType status = control.writeReserved(textReserved.Text, comboValue.value);
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    closePanel();
+                }
+                else
+                {
+                    DisplayManager.displayError(status);
+                }
+            }
+            else
+            {
+                DisplayManager.displayError(ApplicationErrorType.INVALID_TYPE);
+            }
         }
     }
 }
