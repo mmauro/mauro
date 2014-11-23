@@ -67,7 +67,7 @@ namespace VideoBookApplication.library.view
                 case GlobalOperation.RESERVED:
                     if (reservedPanel == null)
                     {
-                        reservedPanel = new ReservedPanel();
+                        reservedPanel = new ReservedPanel(ref globalObject, this);
                         reservedPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
                         this.Controls.Add(reservedPanel);
                     }

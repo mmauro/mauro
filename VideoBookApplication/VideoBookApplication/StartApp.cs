@@ -46,6 +46,8 @@ namespace VideoBookApplication
             //Testo Frame
             this.Text = Utility.getFrameStringBorder();
 
+            this.ActiveControl = textUserName;
+
             //Creazione oggetto globale
             globalObject = new GlobalApplicationObject();
 
