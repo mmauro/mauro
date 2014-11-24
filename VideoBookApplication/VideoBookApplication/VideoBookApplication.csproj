@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="common\controls\DatabaseControl.cs" />
     <Compile Include="common\controls\IDatabaseControl.cs" />
+    <Compile Include="common\controls\IGenericActivity.cs" />
     <Compile Include="common\controls\ReservedControl.cs" />
     <Compile Include="common\controls\UsersControl.cs" />
     <Compile Include="common\dao\IGenericInDao.cs" />

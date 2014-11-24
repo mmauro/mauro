@@ -11,10 +11,11 @@ using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.enums;
+using VideoBookApplication.common.controls;
 
 namespace VideoBookApplication.library.view
 {
-    public partial class LibraryActivityWindow : Form
+    public partial class LibraryActivityWindow : Form, IGenericActivity
     {
 
         private GlobalApplicationObject globalObject;
@@ -106,6 +107,17 @@ namespace VideoBookApplication.library.view
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
             }
+        }
+
+
+        public void closeMenu()
+        {
+            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
+
+        public void openMenu(GlobalOperation operation)
+        {
+            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }
 }
