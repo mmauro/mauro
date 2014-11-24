@@ -8,6 +8,7 @@ namespace VideoBookApplication.common.enums
 {
     public enum GlobalOperation
     {
-        RESERVED
+        RESERVED,
+        LIB_INSERT_MENU
     }
 }

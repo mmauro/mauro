@@ -9,11 +9,11 @@ namespace VideoBookApplication.common.controls
 {
     public interface IGenericActivity
     {
-        public void openPanel(GlobalOperation operation);
-        public void closePanel();
-        public void closePanel(GlobalOperation operation);
-        public void closeMenu();
-        public void openMenu(GlobalOperation operation);
+        void openPanel(GlobalOperation operation);
+        void closePanel();
+        void closePanel(GlobalOperation operation);
+        void closeMenu();
+        void openMenu(GlobalOperation operation);
 
 
     }

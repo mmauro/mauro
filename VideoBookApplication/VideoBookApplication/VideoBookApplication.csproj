@@ -226,8 +226,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="img\add-author.png" />
+    <None Include="img\add_location.png" />
+    <None Include="img\add_category.png" />
     <Content Include="img\advancedsettings.png" />
     <Content Include="img\Books.png" />
+    <None Include="img\books_add.png" />
     <Content Include="img\button_cancel.png" />
     <Content Include="img\button_ok.png" />
     <Content Include="img\changeapp.png" />

@@ -36,44 +36,44 @@ namespace VideoBookApplication.common.view
             this.Size = new Size(LayoutManager.menuHeight, (numButton*90)+(5*(numButton+1)));
 
             //Button new
-            buttonNew.Location = new Point(5, 5);
-            this.Controls.Add(buttonNew);
+            buttonAddAuthor.Location = new Point(5, 5);
+            this.Controls.Add(buttonAddAuthor);
 
             //Button delete
-            buttonDelete.Location = new Point(5, buttonNew.Location.Y + buttonNew.Size.Height + 5);
-            this.Controls.Add(buttonDelete);
+            buttonAddBook.Location = new Point(5, buttonAddAuthor.Location.Y + buttonAddAuthor.Size.Height + 5);
+            this.Controls.Add(buttonAddBook);
 
             //Button Modify
-            buttonModify.Location = new Point(5, buttonDelete.Location.Y + buttonDelete.Size.Height + 5);
-            this.Controls.Add(buttonModify);
+            buttonAddCategory.Location = new Point(5, buttonAddBook.Location.Y + buttonAddBook.Size.Height + 5);
+            this.Controls.Add(buttonAddCategory);
 
             //Button Search
-            buttonSearch.Location = new Point(5, buttonModify.Location.Y + buttonModify.Size.Height + 5);
-            this.Controls.Add(buttonSearch);
+            buttonAddPosition.Location = new Point(5, buttonAddCategory.Location.Y + buttonAddCategory.Size.Height + 5);
+            this.Controls.Add(buttonAddPosition);
 
             //toolTip
-            toolTip1.SetToolTip(buttonDelete, "Cancellazione");
-            toolTip1.SetToolTip(buttonNew, "Inserimento");
-            toolTip1.SetToolTip(buttonModify, "Modifica");
-            toolTip1.SetToolTip(buttonSearch, "Ricerca");
+            toolTip1.SetToolTip(buttonAddBook, "Nuovi Libri");
+            toolTip1.SetToolTip(buttonAddAuthor, "Nuovo Autore");
+            toolTip1.SetToolTip(buttonAddPosition, "Nuova Posizione");
+            toolTip1.SetToolTip(buttonAddCategory, "Nuova Categoria");
         }
 
-        private void buttonNew_Click(object sender, EventArgs e)
+        private void buttonAddAuthor_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
+        private void buttonAddBook_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private void buttonAddCategory_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
-        private void buttonModify_Click(object sender, EventArgs e)
+        private void buttonAddPosition_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }

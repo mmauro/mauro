@@ -29,73 +29,77 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.buttonNew = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonAddAuthor = new System.Windows.Forms.Button();
+            this.buttonAddBook = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.buttonModify = new System.Windows.Forms.Button();
+            this.buttonAddCategory = new System.Windows.Forms.Button();
+            this.buttonAddPosition = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // buttonNew
+            // buttonAddAuthor
             // 
-            this.buttonNew.Image = global::VideoBookApplication.Properties.Resources.write;
-            this.buttonNew.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonNew.Location = new System.Drawing.Point(0, 0);
-            this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(127, 90);
-            this.buttonNew.TabIndex = 0;
-            this.buttonNew.Text = "Inserimento...";
-            this.buttonNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNew.UseVisualStyleBackColor = true;
-            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            this.buttonAddAuthor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddAuthor.Image = global::VideoBookApplication.Properties.Resources.add_author;
+            this.buttonAddAuthor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonAddAuthor.Location = new System.Drawing.Point(0, 0);
+            this.buttonAddAuthor.Name = "buttonAddAuthor";
+            this.buttonAddAuthor.Size = new System.Drawing.Size(127, 90);
+            this.buttonAddAuthor.TabIndex = 0;
+            this.buttonAddAuthor.Text = "Nuovo Autore";
+            this.buttonAddAuthor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonAddAuthor.UseVisualStyleBackColor = true;
+            this.buttonAddAuthor.Click += new System.EventHandler(this.buttonAddAuthor_Click);
             // 
-            // buttonDelete
+            // buttonAddBook
             // 
-            this.buttonDelete.Image = global::VideoBookApplication.Properties.Resources.trash;
-            this.buttonDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonDelete.Location = new System.Drawing.Point(0, 0);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(127, 90);
-            this.buttonDelete.TabIndex = 0;
-            this.buttonDelete.Text = "Cancellazione...";
-            this.buttonDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            this.buttonAddBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddBook.Image = global::VideoBookApplication.Properties.Resources.books_add;
+            this.buttonAddBook.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonAddBook.Location = new System.Drawing.Point(0, 0);
+            this.buttonAddBook.Name = "buttonAddBook";
+            this.buttonAddBook.Size = new System.Drawing.Size(127, 90);
+            this.buttonAddBook.TabIndex = 0;
+            this.buttonAddBook.Text = "Nuovi Libri";
+            this.buttonAddBook.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonAddBook.UseVisualStyleBackColor = true;
+            this.buttonAddBook.Click += new System.EventHandler(this.buttonAddBook_Click);
             // 
-            // buttonSearch
+            // buttonAddCategory
             // 
-            this.buttonSearch.Image = global::VideoBookApplication.Properties.Resources.search;
-            this.buttonSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonSearch.Location = new System.Drawing.Point(0, 0);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(127, 90);
-            this.buttonSearch.TabIndex = 0;
-            this.buttonSearch.Text = "Cerca...";
-            this.buttonSearch.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            this.buttonAddCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddCategory.Image = global::VideoBookApplication.Properties.Resources.add_category;
+            this.buttonAddCategory.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonAddCategory.Location = new System.Drawing.Point(0, 0);
+            this.buttonAddCategory.Name = "buttonAddCategory";
+            this.buttonAddCategory.Size = new System.Drawing.Size(127, 90);
+            this.buttonAddCategory.TabIndex = 0;
+            this.buttonAddCategory.Text = "Nuova Categoria";
+            this.buttonAddCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonAddCategory.UseVisualStyleBackColor = true;
+            this.buttonAddCategory.Click += new System.EventHandler(this.buttonAddCategory_Click);
             // 
-            // buttonModify
+            // buttonAddPosition
             // 
-            this.buttonModify.Image = global::VideoBookApplication.Properties.Resources.TextEdit;
-            this.buttonModify.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonModify.Location = new System.Drawing.Point(0, 0);
-            this.buttonModify.Name = "buttonModify";
-            this.buttonModify.Size = new System.Drawing.Size(127, 90);
-            this.buttonModify.TabIndex = 0;
-            this.buttonModify.Text = "Modifica...";
-            this.buttonModify.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonModify.UseVisualStyleBackColor = true;
-            this.buttonModify.Click += new System.EventHandler(this.buttonModify_Click);
+            this.buttonAddPosition.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddPosition.Image = global::VideoBookApplication.Properties.Resources.add_location;
+            this.buttonAddPosition.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonAddPosition.Location = new System.Drawing.Point(0, 0);
+            this.buttonAddPosition.Name = "buttonAddPosition";
+            this.buttonAddPosition.Size = new System.Drawing.Size(127, 90);
+            this.buttonAddPosition.TabIndex = 0;
+            this.buttonAddPosition.Text = "Nuova Posizione";
+            this.buttonAddPosition.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonAddPosition.UseVisualStyleBackColor = true;
+            this.buttonAddPosition.Click += new System.EventHandler(this.buttonAddPosition_Click);
             this.ResumeLayout(false);
 
         }
         #endregion
 
-        private System.Windows.Forms.Button buttonNew;
-        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonAddAuthor;
+        private System.Windows.Forms.Button buttonAddBook;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.Button buttonModify;
+        private System.Windows.Forms.Button buttonAddCategory;
+        private System.Windows.Forms.Button buttonAddPosition;
     }
 }

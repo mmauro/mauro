@@ -63,6 +63,36 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_author {
+            get {
+                object obj = ResourceManager.GetObject("add-author", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_category {
+            get {
+                object obj = ResourceManager.GetObject("add_category", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_location {
+            get {
+                object obj = ResourceManager.GetObject("add_location", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap advancedsettings {
             get {
                 object obj = ResourceManager.GetObject("advancedsettings", resourceCulture);
@@ -76,6 +106,16 @@ namespace VideoBookApplication.Properties {
         internal static System.Drawing.Bitmap Books {
             get {
                 object obj = ResourceManager.GetObject("Books", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap books_add {
+            get {
+                object obj = ResourceManager.GetObject("books_add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

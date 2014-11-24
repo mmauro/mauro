@@ -20,7 +20,9 @@ namespace VideoBookApplication.library.view
 
         private GlobalApplicationObject globalObject;
         private ReservedPanel reservedPanel = null;
-        LogoutPanel logoutPanel = null;
+        private LogoutPanel logoutPanel = null;
+
+        private InsertMenuLibrary insertMenu = null;
 
         public LibraryActivityWindow(ref GlobalApplicationObject globalObject)
         {
@@ -51,7 +53,7 @@ namespace VideoBookApplication.library.view
 
             panelMenu2.BackColor = LayoutManager.getMenuColor();
             panelMenu2.Size = new System.Drawing.Size(LayoutManager.menuHeight, this.Size.Height - logoutPanel.Size.Height);
-            panelMenu2.Location = new Point(this.Size.Width - panelMenu2.Size.Width, logoutPanel.Size.Height);
+            panelMenu2.Location = new Point(this.Size.Width - (panelMenu2.Size.Width + 17), logoutPanel.Size.Height);
             this.Controls.Add(panelMenu2);
 
             //Main Menu
@@ -117,7 +119,20 @@ namespace VideoBookApplication.library.view
 
         public void openMenu(GlobalOperation operation)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            switch (operation)
+            {
+                case GlobalOperation.LIB_INSERT_MENU:
+                    if (insertMenu == null)
+                    {
+                        insertMenu = new InsertMenuLibrary(ref globalObject, this);
+                        insertMenu.Location = new Point(0, 0);
+                        panelMenu2.Controls.Add(insertMenu);
+                    }
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                    break;
+            }
         }
     }
 }
