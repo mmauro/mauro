@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -42,7 +42,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>obj\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -153,6 +153,12 @@
     <Compile Include="library\view\MainMenuLibrary.designer.cs">
       <DependentUpon>MainMenuLibrary.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\NewCategoryPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\NewCategoryPanel.Designer.cs">
+      <DependentUpon>NewCategoryPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\MainMenuLibrary.resx">
       <DependentUpon>MainMenuLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\NewCategoryPanel.resx">
+      <DependentUpon>NewCategoryPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartApp.resx">
       <DependentUpon>StartApp.cs</DependentUpon>
@@ -247,6 +256,7 @@
     <Content Include="img\music.png" />
     <None Include="img\resword.png" />
     <None Include="img\search.png" />
+    <None Include="img\show.png" />
     <Content Include="img\sw.png" />
     <None Include="img\write.png" />
     <None Include="img\trash.png" />

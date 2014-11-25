@@ -12,17 +12,26 @@ namespace VideoBookApplication.library.controls
 {
     class CategoryControls
     {
+
+        private CategoryDao categoryDao = new CategoryDao();
+
         public ApplicationErrorType write(string cat)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
-            if (cat != null && !cat.Equals(""))
+            if (cat != null && !cat.Trim().Equals(""))
             {
                 try
                 {
-                    CategoryModel model = new CategoryModel();
-                    model.category = cat;
-                    CategoryDao categoryDao = new CategoryDao();
-                    categoryDao.write(model);
+                    if (read(cat) == null)
+                    {
+                        CategoryModel model = new CategoryModel();
+                        model.category = cat.Trim();
+                        categoryDao.write(model);
+                    }
+                    else
+                    {
+                        status = ApplicationErrorType.CATEGORY_PRESENT;
+                    }
                 }
                 catch (VideoBookException e)
                 {
@@ -36,5 +45,19 @@ namespace VideoBookApplication.library.controls
 
             return status;
         }
+
+        public CategoryModel read(string category)
+        {
+            try
+            {
+                CategoryModel model = categoryDao.readOne(category);
+                return model;
+            }
+            catch (VideoBookException e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

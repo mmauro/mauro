@@ -70,7 +70,7 @@ namespace VideoBookApplication.common.view
 
         private void buttonAddCategory_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.openPanel(GlobalOperation.LIB_NEW_CATEGORY);
         }
 
         private void buttonAddPosition_Click(object sender, EventArgs e)

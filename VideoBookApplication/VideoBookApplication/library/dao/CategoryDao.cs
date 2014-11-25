@@ -46,7 +46,36 @@ namespace VideoBookApplication.library.dao
 
         public CategoryModel readOne(object value)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                String category = (string)value;
+                String query = Configurator.getInstsance().get("category.read.query");
+                log.Info(query);
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@cat", category.ToLower());
+                CategoryModel model = null;
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null)
+                {
+                    while (reader.NextResult())
+                    {
+                        model = new CategoryModel();
+                        model.idCategory = reader.GetInt32("ID_CATEGORIA");
+                        model.category = reader.GetString("CATEGORIA");
+                    }
+                    reader.Close();
+                }
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+            }
+
         }
 
         public IEnumerable<CategoryModel> readMany(object value)

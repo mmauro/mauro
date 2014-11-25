@@ -41,6 +41,7 @@ namespace VideoBookApplication.common.enums
         /** LIBRARY OPERATION ERROR 101 - 200 */
         public static ApplicationErrorType EMPTY_CATEGORY = new ApplicationErrorType(101, "Category can't be Null or Empty");
         public static ApplicationErrorType EMPTY_POSITION = new ApplicationErrorType(102, "Position can't be Null or Empty");
+        public static ApplicationErrorType CATEGORY_PRESENT = new ApplicationErrorType(102, "Category Already Present");
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");
