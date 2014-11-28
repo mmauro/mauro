@@ -12,17 +12,26 @@ namespace VideoBookApplication.library.controls
 {
     class PositionControl
     {
+
+        private PositionDao positionDao = new PositionDao();
+
         public ApplicationErrorType write(string position)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
-            if (position != null && !position.Equals(""))
+            if (position != null && !position.Trim().Equals(""))
             {
                 try
                 {
-                    PositionModel model = new PositionModel();
-                    model.position = position;
-                    PositionDao positionDao = new PositionDao();
-                    positionDao.write(model);
+                    if (read(position) == null)
+                    {
+                        PositionModel model = new PositionModel();
+                        model.position = position.Trim();
+                        positionDao.write(model);
+                    }
+                    else
+                    {
+                        status = ApplicationErrorType.POSITION_PRESENT;
+                    }
                 }
                 catch (VideoBookException e)
                 {
@@ -36,5 +45,20 @@ namespace VideoBookApplication.library.controls
 
             return status;
         }
+
+        public PositionModel read(string position)
+        {
+            try
+            {
+                PositionModel model = positionDao.readOne(position);
+                return model;
+            }
+            catch (VideoBookException e)
+            {
+                throw e;
+            }
+        }
     }
+
+
 }

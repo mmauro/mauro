@@ -23,7 +23,7 @@ namespace VideoBookApplication.library.view
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
 
-        private CategoryControls control = new CategoryControls();
+        private PositionControl control = new PositionControl();
 
         public NewPositionPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
@@ -83,17 +83,16 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            //ApplicationErrorType status = control.write(textPosition.Text);
-            //if (status != ApplicationErrorType.SUCCESS)
-            //{
-            //    DisplayManager.displayError(status);
-            //}
-            //else
-            //{
-            //    log.Info("Category Write With Success");
-            //    closePanel();
-            //}
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ApplicationErrorType status = control.write(textPosition.Text);
+            if (status != ApplicationErrorType.SUCCESS)
+            {
+                DisplayManager.displayError(status);
+            }
+            else
+            {
+                log.Info("Position Write With Success");
+                closePanel();
+            }
         }
 
         private void buttonShowPos_Click(object sender, EventArgs e)

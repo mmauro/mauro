@@ -20,7 +20,35 @@ namespace VideoBookApplication.library.dao
 
         public PositionModel readOne(object value)
         {
-            throw new NotImplementedException();
+            try
+            {
+                String position = (string)value;
+                String query = Configurator.getInstsance().get("position.read.query");
+                log.Info(query);
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@pos", position.ToLower());
+                PositionModel model = null;
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null)
+                {
+                    while (reader.NextResult())
+                    {
+                        model = new PositionModel();
+                        model.idPosition = reader.GetInt32("ID_POSIZIONE");
+                        model.position = reader.GetString("POSIZIONE");
+                    }
+                    reader.Close();
+                }
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+            }
+
         }
 
         public IEnumerable<PositionModel> readMany(object value)
