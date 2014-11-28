@@ -57,9 +57,9 @@ namespace VideoBookApplication.library.dao
                 command.Parameters.AddWithValue("@cat", category.ToLower());
                 CategoryModel model = null;
                 MySqlDataReader reader = command.ExecuteReader();
-                if (reader != null)
+                if (reader != null && reader.HasRows)
                 {
-                    while (reader.NextResult())
+                    while (reader.Read())
                     {
                         model = new CategoryModel();
                         model.idCategory = reader.GetInt32("ID_CATEGORIA");

@@ -85,7 +85,7 @@ namespace VideoBookApplication.common.dao
                 command.Parameters.AddWithValue("@user", user);
 
                 MySqlDataReader reader = command.ExecuteReader();
-                if (reader != null) {
+                if (reader != null && reader.HasRows) {
                     while (reader.Read()) {
                         if (model == null) {
                             model = new UsersModel();

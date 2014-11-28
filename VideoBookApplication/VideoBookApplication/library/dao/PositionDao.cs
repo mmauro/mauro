@@ -30,9 +30,9 @@ namespace VideoBookApplication.library.dao
                 command.Parameters.AddWithValue("@pos", position.ToLower());
                 PositionModel model = null;
                 MySqlDataReader reader = command.ExecuteReader();
-                if (reader != null)
+                if (reader != null && reader.HasRows)
                 {
-                    while (reader.NextResult())
+                    while (reader.Read())
                     {
                         model = new PositionModel();
                         model.idPosition = reader.GetInt32("ID_POSIZIONE");
