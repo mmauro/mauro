@@ -51,10 +51,12 @@ namespace VideoBookApplication.library.dao
             {
                 String category = (string)value;
                 String query = Configurator.getInstsance().get("category.read.query");
-                log.Info(query);
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@cat", category.ToLower());
+
+                LogUtility.printQueryLog(query, category.ToLower());
+
                 CategoryModel model = null;
                 MySqlDataReader reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
@@ -65,8 +67,9 @@ namespace VideoBookApplication.library.dao
                         model.idCategory = reader.GetInt32("ID_CATEGORIA");
                         model.category = reader.GetString("CATEGORIA");
                     }
-                    reader.Close();
                 }
+                reader.Close();
+                command.Dispose();
 
                 return model;
             }

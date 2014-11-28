@@ -38,8 +38,9 @@ namespace VideoBookApplication.library.dao
                         model.idPosition = reader.GetInt32("ID_POSIZIONE");
                         model.position = reader.GetString("POSIZIONE");
                     }
-                    reader.Close();
                 }
+                reader.Close();
+                command.Dispose();
 
                 return model;
             }
