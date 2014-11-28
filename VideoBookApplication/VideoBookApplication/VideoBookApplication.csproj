@@ -90,6 +90,7 @@
     <Compile Include="common\operations\InitDatabase.cs" />
     <Compile Include="common\utility\Configurator.cs" />
     <Compile Include="common\utility\LayoutManager.cs" />
+    <Compile Include="common\utility\LogUtility.cs" />
     <Compile Include="common\view\AboutVideoBook.cs">
       <SubType>Form</SubType>
     </Compile>

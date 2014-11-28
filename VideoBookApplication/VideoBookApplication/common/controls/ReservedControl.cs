@@ -31,10 +31,10 @@ namespace VideoBookApplication.common.controls
         public ApplicationErrorType writeReserved(String reservedWord, int typeReserved)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
-            if (reservedWord != null)
+            if (reservedWord != null && reservedWord.Trim().Length > 0)
             {
                 ReservedModel model = new ReservedModel();
-                model.reserved = reservedWord.ToLower();
+                model.reserved = reservedWord.Trim().ToLower();
                 model.reservedType = typeReserved;
                 try
                 {

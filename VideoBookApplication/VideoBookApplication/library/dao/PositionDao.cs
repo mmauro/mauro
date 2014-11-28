@@ -24,10 +24,12 @@ namespace VideoBookApplication.library.dao
             {
                 String position = (string)value;
                 String query = Configurator.getInstsance().get("position.read.query");
-                log.Info(query);
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
-                command.Parameters.AddWithValue("@pos", position.ToLower());
+                command.Parameters.AddWithValue("@pos", position);
+
+                LogUtility.printQueryLog(query, position);
+
                 PositionModel model = null;
                 MySqlDataReader reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
@@ -68,12 +70,12 @@ namespace VideoBookApplication.library.dao
             try
             {
                 String query = Configurator.getInstsance().get("position.insert.query");
-                log.Info(query);
 
                 //Prepare Command
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@pos", obj.position);
+                LogUtility.printQueryLog(query, obj.position);
 
                 //Execute Command
                 command.ExecuteNonQuery();

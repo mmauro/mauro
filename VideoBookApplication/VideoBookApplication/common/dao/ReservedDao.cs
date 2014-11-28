@@ -22,7 +22,6 @@ namespace VideoBookApplication.common.dao
             try
             {
                 String query = Configurator.getInstsance().get("reserved.insert.query");
-                log.Info(query);
 
                 //Prepare Command
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
@@ -30,6 +29,7 @@ namespace VideoBookApplication.common.dao
 
                 command.Parameters.AddWithValue("@res", obj.reserved);
                 command.Parameters.AddWithValue("@typeres", obj.reservedType);
+                LogUtility.printQueryLog(query, obj.reserved, obj.reservedType.ToString());
                 //Execute Command
                 command.ExecuteNonQuery();
 

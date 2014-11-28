@@ -25,7 +25,7 @@ namespace VideoBookApplication.library.controls
                     if (read(cat) == null)
                     {
                         CategoryModel model = new CategoryModel();
-                        model.category = cat.Trim();
+                        model.category = cat.Trim().ToLower();
                         categoryDao.write(model);
                     }
                     else
@@ -48,14 +48,22 @@ namespace VideoBookApplication.library.controls
 
         public CategoryModel read(string category)
         {
-            try
+            if (category != null && category.Trim().Length > 0)
             {
-                CategoryModel model = categoryDao.readOne(category);
-                return model;
+                try
+                {
+                    CategoryModel model = categoryDao.readOne(category.Trim().ToLower());
+                    return model;
+                }
+                catch (VideoBookException e)
+                {
+                    throw e;
+                }
+
             }
-            catch (VideoBookException e)
+            else
             {
-                throw e;
+                throw new VideoBookException(ApplicationErrorType.EMPTY_CATEGORY);
             }
         }
 

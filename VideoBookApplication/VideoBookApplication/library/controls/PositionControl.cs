@@ -25,7 +25,7 @@ namespace VideoBookApplication.library.controls
                     if (read(position) == null)
                     {
                         PositionModel model = new PositionModel();
-                        model.position = position.Trim();
+                        model.position = position.Trim().ToLower();
                         positionDao.write(model);
                     }
                     else
@@ -48,14 +48,21 @@ namespace VideoBookApplication.library.controls
 
         public PositionModel read(string position)
         {
-            try
+            if (position != null && !position.Trim().Equals(""))
             {
-                PositionModel model = positionDao.readOne(position);
-                return model;
+                try
+                {
+                    PositionModel model = positionDao.readOne(position.Trim().ToLower());
+                    return model;
+                }
+                catch (VideoBookException e)
+                {
+                    throw e;
+                }
             }
-            catch (VideoBookException e)
+            else
             {
-                throw e;
+                throw new VideoBookException(ApplicationErrorType.EMPTY_POSITION);
             }
         }
     }

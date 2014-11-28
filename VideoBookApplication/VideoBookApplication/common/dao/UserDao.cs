@@ -21,7 +21,6 @@ namespace VideoBookApplication.common.dao
             try
             {
                 String query = Configurator.getInstsance().get("users.insert.query");
-                log.Info(query);
 
                 //Prepare Command
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
@@ -33,6 +32,8 @@ namespace VideoBookApplication.common.dao
                 command.Parameters.AddWithValue("@flmus", obj.flMusic);
                 command.Parameters.AddWithValue("@flsw", obj.flSoftware);
                 command.Parameters.AddWithValue("@flsus", obj.flSuperUser);
+
+                LogUtility.printQueryLog(query, obj.userName, obj.flLibrary.ToString(), obj.flVideo.ToString(), obj.flMusic.ToString(), obj.flSoftware.ToString(), obj.flSuperUser.ToString());
 
                 //Execute Command
                 command.ExecuteNonQuery();
@@ -77,12 +78,12 @@ namespace VideoBookApplication.common.dao
             try
             {
                 String query = Configurator.getInstsance().get("users.read.query");
-                log.Info(query);
 
                 //Prepare Command
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@user", user);
+                LogUtility.printQueryLog(query, user);
 
                 MySqlDataReader reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows) {

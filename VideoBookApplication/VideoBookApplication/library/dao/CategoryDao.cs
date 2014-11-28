@@ -23,12 +23,13 @@ namespace VideoBookApplication.library.dao
             try
             {
                 String query = Configurator.getInstsance().get("category.insert.query");
-                log.Info(query);
 
                 //Prepare Command
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@cat", obj.category);
+                LogUtility.printQueryLog(query, obj.category);
+
 
                 //Execute Command
                 command.ExecuteNonQuery();
@@ -53,9 +54,9 @@ namespace VideoBookApplication.library.dao
                 String query = Configurator.getInstsance().get("category.read.query");
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
-                command.Parameters.AddWithValue("@cat", category.ToLower());
+                command.Parameters.AddWithValue("@cat", category);
 
-                LogUtility.printQueryLog(query, category.ToLower());
+                LogUtility.printQueryLog(query, category);
 
                 CategoryModel model = null;
                 MySqlDataReader reader = command.ExecuteReader();
