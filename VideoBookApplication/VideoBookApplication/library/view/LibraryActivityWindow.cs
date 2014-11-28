@@ -24,6 +24,7 @@ namespace VideoBookApplication.library.view
 
         private ReservedPanel reservedPanel = null;
         private NewCategoryPanel newCatPanel = null;
+        private NewPositionPanel newPosPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -94,6 +95,14 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(newCatPanel);
                     }
                     break;
+                case GlobalOperation.LIB_NEW_POSITION:
+                    if (newPosPanel == null)
+                    {
+                        newPosPanel = new NewPositionPanel(ref globalObject, this);
+                        newPosPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(newPosPanel);
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -104,6 +113,7 @@ namespace VideoBookApplication.library.view
         {
             closePanel(GlobalOperation.RESERVED);
             closePanel(GlobalOperation.LIB_NEW_CATEGORY);
+            closePanel(GlobalOperation.LIB_NEW_POSITION);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -122,6 +132,13 @@ namespace VideoBookApplication.library.view
                     {
                         newCatPanel.Visible = false;
                         newCatPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_NEW_POSITION:
+                    if (newPosPanel != null)
+                    {
+                        newPosPanel.Visible = false;
+                        newPosPanel = null;
                     }
                     break;
                 default:

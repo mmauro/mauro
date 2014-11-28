@@ -15,6 +15,7 @@ namespace VideoBookApplication.common.enums
         LIB_INSERT_MENU,
 
         /** LIBRARY OPERATION */
-        LIB_NEW_CATEGORY
+        LIB_NEW_CATEGORY,
+        LIB_NEW_POSITION
     }
 }

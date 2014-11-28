@@ -17,7 +17,7 @@ using VideoBookApplication.library.controls;
 
 namespace VideoBookApplication.library.view
 {
-    public partial class NewCategoryPanel : Panel
+    public partial class NewPositionPanel : Panel
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private GlobalApplicationObject globalObject;
@@ -25,7 +25,7 @@ namespace VideoBookApplication.library.view
 
         private CategoryControls control = new CategoryControls();
 
-        public NewCategoryPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
+        public NewPositionPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.globalObject = globalObject;
@@ -40,17 +40,17 @@ namespace VideoBookApplication.library.view
             this.BackColor = LayoutManager.getPanelColor();
 
             //Title
-            TitlePanel titlePanel = new TitlePanel("Nuova Categoria", this);
+            TitlePanel titlePanel = new TitlePanel("Nuova Posizione", this);
             titlePanel.Location = new Point(0, 0);
             this.Controls.Add(titlePanel);
 
             //Labels
-            labelCategory.Location = new Point(10, titlePanel.Size.Height + 15);
-            this.Controls.Add(labelCategory);
+            labelPosition.Location = new Point(10, titlePanel.Size.Height + 15);
+            this.Controls.Add(labelPosition);
 
             //TextBox
-            textCategory.Location = new Point(95, labelCategory.Location.Y - 4);
-            this.Controls.Add(textCategory);
+            textPosition.Location = new Point(95, labelPosition.Location.Y - 4);
+            this.Controls.Add(textPosition);
 
 
             //Buttons
@@ -60,13 +60,13 @@ namespace VideoBookApplication.library.view
             buttonOk.Location = new Point(buttonClose.Location.X - (10 + buttonOk.Size.Width), buttonClose.Location.Y);
             this.Controls.Add(buttonOk);
 
-            buttonShowCat.Location = new Point(20, buttonClose.Location.Y);
-            this.Controls.Add(buttonShowCat);
+            buttonShowPos.Location = new Point(20, buttonClose.Location.Y);
+            this.Controls.Add(buttonShowPos);
 
             //Tooltip
-            toolTip1.SetToolTip(buttonOk, "Inserisci Rieservata");
+            toolTip1.SetToolTip(buttonOk, "Inserisci Nuova Posizione");
             toolTip1.SetToolTip(buttonClose, "Annulla");
-            toolTip1.SetToolTip(buttonShowCat, "Visualizza Categorie Esistenti");
+            toolTip1.SetToolTip(buttonShowPos, "Visualizza Posizioni Esistenti");
 
 
         }
@@ -78,24 +78,25 @@ namespace VideoBookApplication.library.view
 
         private void closePanel()
         {
-            parent.closePanel(GlobalOperation.LIB_NEW_CATEGORY);
+            parent.closePanel(GlobalOperation.LIB_NEW_POSITION);
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            ApplicationErrorType status = control.write(textCategory.Text);
-            if (status != ApplicationErrorType.SUCCESS)
-            {
-                DisplayManager.displayError(status);
-            }
-            else
-            {
-                log.Info("Category Write With Success");
-                closePanel();
-            }
+            //ApplicationErrorType status = control.write(textPosition.Text);
+            //if (status != ApplicationErrorType.SUCCESS)
+            //{
+            //    DisplayManager.displayError(status);
+            //}
+            //else
+            //{
+            //    log.Info("Category Write With Success");
+            //    closePanel();
+            //}
+            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
-        private void buttonShowCat_Click(object sender, EventArgs e)
+        private void buttonShowPos_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }

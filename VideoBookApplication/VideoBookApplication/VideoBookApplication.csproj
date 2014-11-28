@@ -153,6 +153,12 @@
     <Compile Include="library\view\MainMenuLibrary.designer.cs">
       <DependentUpon>MainMenuLibrary.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\NewPositionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\NewPositionPanel.Designer.cs">
+      <DependentUpon>NewPositionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\NewCategoryPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\MainMenuLibrary.resx">
       <DependentUpon>MainMenuLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\NewPositionPanel.resx">
+      <DependentUpon>NewPositionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\NewCategoryPanel.resx">
       <DependentUpon>NewCategoryPanel.cs</DependentUpon>
