@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoBookApplication.advanced.view;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
@@ -72,7 +73,10 @@ namespace VideoBookApplication.common.view
         private void buttonAdvanced_Click(object sender, EventArgs e)
         {
             globalObject.activity = ActivityType.ADVANCED;
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            this.Visible = false;
+            AdvancedActivityWindow advWin = new AdvancedActivityWindow(ref globalObject);
+            advWin.ShowDialog();
+
         }
 
         private void buttonInfo_Click(object sender, EventArgs e)

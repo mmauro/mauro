@@ -67,6 +67,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="advanced\view\AdvancedActivityWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="advanced\view\AdvancedActivityWindow.Designer.cs">
+      <DependentUpon>AdvancedActivityWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="advanced\view\DatabaseMenuAdvanced.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="advanced\view\DatabaseMenuAdvanced.designer.cs">
+      <DependentUpon>DatabaseMenuAdvanced.cs</DependentUpon>
+    </Compile>
     <Compile Include="common\controls\DatabaseControl.cs" />
     <Compile Include="common\controls\IDatabaseControl.cs" />
     <Compile Include="common\controls\IGenericActivity.cs" />
@@ -180,6 +192,12 @@
     <Compile Include="library\model\database\PositionModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="advanced\view\AdvancedActivityWindow.resx">
+      <DependentUpon>AdvancedActivityWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="advanced\view\DatabaseMenuAdvanced.resx">
+      <DependentUpon>DatabaseMenuAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="common\view\AboutVideoBook.resx">
       <DependentUpon>AboutVideoBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +274,7 @@
     <Content Include="img\changeapp.png" />
     <Content Include="img\close2.png" />
     <None Include="img\document.png" />
+    <None Include="img\dump-db.png" />
     <Content Include="img\exit.png" />
     <Content Include="img\Info.png" />
     <None Include="img\kchart.png" />
@@ -267,15 +286,11 @@
     <None Include="img\resword.png" />
     <None Include="img\search.png" />
     <None Include="img\show.png" />
+    <None Include="img\restore-db.png" />
     <Content Include="img\sw.png" />
     <None Include="img\write.png" />
     <None Include="img\trash.png" />
     <None Include="img\TextEdit.png" />
-    <Content Include="img\[Originals]\Books.png" />
-    <Content Include="img\[Originals]\Info.png" />
-    <Content Include="img\[Originals]\Movie.png" />
-    <Content Include="img\[Originals]\music.png" />
-    <Content Include="img\[Originals]\sw.png" />
     <Content Include="resources\VideoBookApplication.sql" />
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +310,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

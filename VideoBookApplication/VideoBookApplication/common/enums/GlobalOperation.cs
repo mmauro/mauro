@@ -16,6 +16,8 @@ namespace VideoBookApplication.common.enums
 
         /** LIBRARY OPERATION */
         LIB_NEW_CATEGORY,
-        LIB_NEW_POSITION
+        LIB_NEW_POSITION,
+        LIB_SHOW_CAT,
+        LIB_SHOW_POS
     }
 }
