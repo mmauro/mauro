@@ -19,7 +19,6 @@ namespace VideoBookApplication.common.view
             this.Size = new Size(parent.Size.Width, 50);
 
             labelTitle.Text = title;
-            labelTitle.Location = new Point((parent.Size.Width / 2)-(labelTitle.Size.Width), 5);
             this.Controls.Add(labelTitle);
         }
     }

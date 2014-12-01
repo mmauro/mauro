@@ -25,6 +25,8 @@ namespace VideoBookApplication.library.view
         private ReservedPanel reservedPanel = null;
         private NewCategoryPanel newCatPanel = null;
         private NewPositionPanel newPosPanel = null;
+        private ShowCategoryPanel showCatPanel = null;
+        private ShowPositionPanel showPosPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -103,6 +105,36 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(newPosPanel);
                     }
                     break;
+                case GlobalOperation.LIB_SHOW_CAT:
+                    if (showCatPanel == null)
+                    {
+                        if (newCatPanel != null)
+                        {
+                            showCatPanel = new ShowCategoryPanel(ref globalObject, this);
+                            showCatPanel.Location = new Point(newCatPanel.Location.X + newCatPanel.Size.Width + 10, newCatPanel.Location.Y);
+                            this.Controls.Add(showCatPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Show Category Error");
+                        }
+                    }
+                    break;
+                case GlobalOperation.LIB_SHOW_POS:
+                    if (showPosPanel == null)
+                    {
+                        if (newPosPanel != null)
+                        {
+                            showPosPanel = new ShowPositionPanel(ref globalObject, this);
+                            showPosPanel.Location = new Point(newPosPanel.Location.X + newPosPanel.Size.Width + 10, newPosPanel.Location.Y);
+                            this.Controls.Add(showPosPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Show Position Error");
+                        }
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -114,6 +146,8 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.RESERVED);
             closePanel(GlobalOperation.LIB_NEW_CATEGORY);
             closePanel(GlobalOperation.LIB_NEW_POSITION);
+            closePanel(GlobalOperation.LIB_SHOW_CAT);
+            closePanel(GlobalOperation.LIB_SHOW_POS);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -132,6 +166,7 @@ namespace VideoBookApplication.library.view
                     {
                         newCatPanel.Visible = false;
                         newCatPanel = null;
+                        closePanel(GlobalOperation.LIB_SHOW_CAT);
                     }
                     break;
                 case GlobalOperation.LIB_NEW_POSITION:
@@ -139,6 +174,21 @@ namespace VideoBookApplication.library.view
                     {
                         newPosPanel.Visible = false;
                         newPosPanel = null;
+                        closePanel(GlobalOperation.LIB_SHOW_POS);
+                    }
+                    break;
+                case GlobalOperation.LIB_SHOW_CAT:
+                    if (showCatPanel != null)
+                    {
+                        showCatPanel.Visible = false;
+                        showCatPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_SHOW_POS:
+                    if (showPosPanel != null)
+                    {
+                        showPosPanel.Visible = false;
+                        showPosPanel = null;
                     }
                     break;
                 default:

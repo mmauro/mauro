@@ -28,6 +28,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType EMPTY_RESERVED = new ApplicationErrorType(5, "Reserved can't be Null or Empty");
         public static ApplicationErrorType NOT_ALLOWED = new ApplicationErrorType(6, "Operation is not Allowed");
         public static ApplicationErrorType ERROR_RESERVED = new ApplicationErrorType(7, "Error Get Reserved");
+        public static ApplicationErrorType OPEN_PANEL_ERROR = new ApplicationErrorType(8, "Error Open Panel");
 
         /** DATABASE ERROR 31 - 50 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(31, "Failure Connection to Database");
@@ -36,13 +37,13 @@ namespace VideoBookApplication.common.enums
 
         /** COMMON OPERATION ERROR 51 - 100*/
         public static ApplicationErrorType EMPTY_USERNAME = new ApplicationErrorType(51, "Username can't be Null or Empty");
-        public static ApplicationErrorType USER_NOT_FOUND = new ApplicationErrorType(51, "User not Found");
+        public static ApplicationErrorType USER_NOT_FOUND = new ApplicationErrorType(52, "User not Found");
 
         /** LIBRARY OPERATION ERROR 101 - 200 */
         public static ApplicationErrorType EMPTY_CATEGORY = new ApplicationErrorType(101, "Category can't be Null or Empty");
         public static ApplicationErrorType EMPTY_POSITION = new ApplicationErrorType(102, "Position can't be Null or Empty");
-        public static ApplicationErrorType CATEGORY_PRESENT = new ApplicationErrorType(102, "Category Already Present");
-        public static ApplicationErrorType POSITION_PRESENT = new ApplicationErrorType(102, "Position Already Present");
+        public static ApplicationErrorType CATEGORY_PRESENT = new ApplicationErrorType(103, "Category Already Present");
+        public static ApplicationErrorType POSITION_PRESENT = new ApplicationErrorType(104, "Position Already Present");
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");

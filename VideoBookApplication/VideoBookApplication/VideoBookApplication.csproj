@@ -178,6 +178,18 @@
     <Compile Include="library\view\NewCategoryPanel.Designer.cs">
       <DependentUpon>NewCategoryPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\ShowCategoryPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\ShowCategoryPanel.Designer.cs">
+      <DependentUpon>ShowCategoryPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="library\view\ShowPositionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\ShowPositionPanel.Designer.cs">
+      <DependentUpon>ShowPositionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +245,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\NewCategoryPanel.resx">
       <DependentUpon>NewCategoryPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\ShowCategoryPanel.resx">
+      <DependentUpon>ShowCategoryPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\ShowPositionPanel.resx">
+      <DependentUpon>ShowPositionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartApp.resx">
       <DependentUpon>StartApp.cs</DependentUpon>

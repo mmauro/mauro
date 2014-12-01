@@ -1,6 +1,6 @@
-﻿namespace VideoBookApplication.common.view
+﻿namespace VideoBookApplication.library.view
 {
-    partial class TitlePanel
+    partial class ShowCategoryPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // labelTitle
+            // ShowCategoryPanel
             // 
-            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTitle.Font = new System.Drawing.Font("Lucida Handwriting", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.ForeColor = System.Drawing.Color.LightCoral;
-            this.labelTitle.Location = new System.Drawing.Point(0, 0);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(100, 23);
-            this.labelTitle.TabIndex = 0;
-            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Size = new System.Drawing.Size(400, 300);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelTitle;
     }
 }

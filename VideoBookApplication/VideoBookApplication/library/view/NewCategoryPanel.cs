@@ -97,7 +97,7 @@ namespace VideoBookApplication.library.view
 
         private void buttonShowCat_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.openPanel(GlobalOperation.LIB_SHOW_CAT);
         }
     }
 }

@@ -67,8 +67,6 @@ namespace VideoBookApplication.library.view
             toolTip1.SetToolTip(buttonOk, "Inserisci Nuova Posizione");
             toolTip1.SetToolTip(buttonClose, "Annulla");
             toolTip1.SetToolTip(buttonShowPos, "Visualizza Posizioni Esistenti");
-
-
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -97,7 +95,7 @@ namespace VideoBookApplication.library.view
 
         private void buttonShowPos_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.openPanel(GlobalOperation.LIB_SHOW_POS);
         }
     }
 }
