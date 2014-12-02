@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,6 +65,34 @@ namespace VideoBookApplication.library.controls
             else
             {
                 throw new VideoBookException(ApplicationErrorType.EMPTY_CATEGORY);
+            }
+        }
+
+        public List<CategoryModel> getAllCategory(bool keepDefaultValue)
+        {
+            try
+            {
+                List<CategoryModel> arrayCategory = null;
+                arrayCategory = (List<CategoryModel>)categoryDao.readAll();
+
+                if (arrayCategory != null && arrayCategory.Count >0 && !keepDefaultValue)
+                {
+                    List<CategoryModel> tmpListCat = arrayCategory.ToList();
+                    arrayCategory.Clear();
+                    foreach (CategoryModel model in tmpListCat)
+                    {
+                        if (!model.category.Equals(Configurator.getInstsance().get("catpos.default.value")))
+                        {
+                            arrayCategory.Add(model);
+                        }
+                    }
+                }
+
+                return arrayCategory;
+            }
+            catch (VideoBookException e)
+            {
+                throw e;
             }
         }
 

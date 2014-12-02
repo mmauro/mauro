@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
@@ -46,6 +47,39 @@ namespace VideoBookApplication.library.view
             TitlePanel titlePanel = new TitlePanel("Visualizzazione Categorie", this);
             titlePanel.Location = new Point(0, 0);
             this.Controls.Add(titlePanel);
+
+            textCategory.ReadOnly = true;
+            textCategory.Size = new System.Drawing.Size(this.Size.Width - 40, 150);
+            textCategory.Location = new Point(20, titlePanel.Location.X + titlePanel.Size.Height + 20);
+            this.Controls.Add(textCategory);
+
+            buttonOk.Location = new Point((this.Size.Width / 2) - (buttonOk.Size.Width / 2), textCategory.Location.Y + textCategory.Size.Height + 15);
+            this.Controls.Add(buttonOk);
+
+            displayElements();
+
+        }
+
+        private void displayElements()
+        {
+            string value = "";
+            if (listElements != null && listElements.Count > 0)
+            {
+                foreach (CategoryModel model in listElements)
+                {
+                    value += model.category + Environment.NewLine;
+                }
+            }
+            else
+            {
+                value = "Nessuna Categoria Presente";
+            }
+            textCategory.Text = value;
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            parent.closePanel(GlobalOperation.LIB_SHOW_CAT);
         }
     }
 }
