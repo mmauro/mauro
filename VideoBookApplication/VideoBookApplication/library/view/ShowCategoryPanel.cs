@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
+using VideoBookApplication.library.controls;
+using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.view
 {
@@ -17,12 +19,25 @@ namespace VideoBookApplication.library.view
     {
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private List<CategoryModel> listElements = null;
+
         public ShowCategoryPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.globalObject = globalObject;
             this.parent = parent;
-            initPanel();
+
+
+            try
+            {
+                CategoryControls cc = new CategoryControls();
+                listElements = cc.getAllCategory(false);
+                initPanel();
+            }
+            catch (VideoBookException e)
+            {
+                DisplayManager.displayError(e.errorType);
+            }
         }
 
         private void initPanel()
