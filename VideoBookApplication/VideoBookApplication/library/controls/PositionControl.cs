@@ -65,6 +65,34 @@ namespace VideoBookApplication.library.controls
                 throw new VideoBookException(ApplicationErrorType.EMPTY_POSITION);
             }
         }
+
+        public List<PositionModel> getAllPosition(bool keepDefaultValue)
+        {
+            try
+            {
+                List<PositionModel> arrayPosition = null;
+                arrayPosition = (List<PositionModel>)positionDao.readAll();
+
+                if (arrayPosition != null && arrayPosition.Count > 0 && !keepDefaultValue)
+                {
+                    List<PositionModel> tmpListCat = arrayPosition.ToList();
+                    arrayPosition.Clear();
+                    foreach (PositionModel model in tmpListCat)
+                    {
+                        if (!model.position.Equals(Configurator.getInstsance().get("catpos.default.value")))
+                        {
+                            arrayPosition.Add(model);
+                        }
+                    }
+                }
+
+                return arrayPosition;
+            }
+            catch (VideoBookException e)
+            {
+                throw e;
+            }
+        }
     }
 
 

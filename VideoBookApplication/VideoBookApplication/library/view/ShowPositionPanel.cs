@@ -11,6 +11,8 @@ using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
+using VideoBookApplication.library.controls;
+using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.view
 {
@@ -18,12 +20,23 @@ namespace VideoBookApplication.library.view
     {
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private List<PositionModel> listElements = null;
         public ShowPositionPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.globalObject = globalObject;
             this.parent = parent;
-            initPanel();
+
+            try
+            {
+                PositionControl pc = new PositionControl();
+                listElements = pc.getAllPosition(false);
+                initPanel();
+            }
+            catch (VideoBookException e)
+            {
+                DisplayManager.displayError(e.errorType);
+            }
         }
 
         private void initPanel()
@@ -41,6 +54,25 @@ namespace VideoBookApplication.library.view
             buttonOk.Location = new Point((this.Size.Width / 2) - (buttonOk.Size.Width / 2), textPosition.Location.Y + textPosition.Size.Height + 15);
             this.Controls.Add(buttonOk);
 
+            displayElements();
+
+        }
+
+        private void displayElements()
+        {
+            string value = "";
+            if (listElements != null && listElements.Count > 0)
+            {
+                foreach (PositionModel model in listElements)
+                {
+                    value += model.position + Environment.NewLine;
+                }
+            }
+            else
+            {
+                value = "Nessuna Categoria Presente";
+            }
+            textPosition.Text = value;
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
