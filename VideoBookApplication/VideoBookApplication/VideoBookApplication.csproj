@@ -148,6 +148,8 @@
     <Compile Include="common\view\WindowsMainActivity.designer.cs">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\model\database\AuthorModel.cs" />
+    <Compile Include="library\model\database\BookModel.cs" />
     <Compile Include="library\view\LibraryActivityWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +167,12 @@
     </Compile>
     <Compile Include="library\view\MainMenuLibrary.designer.cs">
       <DependentUpon>MainMenuLibrary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="library\view\NewAuthorPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\NewAuthorPanel.Designer.cs">
+      <DependentUpon>NewAuthorPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="library\view\NewPositionPanel.cs">
       <SubType>Component</SubType>
@@ -240,6 +248,9 @@
     <EmbeddedResource Include="library\view\MainMenuLibrary.resx">
       <DependentUpon>MainMenuLibrary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="library\view\NewAuthorPanel.resx">
+      <DependentUpon>NewAuthorPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="library\view\NewPositionPanel.resx">
       <DependentUpon>NewPositionPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +301,7 @@
     <Content Include="img\button_cancel.png" />
     <Content Include="img\button_ok.png" />
     <Content Include="img\changeapp.png" />
+    <None Include="img\check.png" />
     <Content Include="img\close2.png" />
     <None Include="img\document.png" />
     <None Include="img\dump-db.png" />
