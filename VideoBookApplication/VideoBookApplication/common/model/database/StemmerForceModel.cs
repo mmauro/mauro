@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VideoBookApplication.common.model.database
 {
-    class StemmerForceModel
+    public class StemmerForceModel
     {
         public string word { get; set; }
         public string stemmer { get; set; }
