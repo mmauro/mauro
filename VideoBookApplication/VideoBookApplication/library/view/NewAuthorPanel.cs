@@ -11,6 +11,7 @@ using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
+using VideoBookApplication.library.controls;
 
 namespace VideoBookApplication.library.view
 {
@@ -18,6 +19,8 @@ namespace VideoBookApplication.library.view
     {
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private AuthorControls control = new AuthorControls();
+
         public NewAuthorPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
@@ -81,6 +84,12 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            ApplicationErrorType status = control.addNewAuthor(textNome.Text, textCognome.Text);
+            if (status != ApplicationErrorType.SUCCESS)
+            {
+                DisplayManager.displayError(status);
+            }
+
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }

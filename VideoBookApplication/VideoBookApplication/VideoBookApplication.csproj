@@ -81,14 +81,17 @@
     <Compile Include="common\controls\IDatabaseControl.cs" />
     <Compile Include="common\controls\IGenericActivity.cs" />
     <Compile Include="common\controls\ReservedControl.cs" />
+    <Compile Include="common\controls\StemmerControls.cs" />
     <Compile Include="common\controls\UsersControl.cs" />
     <Compile Include="common\dao\IGenericInDao.cs" />
     <Compile Include="common\dao\IGenericOutDao.cs" />
     <Compile Include="common\dao\ReservedDao.cs" />
+    <Compile Include="common\dao\StemmerDao.cs" />
     <Compile Include="common\dao\UserDao.cs" />
     <Compile Include="common\enums\ActivityType.cs" />
     <Compile Include="common\enums\ApplicationErrorType.cs" />
     <Compile Include="common\enums\GlobalOperation.cs" />
+    <Compile Include="common\enums\IndexerType.cs" />
     <Compile Include="common\enums\OperationType.cs" />
     <Compile Include="common\enums\ReservedType.cs" />
     <Compile Include="common\model\database\ReservedModel.cs" />
@@ -97,10 +100,12 @@
     <Compile Include="common\model\GlobalApplicationObject.cs" />
     <Compile Include="common\model\IApplicationObject.cs" />
     <Compile Include="common\model\ItemCombo.cs" />
+    <Compile Include="common\operations\Indexer.cs" />
     <Compile Include="common\operations\InitDatabase.cs" />
     <Compile Include="common\utility\Configurator.cs" />
     <Compile Include="common\utility\LayoutManager.cs" />
     <Compile Include="common\utility\LogUtility.cs" />
+    <Compile Include="common\utility\StringUtility.cs" />
     <Compile Include="common\view\AboutVideoBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +151,7 @@
     <Compile Include="common\view\WindowsMainActivity.designer.cs">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\controls\AuthorControls.cs" />
     <Compile Include="library\model\database\AuthorModel.cs" />
     <Compile Include="library\model\database\BookModel.cs" />
     <Compile Include="library\view\LibraryActivityWindow.cs">

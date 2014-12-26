@@ -51,7 +51,40 @@ namespace VideoBookApplication.common.dao
 
         public IEnumerable<ReservedModel> readMany(object value)
         {
-            throw new NotImplementedException();
+            List<ReservedModel> arrayReserved = new List<ReservedModel>();
+
+            try
+            {
+                int type = (int)value;
+
+                String query = Configurator.getInstsance().get("reserved.read.query");
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@typeres", type);
+
+                LogUtility.printQueryLog(query, type.ToString());
+
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ReservedModel model = new ReservedModel();
+                        model.reserved = reader.GetString("RESERVED");
+                        model.reservedType = reader.GetInt32("TYPE_RESERVED");
+                        arrayReserved.Add(model);
+                    }
+
+                    reader.Close();
+                }
+
+                return arrayReserved;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+            }
         }
 
         public IEnumerable<ReservedModel> readAll()

@@ -14,6 +14,7 @@ namespace VideoBookApplication.common.controls
 {
     class ReservedControl
     {
+        private ReservedDao dao = new ReservedDao();
         public ApplicationErrorType writeReserved(String reservedWord, ReservedType typeReserved)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
@@ -38,7 +39,6 @@ namespace VideoBookApplication.common.controls
                 model.reservedType = typeReserved;
                 try
                 {
-                    ReservedDao dao = new ReservedDao();
                     dao.write(model);
                 }
                 catch (VideoBookException e)
@@ -52,6 +52,34 @@ namespace VideoBookApplication.common.controls
             }
 
             return status;
+        }
+
+        public List<String> readReserved(ReservedType reservedType)
+        {
+            return readReserved(reservedType.type);
+        }
+
+        public List<String> readReserved(int reservedType)
+        {
+            List<String> reserved = new List<string>();
+
+            try
+            {
+                List<ReservedModel> tmpRes = (List<ReservedModel>)dao.readMany(reservedType);
+                if (tmpRes != null && tmpRes.Count > 0)
+                {
+                    foreach (ReservedModel model in tmpRes)
+                    {
+                        reserved.Add(model.reserved);
+                    }
+                }
+            }
+            catch (VideoBookException e)
+            {
+                reserved.Clear();
+            }
+
+            return reserved;
         }
 
 
