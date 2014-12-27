@@ -25,6 +25,20 @@ namespace VideoBookApplication.library.controls
                 {
                     status = indexCognome.status;
                 }
+
+                if (status == ApplicationErrorType.SUCCESS && nome != null && !nome.Trim().Equals(""))
+                {
+                    Indexer indexNome = new Indexer(nome, IndexerType.INDEX_AUTHOR);
+                    if (indexNome.status == ApplicationErrorType.SUCCESS)
+                    {
+
+                    }
+                    else
+                    {
+                        status = indexNome.status;
+                    }
+                }
+
             }
             else
             {

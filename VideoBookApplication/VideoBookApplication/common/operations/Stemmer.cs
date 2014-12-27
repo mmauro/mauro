@@ -38,7 +38,7 @@ namespace VideoBookApplication.common.operations
             }
         }
 
-        public string stemWord(string word)
+        public string stem(string word)
         {
             if (word != null && !word.Equals(""))
             {

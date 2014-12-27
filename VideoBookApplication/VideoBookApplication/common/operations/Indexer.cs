@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using VideoBookApplication.common.controls;
 using VideoBookApplication.common.dao;
@@ -52,8 +53,77 @@ namespace VideoBookApplication.common.operations
                 status = stemmer.status;
             }
 
+            if (status == ApplicationErrorType.SUCCESS && this.value != null && !value.Equals(""))
+            {
+                string wordClean = cleanWords(value);
+                if (wordClean!= null && !wordClean.Equals(""))
+                {
+                    //Split delle parole
+                    Regex rgx = new Regex("\\s+");
+                    String[] singleWords = rgx.Split(wordClean);
+                    if (singleWords != null && singleWords.Length > 0)
+                    {
+                        for (int i = 0; i < singleWords.Length; i++)
+                        {
+                            if (singleWords[i] != null && !singleWords[i].Trim().Equals(""))
+                            {
+                                string parola = singleWords[i];
+                                if (!reserved.Contains(parola))
+                                {
+                                    if (this.indexerType.useStemmer)
+                                    {
+                                        parola = stemmer.stem(parola);
+                                    }
+                                    words.Add(parola);
+                                }
+                            }
+                        }
+
+                        if (words.Count <= 0)
+                        {
+                            status = ApplicationErrorType.NO_INDEX;
+                        }
+
+                    }
+                    else
+                    {
+                        status = ApplicationErrorType.INDEXER_PREPARE_ERROR;
+                    }
+                }
+                else
+                {
+                    status = ApplicationErrorType.INDEXER_PREPARE_ERROR;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.INDEXER_INVALID_VALUE;
+            }
+
         }
 
+        private string cleanWords(string words)
+        {
+            // 1 - Tutto in minuscolo
+            string w = words.ToLower();
+
+            // 2 - Aggiungo spazio dopo Apice
+            w = StringUtility.addSpaceAfterSpecialChar(w);
+
+            // 3 - Trasformazione di accenti
+            w = StringUtility.setAccent(w);
+
+            // 4 - Trasformazione accenti italiani
+            w = StringUtility.setItalianAccent(w);
+
+            // 5 - Eliminazione caratteri speciali
+            w = StringUtility.stripNotAlfaChar(w);
+
+            // 6 - Trim
+            w = w.Trim();
+
+            return w;
+        }
 
 
     }

@@ -31,6 +31,10 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType OPEN_PANEL_ERROR = new ApplicationErrorType(8, "Error Open Panel");
         public static ApplicationErrorType LOAD_RESERVED_ERROR = new ApplicationErrorType(9, "Error Read Reserved Words");
         public static ApplicationErrorType LOAD_STEMMER_ERROR = new ApplicationErrorType(10, "Error Read Stemmer Forms");
+        public static ApplicationErrorType INDEXER_INVALID_VALUE = new ApplicationErrorType(11, "Indexer Invalid Value");
+        public static ApplicationErrorType INDEXER_PREPARE_ERROR = new ApplicationErrorType(12, "Indexer Problem");
+        public static ApplicationErrorType NO_INDEX = new ApplicationErrorType(13, "Value Could not be Indexed");
+
 
         /** DATABASE ERROR 31 - 50 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(31, "Failure Connection to Database");

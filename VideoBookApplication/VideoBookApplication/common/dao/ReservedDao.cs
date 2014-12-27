@@ -74,7 +74,10 @@ namespace VideoBookApplication.common.dao
                         model.reservedType = reader.GetInt32("TYPE_RESERVED");
                         arrayReserved.Add(model);
                     }
+                }
 
+                if (reader != null)
+                {
                     reader.Close();
                 }
 
