@@ -77,6 +77,7 @@ namespace VideoBookApplication.common.controls
             catch (VideoBookException e)
             {
                 reserved.Clear();
+                throw e;
             }
 
             return reserved;

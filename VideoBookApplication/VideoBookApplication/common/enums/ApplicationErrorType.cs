@@ -29,6 +29,8 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType NOT_ALLOWED = new ApplicationErrorType(6, "Operation is not Allowed");
         public static ApplicationErrorType ERROR_RESERVED = new ApplicationErrorType(7, "Error Get Reserved");
         public static ApplicationErrorType OPEN_PANEL_ERROR = new ApplicationErrorType(8, "Error Open Panel");
+        public static ApplicationErrorType LOAD_RESERVED_ERROR = new ApplicationErrorType(9, "Error Read Reserved Words");
+        public static ApplicationErrorType LOAD_STEMMER_ERROR = new ApplicationErrorType(10, "Error Read Stemmer Forms");
 
         /** DATABASE ERROR 31 - 50 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(31, "Failure Connection to Database");
@@ -45,6 +47,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType CATEGORY_PRESENT = new ApplicationErrorType(103, "Category Already Present");
         public static ApplicationErrorType POSITION_PRESENT = new ApplicationErrorType(104, "Position Already Present");
         public static ApplicationErrorType EMPTY_FIRSTAME = new ApplicationErrorType(105, "Firstname can't be Null or Empty");
+
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");

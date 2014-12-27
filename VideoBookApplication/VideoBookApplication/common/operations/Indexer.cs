@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using VideoBookApplication.common.controls;
 using VideoBookApplication.common.dao;
 using VideoBookApplication.common.enums;
+using VideoBookApplication.common.utility;
 
 namespace VideoBookApplication.common.operations
 {
@@ -18,11 +19,15 @@ namespace VideoBookApplication.common.operations
 
         public List<String> words { get; private set; }
 
+        public ApplicationErrorType status { get; private set; }
+
         private List<String> reserved = new List<string>();
         private ReservedControl controls = new ReservedControl();
+        private Stemmer stemmer;
 
         public Indexer(string value, IndexerType indexerType)
         {
+            status = ApplicationErrorType.SUCCESS;
             this.indexerType = indexerType;
             this.value = value;
 
@@ -30,8 +35,21 @@ namespace VideoBookApplication.common.operations
 
             if (this.indexerType.reserved != null)
             {
-                reserved = controls.readReserved(this.indexerType.reserved);
-                log.Info("Reserved Load: " + reserved.Count);
+                try
+                {
+                    reserved = controls.readReserved(this.indexerType.reserved);
+                    log.Info("Reserved Load: " + reserved.Count);
+                }
+                catch (VideoBookException e)
+                {
+                    status = ApplicationErrorType.LOAD_RESERVED_ERROR;
+                }
+            }
+
+            if (status == ApplicationErrorType.SUCCESS && this.indexerType.useStemmer)
+            {
+                stemmer = new Stemmer();
+                status = stemmer.status;
             }
 
         }

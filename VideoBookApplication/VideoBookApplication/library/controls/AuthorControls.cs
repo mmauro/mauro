@@ -16,7 +16,15 @@ namespace VideoBookApplication.library.controls
 
             if (cognome != null && !cognome.Equals(""))
             {
-                Indexer indexCognome = new Indexer(cognome, IndexerType.INDEX_BOOK_TITLE);
+                Indexer indexCognome = new Indexer(cognome, IndexerType.INDEX_AUTHOR);
+                if (indexCognome.status == ApplicationErrorType.SUCCESS)
+                {
+
+                }
+                else
+                {
+                    status = indexCognome.status;
+                }
             }
             else
             {

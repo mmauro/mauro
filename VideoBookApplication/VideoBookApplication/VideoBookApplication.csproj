@@ -53,6 +53,9 @@
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.Entity.EF5, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="StemmersNet">
+      <HintPath>..\..\..\..\PROGRAMMI\Visual Studio Library\Stemmer\StemmersNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -102,6 +105,7 @@
     <Compile Include="common\model\ItemCombo.cs" />
     <Compile Include="common\operations\Indexer.cs" />
     <Compile Include="common\operations\InitDatabase.cs" />
+    <Compile Include="common\operations\Stemmer.cs" />
     <Compile Include="common\utility\Configurator.cs" />
     <Compile Include="common\utility\LayoutManager.cs" />
     <Compile Include="common\utility\LogUtility.cs" />
