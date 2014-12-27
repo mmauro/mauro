@@ -13,5 +13,7 @@ namespace VideoBookApplication.library.model.database
         public AuthorModel autore { get; set; }
         public CategoryModel category { get; set; }
         public PositionModel position { get; set; }
+        public BookNoteModel note { get; set; }
+        public BookInfoModel informations { get; set; }
     }
 }

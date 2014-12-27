@@ -157,7 +157,12 @@
     </Compile>
     <Compile Include="library\controls\AuthorControls.cs" />
     <Compile Include="library\model\database\AuthorModel.cs" />
+    <Compile Include="library\model\database\BookInfoModel.cs" />
     <Compile Include="library\model\database\BookModel.cs" />
+    <Compile Include="library\model\database\BookNoteModel.cs" />
+    <Compile Include="library\model\database\WordMasterLibriModel.cs" />
+    <Compile Include="library\model\database\WordMasterNomeModel.cs" />
+    <Compile Include="library\model\database\WordMasterCognomeModel.cs" />
     <Compile Include="library\view\LibraryActivityWindow.cs">
       <SubType>Form</SubType>
     </Compile>
