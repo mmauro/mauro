@@ -80,6 +80,7 @@ namespace VideoBookApplication.common.dao
                 {
                     reader.Close();
                 }
+                command.Dispose();
 
                 return arrayReserved;
             }
