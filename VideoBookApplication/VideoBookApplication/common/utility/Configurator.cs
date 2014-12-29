@@ -87,5 +87,24 @@ namespace VideoBookApplication.common.utility
             return value;
         }
 
+        public int getInt(String key)
+        {
+            if (key != null)
+            {
+                try
+                {
+                    return Int32.Parse(configProperties[key]);
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
     }
 }

@@ -34,6 +34,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType INDEXER_INVALID_VALUE = new ApplicationErrorType(11, "Indexer Invalid Value");
         public static ApplicationErrorType INDEXER_PREPARE_ERROR = new ApplicationErrorType(12, "Indexer Problem");
         public static ApplicationErrorType NO_INDEX = new ApplicationErrorType(13, "Value Could not be Indexed");
+        public static ApplicationErrorType INVALID_VALUE = new ApplicationErrorType(14, "Invalid Value");
 
 
         /** DATABASE ERROR 31 - 50 */

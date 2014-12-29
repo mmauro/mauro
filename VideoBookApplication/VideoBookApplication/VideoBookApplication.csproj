@@ -93,6 +93,7 @@
     <Compile Include="common\dao\UserDao.cs" />
     <Compile Include="common\enums\ActivityType.cs" />
     <Compile Include="common\enums\ApplicationErrorType.cs" />
+    <Compile Include="common\enums\FilterType.cs" />
     <Compile Include="common\enums\GlobalOperation.cs" />
     <Compile Include="common\enums\IndexerType.cs" />
     <Compile Include="common\enums\OperationType.cs" />
@@ -156,6 +157,9 @@
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="library\controls\AuthorControls.cs" />
+    <Compile Include="library\controls\WordMasterControl.cs" />
+    <Compile Include="library\dao\BookDao.cs" />
+    <Compile Include="library\dao\WordMasterCognomeDao.cs" />
     <Compile Include="library\model\database\AuthorModel.cs" />
     <Compile Include="library\model\database\BookInfoModel.cs" />
     <Compile Include="library\model\database\BookModel.cs" />
