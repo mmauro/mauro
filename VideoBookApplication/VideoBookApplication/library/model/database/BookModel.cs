@@ -12,6 +12,7 @@ namespace VideoBookApplication.library.model.database
         public string titolo { get; set; }
         public string serie { get; set; }
         public bool flEbook { get; set; }
+        public DateTime dtInsert { get; set; }
         public AuthorModel autore { get; set; }
         public CategoryModel category { get; set; }
         public PositionModel position { get; set; }
