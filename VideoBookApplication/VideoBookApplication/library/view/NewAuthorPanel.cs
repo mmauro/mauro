@@ -17,6 +17,8 @@ namespace VideoBookApplication.library.view
 {
     public partial class NewAuthorPanel : Panel
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
         private AuthorControls control = new AuthorControls();
@@ -84,13 +86,38 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            bool openBookPanel = false;
             ApplicationErrorType status = control.addNewAuthor(textNome.Text, textCognome.Text, ref globalObject);
-            if (status != ApplicationErrorType.SUCCESS)
+            if (status == ApplicationErrorType.SUCCESS)
             {
+                openBookPanel = true;
+            }
+            else if (status.code > ApplicationErrorType.NOT_INIT_WARN.code)
+            {
+                //Gestione Warning
+                log.Warn(String.Format("WARN: {0} - {1}", status.code, status.message));
+                DialogResult choose = MessageBox.Show(String.Format("Code: {0}" + Environment.NewLine + "Si Desidera Inserire il Nuovo Autore", status.message ), "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (choose == DialogResult.Yes)
+                {
+                    openBookPanel = true;
+                }
+                else
+                {
+                    globalObject.libraryObject.libraryInput.autore = null;
+                }
+            }
+            else
+            {
+                //Visualizzazione Errore
                 DisplayManager.displayError(status);
             }
 
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            if (openBookPanel)
+            {
+                //TODO: Apertura Pannello Aggiunta Libri
+                parent.closePanel();
+            }
+            
         }
     }
 }
