@@ -84,7 +84,7 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            ApplicationErrorType status = control.addNewAuthor(textNome.Text, textCognome.Text);
+            ApplicationErrorType status = control.addNewAuthor(textNome.Text, textCognome.Text, ref globalObject);
             if (status != ApplicationErrorType.SUCCESS)
             {
                 DisplayManager.displayError(status);

@@ -68,5 +68,11 @@ namespace VideoBookApplication.common.utility
             }
             return word;
         }
+
+        public static string capitalize(string value)
+        {
+            return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
+        }
+
     }
 }

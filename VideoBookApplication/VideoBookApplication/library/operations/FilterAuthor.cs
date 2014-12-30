@@ -12,7 +12,6 @@ namespace VideoBookApplication.library.operations
 {
     public class FilterAuthor
     {
-
         private FilterType type;
 
         public FilterAuthor(FilterType type)
@@ -20,27 +19,57 @@ namespace VideoBookApplication.library.operations
             this.type = type;
         }
 
-        public IEnumerable<AuthorModel> filter(IEnumerable<AuthorModel> inputValue, int maxValueFilter)
-        {
-            switch (type)
-            {
+        public List<AuthorModel> filter (List<AuthorModel> listElement, int numMinElement) {
+            switch (type) {
                 case FilterType.FILTER_AND:
-                    return filterAnd(inputValue, maxValueFilter);
+                    return filterAnd(listElement, numMinElement);
                 case FilterType.FILTER_OR:
-                    return filterOr(inputValue);
+                    return filterOr(listElement);
                 default:
                     throw new VideoBookException(ApplicationErrorType.INVALID_TYPE);
             }
         }
 
-        public IEnumerable<AuthorModel> filterOr(IEnumerable<AuthorModel> inputValue)
-        {
-            throw new NotImplementedException();
+        public List<AuthorModel> filterAnd (List<AuthorModel> listElement, int numMinElement) {
+            List<AuthorModel> filterList = new List<AuthorModel>();
+            Dictionary<AuthorModel, int> dictionaryList = new Dictionary<AuthorModel, int>();
+
+            foreach (AuthorModel model in listElement)
+            {
+                int value = 1;
+                if (dictionaryList.ContainsKey(model))
+                {
+                    value += dictionaryList[model];
+                }
+                dictionaryList.Add(model, value);
+            }
+
+            if (dictionaryList.Count > 0)
+            {
+                foreach (KeyValuePair<AuthorModel, int> kvp in dictionaryList)
+                {
+                    if (kvp.Value >= numMinElement)
+                    {
+                        filterList.Add(kvp.Key);
+                    }
+                }
+            }
+
+            return filterList;
         }
 
-        public IEnumerable<AuthorModel> filterAnd(IEnumerable<AuthorModel> inputValue, int maxValueFilter)
-        {
-            throw new NotImplementedException();
+        public List<AuthorModel> filterOr (List<AuthorModel> listElement) {
+            List<AuthorModel> filterList = new List<AuthorModel>();
+
+            foreach (AuthorModel model in listElement)
+            {
+                if (!filterList.Contains(model))
+                {
+                    filterList.Add(model);
+                }
+            }
+
+            return filterList;
         }
     }
 }

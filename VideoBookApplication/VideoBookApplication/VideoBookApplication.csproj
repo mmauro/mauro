@@ -161,6 +161,7 @@
     <Compile Include="library\controls\WordMasterControl.cs" />
     <Compile Include="library\dao\BookDao.cs" />
     <Compile Include="library\dao\WordMasterCognomeDao.cs" />
+    <Compile Include="library\dao\WordMasterNomeDao.cs" />
     <Compile Include="library\model\database\AuthorModel.cs" />
     <Compile Include="library\model\database\BookInfoModel.cs" />
     <Compile Include="library\model\database\BookModel.cs" />
@@ -168,6 +169,8 @@
     <Compile Include="library\model\database\WordMasterLibriModel.cs" />
     <Compile Include="library\model\database\WordMasterNomeModel.cs" />
     <Compile Include="library\model\database\WordMasterCognomeModel.cs" />
+    <Compile Include="library\model\InputLibraryApplicationObject.cs" />
+    <Compile Include="library\model\LibraryApplicationObject.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
     <Compile Include="library\view\LibraryActivityWindow.cs">
       <SubType>Form</SubType>

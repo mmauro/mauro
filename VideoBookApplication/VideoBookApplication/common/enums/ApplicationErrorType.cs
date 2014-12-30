@@ -53,8 +53,9 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType POSITION_PRESENT = new ApplicationErrorType(104, "Position Already Present");
         public static ApplicationErrorType EMPTY_FIRSTAME = new ApplicationErrorType(105, "Firstname can't be Null or Empty");
 
-
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");
+        public static ApplicationErrorType AUTHOR_FIRSTNAME_FOUND_WARN = new ApplicationErrorType(1002, "Warning: Found Author with same Firstname");
+        public static ApplicationErrorType AUTHOR_FOUND_WARN = new ApplicationErrorType(1003, "Warning: Found Author with same Firstname, Name");
     }
 }

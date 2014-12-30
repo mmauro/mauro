@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Xml;
 using System.IO;
-using System.Linq;
 
 namespace VideoBookApplication.common.utility
 {
