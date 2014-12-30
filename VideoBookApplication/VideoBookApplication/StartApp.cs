@@ -41,6 +41,7 @@ namespace VideoBookApplication
 
             //inizializzazione Log4Net
             log4net.Config.XmlConfigurator.Configure();
+            LogUtility.deleteOldLogs();
             log.Info("VideoBook Project " + Application.ProductVersion + " - Start Application");
 
             //Testo Frame

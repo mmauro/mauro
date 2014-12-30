@@ -25,13 +25,14 @@ namespace VideoBookApplication.library.controls
                     WordMasterCognomeModel cModel = cognomeDao.readOne(cognome);
                     if (cModel != null && cModel.autori != null && cModel.autori.Count > 0)
                     {
-                        foreach (AuthorModel aModel in cModel.autori)
-                        {
-                            //Trova Libri da idAutore
-                        }
+                        //TODO: inserire in caso di necessità la lettura dei libri con idAutore
                         listAuthor.AddRange(cModel.autori);
+
                     }
-                }                
+                }
+                
+                
+
                 return listAuthor;
             }
             else

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VideoBookApplication.library.model.database
 {
-    class AuthorModel
+    public class AuthorModel
     {
         public int idAutore { get; set; }
         public string cognome {get; set;}

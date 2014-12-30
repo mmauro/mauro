@@ -101,6 +101,20 @@ namespace VideoBookApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;configuration&gt;
+        ///  &lt;configSections&gt;
+        ///    &lt;section name=&quot;log4net&quot; type=&quot;log4net.Config.Log4NetConfigurationSectionHandler,Log4net&quot;/&gt;
+        ///    &lt;sectionGroup name=&quot;applicationSettings&quot; type=&quot;System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; &gt;
+        ///      &lt;section name=&quot;VideoBookApplication.Properties.Settings&quot; type=&quot;System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyTok [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string App {
+            get {
+                return ResourceManager.GetString("App", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Books {
@@ -344,9 +358,12 @@ namespace VideoBookApplication.Properties {
         ///### DEFAULT VALUE CATEGORY / POSITION
         ///catpos.default.value = ----------
         ///
+        ///### VALUE NOT FOUND FOR QUERY
+        ///notfound.value = -1
+        ///
         ///### QUERY PER USERS MODEL
         ///users.insert.query = INSERT INTO USERS (USERNAME, FL_LIBRARY, FL_VIDEO, FL_MUSIC, FL_SOFTWARE, FL_SUPERUSER) VALUES (@user, @fllib, @flvid, @flmus, @flsw, @flsus)
-        ///users.read.query = SELECT * FROM USERS u WHERE u.USE [rest of string was truncated]&quot;;.
+        ///users.read.query [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Videobook {
             get {
