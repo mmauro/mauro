@@ -81,6 +81,7 @@ namespace VideoBookApplication.library.controls
             if (status == ApplicationErrorType.SUCCESS)
             {
                 AuthorModel aModel = new AuthorModel();
+                aModel.idAutore = Configurator.getInstsance().getInt("notfound.value");
                 aModel.cognome = StringUtility.capitalize(cognome);
                 if (nome != null)
                 {

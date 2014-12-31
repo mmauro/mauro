@@ -19,6 +19,7 @@ namespace VideoBookApplication.common.enums
         LIB_NEW_POSITION,
         LIB_SHOW_CAT,
         LIB_SHOW_POS,
-        LIB_NEW_AUTHOR
+        LIB_NEW_AUTHOR,
+        LIB_NEW_BOOKS
     }
 }

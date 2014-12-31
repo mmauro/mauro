@@ -97,7 +97,6 @@
     <Compile Include="common\enums\FilterType.cs" />
     <Compile Include="common\enums\GlobalOperation.cs" />
     <Compile Include="common\enums\IndexerType.cs" />
-    <Compile Include="common\enums\OperationType.cs" />
     <Compile Include="common\enums\ReservedType.cs" />
     <Compile Include="common\model\database\ReservedModel.cs" />
     <Compile Include="common\model\database\StemmerForceModel.cs" />
@@ -196,6 +195,12 @@
     <Compile Include="library\view\NewAuthorPanel.Designer.cs">
       <DependentUpon>NewAuthorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\NewBooksPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\NewBooksPanel.Designer.cs">
+      <DependentUpon>NewBooksPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\NewPositionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -272,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\NewAuthorPanel.resx">
       <DependentUpon>NewAuthorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\NewBooksPanel.resx">
+      <DependentUpon>NewBooksPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\NewPositionPanel.resx">
       <DependentUpon>NewPositionPanel.cs</DependentUpon>
