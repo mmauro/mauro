@@ -31,5 +31,11 @@ namespace VideoBookApplication.common.utility
         {
             return Color.AliceBlue;
         }
+
+        public static Color getInnerPanelColor()
+        {
+            return Color.Silver;
+        }
+
     }
 }

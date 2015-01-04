@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.common.utility
 {
@@ -72,6 +73,20 @@ namespace VideoBookApplication.common.utility
         public static string capitalize(string value)
         {
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
+        }
+
+        public static string formatAuthorName(AuthorModel autore)
+        {
+            string name = "";
+            if (autore != null)
+            {
+                if (autore.nome != null && !autore.nome.Trim().Equals(""))
+                {
+                    name += capitalize(autore.nome) + " ";
+                }
+                name += autore.cognome;
+            }
+            return name;
         }
 
     }

@@ -213,6 +213,12 @@
     <Compile Include="library\view\NewCategoryPanel.Designer.cs">
       <DependentUpon>NewCategoryPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\ResumeAuthorPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\ResumeAuthorPanel.Designer.cs">
+      <DependentUpon>ResumeAuthorPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\ShowCategoryPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -286,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\NewCategoryPanel.resx">
       <DependentUpon>NewCategoryPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\ResumeAuthorPanel.resx">
+      <DependentUpon>ResumeAuthorPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\ShowCategoryPanel.resx">
       <DependentUpon>ShowCategoryPanel.cs</DependentUpon>

@@ -52,6 +52,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType CATEGORY_PRESENT = new ApplicationErrorType(103, "Category Already Present");
         public static ApplicationErrorType POSITION_PRESENT = new ApplicationErrorType(104, "Position Already Present");
         public static ApplicationErrorType EMPTY_FIRSTAME = new ApplicationErrorType(105, "Firstname can't be Null or Empty");
+        public static ApplicationErrorType AUTHOR_NOT_FOUND = new ApplicationErrorType(106, "Author not Found");
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");

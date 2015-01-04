@@ -31,10 +31,15 @@ namespace VideoBookApplication.library.view
         {
             this.BackColor = LayoutManager.getPanelColor();
 
+            ResumeAuthorPanel authorPanel = new ResumeAuthorPanel(ref globalObject, this, parent);
+            authorPanel.Location =  new Point(0, 0);
+            this.Controls.Add(authorPanel);
+
             //Title
             TitlePanel titlePanel = new TitlePanel("Nuovi Libri", this);
-            titlePanel.Location = new Point(0, 0);
+            titlePanel.Location = new Point(0, authorPanel.Location.Y + authorPanel.Size.Height);
             this.Controls.Add(titlePanel);
+
 
         }
     }
