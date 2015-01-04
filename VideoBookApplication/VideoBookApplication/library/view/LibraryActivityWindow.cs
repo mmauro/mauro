@@ -167,6 +167,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SHOW_CAT);
             closePanel(GlobalOperation.LIB_SHOW_POS);
             closePanel(GlobalOperation.LIB_NEW_AUTHOR);
+            closePanel(GlobalOperation.LIB_NEW_BOOKS);
         }
 
         public void closePanel(GlobalOperation operation)

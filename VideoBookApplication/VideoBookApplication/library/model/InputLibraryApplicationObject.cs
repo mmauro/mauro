@@ -11,10 +11,18 @@ namespace VideoBookApplication.library.model
     public class InputLibraryApplicationObject : IApplicationObject
     {
         public AuthorModel autore {get; set;}
+        public List<BookModel> libri { get; set; }
+
+        public InputLibraryApplicationObject()
+        {
+            libri = new List<BookModel>();
+        }
 
         public void destroy()
         {
             autore = null;
+            libri.Clear();
+            libri = new List<BookModel>();
         }
     }
 }

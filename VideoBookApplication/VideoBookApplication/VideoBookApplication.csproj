@@ -347,6 +347,7 @@
     <None Include="img\document.png" />
     <None Include="img\dump-db.png" />
     <Content Include="img\exit.png" />
+    <None Include="img\google.png" />
     <Content Include="img\Info.png" />
     <None Include="img\kchart.png" />
     <Content Include="img\login.png" />
@@ -358,6 +359,7 @@
     <None Include="img\search.png" />
     <None Include="img\show.png" />
     <None Include="img\restore-db.png" />
+    <None Include="img\plus.png" />
     <Content Include="img\sw.png" />
     <None Include="img\write.png" />
     <None Include="img\trash.png" />

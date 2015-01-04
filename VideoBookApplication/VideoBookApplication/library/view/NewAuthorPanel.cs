@@ -115,8 +115,8 @@ namespace VideoBookApplication.library.view
             if (openBookPanel)
             {
                 //TODO: Apertura Pannello Aggiunta Libri
-                parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
                 parent.closePanel();
+                parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
             }
             
         }
