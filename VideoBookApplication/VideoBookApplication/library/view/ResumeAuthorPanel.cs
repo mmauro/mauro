@@ -45,6 +45,10 @@ namespace VideoBookApplication.library.view
 
                 buttonBooks.Location = new Point(parent.Size.Width - (25 + buttonBooks.Size.Width), 10);
                 this.Controls.Add(buttonBooks);
+                if (globalObject.libraryObject.libraryInput.autore.idAutore == Configurator.getInstsance().getInt("notfound.value"))
+                {
+                    buttonBooks.Visible = false;
+                }
 
                 toolTip1.SetToolTip(buttonBooks, "Visualizzazione Libri");
 
