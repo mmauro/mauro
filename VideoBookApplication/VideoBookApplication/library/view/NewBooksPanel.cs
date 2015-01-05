@@ -21,8 +21,10 @@ namespace VideoBookApplication.library.view
 
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
-        private List<ItemCombo> listItemsCat = null;
-        private List<ItemCombo> listItemsPos = null;
+        private List<ItemCombo> listItemsCat = new List<ItemCombo>();
+        private List<ItemCombo> listItemsPos = new List<ItemCombo>();
+        private bool refreshCat = false;
+        private bool refreshPos = false;
 
         public NewBooksPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
@@ -78,12 +80,6 @@ namespace VideoBookApplication.library.view
             this.Controls.Add(labelCategory);
 
             comboCategory.Location = new Point(25, labelCategory.Location.Y + 20);
-            comboCategory.Items.Clear();
-            foreach (ItemCombo ic in listItemsCat)
-            {
-                comboCategory.Items.Add(ic);
-                comboCategory.SelectedIndex = 0;
-            }
             this.Controls.Add(comboCategory);
 
             buttonAddCat.Location = new Point(comboCategory.Location.X + 10 + comboCategory.Size.Width, comboCategory.Location.Y - 1 );
@@ -94,13 +90,10 @@ namespace VideoBookApplication.library.view
             this.Controls.Add(labelPosition);
 
             comboLocation.Location = new Point(260, labelPosition.Location.Y + 20);
-            comboLocation.Items.Clear();
             this.Controls.Add(comboLocation);
-            foreach (ItemCombo ic in listItemsPos)
-            {
-                comboLocation.Items.Add(ic);
-                comboLocation.SelectedIndex = 0;
-            }
+           
+            //Refresh Combo
+            refreshCombo();
 
             buttonAddPos.Location = new Point(comboLocation.Location.X + comboLocation.Size.Width + 10, comboLocation.Location.Y - 1);
             this.Controls.Add(buttonAddPos);
@@ -141,21 +134,28 @@ namespace VideoBookApplication.library.view
 
         }
 
-        private ApplicationErrorType refreshData()
+        public ApplicationErrorType refreshData()
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
 
-            listItemsCat = new List<ItemCombo>();
-            listItemsPos = new List<ItemCombo>();
             try
             {
                 CategoryControls catControls = new CategoryControls();
                 List<CategoryModel> tmpCModel = catControls.getAllCategory(true);
                 if (tmpCModel != null && tmpCModel.Count > 0)
                 {
-                    foreach (CategoryModel mc in tmpCModel)
+                    if (tmpCModel.Count != listItemsCat.Count)
                     {
-                        listItemsCat.Add(new ItemCombo(mc.category, mc.idCategory));
+                        refreshCat = true;
+                        listItemsCat = new List<ItemCombo>();
+                        foreach (CategoryModel mc in tmpCModel)
+                        {
+                            listItemsCat.Add(new ItemCombo(mc.category, mc.idCategory));
+                        }
+                    }
+                    else
+                    {
+                        refreshCat = false;
                     }
                 }
             }
@@ -172,9 +172,18 @@ namespace VideoBookApplication.library.view
                     List<PositionModel> tmpPModel = posControl.getAllPosition(true);
                     if (tmpPModel != null && tmpPModel.Count > 0)
                     {
-                        foreach (PositionModel mc in tmpPModel)
+                        if (tmpPModel.Count != listItemsPos.Count)
                         {
-                            listItemsPos.Add(new ItemCombo(mc.position, mc.idPosition));
+                            refreshPos = true;
+                            listItemsPos = new List<ItemCombo>();
+                            foreach (PositionModel mc in tmpPModel)
+                            {
+                                listItemsPos.Add(new ItemCombo(mc.position, mc.idPosition));
+                            }
+                        }
+                        else
+                        {
+                            refreshPos = false;
                         }
                     }
                 }
@@ -186,6 +195,29 @@ namespace VideoBookApplication.library.view
             }
 
             return status;
+        }
+
+        public void refreshCombo() {
+            if (refreshPos) 
+            {
+                comboLocation.Items.Clear();
+                foreach (ItemCombo ic in listItemsPos)
+                {
+                    comboLocation.Items.Add(ic);
+                    comboLocation.SelectedIndex = 0;
+                }
+
+            }
+
+            if (refreshCat)
+            {
+                comboCategory.Items.Clear();
+                foreach (ItemCombo ic in listItemsCat)
+                {
+                    comboCategory.Items.Add(ic);
+                    comboCategory.SelectedIndex = 0;
+                }
+            }
         }
 
         private void closeOtherPanel()

@@ -220,6 +220,13 @@ namespace VideoBookApplication.library.view
                         newCatPanel.Visible = false;
                         newCatPanel = null;
                         closePanel(GlobalOperation.LIB_SHOW_CAT);
+
+                        if (newBooksPanel != null)
+                        {
+                            newBooksPanel.refreshData();
+                            newBooksPanel.refreshCombo();
+                        }
+
                     }
                     break;
                 case GlobalOperation.LIB_NEW_POSITION:
@@ -229,6 +236,14 @@ namespace VideoBookApplication.library.view
                         newPosPanel.Visible = false;
                         newPosPanel = null;
                         closePanel(GlobalOperation.LIB_SHOW_POS);
+
+                        //Refresh dei dati dove necessario
+                        if (newBooksPanel != null)
+                        {
+                            newBooksPanel.refreshData();
+                            newBooksPanel.refreshCombo();
+                        }
+
                     }
                     break;
                 case GlobalOperation.LIB_SHOW_CAT:
