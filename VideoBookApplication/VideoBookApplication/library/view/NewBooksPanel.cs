@@ -11,6 +11,8 @@ using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
+using VideoBookApplication.library.controls;
+using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.view
 {
@@ -19,13 +21,24 @@ namespace VideoBookApplication.library.view
 
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private List<ItemCombo> listItemsCat = null;
+        private List<ItemCombo> listItemsPos = null;
 
         public NewBooksPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
-            this.globalObject = globalObject;
-            this.parent = parent;
-            initPanel();
+            ApplicationErrorType status = refreshData();
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                this.globalObject = globalObject;
+                this.parent = parent;
+                initPanel();
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+                parent.closePanel();
+            }
         }
 
         private void initPanel()
@@ -65,6 +78,12 @@ namespace VideoBookApplication.library.view
             this.Controls.Add(labelCategory);
 
             comboCategory.Location = new Point(25, labelCategory.Location.Y + 20);
+            comboCategory.Items.Clear();
+            foreach (ItemCombo ic in listItemsCat)
+            {
+                comboCategory.Items.Add(ic);
+                comboCategory.SelectedIndex = 0;
+            }
             this.Controls.Add(comboCategory);
 
             buttonAddCat.Location = new Point(comboCategory.Location.X + 10 + comboCategory.Size.Width, comboCategory.Location.Y - 1 );
@@ -75,7 +94,13 @@ namespace VideoBookApplication.library.view
             this.Controls.Add(labelPosition);
 
             comboLocation.Location = new Point(260, labelPosition.Location.Y + 20);
+            comboLocation.Items.Clear();
             this.Controls.Add(comboLocation);
+            foreach (ItemCombo ic in listItemsPos)
+            {
+                comboLocation.Items.Add(ic);
+                comboLocation.SelectedIndex = 0;
+            }
 
             buttonAddPos.Location = new Point(comboLocation.Location.X + comboLocation.Size.Width + 10, comboLocation.Location.Y - 1);
             this.Controls.Add(buttonAddPos);
@@ -114,6 +139,53 @@ namespace VideoBookApplication.library.view
             toolTip1.SetToolTip(buttonOk, "Salvataggio Libri");
             toolTip1.SetToolTip(buttonAddBook, "Nuovo Libro");
 
+        }
+
+        private ApplicationErrorType refreshData()
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            listItemsCat = new List<ItemCombo>();
+            listItemsPos = new List<ItemCombo>();
+            try
+            {
+                CategoryControls catControls = new CategoryControls();
+                List<CategoryModel> tmpCModel = catControls.getAllCategory(true);
+                if (tmpCModel != null && tmpCModel.Count > 0)
+                {
+                    foreach (CategoryModel mc in tmpCModel)
+                    {
+                        listItemsCat.Add(new ItemCombo(mc.category, mc.idCategory));
+                    }
+                }
+            }
+            catch (VideoBookException e)
+            {
+                status = ApplicationErrorType.CATEGORY_ERROR;
+            }
+
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                try
+                {
+                    PositionControl posControl = new PositionControl();
+                    List<PositionModel> tmpPModel = posControl.getAllPosition(true);
+                    if (tmpPModel != null && tmpPModel.Count > 0)
+                    {
+                        foreach (PositionModel mc in tmpPModel)
+                        {
+                            listItemsPos.Add(new ItemCombo(mc.position, mc.idPosition));
+                        }
+                    }
+                }
+                catch (VideoBookException e)
+                {
+                    status = ApplicationErrorType.POSITION_ERROR;
+                }
+
+            }
+
+            return status;
         }
 
         private void buttonGoogleBooks_Click(object sender, EventArgs e)

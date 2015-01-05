@@ -157,6 +157,7 @@
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="library\controls\AuthorControls.cs" />
+    <Compile Include="library\controls\BooksControls.cs" />
     <Compile Include="library\controls\WordMasterControl.cs" />
     <Compile Include="library\dao\BookDao.cs" />
     <Compile Include="library\dao\WordMasterCognomeDao.cs" />
