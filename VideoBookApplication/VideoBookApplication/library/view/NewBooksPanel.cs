@@ -188,6 +188,14 @@ namespace VideoBookApplication.library.view
             return status;
         }
 
+        private void closeOtherPanel()
+        {
+            parent.closePanel(GlobalOperation.LIB_NEW_BOOKS_CATEGORY);
+            parent.closePanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
+            parent.closePanel(GlobalOperation.LIB_SHOW_CAT);
+            parent.closePanel(GlobalOperation.LIB_SHOW_POS);
+        }
+
         private void buttonGoogleBooks_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
@@ -195,12 +203,14 @@ namespace VideoBookApplication.library.view
 
         private void buttonAddCat_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            closeOtherPanel();
+            parent.openPanel(GlobalOperation.LIB_NEW_BOOKS_CATEGORY);
         }
 
         private void buttonAddPos_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            closeOtherPanel();
+            parent.openPanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

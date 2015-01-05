@@ -153,6 +153,36 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(newBooksPanel);
                     }
                     break;
+                case GlobalOperation.LIB_NEW_BOOKS_CATEGORY:
+                    if (newCatPanel == null)
+                    {
+                        if (newBooksPanel != null)
+                        {
+                            newCatPanel = new NewCategoryPanel(ref globalObject, this);
+                            newCatPanel.Location = new Point(newBooksPanel.Location.X + newBooksPanel.Size.Width + 10, newBooksPanel.Location.Y);
+                            this.Controls.Add(newCatPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Category Panel Error");
+                        }
+                    }
+                    break;
+                case GlobalOperation.LIB_NEW_BOOKS_POSITION:
+                    if (newPosPanel == null)
+                    {
+                        if (newBooksPanel != null)
+                        {
+                            newPosPanel = new NewPositionPanel(ref globalObject, this);
+                            newPosPanel.Location = new Point(newBooksPanel.Location.X + newBooksPanel.Size.Width + 10, newBooksPanel.Location.Y);
+                            this.Controls.Add(newPosPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Position Panel Error");
+                        }
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -168,6 +198,8 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SHOW_POS);
             closePanel(GlobalOperation.LIB_NEW_AUTHOR);
             closePanel(GlobalOperation.LIB_NEW_BOOKS);
+            closePanel(GlobalOperation.LIB_NEW_BOOKS_CATEGORY);
+            closePanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -182,6 +214,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_NEW_CATEGORY:
+                case GlobalOperation.LIB_NEW_BOOKS_CATEGORY:
                     if (newCatPanel != null)
                     {
                         newCatPanel.Visible = false;
@@ -190,6 +223,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_NEW_POSITION:
+                case GlobalOperation.LIB_NEW_BOOKS_POSITION:
                     if (newPosPanel != null)
                     {
                         newPosPanel.Visible = false;
