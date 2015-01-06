@@ -15,5 +15,6 @@ namespace VideoBookApplication.library.model.database
         public string trama { get; set; }
         public string year { get; set; }
         public string urlScheda { get; set; }
+        public string titleOrig { get; set; }       //Questo non deve essere scritto su db;
     }
 }

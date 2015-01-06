@@ -53,6 +53,10 @@
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.Entity.EF5, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PROGRAMMI\Visual Studio Library\json.net\Net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="StemmersNet">
       <HintPath>..\..\..\..\PROGRAMMI\Visual Studio Library\Stemmer\StemmersNet.dll</HintPath>
     </Reference>

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -44,6 +46,22 @@ namespace VideoBookApplication.common.operations
             request.Timeout = timeout;
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             return response;
+        }
+
+        protected dynamic getResponse(Stream receiveStream)
+        {
+            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+            string jsonResponse = readStream.ReadToEnd();
+            readStream.Close();
+            if (jsonResponse != null && !jsonResponse.Equals(""))
+            {
+                dynamic value = JsonConvert.DeserializeObject(jsonResponse);
+                return value;
+            }
+            else
+            {
+                return null;
+            }
         }
 
 

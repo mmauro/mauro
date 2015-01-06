@@ -89,5 +89,14 @@ namespace VideoBookApplication.common.utility
             return name;
         }
 
+        public static String getYear(string year)
+        {
+            if (year != null && year.Length > 4)
+            {
+                year = year.Substring(0, 4);
+            }
+            return year;
+        }
+
     }
 }
