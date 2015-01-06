@@ -26,6 +26,8 @@ namespace VideoBookApplication.library.view
         private bool refreshCat = false;
         private bool refreshPos = false;
 
+        private BooksControls bookControl = new BooksControls();
+
         public NewBooksPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
@@ -230,7 +232,15 @@ namespace VideoBookApplication.library.view
 
         private void buttonGoogleBooks_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            try
+            {
+                bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
+                DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            }
+            catch (VideoBookException vbe)
+            {
+                DisplayManager.displayError(vbe.errorType);
+            }
         }
 
         private void buttonAddCat_Click(object sender, EventArgs e)

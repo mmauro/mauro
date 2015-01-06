@@ -104,6 +104,7 @@
     <Compile Include="common\model\GlobalApplicationObject.cs" />
     <Compile Include="common\model\IApplicationObject.cs" />
     <Compile Include="common\model\ItemCombo.cs" />
+    <Compile Include="common\operations\HttpRequest.cs" />
     <Compile Include="common\operations\Indexer.cs" />
     <Compile Include="common\operations\InitDatabase.cs" />
     <Compile Include="common\operations\Stemmer.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="library\model\InputLibraryApplicationObject.cs" />
     <Compile Include="library\model\LibraryApplicationObject.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
+    <Compile Include="library\operations\GoogleBooksWebService.cs" />
     <Compile Include="library\view\LibraryActivityWindow.cs">
       <SubType>Form</SubType>
     </Compile>

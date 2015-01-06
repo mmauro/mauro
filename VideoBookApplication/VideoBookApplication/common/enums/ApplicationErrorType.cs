@@ -35,6 +35,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType INDEXER_PREPARE_ERROR = new ApplicationErrorType(12, "Indexer Problem");
         public static ApplicationErrorType NO_INDEX = new ApplicationErrorType(13, "Value Could not be Indexed");
         public static ApplicationErrorType INVALID_VALUE = new ApplicationErrorType(14, "Invalid Value");
+        public static ApplicationErrorType WEBSERVICE_ERROR = new ApplicationErrorType(15, "Web Service Error");
 
 
         /** DATABASE ERROR 31 - 50 */
@@ -55,6 +56,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType AUTHOR_NOT_FOUND = new ApplicationErrorType(106, "Author not Found");
         public static ApplicationErrorType CATEGORY_ERROR = new ApplicationErrorType(107, "Category Error");
         public static ApplicationErrorType POSITION_ERROR = new ApplicationErrorType(108, "Position Error");
+        public static ApplicationErrorType EMPTY_TITLE = new ApplicationErrorType(109, "Title can't be Null or Empty");
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");

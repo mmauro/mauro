@@ -21,7 +21,7 @@ namespace VideoBookApplication.common.operations
                 finalUrl += "?";
                 foreach (KeyValuePair<string, string> entry in parameters)
                 {
-                    finalUrl += entry.Key + "=" + entry.Key + "&";
+                    finalUrl += entry.Key + "=" + entry.Value + "&";
                 }
             }
             buildUrl(finalUrl);
