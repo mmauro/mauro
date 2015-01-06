@@ -217,7 +217,7 @@ namespace VideoBookApplication.library.operations
                 infoModel.isbn = "";
             }
 
-            //editore
+            //trama
             try
             {
                 infoModel.trama = json.volumeInfo.description;
@@ -225,6 +225,24 @@ namespace VideoBookApplication.library.operations
             catch (Exception e)
             {
                 infoModel.trama = "";
+            }
+
+            try
+            {
+                infoModel.image = json.volumeInfo.imageLinks.thumbnail;
+            }
+            catch (Exception e)
+            {
+                infoModel.image = "";
+            }
+
+            infoModel.idInfoLibro = Configurator.getInstsance().getInt("notfound.value");
+
+            //Controllo se infoModel è valido
+            if (!infoModel.isValid())
+            {
+                log.Info("InfoModel not Valid");
+                infoModel = null;
             }
 
             return infoModel;

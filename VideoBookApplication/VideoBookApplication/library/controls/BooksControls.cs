@@ -21,7 +21,7 @@ namespace VideoBookApplication.library.controls
                 if (cognome != null && !cognome.Trim().Equals(""))
                 {
                     GoogleBooksWebService gbws = new GoogleBooksWebService();
-                    gbws.getBookInfo(title, cognome);
+                    model = gbws.getBookInfo(title, cognome);
                 }
                 else
                 {
