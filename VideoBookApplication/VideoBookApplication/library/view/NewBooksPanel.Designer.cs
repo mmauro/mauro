@@ -67,6 +67,7 @@
             this.textTitle.Name = "textTitle";
             this.textTitle.Size = new System.Drawing.Size(350, 27);
             this.textTitle.TabIndex = 3;
+            this.textTitle.TextChanged += new System.EventHandler(this.textTitle_TextChanged);
             // 
             // labelSerie
             // 

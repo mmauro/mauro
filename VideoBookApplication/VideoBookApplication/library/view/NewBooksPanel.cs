@@ -25,6 +25,7 @@ namespace VideoBookApplication.library.view
         private List<ItemCombo> listItemsPos = new List<ItemCombo>();
         private bool refreshCat = false;
         private bool refreshPos = false;
+        private bool callInfoBook = true;
 
         private BooksControls bookControl = new BooksControls();
 
@@ -228,18 +229,31 @@ namespace VideoBookApplication.library.view
             parent.closePanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
             parent.closePanel(GlobalOperation.LIB_SHOW_CAT);
             parent.closePanel(GlobalOperation.LIB_SHOW_POS);
+            parent.closePanel(GlobalOperation.LIB_INFOBOOK);
         }
 
         private void buttonGoogleBooks_Click(object sender, EventArgs e)
         {
-            try
+            if (callInfoBook)
             {
-                bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
-                DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
-            }
-            catch (VideoBookException vbe)
-            {
-                DisplayManager.displayError(vbe.errorType);
+                try
+                {
+                    callInfoBook = false;
+                    globalObject.libraryObject.tempModel.infoModel = bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
+                    if (globalObject.libraryObject.tempModel.infoModel != null)
+                    {
+                        parent.openPanel(GlobalOperation.LIB_INFOBOOK);
+                    }
+                    else
+                    {
+                        DisplayManager.displayMessage(ApplicationErrorType.INFOBOOK_NOT_FOUND);
+                    }
+                }
+                catch (VideoBookException vbe)
+                {
+                    DisplayManager.displayError(vbe.errorType);
+                    callInfoBook = true;
+                }
             }
         }
 
@@ -268,6 +282,11 @@ namespace VideoBookApplication.library.view
         private void buttonAddBook_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
+
+        private void textTitle_TextChanged(object sender, EventArgs e)
+        {
+            callInfoBook = true;
         }
     }
 }

@@ -176,8 +176,15 @@
     <Compile Include="library\model\database\WordMasterCognomeModel.cs" />
     <Compile Include="library\model\InputLibraryApplicationObject.cs" />
     <Compile Include="library\model\LibraryApplicationObject.cs" />
+    <Compile Include="library\model\TempLibraryModel.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
     <Compile Include="library\operations\GoogleBooksWebService.cs" />
+    <Compile Include="library\view\InfoBookPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\InfoBookPanel.Designer.cs">
+      <DependentUpon>InfoBookPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\LibraryActivityWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="common\view\WindowsMainActivity.resx">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\InfoBookPanel.resx">
+      <DependentUpon>InfoBookPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\LibraryActivityWindow.resx">
       <DependentUpon>LibraryActivityWindow.cs</DependentUpon>

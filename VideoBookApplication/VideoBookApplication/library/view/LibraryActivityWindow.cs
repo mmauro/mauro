@@ -29,6 +29,7 @@ namespace VideoBookApplication.library.view
         private ShowPositionPanel showPosPanel = null;
         private NewAuthorPanel newAuthorPanel = null;
         private NewBooksPanel newBooksPanel = null;
+        private InfoBookPanel infoPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -183,6 +184,21 @@ namespace VideoBookApplication.library.view
                         }
                     }
                     break;
+                case GlobalOperation.LIB_INFOBOOK:
+                    if (infoPanel == null)
+                    {
+                        if (newBooksPanel != null)
+                        {
+                            infoPanel = new InfoBookPanel(ref globalObject, this);
+                            infoPanel.Location = new Point(newBooksPanel.Location.X + newBooksPanel.Size.Width + 10, newBooksPanel.Location.Y);
+                            this.Controls.Add(infoPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Info Panel Error");
+                        }
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -200,6 +216,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_NEW_BOOKS);
             closePanel(GlobalOperation.LIB_NEW_BOOKS_CATEGORY);
             closePanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
+            closePanel(GlobalOperation.LIB_INFOBOOK);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -272,6 +289,13 @@ namespace VideoBookApplication.library.view
                     {
                         newBooksPanel.Visible = false;
                         newBooksPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_INFOBOOK:
+                    if (infoPanel != null)
+                    {
+                        infoPanel.Visible = false;
+                        infoPanel = null;
                     }
                     break;
                 default:

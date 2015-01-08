@@ -63,5 +63,6 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");
         public static ApplicationErrorType AUTHOR_FIRSTNAME_FOUND_WARN = new ApplicationErrorType(1002, "Warning: Found Author with same Firstname");
         public static ApplicationErrorType AUTHOR_FOUND_WARN = new ApplicationErrorType(1003, "Warning: Found Author with same Firstname, Name");
+        public static ApplicationErrorType INFOBOOK_NOT_FOUND = new ApplicationErrorType(1004, "No Additional Information Found");
     }
 }
