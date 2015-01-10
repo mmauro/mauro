@@ -12,11 +12,13 @@ namespace VideoBookApplication.library.model
     {
 
         public BookInfoModel infoModel { get; set; }
+        public BookModel libro { get; set; }
 
 
         public void destroy()
         {
             infoModel = null;
+            libro = null;
         }
     }
 }

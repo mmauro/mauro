@@ -66,6 +66,26 @@ namespace VideoBookApplication.library.controls
             }
         }
 
+        public PositionModel read(int position)
+        {
+            if (position != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                try
+                {
+                    PositionModel model = positionDao.readOne(position);
+                    return model;
+                }
+                catch (VideoBookException e)
+                {
+                    throw e;
+                }
+            }
+            else
+            {
+                throw new VideoBookException(ApplicationErrorType.EMPTY_POSITION);
+            }
+        }
+
         public List<PositionModel> getAllPosition(bool keepDefaultValue)
         {
             try

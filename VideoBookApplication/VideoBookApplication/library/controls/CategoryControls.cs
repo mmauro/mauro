@@ -47,6 +47,28 @@ namespace VideoBookApplication.library.controls
             return status;
         }
 
+
+        public CategoryModel read(int category)
+        {
+            if (category != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                try
+                {
+                    CategoryModel model = categoryDao.readOne(category);
+                    return model;
+                }
+                catch (VideoBookException e)
+                {
+                    throw e;
+                }
+
+            }
+            else
+            {
+                throw new VideoBookException(ApplicationErrorType.EMPTY_CATEGORY);
+            }
+        }
+
         public CategoryModel read(string category)
         {
             if (category != null && category.Trim().Length > 0)

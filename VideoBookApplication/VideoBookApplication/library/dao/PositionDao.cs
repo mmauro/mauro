@@ -20,36 +20,13 @@ namespace VideoBookApplication.library.dao
 
         public PositionModel readOne(object value)
         {
-            try
+            if (value.GetType() == typeof(string))
             {
-                String position = (string)value;
-                String query = Configurator.getInstsance().get("position.read.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
-                command.Prepare();
-                command.Parameters.AddWithValue("@pos", position);
-
-                LogUtility.printQueryLog(query, position);
-
-                PositionModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
-                if (reader != null && reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        model = new PositionModel();
-                        model.idPosition = reader.GetInt32("ID_POSIZIONE");
-                        model.position = reader.GetString("POSIZIONE");
-                    }
-                }
-                reader.Close();
-                command.Dispose();
-
-                return model;
+                return readPositionByName((string)value);
             }
-            catch (Exception e)
+            else
             {
-                log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+                return readPositionById((int)value);
             }
 
         }
@@ -120,5 +97,76 @@ namespace VideoBookApplication.library.dao
                 throw new VideoBookException(ApplicationErrorType.DB_WRITE_ERROR);
             }
         }
+
+        private PositionModel readPositionByName(string position) 
+        {
+            try
+            {
+                String query = Configurator.getInstsance().get("position.read.query");
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@pos", position);
+
+                LogUtility.printQueryLog(query, position);
+
+                PositionModel model = null;
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        model = new PositionModel();
+                        model.idPosition = reader.GetInt32("ID_POSIZIONE");
+                        model.position = reader.GetString("POSIZIONE");
+                    }
+                }
+                reader.Close();
+                command.Dispose();
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+            }
+
+        }
+
+        private PositionModel readPositionById(int position)
+        {
+            try
+            {
+                String query = Configurator.getInstsance().get("position.readbyid.query");
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@idpos", position);
+
+                LogUtility.printQueryLog(query, position.ToString());
+
+                PositionModel model = null;
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        model = new PositionModel();
+                        model.idPosition = reader.GetInt32("ID_POSIZIONE");
+                        model.position = reader.GetString("POSIZIONE");
+                    }
+                }
+                reader.Close();
+                command.Dispose();
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+            }
+
+        }
+
     }
 }

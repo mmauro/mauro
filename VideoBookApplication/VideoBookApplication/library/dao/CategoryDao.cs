@@ -47,38 +47,15 @@ namespace VideoBookApplication.library.dao
 
         public CategoryModel readOne(object value)
         {
-
-            try
+            if (value.GetType() == typeof(string))
             {
-                String category = (string)value;
-                String query = Configurator.getInstsance().get("category.read.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
-                command.Prepare();
-                command.Parameters.AddWithValue("@cat", category);
-
-                LogUtility.printQueryLog(query, category);
-
-                CategoryModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
-                if (reader != null && reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        model = new CategoryModel();
-                        model.idCategory = reader.GetInt32("ID_CATEGORIA");
-                        model.category = reader.GetString("CATEGORIA");
-                    }
-                }
-                reader.Close();
-                command.Dispose();
-
-                return model;
+                return readCategoryByName((string)value);
             }
-            catch (Exception e)
+            else
             {
-                log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+                return readCategoryById((int)value);
             }
+
 
         }
 
@@ -122,5 +99,76 @@ namespace VideoBookApplication.library.dao
             }
 
         }
+
+
+        private CategoryModel readCategoryByName(string category)
+        {
+            try
+            {
+                String query = Configurator.getInstsance().get("category.read.query");
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@cat", category);
+
+                LogUtility.printQueryLog(query, category);
+
+                CategoryModel model = null;
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        model = new CategoryModel();
+                        model.idCategory = reader.GetInt32("ID_CATEGORIA");
+                        model.category = reader.GetString("CATEGORIA");
+                    }
+                }
+                reader.Close();
+                command.Dispose();
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+            }
+        }
+
+        private CategoryModel readCategoryById(int category)
+        {
+            try
+            {
+                String query = Configurator.getInstsance().get("category.readbyid.query");
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@idcat", category);
+
+                LogUtility.printQueryLog(query, category.ToString());
+
+                CategoryModel model = null;
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        model = new CategoryModel();
+                        model.idCategory = reader.GetInt32("ID_CATEGORIA");
+                        model.category = reader.GetString("CATEGORIA");
+                    }
+                }
+                reader.Close();
+                command.Dispose();
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+            }
+        }
+
+
     }
 }

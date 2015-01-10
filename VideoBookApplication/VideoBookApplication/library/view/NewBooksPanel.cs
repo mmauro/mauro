@@ -239,7 +239,10 @@ namespace VideoBookApplication.library.view
                 try
                 {
                     callInfoBook = false;
+                    ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
+                    ItemCombo posValue = (ItemCombo)comboLocation.SelectedItem;
                     globalObject.libraryObject.tempModel.infoModel = bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
+                    globalObject.libraryObject.tempModel.libro = bookControl.getBooksModel(textTitle.Text, textSerie.Text, textNote.Text, catValue.value, posValue.value );
                     if (globalObject.libraryObject.tempModel.infoModel != null)
                     {
                         parent.openPanel(GlobalOperation.LIB_INFOBOOK);

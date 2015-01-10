@@ -35,5 +35,38 @@ namespace VideoBookApplication.library.controls
 
             return model;
         }
+
+        public BookModel getBooksModel(string title, string serie, string note, int idCategory, int idLocation ) {
+            BookModel model = null;
+
+            if (title != null && !title.Trim().Equals("")) {
+                model = new BookModel();
+                model.titolo = title;
+                model.serie = serie;
+                BookNoteModel bNote = new BookNoteModel();
+                bNote.nota = note;
+                bNote.idNota = Configurator.getInstsance().getInt("notfound.value");
+                model.note = bNote;
+
+                //Cerca category e location
+                try
+                {
+                    CategoryControls catControls = new CategoryControls();
+                    model.category = catControls.read(idCategory);
+
+                    PositionControl posControl = new PositionControl();
+                    model.position = posControl.read(idLocation);
+                }
+                catch (VideoBookException e)
+                {
+                    throw e;
+                }
+
+            } else {
+                throw new VideoBookException(ApplicationErrorType.EMPTY_TITLE);
+            }
+
+            return model;
+        }
     }
 }
