@@ -367,6 +367,7 @@
     <None Include="img\google.png" />
     <Content Include="img\Info.png" />
     <None Include="img\kchart.png" />
+    <None Include="img\keep_title.png" />
     <Content Include="img\login.png" />
     <Content Include="img\logout.png" />
     <None Include="img\mauro.jpg" />
@@ -377,6 +378,8 @@
     <None Include="img\show.png" />
     <None Include="img\restore-db.png" />
     <None Include="img\plus.png" />
+    <None Include="img\no_image.jpg" />
+    <None Include="img\save.png" />
     <Content Include="img\sw.png" />
     <None Include="img\write.png" />
     <None Include="img\trash.png" />

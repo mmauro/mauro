@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
@@ -48,10 +49,96 @@ namespace VideoBookApplication.library.view
                 textTitleOrig.Text = globalObject.libraryObject.tempModel.infoModel.titleOrig;
                 //Calcolare distanza di Levensthein
             }
-            textTitleOrig.Location = new Point(labelTitleOrig.Location.X + labelTitleOrig.Size.Width + 20, labelTitleOrig.Location.Y - 2 );
+            textTitleOrig.Location = new Point(labelTitleOrig.Location.X , labelTitleOrig.Location.Y + 20 );
             this.Controls.Add(textTitleOrig);
 
+            buttonKeepTitle.Location = new Point(textTitleOrig.Location.X + textTitleOrig.Size.Width + 20, textTitleOrig.Location.Y - 2);
+            this.Controls.Add(buttonKeepTitle);
 
+            //Caricamento Immagine
+            imageBox.SizeMode = PictureBoxSizeMode.Zoom;
+            if (globalObject.libraryObject.tempModel.infoModel.image != null && !globalObject.libraryObject.tempModel.infoModel.image.Equals(""))
+            {
+                imageBox.Load(globalObject.libraryObject.tempModel.infoModel.image);
+            }
+            else
+            {
+                imageBox.Image = global::VideoBookApplication.Properties.Resources.no_image;
+            }
+            imageBox.Location = new Point(30, textTitleOrig.Location.Y + 70);
+            this.Controls.Add(imageBox);
+
+            //Editore e Anno
+            labelEditore.Location = new Point(imageBox.Location.X + imageBox.Size.Width + 25, imageBox.Location.Y);
+            this.Controls.Add(labelEditore);
+
+            textPublisher.Location = new Point(labelEditore.Location.X, labelEditore.Location.Y + 20);
+            if (globalObject.libraryObject.tempModel.infoModel.publisher != null)
+            {
+                textPublisher.Text = globalObject.libraryObject.tempModel.infoModel.publisher;
+            }
+            this.Controls.Add(textPublisher);
+
+            labelYear.Location = new Point(labelEditore.Location.X + labelEditore.Size.Width + 180, labelEditore.Location.Y);
+            this.Controls.Add(labelYear);
+
+            textYear.Location = new Point(labelYear.Location.X, labelYear.Location.Y + 20);
+            if (globalObject.libraryObject.tempModel.infoModel.year != null)
+            {
+                textYear.Text = globalObject.libraryObject.tempModel.infoModel.year;
+            }
+            this.Controls.Add(textYear);
+
+            //ISBN
+            labelIsbn.Location = new Point(labelEditore.Location.X, textPublisher.Location.Y + 60);
+            this.Controls.Add(labelIsbn);
+
+            textIsbn.Location = new Point(labelIsbn.Location.X, labelIsbn.Location.Y + 20);
+            if (globalObject.libraryObject.tempModel.infoModel.isbn != null)
+            {
+                textIsbn.Text = globalObject.libraryObject.tempModel.infoModel.isbn;
+            }
+            this.Controls.Add(textIsbn);
+
+            //trama
+            labelTrama.Location = new Point(textIsbn.Location.X, textIsbn.Location.Y + 60);
+            this.Controls.Add(labelTrama);
+
+            textTrama.Location = new Point(labelTrama.Location.X, labelTrama.Location.Y + 20);
+            if (globalObject.libraryObject.tempModel.infoModel.trama != null)
+            {
+                textTrama.Text = globalObject.libraryObject.tempModel.infoModel.trama;
+            }
+            this.Controls.Add(textTrama);
+
+            //Pulsanti Finali
+            buttonClose.Location = new Point(this.Size.Width - (35 + buttonClose.Size.Width), textTrama.Location.Y + textTrama.Size.Height + 50);
+            this.Controls.Add(buttonClose);
+
+            buttonOk.Location = new Point(buttonClose.Location.X - (buttonOk.Size.Width + 15), buttonClose.Location.Y);
+            this.Controls.Add(buttonOk);
+
+            //tooltip
+            toolTip1.SetToolTip(buttonKeepTitle, "Utilizza Questo Titolo");
+            toolTip1.SetToolTip(buttonOk, "Salva Informazioni Aggiuntive");
+            toolTip1.SetToolTip(buttonClose, "Elimina Informazioni Aggiuntive");
+
+        }
+
+        private void buttonKeepTitle_Click(object sender, EventArgs e)
+        {
+            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            globalObject.libraryObject.tempModel.infoModel = null;
+            parent.closePanel(GlobalOperation.LIB_INFOBOOK);
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }
 }

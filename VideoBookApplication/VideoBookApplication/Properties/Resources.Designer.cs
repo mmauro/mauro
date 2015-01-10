@@ -237,6 +237,16 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap keep_title {
+            get {
+                object obj = ResourceManager.GetObject("keep_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap login {
             get {
                 object obj = ResourceManager.GetObject("login", resourceCulture);
@@ -287,6 +297,16 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap no_image {
+            get {
+                object obj = ResourceManager.GetObject("no_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
@@ -310,6 +330,16 @@ namespace VideoBookApplication.Properties {
         internal static System.Drawing.Bitmap resword {
             get {
                 object obj = ResourceManager.GetObject("resword", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save {
+            get {
+                object obj = ResourceManager.GetObject("save", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -381,9 +411,12 @@ namespace VideoBookApplication.Properties {
         ///### VALUE NOT FOUND FOR QUERY
         ///notfound.value = -1
         ///
-        ///### QUERY PER USERS MODEL
-        ///users.insert.query = INSERT INTO USERS (USERNAME, FL_LIBRARY, FL_VIDEO, FL_MUSIC, FL_SOFTWARE, FL_SUPERUSER) VALUES (@user, @fllib, @flvid, @flmus, @flsw, @flsus)
-        ///users.read.query [rest of string was truncated]&quot;;.
+        ///### Google Books API
+        ///google.books.browser.api.key = AIzaSyCpuZOgKmwxODZiuWEWWIhb9ToCOEm5_3Q
+        ///google.books.schema = https
+        ///google.books.host = www.googleapis.com
+        ///google.books.path = books/v1/volumes
+        ///goog [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Videobook {
             get {
