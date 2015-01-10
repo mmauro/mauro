@@ -17,6 +17,7 @@ namespace VideoBookApplication.library.view
     public partial class InfoBookPanel : Panel
     {
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
 
@@ -47,7 +48,8 @@ namespace VideoBookApplication.library.view
             if (globalObject.libraryObject.tempModel.infoModel.titleOrig != null)
             {
                 textTitleOrig.Text = globalObject.libraryObject.tempModel.infoModel.titleOrig;
-                //Calcolare distanza di Levensthein
+                levensthein = StringUtility.levenshteinDistance(globalObject.libraryObject.tempModel.infoModel.titleOrig.ToLower(), globalObject.libraryObject.tempModel.libro.titolo.ToLower());
+                log.Info("TITLE DISTANCE = " + levensthein);
             }
             textTitleOrig.Location = new Point(labelTitleOrig.Location.X , labelTitleOrig.Location.Y + 20 );
             this.Controls.Add(textTitleOrig);
@@ -122,6 +124,11 @@ namespace VideoBookApplication.library.view
             toolTip1.SetToolTip(buttonKeepTitle, "Utilizza Questo Titolo");
             toolTip1.SetToolTip(buttonOk, "Salva Informazioni Aggiuntive");
             toolTip1.SetToolTip(buttonClose, "Elimina Informazioni Aggiuntive");
+
+            if (levensthein > Configurator.getInstsance().getInt("levensthein.max.distance"))
+            {
+                DisplayManager.displayWarning(ApplicationErrorType.TITLE_DIFFERENT_WARN);
+            }
 
         }
 
