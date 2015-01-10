@@ -356,6 +356,7 @@
     <Content Include="img\advancedsettings.png" />
     <Content Include="img\Books.png" />
     <None Include="img\books_add.png" />
+    <None Include="img\browser.png" />
     <Content Include="img\button_cancel.png" />
     <Content Include="img\button_ok.png" />
     <Content Include="img\changeapp.png" />

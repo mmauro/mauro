@@ -23,6 +23,7 @@ namespace VideoBookApplication.common.enums
         LIB_NEW_BOOKS,
         LIB_NEW_BOOKS_CATEGORY,
         LIB_NEW_BOOKS_POSITION,
-        LIB_INFOBOOK
+        LIB_INFOBOOK,
+        LIB_KEEP_TITLE
     }
 }

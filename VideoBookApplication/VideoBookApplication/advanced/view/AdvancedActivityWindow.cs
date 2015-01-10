@@ -81,5 +81,11 @@ namespace VideoBookApplication.advanced.view
         {
             throw new NotImplementedException();
         }
+
+
+        public void executeOperations(common.enums.GlobalOperation operation)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

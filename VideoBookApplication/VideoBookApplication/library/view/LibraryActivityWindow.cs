@@ -327,5 +327,26 @@ namespace VideoBookApplication.library.view
                     break;
             }
         }
+
+
+        public void executeOperations(GlobalOperation operation)
+        {
+            switch (operation)
+            {
+                case GlobalOperation.LIB_KEEP_TITLE:
+                    if (infoPanel != null && newBooksPanel != null)
+                    {
+                        newBooksPanel.refreshTitle();
+                    }
+                    else
+                    {
+                        DisplayManager.displayError(ApplicationErrorType.OPERATION_ERROR, "Keep Title Error");
+                    }
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                    break;
+            }
+        }
     }
 }

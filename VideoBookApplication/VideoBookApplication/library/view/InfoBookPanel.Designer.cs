@@ -44,6 +44,7 @@
             this.textTrama = new System.Windows.Forms.RichTextBox();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonWeb = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,6 +187,17 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // buttonWeb
+            // 
+            this.buttonWeb.BackgroundImage = global::VideoBookApplication.Properties.Resources.browser;
+            this.buttonWeb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonWeb.Location = new System.Drawing.Point(254, 136);
+            this.buttonWeb.Name = "buttonWeb";
+            this.buttonWeb.Size = new System.Drawing.Size(48, 48);
+            this.buttonWeb.TabIndex = 1;
+            this.buttonWeb.UseVisualStyleBackColor = true;
+            this.buttonWeb.Click += new System.EventHandler(this.buttonWeb_Click);
+            // 
             // InfoBookPanel
             // 
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -212,5 +224,6 @@
         private System.Windows.Forms.RichTextBox textTrama;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.Button buttonWeb;
     }
 }

@@ -37,6 +37,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType INVALID_VALUE = new ApplicationErrorType(14, "Invalid Value");
         public static ApplicationErrorType WEBSERVICE_ERROR = new ApplicationErrorType(15, "Web Service Error");
         public static ApplicationErrorType WEBSERVICE_PARSER_ERROR = new ApplicationErrorType(16, "Web Service Parser Error");
+        public static ApplicationErrorType OPERATION_ERROR = new ApplicationErrorType(17, "Operation Error");
 
 
         /** DATABASE ERROR 31 - 50 */

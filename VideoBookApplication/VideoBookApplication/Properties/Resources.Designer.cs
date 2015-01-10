@@ -137,6 +137,16 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap browser {
+            get {
+                object obj = ResourceManager.GetObject("browser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button_ok {
             get {
                 object obj = ResourceManager.GetObject("button_ok", resourceCulture);
@@ -411,12 +421,13 @@ namespace VideoBookApplication.Properties {
         ///### VALUE NOT FOUND FOR QUERY
         ///notfound.value = -1
         ///
+        ///### LEVENSTHEIN DISTANCE MAX
+        ///levensthein.max.distance = 4
+        ///
         ///### Google Books API
         ///google.books.browser.api.key = AIzaSyCpuZOgKmwxODZiuWEWWIhb9ToCOEm5_3Q
         ///google.books.schema = https
-        ///google.books.host = www.googleapis.com
-        ///google.books.path = books/v1/volumes
-        ///goog [rest of string was truncated]&quot;;.
+        ///google.books.host = www [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Videobook {
             get {

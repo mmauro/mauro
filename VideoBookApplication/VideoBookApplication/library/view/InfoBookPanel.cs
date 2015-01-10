@@ -120,10 +120,14 @@ namespace VideoBookApplication.library.view
             buttonOk.Location = new Point(buttonClose.Location.X - (buttonOk.Size.Width + 15), buttonClose.Location.Y);
             this.Controls.Add(buttonOk);
 
+            buttonWeb.Location = new Point(35, buttonOk.Location.Y);
+            this.Controls.Add(buttonWeb);
+
             //tooltip
             toolTip1.SetToolTip(buttonKeepTitle, "Utilizza Questo Titolo");
             toolTip1.SetToolTip(buttonOk, "Salva Informazioni Aggiuntive");
             toolTip1.SetToolTip(buttonClose, "Elimina Informazioni Aggiuntive");
+            toolTip1.SetToolTip(buttonWeb, "Visualizza Scheda");
 
             if (levensthein > Configurator.getInstsance().getInt("levensthein.max.distance"))
             {
@@ -134,18 +138,30 @@ namespace VideoBookApplication.library.view
 
         private void buttonKeepTitle_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            globalObject.libraryObject.tempModel.libro.titolo = globalObject.libraryObject.tempModel.infoModel.titleOrig;
+            parent.executeOperations(GlobalOperation.LIB_KEEP_TITLE);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
             globalObject.libraryObject.tempModel.infoModel = null;
-            parent.closePanel(GlobalOperation.LIB_INFOBOOK);
+            close();
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            parent.closePanel(GlobalOperation.LIB_INFOBOOK);
+        }
+
+        private void buttonWeb_Click(object sender, EventArgs e)
+        {
+            //System.Diagnostics.Process.Start(URL);
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
+
+        private void close()
+        {
+            parent.closePanel(GlobalOperation.LIB_INFOBOOK);
         }
     }
 }

@@ -291,5 +291,14 @@ namespace VideoBookApplication.library.view
         {
             callInfoBook = true;
         }
+
+        public void refreshTitle()
+        {
+            if (globalObject.libraryObject.tempModel.libro != null)
+            {
+                textTitle.Text = globalObject.libraryObject.tempModel.libro.titolo;
+                //this.Refresh();
+            }
+        }
     }
 }
