@@ -343,6 +343,16 @@ namespace VideoBookApplication.library.view
                         DisplayManager.displayError(ApplicationErrorType.OPERATION_ERROR, "Keep Title Error");
                     }
                     break;
+                case GlobalOperation.LIB_DELETE_INFOBOOK:
+                    if (infoPanel != null && newBooksPanel != null)
+                    {
+                        newBooksPanel.deleteInfo();
+                    }
+                    else
+                    {
+                        DisplayManager.displayError(ApplicationErrorType.OPERATION_ERROR, "Keep Title Error");
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;

@@ -27,6 +27,7 @@ namespace VideoBookApplication.library.view
         private bool refreshCat = false;
         private bool refreshPos = false;
         private bool callInfoBook = true;
+        private bool userDeleteInfo = false;
 
         private BooksControls bookControl = new BooksControls();
 
@@ -235,29 +236,38 @@ namespace VideoBookApplication.library.view
 
         private void buttonGoogleBooks_Click(object sender, EventArgs e)
         {
-            if (callInfoBook)
+
+            try
             {
-                try
+                if (callInfoBook)
                 {
                     callInfoBook = false;
                     ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
                     ItemCombo posValue = (ItemCombo)comboLocation.SelectedItem;
                     globalObject.libraryObject.tempModel.infoModel = bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
-                    globalObject.libraryObject.tempModel.libro = bookControl.getBooksModel(textTitle.Text, textSerie.Text, textNote.Text, catValue.value, posValue.value, checkEbook.Checked );
-                    if (globalObject.libraryObject.tempModel.infoModel != null)
+                    globalObject.libraryObject.tempModel.libro = bookControl.getBooksModel(textTitle.Text, textSerie.Text, textNote.Text, catValue.value, posValue.value, checkEbook.Checked);
+                }
+                if (globalObject.libraryObject.tempModel.infoModel != null)
+                {
+                    parent.openPanel(GlobalOperation.LIB_INFOBOOK);
+                }
+                else
+                {
+                    if (userDeleteInfo)
                     {
-                        parent.openPanel(GlobalOperation.LIB_INFOBOOK);
+                        DisplayManager.displayWarning(ApplicationErrorType.INFO_DELETE_BYUSER_WARN);
                     }
                     else
                     {
-                        DisplayManager.displayMessage(ApplicationErrorType.INFOBOOK_NOT_FOUND);
+                        DisplayManager.displayError(ApplicationErrorType.INFOBOOK_NOT_FOUND);
                     }
                 }
-                catch (VideoBookException vbe)
-                {
-                    DisplayManager.displayError(vbe.errorType);
-                    callInfoBook = true;
-                }
+
+            }
+            catch (VideoBookException vbe)
+            {
+                DisplayManager.displayError(vbe.errorType);
+                callInfoBook = true;
             }
         }
 
@@ -352,6 +362,11 @@ namespace VideoBookApplication.library.view
             {
                 textTitle.Text = globalObject.libraryObject.tempModel.libro.titolo;
             }
+        }
+
+        public void deleteInfo()
+        {
+            userDeleteInfo = true;
         }
 
         private void resetPanelInfo()

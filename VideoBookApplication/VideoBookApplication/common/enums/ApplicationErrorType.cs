@@ -66,6 +66,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType AUTHOR_FIRSTNAME_FOUND_WARN = new ApplicationErrorType(1002, "Warning: Found Author with same Firstname");
         public static ApplicationErrorType AUTHOR_FOUND_WARN = new ApplicationErrorType(1003, "Warning: Found Author with same Firstname, Name");
         public static ApplicationErrorType INFOBOOK_NOT_FOUND = new ApplicationErrorType(1004, "No Additional Information Found");
-        public static ApplicationErrorType TITLE_DIFFERENT_WARN = new ApplicationErrorType(1005, "Title Are Different. Check value");
+        public static ApplicationErrorType TITLE_DIFFERENT_WARN = new ApplicationErrorType(1005, "Title Are Different. Check Value");
+        public static ApplicationErrorType INFO_DELETE_BYUSER_WARN = new ApplicationErrorType(1006, "Informations Detele by User");
     }
 }

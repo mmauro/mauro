@@ -145,6 +145,7 @@ namespace VideoBookApplication.library.view
         private void buttonClose_Click(object sender, EventArgs e)
         {
             globalObject.libraryObject.tempModel.infoModel = null;
+            parent.executeOperations(GlobalOperation.LIB_DELETE_INFOBOOK);
             close();
         }
 
