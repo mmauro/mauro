@@ -36,13 +36,14 @@ namespace VideoBookApplication.library.controls
             return model;
         }
 
-        public BookModel getBooksModel(string title, string serie, string note, int idCategory, int idLocation ) {
+        public BookModel getBooksModel(string title, string serie, string note, int idCategory, int idLocation, bool flEbook ) {
             BookModel model = null;
 
             if (title != null && !title.Trim().Equals("")) {
                 model = new BookModel();
                 model.titolo = title;
                 model.serie = serie;
+                model.flEbook = flEbook;
                 BookNoteModel bNote = new BookNoteModel();
                 bNote.nota = note;
                 bNote.idNota = Configurator.getInstsance().getInt("notfound.value");

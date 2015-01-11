@@ -19,6 +19,7 @@ namespace VideoBookApplication.library.view
     public partial class NewBooksPanel : Panel
     {
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
         private List<ItemCombo> listItemsCat = new List<ItemCombo>();
@@ -242,7 +243,7 @@ namespace VideoBookApplication.library.view
                     ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
                     ItemCombo posValue = (ItemCombo)comboLocation.SelectedItem;
                     globalObject.libraryObject.tempModel.infoModel = bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
-                    globalObject.libraryObject.tempModel.libro = bookControl.getBooksModel(textTitle.Text, textSerie.Text, textNote.Text, catValue.value, posValue.value );
+                    globalObject.libraryObject.tempModel.libro = bookControl.getBooksModel(textTitle.Text, textSerie.Text, textNote.Text, catValue.value, posValue.value, checkEbook.Checked );
                     if (globalObject.libraryObject.tempModel.infoModel != null)
                     {
                         parent.openPanel(GlobalOperation.LIB_INFOBOOK);
@@ -274,6 +275,7 @@ namespace VideoBookApplication.library.view
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            globalObject.libraryObject.destroy();
             parent.closePanel();
         }
 
@@ -284,7 +286,59 @@ namespace VideoBookApplication.library.view
 
         private void buttonAddBook_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            bool errorDisplay = false;
+            if (textTitle.Text != null && !textTitle.Text.Trim().Equals(""))
+            {
+                BookModel model = null;
+                try
+                {
+                    //Creo il libro...
+                    ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
+                    ItemCombo posValue = (ItemCombo)comboLocation.SelectedItem;
+                    model = bookControl.getBooksModel(textTitle.Text, textSerie.Text, textNote.Text, catValue.value, posValue.value, checkEbook.Checked);
+                }
+                catch (VideoBookException e2)
+                {
+                    DisplayManager.displayError(e2.errorType);
+                    errorDisplay = true;
+                }
+
+                if (model != null)
+                {
+                    try
+                    {
+                        if (callInfoBook)
+                        {
+                            model.informations = bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
+                        }
+                        else
+                        {
+                            //Ho già chiamato InfoBook...
+                            model.informations = globalObject.libraryObject.tempModel.infoModel;
+                        }
+                    }
+                    catch (VideoBookException e1)
+                    {
+                        log.Error(e1.errorType.message);
+                        model.informations = null;
+                    }
+                }
+                else
+                {
+                    if (!errorDisplay)
+                    {
+                        DisplayManager.displayError(ApplicationErrorType.NO_ADD_BOOK);
+                        errorDisplay = true;
+                    }
+                }
+                if (!errorDisplay)
+                {
+                    //Reset di Tutte le Informazioni
+                    globalObject.libraryObject.libraryInput.libri.Add(model);
+                    resetPanelInfo();
+                }
+
+            }
         }
 
         private void textTitle_TextChanged(object sender, EventArgs e)
@@ -297,8 +351,21 @@ namespace VideoBookApplication.library.view
             if (globalObject.libraryObject.tempModel.libro != null)
             {
                 textTitle.Text = globalObject.libraryObject.tempModel.libro.titolo;
-                //this.Refresh();
             }
+        }
+
+        private void resetPanelInfo()
+        {
+            labelNB.Text = globalObject.libraryObject.libraryInput.libri.Count + " Libri da Salvare";
+            textTitle.Text = "";
+            textSerie.Text = "";
+            checkEbook.Checked = false;
+            textNote.Text = "";
+            refreshCat = true;
+            refreshPos = true;
+            refreshCombo();
+            globalObject.libraryObject.tempModel.destroy();
+            callInfoBook = true;
         }
     }
 }
