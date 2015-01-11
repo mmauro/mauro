@@ -296,59 +296,16 @@ namespace VideoBookApplication.library.view
 
         private void buttonAddBook_Click(object sender, EventArgs e)
         {
-            bool errorDisplay = false;
-            if (textTitle.Text != null && !textTitle.Text.Trim().Equals(""))
+            ApplicationErrorType status = addBook();
+            if (status == ApplicationErrorType.SUCCESS)
             {
-                BookModel model = null;
-                try
-                {
-                    //Creo il libro...
-                    ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
-                    ItemCombo posValue = (ItemCombo)comboLocation.SelectedItem;
-                    model = bookControl.getBooksModel(textTitle.Text, textSerie.Text, textNote.Text, catValue.value, posValue.value, checkEbook.Checked);
-                }
-                catch (VideoBookException e2)
-                {
-                    DisplayManager.displayError(e2.errorType);
-                    errorDisplay = true;
-                }
-
-                if (model != null)
-                {
-                    try
-                    {
-                        if (callInfoBook)
-                        {
-                            model.informations = bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
-                        }
-                        else
-                        {
-                            //Ho già chiamato InfoBook...
-                            model.informations = globalObject.libraryObject.tempModel.infoModel;
-                        }
-                    }
-                    catch (VideoBookException e1)
-                    {
-                        log.Error(e1.errorType.message);
-                        model.informations = null;
-                    }
-                }
-                else
-                {
-                    if (!errorDisplay)
-                    {
-                        DisplayManager.displayError(ApplicationErrorType.NO_ADD_BOOK);
-                        errorDisplay = true;
-                    }
-                }
-                if (!errorDisplay)
-                {
-                    //Reset di Tutte le Informazioni
-                    globalObject.libraryObject.libraryInput.libri.Add(model);
-                    resetPanelInfo();
-                }
-
+                resetPanelInfo();
             }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
+             
         }
 
         private void textTitle_TextChanged(object sender, EventArgs e)
@@ -362,6 +319,59 @@ namespace VideoBookApplication.library.view
             {
                 textTitle.Text = globalObject.libraryObject.tempModel.libro.titolo;
             }
+        }
+
+        private ApplicationErrorType addBook()
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            BookModel model = null;
+            if (textTitle.Text != null && !textTitle.Text.Trim().Equals(""))
+            {
+                try
+                {
+                    //Creo il libro...
+                    ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
+                    ItemCombo posValue = (ItemCombo)comboLocation.SelectedItem;
+                    model = bookControl.getBooksModel(textTitle.Text, textSerie.Text, textNote.Text, catValue.value, posValue.value, checkEbook.Checked);
+
+                }
+                catch (VideoBookException e2)
+                {
+                    status = e2.errorType;
+                }
+
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    try
+                    {
+                        if (callInfoBook)
+                        {
+                            model.informations = bookControl.getBookInfoModel(textTitle.Text, globalObject.libraryObject.libraryInput.autore.cognome);
+                        }
+                        else
+                        {
+                            //Ho già chiamato InfoBook...
+                            model.informations = globalObject.libraryObject.tempModel.infoModel;
+                        }
+                    }
+                    catch (VideoBookException e3)
+                    {
+                        status = e3.errorType;
+                    }
+                }
+
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    globalObject.libraryObject.libraryInput.libri.Add(model);
+                }
+
+            }
+            else
+            {
+                status = ApplicationErrorType.EMPTY_TITLE;
+            }
+
+            return status;
         }
 
         public void deleteInfo()
