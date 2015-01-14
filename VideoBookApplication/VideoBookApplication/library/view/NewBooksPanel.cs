@@ -291,7 +291,19 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ApplicationErrorType status = addBook();
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                LibraryControls control = new LibraryControls();
+                control.write(globalObject);
+                DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
+
+            //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonAddBook_Click(object sender, EventArgs e)
