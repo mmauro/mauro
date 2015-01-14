@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
+using VideoBookApplication.common.operations;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.library.dao;
+using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.controls
 {
@@ -19,24 +21,67 @@ namespace VideoBookApplication.library.controls
             {
                 if (globalObject.libraryObject.libraryInput.libri != null && globalObject.libraryObject.libraryInput.libri.Count > 0)
                 {
-                    try
+
+                    Indexer indexCognome = new Indexer(globalObject.libraryObject.libraryInput.autore.cognome, IndexerType.INDEX_AUTHOR);
+                    status = indexCognome.status;
+                    if (status != ApplicationErrorType.SUCCESS)
                     {
-                        LibraryDao dao = new LibraryDao();
-                        dao.writeInformations(globalObject.libraryObject.libraryInput.autore, globalObject.libraryObject.libraryInput.libri);
+                        globalObject.libraryObject.libraryInput.indexElements.wordsCognome = indexCognome.words;
                     }
-                    catch (VideoBookException e)
+
+                    if (status != ApplicationErrorType.SUCCESS && globalObject.libraryObject.libraryInput.autore.nome != null && !globalObject.libraryObject.libraryInput.autore.nome.Equals(""))
                     {
-                        status = e.errorType;
+                        Indexer indexNome = new Indexer(globalObject.libraryObject.libraryInput.autore.nome, IndexerType.INDEX_AUTHOR);
+                        status = indexNome.status;
+                        if (status == ApplicationErrorType.SUCCESS)
+                        {
+                            globalObject.libraryObject.libraryInput.indexElements.wordsNome = indexNome.words;
+                        }
+                    }
+
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        //Index Libri;
+                        foreach (BookModel model in globalObject.libraryObject.libraryInput.libri)
+                        {
+                            if (status == ApplicationErrorType.SUCCESS)
+                            {
+                                string value = model.titolo;
+                                if (model.serie != null && !model.serie.Equals(""))
+                                {
+                                    value += " " + model.serie;
+                                }
+                                Indexer indexTitle = new Indexer(value, IndexerType.INDEX_BOOK_TITLE);
+                                status = indexTitle.status;
+                                if (status == ApplicationErrorType.SUCCESS)
+                                {
+                                    globalObject.libraryObject.libraryInput.indexElements.wordBooksTitle.Add(model, indexTitle.words);
+                                }
+                            }
+                        }
+                    }
+
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        try
+                        {
+                            LibraryDao dao = new LibraryDao();
+                            status = dao.writeInformations(globalObject);
+                        }
+                        catch (VideoBookException e)
+                        {
+                            status = e.errorType;
+                        }
                     }
                 }
                 else
                 {
-                    status = ApplicationErrorType.AUTHOR_NOT_FOUND;
+                    status = ApplicationErrorType.EMPTY_BOOKS;
                 }
             }
             else
             {
-                status = ApplicationErrorType.EMPTY_BOOKS;
+                status = ApplicationErrorType.AUTHOR_NOT_FOUND;
             }
 
             return status;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VideoBookApplication.common.utility;
 
 namespace VideoBookApplication.library.model.database
 {
@@ -18,5 +19,22 @@ namespace VideoBookApplication.library.model.database
         public PositionModel position { get; set; }
         public BookNoteModel note { get; set; }
         public BookInfoModel informations { get; set; }
+
+        public override int GetHashCode()
+        {
+            if (idLibro != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                return idLibro;
+            }
+            else
+            {
+                string value = titolo;
+                if (serie != null)
+                {
+                    value += " " + serie;
+                }
+                return value.GetHashCode();
+            }
+        }
     }
 }

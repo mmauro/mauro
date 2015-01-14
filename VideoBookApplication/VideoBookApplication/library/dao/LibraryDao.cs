@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VideoBookApplication.common.controls;
 using VideoBookApplication.common.enums;
+using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.library.model.database;
 
@@ -16,20 +17,20 @@ namespace VideoBookApplication.library.dao
         private MySqlTransaction transaction = DatabaseControl.getInstance().getConnection().BeginTransaction();
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public ApplicationErrorType writeInformations(AuthorModel autore, List<BookModel> libri)
+        public ApplicationErrorType writeInformations(GlobalApplicationObject globalObject)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
             int idAutore = Configurator.getInstsance().getInt("notfound.value");
             try
             {
                 //Step 1: write autore
-                if (autore.idAutore == Configurator.getInstsance().getInt("notfound.value"))
+                if (globalObject.libraryObject.libraryInput.autore.idAutore == Configurator.getInstsance().getInt("notfound.value"))
                 {
                     log.Info("STEP 1 : Write Autore");
                     try
                     {
-                        writeAutore(autore);
-                        idAutore = readIdAutore(autore);
+                        writeAutore(globalObject.libraryObject.libraryInput.autore);
+                        idAutore = readIdAutore();
                         if (idAutore != Configurator.getInstsance().getInt("notfound.value"))
                         {
                             log.Info("idAutore = " + idAutore);
@@ -86,7 +87,7 @@ namespace VideoBookApplication.library.dao
             }
         }
 
-        private int readIdAutore(AuthorModel autore)
+        private int readIdAutore()
         {
             int value = Configurator.getInstsance().getInt("notfound.value");
             try
