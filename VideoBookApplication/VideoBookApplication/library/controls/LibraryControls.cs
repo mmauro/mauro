@@ -29,7 +29,7 @@ namespace VideoBookApplication.library.controls
                         globalObject.libraryObject.libraryInput.indexElements.wordsCognome = indexCognome.words;
                     }
 
-                    if (status != ApplicationErrorType.SUCCESS && globalObject.libraryObject.libraryInput.autore.nome != null && !globalObject.libraryObject.libraryInput.autore.nome.Equals(""))
+                    if (status == ApplicationErrorType.SUCCESS && globalObject.libraryObject.libraryInput.autore.nome != null && !globalObject.libraryObject.libraryInput.autore.nome.Equals(""))
                     {
                         Indexer indexNome = new Indexer(globalObject.libraryObject.libraryInput.autore.nome, IndexerType.INDEX_AUTHOR);
                         status = indexNome.status;

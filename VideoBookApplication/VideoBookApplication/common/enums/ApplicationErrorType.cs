@@ -67,6 +67,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType READ_NOTE_ERROR = new ApplicationErrorType(113, "Read Book Note Error");
         public static ApplicationErrorType READ_WORD_ERROR = new ApplicationErrorType(113, "Read Index Word Error");
         public static ApplicationErrorType WRITE_WORD_ERROR = new ApplicationErrorType(113, "Write Index Word Error");
+        public static ApplicationErrorType WRITE_W2AUTORE_ERROR = new ApplicationErrorType(113, "Write Word 2 Author Error");
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");
