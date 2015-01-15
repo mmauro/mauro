@@ -291,6 +291,7 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             ApplicationErrorType status = addBook();
             if (status == ApplicationErrorType.SUCCESS)
             {
@@ -310,6 +311,7 @@ namespace VideoBookApplication.library.view
             {
                 DisplayManager.displayError(status);
             }
+            Cursor.Current = Cursors.Default;
         }
 
         private void buttonAddBook_Click(object sender, EventArgs e)
