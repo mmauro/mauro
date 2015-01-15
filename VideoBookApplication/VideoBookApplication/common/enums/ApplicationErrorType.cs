@@ -62,7 +62,10 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType NO_ADD_BOOK = new ApplicationErrorType(110, "Unable to Add new Book");
         public static ApplicationErrorType EMPTY_BOOKS = new ApplicationErrorType(110, "Books not Found");
         public static ApplicationErrorType WRITE_AUTHOR_ERROR = new ApplicationErrorType(110, "Write Author Error");
-        public static ApplicationErrorType READ_AUTHOR_ERROR = new ApplicationErrorType(110, "Read Author Error");
+        public static ApplicationErrorType READ_AUTHOR_ERROR = new ApplicationErrorType(111, "Read Author Error");
+        public static ApplicationErrorType WRITE_NOTE_ERROR = new ApplicationErrorType(112, "Write Book Note Error");
+        public static ApplicationErrorType READ_NOTE_ERROR = new ApplicationErrorType(113, "Read Book Note Error");
+        public static ApplicationErrorType READ_WORD_ERROR = new ApplicationErrorType(113, "Read Index Word Error");
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");

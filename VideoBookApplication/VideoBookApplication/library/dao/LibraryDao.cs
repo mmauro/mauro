@@ -26,10 +26,13 @@ namespace VideoBookApplication.library.dao
                 //Step 1: write autore
                 if (globalObject.libraryObject.libraryInput.autore.idAutore == Configurator.getInstsance().getInt("notfound.value"))
                 {
-                    log.Info("STEP 1 : Write Autore");
+                   
                     try
                     {
+                        log.Info("STEP 1 : Write Autore");
                         writeAutore(globalObject.libraryObject.libraryInput.autore);
+
+                        log.Info("STEP 2 : Read Autore");
                         idAutore = readIdAutore();
                         if (idAutore != Configurator.getInstsance().getInt("notfound.value"))
                         {
@@ -40,22 +43,77 @@ namespace VideoBookApplication.library.dao
                             log.Error("Failure Read id Autore");
                             status = ApplicationErrorType.READ_AUTHOR_ERROR;
                         }
+                        if (status == ApplicationErrorType.SUCCESS && globalObject.libraryObject.libraryInput.indexElements.wordsCognome != null && globalObject.libraryObject.libraryInput.indexElements.wordsCognome.Count > 0)
+                        {
+                            try
+                            {
+                                foreach (string word in globalObject.libraryObject.libraryInput.indexElements.wordsCognome)
+                                {
+                                    int idWord = readIdWord(word);
+                                    if (idWord == Configurator.getInstsance().getInt("notfound.value"))
+                                    {
+                                        log.Info("Word Not Found : write");
+                                    }
+                                    else
+                                    {
+                                        log.Info("Word Found");
+                                    }
+                                }
+                            }
+                            catch (VideoBookException e)
+                            {
+                                log.Error("Throw Exception");
+                                status = e.errorType;
+                            }
+                        }
+                        else
+                        {
+                            log.Error("Cognome non Indicizzato");
+                            status = ApplicationErrorType.INDEXER_INVALID_VALUE;
+                        }
                     }
                     catch (VideoBookException e)
                     {
                         log.Error("Throw Exception");
                         status = ApplicationErrorType.FAILURE;
                     }
+
                 }
 
-                log.Info("DONE");
                 if (status == ApplicationErrorType.SUCCESS)
                 {
+
+                    foreach (BookModel libro in globalObject.libraryObject.libraryInput.libri)
+                    {
+                        if (libro.note != null)
+                        {
+                            try
+                            {
+                                log.Info("STEP 3 : Write Note --> [ " + libro.titolo + " ]");
+                                writeNote(libro.note);
+                            }
+                            catch (VideoBookException e)
+                            {
+                                log.Error("Throw Exception");
+                                status = e.errorType;
+                            }
+                        }
+
+                    }
+
+                }
+
+
+               
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    log.Info("DONE");
                     //TODO: cambiare con commit
                     transaction.Rollback();
                 }
                 else
                 {
+                    log.Error("FAILURE");
                     transaction.Rollback();
                 }
 
@@ -94,7 +152,7 @@ namespace VideoBookApplication.library.dao
             {
                 MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("author.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
                 command.Prepare();
-                LogUtility.printQueryLog(Configurator.getInstsance().get("author.write.query"), null);
+                LogUtility.printQueryLog(Configurator.getInstsance().get("author.readmaxid.query"), null);
                 MySqlDataReader reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
@@ -112,6 +170,80 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_AUTHOR_ERROR);
+            }
+        }
+
+        private void writeNote(BookNoteModel note)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("booknote.write.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("booknote.write.query"), note.nota);
+                command.Parameters.AddWithValue("@note", note.nota);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.WRITE_NOTE_ERROR);
+            }
+        }
+
+        private int readIdNota()
+        {
+            int value = Configurator.getInstsance().getInt("notfound.value");
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("booknote.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("booknote.readmaxid.query"), null);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetInt32("id_nota");
+                    }
+                    reader.Close();
+                }
+
+                return value;
+
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.READ_AUTHOR_ERROR);
+            }
+        }
+
+        private int readIdWord(string word)
+        {
+            int value = Configurator.getInstsance().getInt("notfound.value");
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("wordmaster.readbyword.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                command.Parameters.AddWithValue("@word", word);
+                LogUtility.printQueryLog(Configurator.getInstsance().get("wordmaster.readbyword.query"), word);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetInt32("id_word");
+                    }
+                    reader.Close();
+                }
+
+                return value;
+
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.READ_WORD_ERROR);
             }
         }
     }

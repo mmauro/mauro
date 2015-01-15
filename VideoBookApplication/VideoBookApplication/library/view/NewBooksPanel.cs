@@ -295,15 +295,22 @@ namespace VideoBookApplication.library.view
             if (status == ApplicationErrorType.SUCCESS)
             {
                 LibraryControls control = new LibraryControls();
-                control.write(globalObject);
+                status = control.write(ref globalObject);
+                if (status != ApplicationErrorType.SUCCESS)
+                {
+                    DisplayManager.displayError(status);
+                }
+                else
+                {
+                    DisplayManager.displayMessage(ApplicationErrorType.SUCCESS, "Salvataggio Avvenuto con Successo");
+                    parent.closePanel();
+                }
                 DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
             }
             else
             {
                 DisplayManager.displayError(status);
             }
-
-            //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonAddBook_Click(object sender, EventArgs e)

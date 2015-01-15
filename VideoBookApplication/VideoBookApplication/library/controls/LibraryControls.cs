@@ -14,7 +14,7 @@ namespace VideoBookApplication.library.controls
 {
     public class LibraryControls
     {
-        public ApplicationErrorType write(GlobalApplicationObject globalObject)
+        public ApplicationErrorType write(ref GlobalApplicationObject globalObject)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
             if (globalObject.libraryObject.libraryInput.autore != null)
@@ -24,7 +24,7 @@ namespace VideoBookApplication.library.controls
 
                     Indexer indexCognome = new Indexer(globalObject.libraryObject.libraryInput.autore.cognome, IndexerType.INDEX_AUTHOR);
                     status = indexCognome.status;
-                    if (status != ApplicationErrorType.SUCCESS)
+                    if (status == ApplicationErrorType.SUCCESS)
                     {
                         globalObject.libraryObject.libraryInput.indexElements.wordsCognome = indexCognome.words;
                     }

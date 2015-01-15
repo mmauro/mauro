@@ -44,10 +44,19 @@ namespace VideoBookApplication.library.controls
                 model.titolo = title;
                 model.serie = serie;
                 model.flEbook = flEbook;
-                BookNoteModel bNote = new BookNoteModel();
-                bNote.nota = note;
-                bNote.idNota = Configurator.getInstsance().getInt("notfound.value");
-                model.note = bNote;
+
+
+                if (note != null && !note.Trim().Equals(""))
+                {
+                    BookNoteModel bNote = new BookNoteModel();
+                    bNote.nota = note;
+                    bNote.idNota = Configurator.getInstsance().getInt("notfound.value");
+                    model.note = bNote;
+                }
+                else
+                {
+                    model.note = null;
+                }
 
                 //Cerca category e location
                 try
