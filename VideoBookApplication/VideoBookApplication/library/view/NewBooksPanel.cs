@@ -305,7 +305,6 @@ namespace VideoBookApplication.library.view
                     DisplayManager.displayMessage(ApplicationErrorType.SUCCESS, "Salvataggio Avvenuto con Successo");
                     parent.closePanel();
                 }
-                DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
             }
             else
             {

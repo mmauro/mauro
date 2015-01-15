@@ -53,6 +53,16 @@ namespace VideoBookApplication.library.dao
                                     if (idWord == Configurator.getInstsance().getInt("notfound.value"))
                                     {
                                         log.Info("Word Not Found : write");
+                                        writeWord(word);
+                                        idWord = readIdWord(word);
+                                        if (idWord != Configurator.getInstsance().getInt("notfound.value"))
+                                        {
+                                            writeWord2Cognome(idWord, idAutore);
+                                        }
+                                        else
+                                        {
+                                            status = ApplicationErrorType.READ_WORD_ERROR;
+                                        }
                                     }
                                     else
                                     {
@@ -260,6 +270,48 @@ namespace VideoBookApplication.library.dao
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_WORD_ERROR);
             }
+
+
         }
+
+
+        private void writeWord(string word)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("wordmaster.write.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("wordmaster.write.query"), word);
+                command.Parameters.AddWithValue("@word", word);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.WRITE_WORD_ERROR);
+            }
+        }
+
+
+        private void writeWord2Cognome(int idWord, int idAutore)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("word2cognome.write.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("word2cognome.write.query"), idWord.ToString(), idAutore.ToString());
+                command.Parameters.AddWithValue("@idw", idWord);
+                command.Parameters.AddWithValue("@ida", idAutore);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.WRITE_WORD_ERROR);
+            }
+        }
+
+
+
     }
 }
