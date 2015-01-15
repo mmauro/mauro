@@ -127,12 +127,40 @@ namespace VideoBookApplication.library.dao
 
                     foreach (BookModel libro in globalObject.libraryObject.libraryInput.libri)
                     {
+                        int idNota = Configurator.getInstsance().getInt("notfound.value");
+                        int idInfo = Configurator.getInstsance().getInt("notfound.value");
                         if (libro.note != null)
                         {
                             try
                             {
                                 log.Info("STEP 3 : Write Note --> [ " + libro.titolo + " ]");
                                 writeNote(libro.note);
+                                idNota = readIdNota();
+                                if (idNota == Configurator.getInstsance().getInt("notfound.value"))
+                                {
+                                    status = ApplicationErrorType.READ_NOTE_ERROR;
+                                }
+
+                            }
+                            catch (VideoBookException e)
+                            {
+                                log.Error("Throw Exception");
+                                status = e.errorType;
+                            }
+                        }
+
+                        if (status == ApplicationErrorType.SUCCESS && libro.informations != null)
+                        {
+                            try
+                            {
+                                log.Info("STEP 4 : Write Info --> [ " + libro.titolo + " ]");
+                                writeBookInfo(libro.informations);
+                                idInfo = readIdInfo();
+                                if (idInfo == Configurator.getInstsance().getInt("notfound.value"))
+                                {
+                                    status = ApplicationErrorType.READ_BOOKINFO_ERROR;
+                                }
+
                             }
                             catch (VideoBookException e)
                             {
@@ -270,6 +298,62 @@ namespace VideoBookApplication.library.dao
             }
         }
 
+        private void writeBookInfo(BookInfoModel model)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("infobook.write.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("infobook.write.query"), model.titleOrig);
+                command.Parameters.AddWithValue("@img", model.image);
+                command.Parameters.AddWithValue("@edit", model.publisher);
+                command.Parameters.AddWithValue("@isbn", model.isbn);
+                command.Parameters.AddWithValue("@anno", model.year);
+                command.Parameters.AddWithValue("@descr", model.trama);
+                command.Parameters.AddWithValue("@sk", model.urlScheda);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.WRITE_BOOKINFO_ERROR);
+            }
+        }
+
+        private int readIdInfo()
+        {
+            int value = Configurator.getInstsance().getInt("notfound.value");
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("infobook.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("infobook.readmaxid.query"), null);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetInt32("id_info");
+                    }
+
+                }
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+                return value;
+
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.READ_AUTHOR_ERROR);
+            }
+        }
+
         private int readIdWord(string word)
         {
             int value = Configurator.getInstsance().getInt("notfound.value");
@@ -360,8 +444,6 @@ namespace VideoBookApplication.library.dao
                 throw new VideoBookException(ApplicationErrorType.WRITE_W2AUTORE_ERROR);
             }
         }
-
-
 
 
     }
