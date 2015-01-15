@@ -160,6 +160,11 @@ namespace VideoBookApplication.library.dao
                     {
                         value = reader.GetInt32("id_autore");
                     }
+                }
+
+
+                if (reader != null)
+                {
                     reader.Close();
                 }
 
@@ -205,6 +210,11 @@ namespace VideoBookApplication.library.dao
                     {
                         value = reader.GetInt32("id_nota");
                     }
+                    
+                }
+
+                if (reader != null)
+                {
                     reader.Close();
                 }
 
@@ -234,6 +244,11 @@ namespace VideoBookApplication.library.dao
                     {
                         value = reader.GetInt32("id_word");
                     }
+                    
+                }
+
+                if (reader != null)
+                {
                     reader.Close();
                 }
 
