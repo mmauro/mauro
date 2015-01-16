@@ -1,0 +1,254 @@
+CREATE DATABASE  IF NOT EXISTS `VideoBookApplication` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
+USE `VideoBookApplication`;
+-- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
+--
+-- Host: 192.168.0.20    Database: VideoBookApplication
+-- ------------------------------------------------------
+-- Server version	5.5.40-0+wheezy1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `AUTORI`
+--
+
+DROP TABLE IF EXISTS `AUTORI`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AUTORI` (
+  `ID_AUTORE` int(11) NOT NULL AUTO_INCREMENT,
+  `COGNOME` varchar(100) COLLATE utf8_bin NOT NULL,
+  `NOME` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID_AUTORE`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `CATEGORIE`
+--
+
+DROP TABLE IF EXISTS `CATEGORIE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CATEGORIE` (
+  `ID_CATEGORIA` int(11) NOT NULL AUTO_INCREMENT,
+  `CATEGORIA` varchar(50) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`ID_CATEGORIA`),
+  UNIQUE KEY `CATEGORIA_UNIQUE` (`CATEGORIA`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `INFOLIBRI`
+--
+
+DROP TABLE IF EXISTS `INFOLIBRI`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `INFOLIBRI` (
+  `ID_INFOLIBRO` int(11) NOT NULL AUTO_INCREMENT,
+  `IMG` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `EDITORE` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `ISBN` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `YEAR` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `TRAMA` blob,
+  `URL_SCHEDA` varchar(150) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID_INFOLIBRO`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LIBRI`
+--
+
+DROP TABLE IF EXISTS `LIBRI`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `LIBRI` (
+  `ID_LIBRO` int(11) NOT NULL AUTO_INCREMENT,
+  `TITOLO` varchar(255) COLLATE utf8_bin NOT NULL,
+  `SERIE` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `FL_EBOOK` tinyint(1) NOT NULL DEFAULT '0',
+  `AUTORI_ID_AUTORE` int(11) NOT NULL,
+  `CATEGORIE_ID_CATEGORIA` int(11) NOT NULL,
+  `POSIZIONI_ID_POSIZIONE` int(11) NOT NULL,
+  `INFOLIBRI_ID_INFOLIBRO` int(11) DEFAULT NULL,
+  `NOTELIBRI_ID_NOTA` int(11) DEFAULT NULL,
+  `DT_INSERT` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID_LIBRO`),
+  KEY `fk_LIBRI_AUTORI_idx` (`AUTORI_ID_AUTORE`),
+  KEY `fk_LIBRI_CATEGORIE1_idx` (`CATEGORIE_ID_CATEGORIA`),
+  KEY `fk_LIBRI_POSIZIONI1_idx` (`POSIZIONI_ID_POSIZIONE`),
+  KEY `fk_LIBRI_INFOLIBRI1_idx` (`INFOLIBRI_ID_INFOLIBRO`),
+  KEY `fk_LIBRI_NOTELIBRI1_idx` (`NOTELIBRI_ID_NOTA`),
+  CONSTRAINT `fk_LIBRI_INFOLIBRI1` FOREIGN KEY (`INFOLIBRI_ID_INFOLIBRO`) REFERENCES `INFOLIBRI` (`ID_INFOLIBRO`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_LIBRI_NOTELIBRI1` FOREIGN KEY (`NOTELIBRI_ID_NOTA`) REFERENCES `NOTELIBRI` (`ID_NOTA`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_LIBRI_AUTORI` FOREIGN KEY (`AUTORI_ID_AUTORE`) REFERENCES `AUTORI` (`ID_AUTORE`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_LIBRI_CATEGORIE1` FOREIGN KEY (`CATEGORIE_ID_CATEGORIA`) REFERENCES `CATEGORIE` (`ID_CATEGORIA`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fk_LIBRI_POSIZIONI1` FOREIGN KEY (`POSIZIONI_ID_POSIZIONE`) REFERENCES `POSIZIONI` (`ID_POSIZIONE`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `NOTELIBRI`
+--
+
+DROP TABLE IF EXISTS `NOTELIBRI`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `NOTELIBRI` (
+  `ID_NOTA` int(11) NOT NULL AUTO_INCREMENT,
+  `NOTA` blob,
+  PRIMARY KEY (`ID_NOTA`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `POSIZIONI`
+--
+
+DROP TABLE IF EXISTS `POSIZIONI`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `POSIZIONI` (
+  `ID_POSIZIONE` int(11) NOT NULL AUTO_INCREMENT,
+  `POSIZIONE` varchar(50) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`ID_POSIZIONE`),
+  UNIQUE KEY `CATEGORIA_UNIQUE` (`POSIZIONE`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `RESERVED`
+--
+
+DROP TABLE IF EXISTS `RESERVED`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `RESERVED` (
+  `RESERVED` varchar(30) COLLATE utf8_bin NOT NULL,
+  `TYPE_RESERVED` int(11) NOT NULL,
+  PRIMARY KEY (`RESERVED`,`TYPE_RESERVED`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `STEMMER_FORCE`
+--
+
+DROP TABLE IF EXISTS `STEMMER_FORCE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `STEMMER_FORCE` (
+  `WORD` varchar(50) COLLATE utf8_bin NOT NULL,
+  `STEM` varchar(50) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`WORD`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USERS`
+--
+
+DROP TABLE IF EXISTS `USERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `USERS` (
+  `USERNAME` varchar(50) COLLATE utf8_bin NOT NULL,
+  `FL_LIBRARY` tinyint(1) DEFAULT '1',
+  `FL_VIDEO` tinyint(1) DEFAULT '1',
+  `FL_MUSIC` tinyint(1) DEFAULT '1',
+  `FL_SOFTWARE` tinyint(1) DEFAULT '1',
+  `FL_SUPERUSER` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`USERNAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `WORD2BOOK`
+--
+
+DROP TABLE IF EXISTS `WORD2BOOK`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `WORD2BOOK` (
+  `WORD_MASTER_ID_WORD` int(11) NOT NULL,
+  `LIBRI_ID_LIBRO` int(11) NOT NULL,
+  PRIMARY KEY (`WORD_MASTER_ID_WORD`,`LIBRI_ID_LIBRO`),
+  KEY `fk_WORD_MASTER_has_LIBRI_LIBRI1_idx` (`LIBRI_ID_LIBRO`),
+  KEY `fk_WORD_MASTER_has_LIBRI_WORD_MASTER1_idx` (`WORD_MASTER_ID_WORD`),
+  CONSTRAINT `fk_WORD_MASTER_has_LIBRI_LIBRI1` FOREIGN KEY (`LIBRI_ID_LIBRO`) REFERENCES `LIBRI` (`ID_LIBRO`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_WORD_MASTER_has_LIBRI_WORD_MASTER1` FOREIGN KEY (`WORD_MASTER_ID_WORD`) REFERENCES `WORD_MASTER` (`ID_WORD`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `WORD2COGNOME`
+--
+
+DROP TABLE IF EXISTS `WORD2COGNOME`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `WORD2COGNOME` (
+  `WORD_MASTER_ID_WORD` int(11) NOT NULL,
+  `AUTORI_ID_AUTORE` int(11) NOT NULL,
+  PRIMARY KEY (`WORD_MASTER_ID_WORD`,`AUTORI_ID_AUTORE`),
+  KEY `fk_WORD_MASTER_has_AUTORI_AUTORI1_idx` (`AUTORI_ID_AUTORE`),
+  KEY `fk_WORD_MASTER_has_AUTORI_WORD_MASTER1_idx` (`WORD_MASTER_ID_WORD`),
+  CONSTRAINT `fk_WORD_MASTER_has_AUTORI_AUTORI1` FOREIGN KEY (`AUTORI_ID_AUTORE`) REFERENCES `AUTORI` (`ID_AUTORE`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_WORD_MASTER_has_AUTORI_WORD_MASTER1` FOREIGN KEY (`WORD_MASTER_ID_WORD`) REFERENCES `WORD_MASTER` (`ID_WORD`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `WORD2NOME`
+--
+
+DROP TABLE IF EXISTS `WORD2NOME`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `WORD2NOME` (
+  `WORD_MASTER_ID_WORD` int(11) NOT NULL,
+  `AUTORI_ID_AUTORE` int(11) NOT NULL,
+  PRIMARY KEY (`WORD_MASTER_ID_WORD`,`AUTORI_ID_AUTORE`),
+  KEY `fk_WORD_MASTER_has_AUTORI_AUTORI2_idx` (`AUTORI_ID_AUTORE`),
+  KEY `fk_WORD_MASTER_has_AUTORI_WORD_MASTER2_idx` (`WORD_MASTER_ID_WORD`),
+  CONSTRAINT `fk_WORD_MASTER_has_AUTORI_AUTORI2` FOREIGN KEY (`AUTORI_ID_AUTORE`) REFERENCES `AUTORI` (`ID_AUTORE`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_WORD_MASTER_has_AUTORI_WORD_MASTER2` FOREIGN KEY (`WORD_MASTER_ID_WORD`) REFERENCES `WORD_MASTER` (`ID_WORD`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `WORD_MASTER`
+--
+
+DROP TABLE IF EXISTS `WORD_MASTER`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `WORD_MASTER` (
+  `ID_WORD` int(11) NOT NULL AUTO_INCREMENT,
+  `WORD` varchar(50) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`ID_WORD`),
+  UNIQUE KEY `WORD_UNIQUE` (`WORD`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-01-16 21:37:11
