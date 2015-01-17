@@ -285,8 +285,25 @@ namespace VideoBookApplication.library.view
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            globalObject.libraryObject.destroy();
-            parent.closePanel();
+            bool close = true;
+            if (globalObject.libraryObject.libraryInput.libri.Count > 0)
+            {
+                DialogResult responce = MessageBox.Show("Le informazioni andranno perse. Si desidera continuare ?", "ATTENZIONE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (responce.Equals(DialogResult.Yes))
+                {
+                    close = true;
+                }
+                else
+                {
+                    close = false;
+                }
+            }
+
+            if (close)
+            {
+                globalObject.libraryObject.destroy();
+                parent.closePanel();
+            }
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -303,6 +320,7 @@ namespace VideoBookApplication.library.view
                 }
                 else
                 {
+                    globalObject.libraryObject.destroy();
                     DisplayManager.displayMessage(ApplicationErrorType.SUCCESS, "Salvataggio Avvenuto con Successo");
                     parent.closePanel();
                 }
