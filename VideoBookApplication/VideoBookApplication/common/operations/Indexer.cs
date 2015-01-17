@@ -74,7 +74,10 @@ namespace VideoBookApplication.common.operations
                                     {
                                         parola = stemmer.stem(parola);
                                     }
-                                    words.Add(parola);
+                                    if (!words.Contains(parola))
+                                    {
+                                        words.Add(parola);
+                                    }
                                 }
                             }
                         }
