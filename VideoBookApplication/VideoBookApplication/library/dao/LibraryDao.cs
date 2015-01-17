@@ -104,6 +104,11 @@ namespace VideoBookApplication.library.dao
                                             status = ApplicationErrorType.READ_WORD_ERROR;
                                         }
                                     }
+                                    else
+                                    {
+                                        log.Info("Word Found");
+                                        writeWord2Nome(idWord, idAutore);
+                                    }
                                 }
                             }
                             catch (VideoBookException e)
@@ -129,6 +134,8 @@ namespace VideoBookApplication.library.dao
                     {
                         int idNota = Configurator.getInstsance().getInt("notfound.value");
                         int idInfo = Configurator.getInstsance().getInt("notfound.value");
+                        int idLibro = Configurator.getInstsance().getInt("notfound.value");
+
                         if (libro.note != null)
                         {
                             try
@@ -169,6 +176,55 @@ namespace VideoBookApplication.library.dao
                             }
                         }
 
+                        if (status == ApplicationErrorType.SUCCESS)
+                        {
+                            try
+                            {
+                                writeBooks(libro, idAutore, idNota, idInfo);
+                                idLibro = readIdBook();
+                                if (idLibro == Configurator.getInstsance().getInt("notfound.value"))
+                                {
+                                    status = ApplicationErrorType.READ_BOOK_ERROR;
+                                }
+                            }
+                            catch (VideoBookException e)
+                            {
+                                status = e.errorType;
+                            }
+                        }
+
+                        if (status == ApplicationErrorType.SUCCESS)
+                        {
+                            //Scrittura parole indicizzate per titolo
+                            List<string> listaParoleTitoli = globalObject.libraryObject.libraryInput.indexElements.wordBooksTitle[libro];
+                            if (listaParoleTitoli != null && listaParoleTitoli.Count > 0)
+                            {
+                                foreach (string word in listaParoleTitoli)
+                                {
+                                    int idWord = readIdWord(word);
+                                    if (idWord == Configurator.getInstsance().getInt("notfound.value"))
+                                    {
+                                        log.Info("Word Not Found : write");
+                                        writeWord(word);
+                                        idWord = readIdWord(word);
+                                        if (idWord != Configurator.getInstsance().getInt("notfound.value"))
+                                        {
+                                            writeWord2Book(idWord, idLibro);
+                                        }
+                                        else
+                                        {
+                                            status = ApplicationErrorType.READ_WORD_ERROR;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        log.Info("Word Found");
+                                        writeWord2Book(idWord, idLibro);
+                                    }
+                                }
+                            }
+                        }
+
                     }
 
                 }
@@ -178,8 +234,7 @@ namespace VideoBookApplication.library.dao
                 if (status == ApplicationErrorType.SUCCESS)
                 {
                     log.Info("DONE");
-                    //TODO: cambiare con commit
-                    transaction.Rollback();
+                    transaction.Commit();
                 }
                 else
                 {
@@ -444,6 +499,107 @@ namespace VideoBookApplication.library.dao
                 throw new VideoBookException(ApplicationErrorType.WRITE_W2AUTORE_ERROR);
             }
         }
+
+        private void writeBooks(BookModel model, int idAutore, int idNota, int idInfo)
+        {
+            try
+            {
+                //insert into LIBRI (TITOLO, SERIE, FL_EBOOK, AUTORI_ID_AUTORE, CATEGORIE_ID_CATEGORIA, POSIZIONI_ID_POSIZIONE, DT_INSERT, INFOLIBRI_ID_INFOLIBRO, NOTELIBRI_ID_NOTA) values 
+                //(@title, @serie, @flebook, @idauth, @idcat, @idpos, @dtinsert, @info, @nota)
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("books.write.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("books.write.query"), model.titolo);
+                command.Parameters.AddWithValue("@title", model.titolo);
+                command.Parameters.AddWithValue("@serie", model.serie);
+
+
+                command.Parameters.AddWithValue("@flebook", model.flEbook);
+                command.Parameters.AddWithValue("@idauth", idAutore);
+                command.Parameters.AddWithValue("@idcat", model.category.idCategory);
+                command.Parameters.AddWithValue("@idpos", model.position.idPosition);
+                command.Parameters.AddWithValue("@dtinsert", model.dtInsert);
+                if (idNota != Configurator.getInstsance().getInt("notfound.value"))
+                {
+                    command.Parameters.AddWithValue("@nota", idNota);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@nota", null);
+                }
+
+                if (idInfo != Configurator.getInstsance().getInt("notfound.value"))
+                {
+                    command.Parameters.AddWithValue("@info", idInfo);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@info", null);
+                }
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.WRITE_BOOK_ERROR);
+            }
+        }
+
+        private int readIdBook()
+        {
+            int value = Configurator.getInstsance().getInt("notfound.value");
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("books.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("books.readmaxid.query"), null);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetInt32("id_libro");
+                    }
+
+                }
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+                return value;
+
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.READ_BOOK_ERROR);
+            }
+
+
+        }
+
+
+        private void writeWord2Book(int idWord, int idLibro)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("word2book.write.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("word2book.write.query"), idWord.ToString(), idLibro.ToString());
+                command.Parameters.AddWithValue("@idw", idWord);
+                command.Parameters.AddWithValue("@idb", idLibro);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.WRITE_W2BOOK_ERROR);
+            }
+        }
+
+
 
 
     }

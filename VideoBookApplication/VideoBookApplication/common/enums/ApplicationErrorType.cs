@@ -70,6 +70,9 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType WRITE_W2AUTORE_ERROR = new ApplicationErrorType(116, "Write Word 2 Author Error");
         public static ApplicationErrorType WRITE_BOOKINFO_ERROR = new ApplicationErrorType(117, "Write Book Additional Information Error");
         public static ApplicationErrorType READ_BOOKINFO_ERROR = new ApplicationErrorType(118, "Write Book Additional Information Error");
+        public static ApplicationErrorType WRITE_BOOK_ERROR = new ApplicationErrorType(119, "Write Book Error");
+        public static ApplicationErrorType READ_BOOK_ERROR = new ApplicationErrorType(120, "Write Book Error");
+        public static ApplicationErrorType WRITE_W2BOOK_ERROR = new ApplicationErrorType(121, "Write Word 2 Book Error");
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");

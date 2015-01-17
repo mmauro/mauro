@@ -44,6 +44,7 @@ namespace VideoBookApplication.library.controls
                 model.titolo = title;
                 model.serie = serie;
                 model.flEbook = flEbook;
+                model.dtInsert = DateTime.Now;
 
 
                 if (note != null && !note.Trim().Equals(""))

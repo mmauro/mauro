@@ -388,7 +388,7 @@
     <None Include="img\write.png" />
     <None Include="img\trash.png" />
     <None Include="img\TextEdit.png" />
-    <Content Include="resources\VideoBookApplication.sql" />
+    <Content Include="resources\VideoBook.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
