@@ -12,7 +12,7 @@ using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.dao
 {
-    public class BookDao : IGenericOutDao<BookModel>, IGenericInDao<BookModel>
+    public class BookDao : IGenericOutDao<BookModel>, IGenericInDao<BookModel>, IStatisticsDao
     {
 
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -133,6 +133,44 @@ namespace VideoBookApplication.library.dao
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_BOOK_ERROR);
             }
+        }
+
+        public int countElement()
+        {
+            int value = Configurator.getInstsance().getInt("notfound.value");
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("books.countall.query"), DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("books.countall.query"), null);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetInt32("cnt");
+                    }
+                }
+
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+                return value;
+
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.COUNT_BOOK_ERROR);
+            }
+        }
+
+        public int countElement(object value)
+        {
+            throw new NotImplementedException();
         }
     }
 }

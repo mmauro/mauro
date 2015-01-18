@@ -30,6 +30,7 @@ namespace VideoBookApplication.library.view
         private NewAuthorPanel newAuthorPanel = null;
         private NewBooksPanel newBooksPanel = null;
         private InfoBookPanel infoPanel = null;
+        private StatPanel statPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -154,6 +155,14 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(newBooksPanel);
                     }
                     break;
+                case GlobalOperation.LIB_STATS:
+                    if (statPanel == null)
+                    {
+                        statPanel = new StatPanel(ref globalObject, this);
+                        statPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(statPanel);
+                    }
+                    break;
                 case GlobalOperation.LIB_NEW_BOOKS_CATEGORY:
                     if (newCatPanel == null)
                     {
@@ -217,6 +226,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_NEW_BOOKS_CATEGORY);
             closePanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
             closePanel(GlobalOperation.LIB_INFOBOOK);
+            closePanel(GlobalOperation.LIB_STATS);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -268,6 +278,13 @@ namespace VideoBookApplication.library.view
                     {
                         showCatPanel.Visible = false;
                         showCatPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_STATS:
+                    if (statPanel != null)
+                    {
+                        statPanel.Visible = false;
+                        statPanel = null;
                     }
                     break;
                 case GlobalOperation.LIB_SHOW_POS:

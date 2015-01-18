@@ -72,6 +72,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType READ_CAT_ERROR = new ApplicationErrorType(123, "Read Category Error");
         public static ApplicationErrorType WRITE_POS_ERROR = new ApplicationErrorType(124, "Write Position Error");
         public static ApplicationErrorType READ_POS_ERROR = new ApplicationErrorType(125, "Read Position Error");
+        public static ApplicationErrorType COUNT_BOOK_ERROR = new ApplicationErrorType(125, "Count Book Error");
 
 
 

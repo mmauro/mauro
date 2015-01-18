@@ -13,12 +13,15 @@ namespace VideoBookApplication.library.model
 
         public TempLibraryModel tempModel { get; set; }
 
+        public StatObject statistiche { get; set; }
+
         private string mauro;
 
         public LibraryApplicationObject()
         {
             libraryInput = new InputLibraryApplicationObject();
             tempModel = new TempLibraryModel();
+            statistiche = new StatObject();
         }
 
         public void destroy()
@@ -28,6 +31,9 @@ namespace VideoBookApplication.library.model
 
             tempModel.destroy();
             tempModel = new TempLibraryModel();
+
+            statistiche.destroy();
+            statistiche = new StatObject();
         }
     }
 }

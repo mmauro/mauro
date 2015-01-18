@@ -25,6 +25,7 @@ namespace VideoBookApplication.common.enums
         LIB_NEW_BOOKS_POSITION,
         LIB_INFOBOOK,
         LIB_KEEP_TITLE,
-        LIB_DELETE_INFOBOOK
+        LIB_DELETE_INFOBOOK,
+        LIB_STATS
     }
 }
