@@ -66,7 +66,7 @@ namespace VideoBookApplication.library.dao
             catch (Exception e)
             {
                 log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+                throw new VideoBookException(ApplicationErrorType.READ_WORD_ERROR);
             }
         }
 

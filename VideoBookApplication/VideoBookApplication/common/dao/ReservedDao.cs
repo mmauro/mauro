@@ -40,7 +40,7 @@ namespace VideoBookApplication.common.dao
             {
                 transaction.Rollback();
                 log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_WRITE_ERROR);
+                throw new VideoBookException(ApplicationErrorType.WRITE_RESERVED_ERROR);
             }
         }
 
@@ -87,7 +87,7 @@ namespace VideoBookApplication.common.dao
             catch (Exception e)
             {
                 log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+                throw new VideoBookException(ApplicationErrorType.READ_RESERVED_ERROR);
             }
         }
 

@@ -20,7 +20,7 @@ namespace VideoBookApplication.common.enums
         /** SUCCESSO */
         public static ApplicationErrorType SUCCESS = new ApplicationErrorType(0, "Success");
 
-        /** COMMON ERROR 1 - 30 */
+        /** COMMON ERROR 1 - 100 */
         public static ApplicationErrorType FAILURE = new ApplicationErrorType(1, "Generic Failure");
         public static ApplicationErrorType NOT_IMPLEMENTED = new ApplicationErrorType(2, "Not Implemented");
         public static ApplicationErrorType INVALID_TYPE = new ApplicationErrorType(3, "Type is Invalid");
@@ -38,16 +38,11 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType WEBSERVICE_ERROR = new ApplicationErrorType(15, "Web Service Error");
         public static ApplicationErrorType WEBSERVICE_PARSER_ERROR = new ApplicationErrorType(16, "Web Service Parser Error");
         public static ApplicationErrorType OPERATION_ERROR = new ApplicationErrorType(17, "Operation Error");
+        public static ApplicationErrorType READ_RESERVED_ERROR = new ApplicationErrorType(18, "Read Reserved Error");
+        public static ApplicationErrorType WRITE_RESERVED_ERROR = new ApplicationErrorType(19, "Write Reserved Error");
+        public static ApplicationErrorType READ_STEMMER_ERROR = new ApplicationErrorType(20, "Read Stemmer Error");
+        public static ApplicationErrorType WRITE_STEMMER_ERROR = new ApplicationErrorType(21, "Write Stemmer Error");
 
-
-        /** DATABASE ERROR 31 - 50 */
-        public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(31, "Failure Connection to Database");
-        public static ApplicationErrorType DB_WRITE_ERROR = new ApplicationErrorType(32, "Falure Write Object to Database");
-        public static ApplicationErrorType DB_READ_ERROR = new ApplicationErrorType(33, "Falure Read Object from Database");
-
-        /** COMMON OPERATION ERROR 51 - 100*/
-        public static ApplicationErrorType EMPTY_USERNAME = new ApplicationErrorType(51, "Username can't be Null or Empty");
-        public static ApplicationErrorType USER_NOT_FOUND = new ApplicationErrorType(52, "User not Found");
 
         /** LIBRARY OPERATION ERROR 101 - 200 */
         public static ApplicationErrorType EMPTY_CATEGORY = new ApplicationErrorType(101, "Category can't be Null or Empty");
@@ -69,10 +64,26 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType WRITE_WORD_ERROR = new ApplicationErrorType(115, "Write Index Word Error");
         public static ApplicationErrorType WRITE_W2AUTORE_ERROR = new ApplicationErrorType(116, "Write Word 2 Author Error");
         public static ApplicationErrorType WRITE_BOOKINFO_ERROR = new ApplicationErrorType(117, "Write Book Additional Information Error");
-        public static ApplicationErrorType READ_BOOKINFO_ERROR = new ApplicationErrorType(118, "Write Book Additional Information Error");
+        public static ApplicationErrorType READ_BOOKINFO_ERROR = new ApplicationErrorType(118, "Read Book Additional Information Error");
         public static ApplicationErrorType WRITE_BOOK_ERROR = new ApplicationErrorType(119, "Write Book Error");
-        public static ApplicationErrorType READ_BOOK_ERROR = new ApplicationErrorType(120, "Write Book Error");
+        public static ApplicationErrorType READ_BOOK_ERROR = new ApplicationErrorType(120, "Read Book Error");
         public static ApplicationErrorType WRITE_W2BOOK_ERROR = new ApplicationErrorType(121, "Write Word 2 Book Error");
+        public static ApplicationErrorType WRITE_CAT_ERROR = new ApplicationErrorType(122, "Write Category Error");
+        public static ApplicationErrorType READ_CAT_ERROR = new ApplicationErrorType(123, "Read Category Error");
+        public static ApplicationErrorType WRITE_POS_ERROR = new ApplicationErrorType(124, "Write Position Error");
+        public static ApplicationErrorType READ_POS_ERROR = new ApplicationErrorType(125, "Read Position Error");
+
+
+
+        /** DATABASE ERROR 901 - 920 */
+        public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(901, "Failure Connection to Database");
+
+        /** COMMON OPERATION ERROR 921 - 950*/
+        public static ApplicationErrorType EMPTY_USERNAME = new ApplicationErrorType(921, "Username can't be Null or Empty");
+        public static ApplicationErrorType USER_NOT_FOUND = new ApplicationErrorType(922, "User not Found");
+        public static ApplicationErrorType READ_USER_ERROR = new ApplicationErrorType(923, "Read User Error");
+        public static ApplicationErrorType WRITE_USER_ERROR = new ApplicationErrorType(924, "Write User Error");
+
 
         /** WARNING 1001 */
         public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");
@@ -81,5 +92,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType INFOBOOK_NOT_FOUND = new ApplicationErrorType(1004, "No Additional Information Found");
         public static ApplicationErrorType TITLE_DIFFERENT_WARN = new ApplicationErrorType(1005, "Title Are Different. Check Value");
         public static ApplicationErrorType INFO_DELETE_BYUSER_WARN = new ApplicationErrorType(1006, "Informations Detele by User");
+
+
     }
 }

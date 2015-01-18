@@ -41,7 +41,7 @@ namespace VideoBookApplication.library.dao
             {
                 transaction.Rollback();
                 log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_WRITE_ERROR);
+                throw new VideoBookException(ApplicationErrorType.WRITE_CAT_ERROR);
             }
         }
 
@@ -95,7 +95,7 @@ namespace VideoBookApplication.library.dao
             catch (Exception e)
             {
                 log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+                throw new VideoBookException(ApplicationErrorType.READ_CAT_ERROR);
             }
 
         }
@@ -131,7 +131,7 @@ namespace VideoBookApplication.library.dao
             catch (Exception e)
             {
                 log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+                throw new VideoBookException(ApplicationErrorType.READ_CAT_ERROR);
             }
         }
 
@@ -165,7 +165,7 @@ namespace VideoBookApplication.library.dao
             catch (Exception e)
             {
                 log.Error(e.Message);
-                throw new VideoBookException(ApplicationErrorType.DB_READ_ERROR);
+                throw new VideoBookException(ApplicationErrorType.READ_CAT_ERROR);
             }
         }
 
