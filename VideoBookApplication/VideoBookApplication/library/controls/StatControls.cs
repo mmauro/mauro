@@ -19,6 +19,8 @@ namespace VideoBookApplication.library.controls
             try
             {
                 globalObject.libraryObject.statistiche.numLibri = bDao.countElement();
+                globalObject.libraryObject.statistiche.ebook = bDao.countElement(true);
+                globalObject.libraryObject.statistiche.numLibriCarta = globalObject.libraryObject.statistiche.numLibri - globalObject.libraryObject.statistiche.ebook;
             }
             catch (VideoBookException e)
             {

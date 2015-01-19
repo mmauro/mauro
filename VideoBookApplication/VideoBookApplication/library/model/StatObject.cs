@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
+using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.model
 {
@@ -13,9 +14,12 @@ namespace VideoBookApplication.library.model
 
         public int numAutori { get; set; }
         public int numLibri { get; set; }
+        public int numLibriCarta { get; set; }
         public int ebook { get; set; }
         public int media { get; set; }
         public Dictionary<string, int> categoryDistribution { get; set; }
+
+        public BookModel lastBook {get; set; }
 
 
         public StatObject()
@@ -25,6 +29,7 @@ namespace VideoBookApplication.library.model
             numLibri = Configurator.getInstsance().getInt("notfound.value");
             media = Configurator.getInstsance().getInt("notfound.value");
             categoryDistribution = new Dictionary<string, int>();
+            lastBook = null;
         }
 
         public void destroy()
@@ -35,6 +40,7 @@ namespace VideoBookApplication.library.model
             media = Configurator.getInstsance().getInt("notfound.value");
             categoryDistribution.Clear();
             categoryDistribution = new Dictionary<string, int>();
+            lastBook = null;
         }
     }
 }

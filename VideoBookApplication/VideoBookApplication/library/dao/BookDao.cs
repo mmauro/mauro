@@ -170,7 +170,49 @@ namespace VideoBookApplication.library.dao
 
         public int countElement(object value)
         {
-            throw new NotImplementedException();
+            if (value.GetType() == typeof(bool))
+            {
+                return countBookByFlag((bool)value);
+            }
+            else
+            {
+                throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+            }
+        }
+
+        private int countBookByFlag(bool flEbook)
+        {
+            int value = Configurator.getInstsance().getInt("notfound.value");
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("books.countebook.query"), DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@flebook", flEbook);
+
+                LogUtility.printQueryLog(Configurator.getInstsance().get("books.countebook.query"), flEbook.ToString());
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetInt32("cnt");
+                    }
+                }
+
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+                return value;
+
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.COUNT_BOOK_ERROR);
+            }
         }
     }
 }
