@@ -16,11 +16,22 @@ namespace VideoBookApplication.library.controls
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
             BookDao bDao = new BookDao();
+            AuthorDao aDao = new AuthorDao();
             try
             {
+                //Contatore Libri
                 globalObject.libraryObject.statistiche.numLibri = bDao.countElement();
                 globalObject.libraryObject.statistiche.ebook = bDao.countElement(true);
                 globalObject.libraryObject.statistiche.numLibriCarta = globalObject.libraryObject.statistiche.numLibri - globalObject.libraryObject.statistiche.ebook;
+
+                //Contatore Autori
+                globalObject.libraryObject.statistiche.numAutori = aDao.countElement();
+                globalObject.libraryObject.statistiche.media = 0;
+                if (globalObject.libraryObject.statistiche.numAutori > 0)
+                {
+                    double floatValue = globalObject.libraryObject.statistiche.numLibri / globalObject.libraryObject.statistiche.numAutori;
+                    globalObject.libraryObject.statistiche.media = (int)Math.Ceiling(floatValue);
+                }
             }
             catch (VideoBookException e)
             {

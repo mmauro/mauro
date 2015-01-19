@@ -73,8 +73,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType WRITE_POS_ERROR = new ApplicationErrorType(124, "Write Position Error");
         public static ApplicationErrorType READ_POS_ERROR = new ApplicationErrorType(125, "Read Position Error");
         public static ApplicationErrorType COUNT_BOOK_ERROR = new ApplicationErrorType(125, "Count Book Error");
-
-
+        public static ApplicationErrorType COUNT_AUTHOR_ERROR = new ApplicationErrorType(126, "Count Author Error");
 
         /** DATABASE ERROR 901 - 920 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(901, "Failure Connection to Database");
