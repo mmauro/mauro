@@ -19,7 +19,14 @@ namespace VideoBookApplication.library.dao
 
         public BookModel readOne(object value)
         {
-            throw new NotImplementedException();
+            if (value.GetType() == typeof(int))
+            {
+                return readByIdLibro((int)value);
+            }
+            else
+            {
+                throw new VideoBookException(ApplicationErrorType.NOT_ALLOWED);
+            }
         }
 
         public IEnumerable<BookModel> readMany(object value)
@@ -37,7 +44,7 @@ namespace VideoBookApplication.library.dao
             throw new NotImplementedException();
         }
 
-        public IEnumerable<BookModel> readByIdAutore(int idAutore)
+        private IEnumerable<BookModel> readByIdAutore(int idAutore)
         {
             List<BookModel> books = new List<BookModel>();
 
@@ -63,6 +70,7 @@ namespace VideoBookApplication.library.dao
                         PositionModel posModel = new PositionModel();
                         BookInfoModel infoModel = new BookInfoModel();
                         BookNoteModel noteModel = new BookNoteModel();
+                        AuthorModel author = new AuthorModel();
 
                         model.idLibro = reader.GetInt32("ID_LIBRO");
                         model.titolo = reader.GetString("TITOLO");
@@ -134,6 +142,115 @@ namespace VideoBookApplication.library.dao
                 throw new VideoBookException(ApplicationErrorType.READ_BOOK_ERROR);
             }
         }
+
+        private BookModel readByIdLibro(int idLibro)
+        {
+            BookModel model = null;
+
+            try
+            {
+                //String word = (string)value;
+                String query = Configurator.getInstsance().get("book.readbyid.query");
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@idbook", idLibro);
+
+                LogUtility.printQueryLog(query, idLibro.ToString());
+
+
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //Creazione di tutti gli elementi necessari
+                        model = new BookModel();
+                        
+                        CategoryModel catModel = new CategoryModel();
+                        PositionModel posModel = new PositionModel();
+                        BookInfoModel infoModel = new BookInfoModel();
+                        BookNoteModel noteModel = new BookNoteModel();
+                        AuthorModel author = new AuthorModel();
+
+                        model.idLibro = reader.GetInt32("ID_LIBRO");
+                        model.titolo = reader.GetString("TITOLO");
+                        model.serie = reader.GetString("SERIE");
+                        model.flEbook = reader.GetBoolean("FL_EBOOK");
+                        model.dtInsert = reader.GetDateTime("DT_INSERT");
+
+                        if (reader.GetInt32("ID_POSIZIONE") != Configurator.getInstsance().getInt("notfound.value"))
+                        {
+                            posModel.idPosition = reader.GetInt32("ID_POSIZIONE");
+                            posModel.position = reader.GetString("POSIZIONE");
+                            model.position = posModel;
+                        }
+                        else
+                        {
+                            model.position = null;
+                        }
+
+                        if (reader.GetInt32("ID_CATEGORIA") != Configurator.getInstsance().getInt("notfound.value"))
+                        {
+                            catModel.idCategory = reader.GetInt32("ID_CATEGORIA");
+                            catModel.category = reader.GetString("CATEGORIA");
+                            model.category = catModel;
+                        }
+                        else
+                        {
+                            model.category = null;
+                        }
+
+                        if (reader.GetInt32("ID_NOTA") != Configurator.getInstsance().getInt("notfound.value"))
+                        {
+                            noteModel.idNota = reader.GetInt32("ID_NOTA");
+                            noteModel.nota = reader.GetString("NOTA");
+                            model.note = noteModel;
+                        }
+                        else
+                        {
+                            model.note = null;
+                        }
+
+
+                        if (reader.GetInt32("ID_INFOLIBRO") != Configurator.getInstsance().getInt("notfound.value"))
+                        {
+                            infoModel.idInfoLibro = reader.GetInt32("ID_INFOLIBRO");
+                            infoModel.image = reader.GetString("IMG");
+                            infoModel.isbn = reader.GetString("ISBN");
+                            infoModel.publisher = reader.GetString("EDITORE");
+                            infoModel.trama = reader.GetString("TRAMA");
+                            infoModel.urlScheda = reader.GetString("URL_SCHEDA");
+                            infoModel.year = reader.GetString("YEAR");
+                            model.informations = infoModel;
+                        }
+                        else
+                        {
+                            model.informations = null;
+                        }
+
+                        author.idAutore = reader.GetInt32("ID_AUTORE");
+                        author.cognome = reader.GetString("COGNOME");
+                        author.nome = reader.GetString("NOME");
+                        model.autore = author;
+
+                    }
+                }
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                command.Dispose();
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.READ_BOOK_ERROR);
+            }
+        }
+
 
         public int countElement()
         {
@@ -212,6 +329,39 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.COUNT_BOOK_ERROR);
+            }
+        }
+
+        public int readIdLibro()
+        {
+            int value = Configurator.getInstsance().getInt("notfound.value");
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("books.readmaxid.query"), DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("books.readmaxid.query"), null);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader != null && reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetInt32("id_libro");
+                    }
+                }
+
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+                return value;
+
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.READ_BOOK_ERROR);
             }
         }
     }

@@ -31,6 +31,16 @@ namespace VideoBookApplication.library.controls
                 {
                     double floatValue = globalObject.libraryObject.statistiche.numLibri / globalObject.libraryObject.statistiche.numAutori;
                     globalObject.libraryObject.statistiche.media = (int)Math.Ceiling(floatValue);
+
+                    int idLibro = bDao.readIdLibro();
+                    if (idLibro != Configurator.getInstsance().getInt("notfound.value"))
+                    {
+                        globalObject.libraryObject.statistiche.lastBook = bDao.readOne(idLibro);
+                    }
+                    else
+                    {
+                        status = ApplicationErrorType.EMPTY_BOOKS;
+                    }
                 }
             }
             catch (VideoBookException e)
