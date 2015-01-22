@@ -37,5 +37,11 @@ namespace VideoBookApplication.common.utility
             return Color.Silver;
         }
 
+        public static Color getPanelColor2()
+        {
+            return Color.WhiteSmoke;
+        }
+
+
     }
 }
