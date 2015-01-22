@@ -31,6 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textLastBook = new System.Windows.Forms.RichTextBox();
+            this.textNumbers = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +66,18 @@
             this.textLastBook.TabIndex = 0;
             this.textLastBook.Text = "";
             // 
+            // textNumbers
+            // 
+            this.textNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textNumbers.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textNumbers.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumbers.Location = new System.Drawing.Point(0, 0);
+            this.textNumbers.Name = "textNumbers";
+            this.textNumbers.ReadOnly = true;
+            this.textNumbers.Size = new System.Drawing.Size(100, 96);
+            this.textNumbers.TabIndex = 0;
+            this.textNumbers.Text = "";
+            // 
             // StatPanel
             // 
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -79,6 +92,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RichTextBox textLastBook;
+        private System.Windows.Forms.RichTextBox textNumbers;
 
 
 

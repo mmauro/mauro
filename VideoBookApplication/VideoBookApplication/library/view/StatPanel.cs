@@ -64,7 +64,99 @@ namespace VideoBookApplication.library.view
 
             formatLastBook();
 
+            textNumbers.Size = new Size(groupBox1.Size.Width - 40, groupBox1.Size.Height - 40);
+            textNumbers.Location = new Point(20, 20);
+            textNumbers.BackColor = LayoutManager.getPanelColor2();
+            groupBox1.Controls.Add(textNumbers);
 
+            formatNumbers();
+
+        }
+
+        private void formatNumbers()
+        {
+            int startText = 0;
+            textNumbers.AppendText(Environment.NewLine);
+            string text = "Numero di Autori: ";
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Black;
+            textNumbers.SelectionFont = new Font("Calibri", 12, FontStyle.Bold);
+
+            startText = textNumbers.Text.Length;
+            text = globalObject.libraryObject.statistiche.numAutori.ToString();
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Gray;
+            textNumbers.SelectionFont = new Font("Calibri", 12);
+
+            textNumbers.AppendText(Environment.NewLine);
+            textNumbers.AppendText(Environment.NewLine);
+
+            startText = textNumbers.Text.Length;
+            text = "Numero di Libri: ";
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Black;
+            textNumbers.SelectionFont = new Font("Calibri", 12, FontStyle.Bold);
+
+            startText = textNumbers.Text.Length;
+            text = globalObject.libraryObject.statistiche.numLibri.ToString();
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Gray;
+            textNumbers.SelectionFont = new Font("Calibri", 12);
+
+            textNumbers.AppendText(Environment.NewLine);
+
+            startText = textNumbers.Text.Length;
+            text = "Numero di Libri Cartacei: ";
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Black;
+            textNumbers.SelectionFont = new Font("Calibri", 12, FontStyle.Bold);
+
+            startText = textNumbers.Text.Length;
+            text = globalObject.libraryObject.statistiche.numLibriCarta.ToString();
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Gray;
+            textNumbers.SelectionFont = new Font("Calibri", 12);
+
+            textNumbers.AppendText(Environment.NewLine);
+
+            startText = textNumbers.Text.Length;
+            text = "Numero Ebook: ";
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Black;
+            textNumbers.SelectionFont = new Font("Calibri", 12, FontStyle.Bold);
+
+            startText = textNumbers.Text.Length;
+            text = globalObject.libraryObject.statistiche.ebook.ToString();
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Gray;
+            textNumbers.SelectionFont = new Font("Calibri", 12);
+
+            textNumbers.AppendText(Environment.NewLine);
+            textNumbers.AppendText(Environment.NewLine);
+
+            startText = textNumbers.Text.Length;
+            text = "Media Libri/Autori: ";
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Black;
+            textNumbers.SelectionFont = new Font("Calibri", 12, FontStyle.Bold);
+
+            startText = textNumbers.Text.Length;
+            text = globalObject.libraryObject.statistiche.media.ToString();
+            textNumbers.AppendText(text);
+            textNumbers.Select(startText, text.Length);
+            textNumbers.SelectionColor = Color.Gray;
+            textNumbers.SelectionFont = new Font("Calibri", 12);
+
+            
         }
 
         private void formatLastBook() {
