@@ -32,6 +32,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textLastBook = new System.Windows.Forms.RichTextBox();
             this.textNumbers = new System.Windows.Forms.RichTextBox();
+            this.buttonGraph = new System.Windows.Forms.Button();
+            this.buttonOk = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +80,28 @@
             this.textNumbers.TabIndex = 0;
             this.textNumbers.Text = "";
             // 
+            // buttonGraph
+            // 
+            this.buttonGraph.BackgroundImage = global::VideoBookApplication.Properties.Resources.chart;
+            this.buttonGraph.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonGraph.Location = new System.Drawing.Point(323, 136);
+            this.buttonGraph.Name = "buttonGraph";
+            this.buttonGraph.Size = new System.Drawing.Size(48, 48);
+            this.buttonGraph.TabIndex = 0;
+            this.buttonGraph.UseVisualStyleBackColor = true;
+            this.buttonGraph.Click += new System.EventHandler(this.buttonGraph_Click);
+            // 
+            // buttonOk
+            // 
+            this.buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.button_ok;
+            this.buttonOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonOk.Location = new System.Drawing.Point(254, 136);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(48, 48);
+            this.buttonOk.TabIndex = 1;
+            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
+            // 
             // StatPanel
             // 
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -93,6 +117,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RichTextBox textLastBook;
         private System.Windows.Forms.RichTextBox textNumbers;
+        private System.Windows.Forms.Button buttonGraph;
+        private System.Windows.Forms.Button buttonOk;
 
 
 

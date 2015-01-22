@@ -31,6 +31,7 @@ namespace VideoBookApplication.library.view
         private NewBooksPanel newBooksPanel = null;
         private InfoBookPanel infoPanel = null;
         private StatPanel statPanel = null;
+        private StatGraphPanel graphPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -208,6 +209,22 @@ namespace VideoBookApplication.library.view
                         }
                     }
                     break;
+                case GlobalOperation.LIB_STATS_GRAPH:
+                    if (graphPanel == null)
+                    {
+                        if (statPanel != null)
+                        {
+                            graphPanel = new StatGraphPanel(ref globalObject, this);
+                            graphPanel.Location = new Point(statPanel.Location.X + statPanel.Size.Width + 10, statPanel.Location.Y);
+                            this.Controls.Add(graphPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Graph Panel Error");
+                        }
+                    }
+                    break;
+
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -227,6 +244,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
             closePanel(GlobalOperation.LIB_INFOBOOK);
             closePanel(GlobalOperation.LIB_STATS);
+            closePanel(GlobalOperation.LIB_STATS_GRAPH);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -315,6 +333,14 @@ namespace VideoBookApplication.library.view
                         infoPanel = null;
                     }
                     break;
+                case GlobalOperation.LIB_STATS_GRAPH:
+                    if (graphPanel != null)
+                    {
+                        graphPanel.Visible = false;
+                        graphPanel = null;
+                    }
+                    break;
+
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;

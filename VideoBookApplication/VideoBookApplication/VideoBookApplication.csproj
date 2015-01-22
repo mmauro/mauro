@@ -252,6 +252,12 @@
     <Compile Include="library\view\ShowPositionPanel.Designer.cs">
       <DependentUpon>ShowPositionPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\StatGraphPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\StatGraphPanel.Designer.cs">
+      <DependentUpon>StatGraphPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\StatPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -332,6 +338,9 @@
     <EmbeddedResource Include="library\view\ShowPositionPanel.resx">
       <DependentUpon>ShowPositionPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="library\view\StatGraphPanel.resx">
+      <DependentUpon>StatGraphPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="library\view\StatPanel.resx">
       <DependentUpon>StatPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,6 +386,7 @@
     <Content Include="img\button_ok.png" />
     <Content Include="img\changeapp.png" />
     <None Include="img\check.png" />
+    <None Include="img\chart.png" />
     <Content Include="img\close2.png" />
     <None Include="img\document.png" />
     <None Include="img\dump-db.png" />

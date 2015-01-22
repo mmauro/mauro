@@ -71,6 +71,12 @@ namespace VideoBookApplication.library.view
 
             formatNumbers();
 
+            //Gestione pulsanti
+            buttonOk.Location = new Point(this.Size.Width - (20 + buttonOk.Size.Height), groupBox2.Location.Y + groupBox2.Size.Height + 10);
+            this.Controls.Add(buttonOk);
+
+            buttonGraph.Location = new Point(buttonOk.Location.X - (buttonGraph.Size.Width + 30), buttonOk.Location.Y);
+            this.Controls.Add(buttonGraph);
         }
 
         private void formatNumbers()
@@ -217,6 +223,16 @@ namespace VideoBookApplication.library.view
                 textLastBook.SelectionFont = new Font("Calibri", 12, FontStyle.Italic);
                 textLastBook.SelectionColor = Color.Red;
             }
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            parent.closePanel();
+        }
+
+        private void buttonGraph_Click(object sender, EventArgs e)
+        {
+            parent.openPanel(GlobalOperation.LIB_STATS_GRAPH);
         }
     }
 }
