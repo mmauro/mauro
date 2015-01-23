@@ -87,7 +87,11 @@ namespace VideoBookApplication.library.dao
                         arrayCat.Add(model);
                     }
                 }
-                reader.Close();
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
                 command.Dispose();
 
                 return arrayCat;
@@ -123,7 +127,11 @@ namespace VideoBookApplication.library.dao
                         model.category = reader.GetString("CATEGORIA");
                     }
                 }
-                reader.Close();
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
                 command.Dispose();
 
                 return model;
@@ -157,7 +165,11 @@ namespace VideoBookApplication.library.dao
                         model.category = reader.GetString("CATEGORIA");
                     }
                 }
-                reader.Close();
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
                 command.Dispose();
 
                 return model;

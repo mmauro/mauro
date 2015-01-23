@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
+using VideoBookApplication.common.enums;
+using VideoBookApplication.library.controls;
 
 namespace VideoBookApplication.library.view
 {
@@ -18,13 +20,23 @@ namespace VideoBookApplication.library.view
 
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private StatControls control = new StatControls();
 
         public StatGraphPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.parent = parent;
             this.globalObject = globalObject;
-            initPanel();
+            ApplicationErrorType status = control.getCategoryCount(ref this.globalObject);
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                initPanel();
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
+            
         }
 
         private void initPanel()

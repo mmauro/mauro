@@ -50,5 +50,28 @@ namespace VideoBookApplication.library.controls
 
             return status;
         }
+
+        public ApplicationErrorType getCategoryCount(ref GlobalApplicationObject globalObject)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+
+            StatDao sDao = new StatDao();
+            try
+            {
+                globalObject.libraryObject.statistiche.categoryDistribution = sDao.countCategory();
+                if (globalObject.libraryObject.statistiche.categoryDistribution == null)
+                {
+                    globalObject.libraryObject.statistiche.categoryDistribution = new Dictionary<string, int>();
+                }
+            }
+            catch (VideoBookException e)
+            {
+                status = e.errorType;
+            }
+
+
+            return status;
+        }
     }
 }

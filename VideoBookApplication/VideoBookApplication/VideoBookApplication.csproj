@@ -170,6 +170,7 @@
     <Compile Include="library\dao\AuthorDao.cs" />
     <Compile Include="library\dao\BookDao.cs" />
     <Compile Include="library\dao\LibraryDao.cs" />
+    <Compile Include="library\dao\StatDao.cs" />
     <Compile Include="library\dao\WordMasterCognomeDao.cs" />
     <Compile Include="library\dao\WordMasterNomeDao.cs" />
     <Compile Include="library\model\database\AuthorModel.cs" />
