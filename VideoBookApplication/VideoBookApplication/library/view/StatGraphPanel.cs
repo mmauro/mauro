@@ -98,6 +98,9 @@ namespace VideoBookApplication.library.view
                     }
                 }
 
+                dataGridCategory.Columns[0].Width = dataGridCategory.Size.Width / 2;
+                dataGridCategory.Columns[1].Width = dataGridCategory.Size.Width / 2;
+
                 groupBox2.Controls.Add(dataGridCategory);
             }
 

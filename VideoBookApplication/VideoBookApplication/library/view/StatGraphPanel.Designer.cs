@@ -111,7 +111,7 @@
             this.dataGridCategory.Name = "dataGridCategory";
             this.dataGridCategory.ReadOnly = true;
             this.dataGridCategory.RowHeadersVisible = false;
-            this.dataGridCategory.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridCategory.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridCategory.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridCategory.ShowCellErrors = false;
