@@ -22,6 +22,7 @@ namespace VideoBookApplication.library.view
         private LibraryActivityWindow parent;
         private StatControls control = new StatControls();
 
+
         public StatGraphPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
@@ -69,12 +70,41 @@ namespace VideoBookApplication.library.view
 
             if (globalObject.libraryObject.statistiche.categoryDistribution != null && globalObject.libraryObject.statistiche.categoryDistribution.Count > 0)
             {
-                
+                //Grafico numero libri per categorie
+                //Top 10 category in tabella
+                dataGridCategory.Location = new Point(25, 25);
+                dataGridCategory.BackgroundColor = LayoutManager.getPanelColor2();
+                dataGridCategory.ColumnCount = 2;
+                dataGridCategory.Columns[0].Name = "Categoria";
+                dataGridCategory.Columns[1].Name = "Numero";
+
+                int itemIndex = 0;
+                foreach (KeyValuePair<string, int> entry in globalObject.libraryObject.statistiche.categoryDistribution)
+                {
+                    if (itemIndex < Configurator.getInstsance().getInt("topcat.view"))
+                    {
+                        string[] row = new string[] { entry.Key, entry.Value.ToString() };
+                        dataGridCategory.Rows.Add(row);
+                        itemIndex++;
+                    }
+                }
+
+
+                for (int i = 0; i < dataGridCategory.RowCount; i++)
+                {
+                    dataGridCategory.Rows[i].Selected = false;
+                    for(int j = 0; j<dataGridCategory.ColumnCount; j++) {
+                        dataGridCategory.Rows[i].Cells[j].Selected = false;
+                    }
+                }
+
+                groupBox2.Controls.Add(dataGridCategory);
             }
 
             //Disegno pie chart con numero libri carta / numero libri ebook
             if (globalObject.libraryObject.statistiche.numLibri > 0)
             {
+                //Grafico Numeri libri carte e ebook
             }
 
         }

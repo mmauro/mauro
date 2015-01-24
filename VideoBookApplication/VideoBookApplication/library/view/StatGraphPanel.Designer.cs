@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonOk = new System.Windows.Forms.Button();
+            this.dataGridCategory = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCategory)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -75,11 +79,54 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
+            // dataGridCategory
+            // 
+            this.dataGridCategory.AllowUserToAddRows = false;
+            this.dataGridCategory.AllowUserToDeleteRows = false;
+            this.dataGridCategory.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridCategory.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridCategory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridCategory.Enabled = false;
+            this.dataGridCategory.EnableHeadersVisualStyles = false;
+            this.dataGridCategory.GridColor = System.Drawing.SystemColors.Control;
+            this.dataGridCategory.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.dataGridCategory.Location = new System.Drawing.Point(0, 0);
+            this.dataGridCategory.MultiSelect = false;
+            this.dataGridCategory.Name = "dataGridCategory";
+            this.dataGridCategory.ReadOnly = true;
+            this.dataGridCategory.RowHeadersVisible = false;
+            this.dataGridCategory.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridCategory.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridCategory.ShowCellErrors = false;
+            this.dataGridCategory.ShowCellToolTips = false;
+            this.dataGridCategory.ShowEditingIcon = false;
+            this.dataGridCategory.ShowRowErrors = false;
+            this.dataGridCategory.Size = new System.Drawing.Size(240, 150);
+            this.dataGridCategory.TabIndex = 0;
+            // 
             // StatGraphPanel
             // 
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Size = new System.Drawing.Size(900, 350);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCategory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -90,5 +137,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.DataGridView dataGridCategory;
     }
 }
