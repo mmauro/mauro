@@ -70,38 +70,11 @@ namespace VideoBookApplication.library.view
 
             if (globalObject.libraryObject.statistiche.categoryDistribution != null && globalObject.libraryObject.statistiche.categoryDistribution.Count > 0)
             {
-                //Grafico numero libri per categorie
-                //Top 10 category in tabella
-                dataGridCategory.Location = new Point(25, 25);
-                dataGridCategory.BackgroundColor = LayoutManager.getPanelColor2();
-                dataGridCategory.ColumnCount = 2;
-                dataGridCategory.Columns[0].Name = "Categoria";
-                dataGridCategory.Columns[1].Name = "Numero";
+                //Visualizzazione top Categorie
+                displayGridView();
 
-                int itemIndex = 0;
-                foreach (KeyValuePair<string, int> entry in globalObject.libraryObject.statistiche.categoryDistribution)
-                {
-                    if (itemIndex < Configurator.getInstsance().getInt("topcat.view"))
-                    {
-                        string[] row = new string[] { entry.Key, entry.Value.ToString() };
-                        dataGridCategory.Rows.Add(row);
-                        itemIndex++;
-                    }
-                }
+                //Visualizzazione Grafico categorie Numeri
 
-
-                for (int i = 0; i < dataGridCategory.RowCount; i++)
-                {
-                    dataGridCategory.Rows[i].Selected = false;
-                    for(int j = 0; j<dataGridCategory.ColumnCount; j++) {
-                        dataGridCategory.Rows[i].Cells[j].Selected = false;
-                    }
-                }
-
-                dataGridCategory.Columns[0].Width = dataGridCategory.Size.Width / 2;
-                dataGridCategory.Columns[1].Width = dataGridCategory.Size.Width / 2;
-
-                groupBox2.Controls.Add(dataGridCategory);
             }
 
             //Disegno pie chart con numero libri carta / numero libri ebook
@@ -110,6 +83,34 @@ namespace VideoBookApplication.library.view
                 //Grafico Numeri libri carte e ebook
             }
 
+        }
+
+
+        private void displayGridView()
+        {
+            //Grafico numero libri per categorie
+            //Top 10 category in tabella
+            dataGridCategory.Location = new Point(25, 25);
+            dataGridCategory.BackgroundColor = LayoutManager.getPanelColor2();
+            dataGridCategory.ColumnCount = 2;
+            dataGridCategory.Columns[0].Name = "Categoria";
+            dataGridCategory.Columns[1].Name = "Numero";
+
+            int itemIndex = 0;
+            foreach (KeyValuePair<string, int> entry in globalObject.libraryObject.statistiche.categoryDistribution)
+            {
+                if (itemIndex < Configurator.getInstsance().getInt("topcat.view"))
+                {
+                    string[] row = new string[] { StringUtility.capitalize(entry.Key), entry.Value.ToString() };
+                    dataGridCategory.Rows.Add(row);
+                    itemIndex++;
+                }
+            }
+
+            dataGridCategory.Columns[0].Width = dataGridCategory.Size.Width / 2;
+            dataGridCategory.Columns[1].Width = dataGridCategory.Size.Width / 2;
+
+            groupBox2.Controls.Add(dataGridCategory);
         }
 
         private void displayPieChartBooksNumber()
