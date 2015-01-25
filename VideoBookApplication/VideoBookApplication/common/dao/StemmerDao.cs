@@ -52,7 +52,11 @@ namespace VideoBookApplication.common.dao
                         stemmerList.Add(model);
                     }
                 }
-                reader.Close();
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
                 command.Dispose();
 
                 return stemmerList;

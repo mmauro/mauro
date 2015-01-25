@@ -131,7 +131,11 @@ namespace VideoBookApplication.library.dao
 
                     }
                 }
-                reader.Close();
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
                 command.Dispose();
 
                 return books;

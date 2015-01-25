@@ -59,7 +59,10 @@ namespace VideoBookApplication.library.dao
                         arrayPos.Add(model);
                     }
                 }
-                reader.Close();
+                if (reader != null)
+                {
+                    reader.Close();
+                }
                 command.Dispose();
 
                 return arrayPos;
@@ -120,7 +123,11 @@ namespace VideoBookApplication.library.dao
                         model.position = reader.GetString("POSIZIONE");
                     }
                 }
-                reader.Close();
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
                 command.Dispose();
 
                 return model;
@@ -155,7 +162,12 @@ namespace VideoBookApplication.library.dao
                         model.position = reader.GetString("POSIZIONE");
                     }
                 }
-                reader.Close();
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
                 command.Dispose();
 
                 return model;
