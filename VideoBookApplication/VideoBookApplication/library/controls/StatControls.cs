@@ -41,6 +41,10 @@ namespace VideoBookApplication.library.controls
                     {
                         status = ApplicationErrorType.EMPTY_BOOKS;
                     }
+
+                    //Chiamata per numero libri per categorie
+                    status = getCategoryCount(ref globalObject);
+
                 }
             }
             catch (VideoBookException e)
@@ -51,7 +55,7 @@ namespace VideoBookApplication.library.controls
             return status;
         }
 
-        public ApplicationErrorType getCategoryCount(ref GlobalApplicationObject globalObject)
+        private ApplicationErrorType getCategoryCount(ref GlobalApplicationObject globalObject)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
 

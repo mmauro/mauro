@@ -71,8 +71,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ZedGraph">
-      <HintPath>..\..\..\..\PROGRAMMI\Visual Studio Library\ZedChart\ZedGraph.dll</HintPath>
+    <Reference Include="ZedGraph, Version=1.0.1812.29779, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PROGRAMMI\Visual Studio Library\zedgraph_dll_v5.1.5\ZedGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="ZedGraph.Web">
+      <HintPath>..\..\..\..\PROGRAMMI\Visual Studio Library\zedgraph_dll_v5.1.5\ZedGraph.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +260,12 @@
     <Compile Include="library\view\ShowPositionPanel.Designer.cs">
       <DependentUpon>ShowPositionPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\StatGraphNumbers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\StatGraphNumbers.Designer.cs">
+      <DependentUpon>StatGraphNumbers.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\StatGraphPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -341,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\ShowPositionPanel.resx">
       <DependentUpon>ShowPositionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\StatGraphNumbers.resx">
+      <DependentUpon>StatGraphNumbers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\StatGraphPanel.resx">
       <DependentUpon>StatGraphPanel.cs</DependentUpon>

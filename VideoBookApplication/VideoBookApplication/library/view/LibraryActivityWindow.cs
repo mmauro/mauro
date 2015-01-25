@@ -32,6 +32,7 @@ namespace VideoBookApplication.library.view
         private InfoBookPanel infoPanel = null;
         private StatPanel statPanel = null;
         private StatGraphPanel graphPanel = null;
+        private StatGraphNumbers graphNumberPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -210,13 +211,18 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_STATS_GRAPH:
-                    if (graphPanel == null)
+                    if (graphPanel == null && graphNumberPanel == null)
                     {
                         if (statPanel != null)
                         {
                             graphPanel = new StatGraphPanel(ref globalObject, this);
                             graphPanel.Location = new Point(statPanel.Location.X + statPanel.Size.Width + 10, statPanel.Location.Y);
                             this.Controls.Add(graphPanel);
+
+                            graphNumberPanel = new StatGraphNumbers(ref globalObject, this);
+                            graphNumberPanel.Location = new Point(statPanel.Location.X, statPanel.Location.Y + statPanel.Size.Height + 10);
+                            this.Controls.Add(graphNumberPanel);
+
                         }
                         else
                         {
@@ -339,6 +345,13 @@ namespace VideoBookApplication.library.view
                         graphPanel.Visible = false;
                         graphPanel = null;
                     }
+
+                    if (graphNumberPanel != null)
+                    {
+                        graphNumberPanel.Visible = false;
+                        graphNumberPanel = null;
+                    }
+
                     break;
 
                 default:

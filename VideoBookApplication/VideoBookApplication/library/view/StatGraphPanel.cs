@@ -12,6 +12,7 @@ using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.library.controls;
+using ZedGraph;
 
 namespace VideoBookApplication.library.view
 {
@@ -22,22 +23,15 @@ namespace VideoBookApplication.library.view
         private LibraryActivityWindow parent;
         private StatControls control = new StatControls();
 
+        //Grafico Numeri
+        ZedGraphControl pieGraphNumberBook;
 
         public StatGraphPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.parent = parent;
             this.globalObject = globalObject;
-            ApplicationErrorType status = control.getCategoryCount(ref this.globalObject);
-            if (status == ApplicationErrorType.SUCCESS)
-            {
-                initPanel();
-            }
-            else
-            {
-                DisplayManager.displayError(status);
-            }
-            
+            initPanel();
         }
 
         private void initPanel()
@@ -81,6 +75,7 @@ namespace VideoBookApplication.library.view
             if (globalObject.libraryObject.statistiche.numLibri > 0)
             {
                 //Grafico Numeri libri carte e ebook
+                displayPieChartBooksNumber();
             }
 
         }
@@ -114,6 +109,20 @@ namespace VideoBookApplication.library.view
         }
 
         private void displayPieChartBooksNumber()
+        {
+
+            String[] key = { "Libri Cartacei", "Libri Ebook"};
+            double[] values = {globalObject.libraryObject.statistiche.numLibriCarta, globalObject.libraryObject.statistiche.ebook};
+
+            pieGraphNumberBook = new ZedGraphControl();
+            pieGraphNumberBook.GraphPane.AddPieSlices(values, key);
+            pieGraphNumberBook.Location = new Point(25, 25);
+            pieGraphNumberBook.Size = new Size(groupBox3.Size.Width - 40, groupBox3.Size.Height - 40);
+
+            groupBox3.Controls.Add(pieGraphNumberBook);
+        }
+
+        private void displayPieCharCategoryCount()
         {
         }
 
