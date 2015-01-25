@@ -62,6 +62,8 @@ namespace VideoBookApplication.library.view
             buttonOk.Location = new Point(this.Size.Width - (buttonOk.Size.Width + 20), pieGraphCategory.Location.Y + pieGraphCategory.Size.Height + 10);
             this.Controls.Add(buttonOk);
 
+            toolTip1.SetToolTip(buttonOk, "Chiusura Grafici");
+
         }
 
 

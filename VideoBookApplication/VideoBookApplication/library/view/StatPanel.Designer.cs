@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textLastBook = new System.Windows.Forms.RichTextBox();
             this.textNumbers = new System.Windows.Forms.RichTextBox();
             this.buttonGraph = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,6 +121,7 @@
         private System.Windows.Forms.RichTextBox textNumbers;
         private System.Windows.Forms.Button buttonGraph;
         private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.ToolTip toolTip1;
 
 
 

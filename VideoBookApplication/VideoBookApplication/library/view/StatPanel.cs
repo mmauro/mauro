@@ -77,6 +77,9 @@ namespace VideoBookApplication.library.view
 
             buttonGraph.Location = new Point(buttonOk.Location.X - (buttonGraph.Size.Width + 30), buttonOk.Location.Y);
             this.Controls.Add(buttonGraph);
+
+            toolTip1.SetToolTip(buttonGraph, "Visualizzazione Grafici Statistiche");
+            toolTip1.SetToolTip(buttonOk, "Chiusura Statistiche");
         }
 
         private void formatNumbers()
