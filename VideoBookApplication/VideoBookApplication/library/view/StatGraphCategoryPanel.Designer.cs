@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonOk = new System.Windows.Forms.Button();
             this.dataGridCategory = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCategory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,10 +89,19 @@
             this.dataGridCategory.Size = new System.Drawing.Size(240, 150);
             this.dataGridCategory.TabIndex = 0;
             // 
-            // StatGraphPanel
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(300, 100);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Top Categorie";
+            // 
+            // StatGraphCategoryPanel
             // 
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Size = new System.Drawing.Size(900, 350);
+            this.Size = new System.Drawing.Size(850, 650);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCategory)).EndInit();
             this.ResumeLayout(false);
 
@@ -101,5 +111,6 @@
 
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.DataGridView dataGridCategory;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

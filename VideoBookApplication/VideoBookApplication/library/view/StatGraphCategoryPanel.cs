@@ -24,7 +24,7 @@ namespace VideoBookApplication.library.view
         private StatControls control = new StatControls();
 
         //Grafico Numeri
-        ZedGraphControl pieGraphNumberBook;
+        ZedGraphControl pieGraphCategory;
 
         public StatGraphCategoryPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
@@ -42,6 +42,25 @@ namespace VideoBookApplication.library.view
             TitlePanel titlePanel = new TitlePanel("Statistiche: Categorie", this);
             titlePanel.Location = new Point(0, 0);
             this.Controls.Add(titlePanel);
+
+            groupBox1.Size = new Size(300, this.Size.Height - (titlePanel.Size.Height + titlePanel.Location.Y + 100));
+            groupBox1.BackColor = LayoutManager.getPanelColor2();
+            groupBox1.Location = new Point(5, titlePanel.Location.Y + 5 + titlePanel.Size.Height);
+            this.Controls.Add(groupBox1);
+
+            //Visualizzazione delle categorie + grafico
+            pieGraphCategory = new ZedGraphControl();
+            pieGraphCategory.Size = new Size(this.Size.Width - (groupBox1.Location.X + 15 + groupBox1.Size.Width), this.Size.Height - (titlePanel.Size.Height + titlePanel.Location.Y + 100));
+
+            if (globalObject.libraryObject.statistiche.categoryDistribution != null && globalObject.libraryObject.statistiche.categoryDistribution.Count > 0)
+            {
+                displayGridView();
+
+                displayPieCharCategoryCount();
+            }
+
+            buttonOk.Location = new Point(this.Size.Width - (buttonOk.Size.Width + 20), pieGraphCategory.Location.Y + pieGraphCategory.Size.Height + 10);
+            this.Controls.Add(buttonOk);
 
         }
 
@@ -69,26 +88,34 @@ namespace VideoBookApplication.library.view
 
             dataGridCategory.Columns[0].Width = dataGridCategory.Size.Width / 2;
             dataGridCategory.Columns[1].Width = dataGridCategory.Size.Width / 2;
-
-            //groupBox2.Controls.Add(dataGridCategory);
-        }
-
-        private void displayPieChartBooksNumber()
-        {
-
-            String[] key = { "Libri Cartacei", "Libri Ebook"};
-            double[] values = {globalObject.libraryObject.statistiche.numLibriCarta, globalObject.libraryObject.statistiche.ebook};
-
-            pieGraphNumberBook = new ZedGraphControl();
-            pieGraphNumberBook.GraphPane.AddPieSlices(values, key);
-            pieGraphNumberBook.Location = new Point(25, 25);
-            //pieGraphNumberBook.Size = new Size(groupBox3.Size.Width - 40, groupBox3.Size.Height - 40);
-
-            //groupBox3.Controls.Add(pieGraphNumberBook);
+            groupBox1.Controls.Add(dataGridCategory);
         }
 
         private void displayPieCharCategoryCount()
         {
+            pieGraphCategory.Location = new Point(groupBox1.Location.X + groupBox1.Size.Width + 5, groupBox1.Location.Y);
+
+            pieGraphCategory.GraphPane.Border.IsVisible = false;
+            pieGraphCategory.GraphPane.XAxis.Scale.IsVisible = false;
+            pieGraphCategory.GraphPane.YAxis.Scale.IsVisible = false;
+            pieGraphCategory.GraphPane.YAxis.Title.IsVisible = false;
+            pieGraphCategory.GraphPane.XAxis.Title.IsVisible = false;
+            pieGraphCategory.GraphPane.Title.IsVisible = false;
+
+            double[] values = new double[globalObject.libraryObject.statistiche.categoryDistribution.Count];
+            string[] key = new string[globalObject.libraryObject.statistiche.categoryDistribution.Count];
+
+            int index = 0;
+            foreach (KeyValuePair<string, int> entry in globalObject.libraryObject.statistiche.categoryDistribution)
+            {
+                key[index] = entry.Key;
+                values[index] = entry.Value;
+                index++;
+            }
+
+            pieGraphCategory.GraphPane.AddPieSlices(values, key);
+
+            this.Controls.Add(pieGraphCategory);
         }
 
         private void buttonOk_Click(object sender, EventArgs e)

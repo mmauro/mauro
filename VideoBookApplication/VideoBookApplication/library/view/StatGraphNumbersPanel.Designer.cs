@@ -42,8 +42,9 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
-            // StatGraphNumbers
+            // StatGraphNumbersPanel
             // 
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Size = new System.Drawing.Size(500, 550);
             this.ResumeLayout(false);
 

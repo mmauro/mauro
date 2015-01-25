@@ -40,11 +40,13 @@ namespace VideoBookApplication.library.view
             titlePanel.Location = new Point(0, 0);
             this.Controls.Add(titlePanel);
 
+            pieGraphNumberBook = new ZedGraphControl();
+            pieGraphNumberBook.Size = new Size(this.Size.Width - 50, this.Size.Height - 150);
+            pieGraphNumberBook.Location = new Point(25, 10 + titlePanel.Location.Y + titlePanel.Size.Height);
+
             //Display Graphics
             if (globalObject.libraryObject.statistiche.numLibri > 0)
             {
-                pieGraphNumberBook = new ZedGraphControl();
-                pieGraphNumberBook.Size = new Size(this.Size.Width - 50, this.Size.Height - 100);
                 displayPieChartBooksNumber();
             }
 
@@ -62,14 +64,14 @@ namespace VideoBookApplication.library.view
 
             //pieGraphNumberBook.BackColor = Color.Red;
             pieGraphNumberBook.GraphPane.AddPieSlices(values, key);
-            pieGraphNumberBook.Location = new Point(25, 25);
 
             pieGraphNumberBook.GraphPane.Border.IsVisible = false;
             pieGraphNumberBook.GraphPane.XAxis.Scale.IsVisible = false;
             pieGraphNumberBook.GraphPane.YAxis.Scale.IsVisible = false;
             pieGraphNumberBook.GraphPane.YAxis.Title.IsVisible = false;
             pieGraphNumberBook.GraphPane.XAxis.Title.IsVisible = false;
-           
+            pieGraphNumberBook.GraphPane.Title.IsVisible = false;
+
             this.Controls.Add(pieGraphNumberBook);
         }
 
