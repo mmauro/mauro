@@ -1,6 +1,6 @@
 ﻿namespace VideoBookApplication.library.view
 {
-    partial class StatGraphNumbers
+    partial class StatGraphNumbersPanel
     {
         /// <summary> 
         /// Required designer variable.

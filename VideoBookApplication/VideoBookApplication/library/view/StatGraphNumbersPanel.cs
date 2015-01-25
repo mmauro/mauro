@@ -15,14 +15,14 @@ using VideoBookApplication.common.enums;
 
 namespace VideoBookApplication.library.view
 {
-    public partial class StatGraphNumbers : Panel
+    public partial class StatGraphNumbersPanel : Panel
     {
 
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
         ZedGraphControl pieGraphNumberBook;
 
-        public StatGraphNumbers(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
+        public StatGraphNumbersPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.parent = parent;

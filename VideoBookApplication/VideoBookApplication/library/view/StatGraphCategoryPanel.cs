@@ -16,7 +16,7 @@ using ZedGraph;
 
 namespace VideoBookApplication.library.view
 {
-    public partial class StatGraphPanel : Panel
+    public partial class StatGraphCategoryPanel : Panel
     {
 
         private GlobalApplicationObject globalObject;
@@ -26,7 +26,7 @@ namespace VideoBookApplication.library.view
         //Grafico Numeri
         ZedGraphControl pieGraphNumberBook;
 
-        public StatGraphPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
+        public StatGraphCategoryPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.parent = parent;
@@ -39,44 +39,9 @@ namespace VideoBookApplication.library.view
             this.BackColor = LayoutManager.getPanelColor();
 
             //Title
-            TitlePanel titlePanel = new TitlePanel("Grafici Statistiche", this);
+            TitlePanel titlePanel = new TitlePanel("Statistiche: Categorie", this);
             titlePanel.Location = new Point(0, 0);
             this.Controls.Add(titlePanel);
-
-            groupBox1.Size = new Size((this.Size.Width / 3) - 10, this.Size.Height - 150);
-            groupBox1.Location = new Point(5, titlePanel.Location.Y + titlePanel.Size.Height + 5);
-            groupBox1.BackColor = LayoutManager.getPanelColor2();
-            this.Controls.Add(groupBox1);
-
-            groupBox2.Size = new Size((this.Size.Width / 3) - 10, this.Size.Height - 150);
-            groupBox2.Location = new Point(groupBox1.Location.X + 10 + groupBox1.Size.Width, groupBox1.Location.Y);
-            groupBox2.BackColor = LayoutManager.getPanelColor2();
-            this.Controls.Add(groupBox2);
-
-            groupBox3.Size = new Size((this.Size.Width / 3) - 10, this.Size.Height - 150);
-            groupBox3.Location = new Point(groupBox2.Location.X + 10 + groupBox2.Size.Width, groupBox2.Location.Y);
-            groupBox3.BackColor = LayoutManager.getPanelColor2();
-            this.Controls.Add(groupBox3);
-
-            //Gestione pulsanti
-            buttonOk.Location = new Point(this.Size.Width - (20 + buttonOk.Size.Height), groupBox3.Location.Y + groupBox3.Size.Height + 10);
-            this.Controls.Add(buttonOk);
-
-            if (globalObject.libraryObject.statistiche.categoryDistribution != null && globalObject.libraryObject.statistiche.categoryDistribution.Count > 0)
-            {
-                //Visualizzazione top Categorie
-                displayGridView();
-
-                //Visualizzazione Grafico categorie Numeri
-
-            }
-
-            //Disegno pie chart con numero libri carta / numero libri ebook
-            if (globalObject.libraryObject.statistiche.numLibri > 0)
-            {
-                //Grafico Numeri libri carte e ebook
-                displayPieChartBooksNumber();
-            }
 
         }
 
@@ -105,7 +70,7 @@ namespace VideoBookApplication.library.view
             dataGridCategory.Columns[0].Width = dataGridCategory.Size.Width / 2;
             dataGridCategory.Columns[1].Width = dataGridCategory.Size.Width / 2;
 
-            groupBox2.Controls.Add(dataGridCategory);
+            //groupBox2.Controls.Add(dataGridCategory);
         }
 
         private void displayPieChartBooksNumber()
@@ -117,9 +82,9 @@ namespace VideoBookApplication.library.view
             pieGraphNumberBook = new ZedGraphControl();
             pieGraphNumberBook.GraphPane.AddPieSlices(values, key);
             pieGraphNumberBook.Location = new Point(25, 25);
-            pieGraphNumberBook.Size = new Size(groupBox3.Size.Width - 40, groupBox3.Size.Height - 40);
+            //pieGraphNumberBook.Size = new Size(groupBox3.Size.Width - 40, groupBox3.Size.Height - 40);
 
-            groupBox3.Controls.Add(pieGraphNumberBook);
+            //groupBox3.Controls.Add(pieGraphNumberBook);
         }
 
         private void displayPieCharCategoryCount()

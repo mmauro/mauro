@@ -260,17 +260,17 @@
     <Compile Include="library\view\ShowPositionPanel.Designer.cs">
       <DependentUpon>ShowPositionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="library\view\StatGraphNumbers.cs">
+    <Compile Include="library\view\StatGraphNumbersPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="library\view\StatGraphNumbers.Designer.cs">
-      <DependentUpon>StatGraphNumbers.cs</DependentUpon>
+    <Compile Include="library\view\StatGraphNumbersPanel.Designer.cs">
+      <DependentUpon>StatGraphNumbersPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="library\view\StatGraphPanel.cs">
+    <Compile Include="library\view\StatGraphCategoryPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="library\view\StatGraphPanel.Designer.cs">
-      <DependentUpon>StatGraphPanel.cs</DependentUpon>
+    <Compile Include="library\view\StatGraphCategoryPanel.Designer.cs">
+      <DependentUpon>StatGraphCategoryPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="library\view\StatPanel.cs">
       <SubType>Component</SubType>
@@ -352,11 +352,11 @@
     <EmbeddedResource Include="library\view\ShowPositionPanel.resx">
       <DependentUpon>ShowPositionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="library\view\StatGraphNumbers.resx">
-      <DependentUpon>StatGraphNumbers.cs</DependentUpon>
+    <EmbeddedResource Include="library\view\StatGraphNumbersPanel.resx">
+      <DependentUpon>StatGraphNumbersPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="library\view\StatGraphPanel.resx">
-      <DependentUpon>StatGraphPanel.cs</DependentUpon>
+    <EmbeddedResource Include="library\view\StatGraphCategoryPanel.resx">
+      <DependentUpon>StatGraphCategoryPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\StatPanel.resx">
       <DependentUpon>StatPanel.cs</DependentUpon>

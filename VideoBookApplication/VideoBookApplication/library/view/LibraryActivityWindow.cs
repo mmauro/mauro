@@ -31,8 +31,8 @@ namespace VideoBookApplication.library.view
         private NewBooksPanel newBooksPanel = null;
         private InfoBookPanel infoPanel = null;
         private StatPanel statPanel = null;
-        private StatGraphPanel graphPanel = null;
-        private StatGraphNumbers graphNumberPanel = null;
+        private StatGraphCategoryPanel graphPanel = null;
+        private StatGraphNumbersPanel graphNumberPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -215,11 +215,11 @@ namespace VideoBookApplication.library.view
                     {
                         if (statPanel != null)
                         {
-                            graphPanel = new StatGraphPanel(ref globalObject, this);
+                            graphPanel = new StatGraphCategoryPanel(ref globalObject, this);
                             graphPanel.Location = new Point(statPanel.Location.X + statPanel.Size.Width + 10, statPanel.Location.Y);
                             this.Controls.Add(graphPanel);
 
-                            graphNumberPanel = new StatGraphNumbers(ref globalObject, this);
+                            graphNumberPanel = new StatGraphNumbersPanel(ref globalObject, this);
                             graphNumberPanel.Location = new Point(statPanel.Location.X, statPanel.Location.Y + statPanel.Size.Height + 10);
                             this.Controls.Add(graphNumberPanel);
 
