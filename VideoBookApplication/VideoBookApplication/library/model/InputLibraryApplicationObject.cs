@@ -13,11 +13,14 @@ namespace VideoBookApplication.library.model
         public AuthorModel autore {get; set;}
         public List<BookModel> libri { get; set; }
 
+        public List<AuthorModel> autori { get; set; }
+
         public IndexElementsObject indexElements { get; set; }
 
         public InputLibraryApplicationObject()
         {
             libri = new List<BookModel>();
+            autori = new List<AuthorModel>();
             indexElements = new IndexElementsObject();
         }
 
@@ -26,6 +29,8 @@ namespace VideoBookApplication.library.model
             autore = null;
             libri.Clear();
             libri = new List<BookModel>();
+            autori.Clear();
+            autori = new List<AuthorModel>();
             indexElements.destroy();
         }
     }

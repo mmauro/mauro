@@ -15,8 +15,6 @@ namespace VideoBookApplication.library.model
 
         public StatObject statistiche { get; set; }
 
-        private string mauro;
-
         public LibraryApplicationObject()
         {
             libraryInput = new InputLibraryApplicationObject();

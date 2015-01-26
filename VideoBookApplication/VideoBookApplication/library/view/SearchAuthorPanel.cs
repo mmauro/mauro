@@ -18,6 +18,7 @@ namespace VideoBookApplication.library.view
     public partial class SearchAuthorPanel : Panel
     {
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
         private AuthorControls control = new AuthorControls();
@@ -73,7 +74,29 @@ namespace VideoBookApplication.library.view
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ApplicationErrorType status = control.searchAuthors(textNome.Text, textCognome.Text, ref globalObject);
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                if (globalObject.libraryObject.libraryInput.autore != null)
+                {
+                    log.Info("Autori Trovati = 1");
+                }
+                else
+                {
+                    if (globalObject.libraryObject.libraryInput.autori != null && globalObject.libraryObject.libraryInput.autori.Count > 0)
+                    {
+                        log.Info("Autori Trovati = " + globalObject.libraryObject.libraryInput.autori.Count);
+                    }
+                    else
+                    {
+                        DisplayManager.displayError(ApplicationErrorType.FAILURE, "Unchecked Error");
+                    }
+                }
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
         }
 
     }
