@@ -248,6 +248,12 @@
     <Compile Include="library\view\ResumeAuthorPanel.Designer.cs">
       <DependentUpon>ResumeAuthorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\SearchAuthorPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\SearchAuthorPanel.Designer.cs">
+      <DependentUpon>SearchAuthorPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\ShowCategoryPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -345,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\ResumeAuthorPanel.resx">
       <DependentUpon>ResumeAuthorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\SearchAuthorPanel.resx">
+      <DependentUpon>SearchAuthorPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\ShowCategoryPanel.resx">
       <DependentUpon>ShowCategoryPanel.cs</DependentUpon>

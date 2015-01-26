@@ -33,6 +33,7 @@ namespace VideoBookApplication.library.view
         private StatPanel statPanel = null;
         private StatGraphCategoryPanel graphPanel = null;
         private StatGraphNumbersPanel graphNumberPanel = null;
+        private SearchAuthorPanel searchAuthorPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -230,6 +231,15 @@ namespace VideoBookApplication.library.view
                         }
                     }
                     break;
+                case GlobalOperation.LIB_SEARCH_NEW_BOOK:
+                    if (searchAuthorPanel == null)
+                    {
+                        searchAuthorPanel = new SearchAuthorPanel(ref globalObject, this);
+                        searchAuthorPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(searchAuthorPanel);
+
+                    }
+                    break;
 
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
@@ -251,6 +261,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_INFOBOOK);
             closePanel(GlobalOperation.LIB_STATS);
             closePanel(GlobalOperation.LIB_STATS_GRAPH);
+            closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -351,7 +362,13 @@ namespace VideoBookApplication.library.view
                         graphNumberPanel.Visible = false;
                         graphNumberPanel = null;
                     }
-
+                    break;
+                case GlobalOperation.LIB_SEARCH_NEW_BOOK:
+                    if (searchAuthorPanel != null)
+                    {
+                        searchAuthorPanel.Visible = false;
+                        searchAuthorPanel = null;
+                    }
                     break;
 
                 default:
