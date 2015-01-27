@@ -31,12 +31,12 @@ namespace VideoBookApplication.library.controls
                 {
                     elencoAutoriCognome = wmControl.getAuthorByFirstname(indexCognome.words);
                     if (elencoAutoriCognome != null && elencoAutoriCognome.Count > 0) {
-                        if (indexCognome.words.Count > 1)
-                        {
                             FilterAuthor filter = new FilterAuthor(FilterType.FILTER_AND);
                             elencoAutoriCognome = filter.filter(elencoAutoriCognome, indexCognome.words.Count);
-                        }
-                       warnStatus = ApplicationErrorType.AUTHOR_FIRSTNAME_FOUND_WARN;
+                            if (elencoAutoriCognome != null && elencoAutoriCognome.Count > 0)
+                            {
+                                warnStatus = ApplicationErrorType.AUTHOR_FIRSTNAME_FOUND_WARN;
+                            }
                     }
                 }
                 else
@@ -62,8 +62,11 @@ namespace VideoBookApplication.library.controls
                                 FilterAuthor filterFinal = new FilterAuthor(FilterType.FILTER_AND);
                                 elencoAutoriCognome.AddRange(elencoAutoriNome);
                                 filterFinal.filter(elencoAutoriCognome, 2);
+                                if (elencoAutoriCognome != null && elencoAutoriCognome.Count > 0)
+                                {
+                                    warnStatus = ApplicationErrorType.AUTHOR_FOUND_WARN;
+                                }
                             }
-                            warnStatus = ApplicationErrorType.AUTHOR_FOUND_WARN;
                         }
                     }
                     else

@@ -30,7 +30,7 @@ namespace VideoBookApplication.library.dao
                 String query = Configurator.getInstsance().get("word2nome.readone.query");
                 MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
-                command.Parameters.AddWithValue("@wcognome", word);
+                command.Parameters.AddWithValue("@wnome", word);
 
                 LogUtility.printQueryLog(query, word);
 
