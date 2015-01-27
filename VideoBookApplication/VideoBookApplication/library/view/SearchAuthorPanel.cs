@@ -80,6 +80,16 @@ namespace VideoBookApplication.library.view
                 if (globalObject.libraryObject.libraryInput.autore != null)
                 {
                     log.Info("Autori Trovati = 1");
+                    status = control.addBooksToAuthor(ref globalObject);
+                    if (status != ApplicationErrorType.SUCCESS)
+                    {
+                        DisplayManager.displayError(status);
+                    }
+                    else
+                    {
+                        parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
+                        parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
+                    }
                 }
                 else
                 {

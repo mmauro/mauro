@@ -39,7 +39,7 @@ namespace VideoBookApplication.library.controls
                     }
                     else
                     {
-                        status = ApplicationErrorType.EMPTY_BOOKS;
+                        status = ApplicationErrorType.BOOK_NOT_FOUND;
                     }
 
                     //Chiamata per numero libri per categorie

@@ -44,7 +44,7 @@ namespace VideoBookApplication.library.dao
             throw new NotImplementedException();
         }
 
-        private IEnumerable<BookModel> readByIdAutore(int idAutore)
+        public IEnumerable<BookModel> readByIdAutore(int idAutore)
         {
             List<BookModel> books = new List<BookModel>();
 

@@ -55,7 +55,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType POSITION_ERROR = new ApplicationErrorType(108, "Position Error");
         public static ApplicationErrorType EMPTY_TITLE = new ApplicationErrorType(109, "Title can't be Null or Empty");
         public static ApplicationErrorType NO_ADD_BOOK = new ApplicationErrorType(110, "Unable to Add new Book");
-        public static ApplicationErrorType EMPTY_BOOKS = new ApplicationErrorType(110, "Books not Found");
+        public static ApplicationErrorType BOOK_NOT_FOUND = new ApplicationErrorType(110, "Books not Found");
         public static ApplicationErrorType WRITE_AUTHOR_ERROR = new ApplicationErrorType(110, "Write Author Error");
         public static ApplicationErrorType READ_AUTHOR_ERROR = new ApplicationErrorType(111, "Read Author Error");
         public static ApplicationErrorType WRITE_NOTE_ERROR = new ApplicationErrorType(112, "Write Book Note Error");

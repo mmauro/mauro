@@ -7,6 +7,7 @@ using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.operations;
 using VideoBookApplication.common.utility;
+using VideoBookApplication.library.dao;
 using VideoBookApplication.library.model.database;
 using VideoBookApplication.library.operations;
 
@@ -186,6 +187,7 @@ namespace VideoBookApplication.library.controls
                         if (elencoAutoriCognome.Count == 1)
                         {
                             globalObject.libraryObject.libraryInput.autore = elencoAutoriCognome[0];
+                            globalObject.libraryObject.libraryInput.autori = elencoAutoriCognome;
                         }
                         else
                         {
@@ -199,6 +201,38 @@ namespace VideoBookApplication.library.controls
             catch (VideoBookException e)
             {
                 status = e.errorType;
+            }
+
+            return status;
+        }
+
+        public ApplicationErrorType addBooksToAuthor(ref GlobalApplicationObject globalObject)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            if (globalObject.libraryObject.libraryInput.autore != null && globalObject.libraryObject.libraryInput.autore.idAutore != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                try
+                {
+                    BookDao bDao = new BookDao();
+                    List<BookModel> books = (List<BookModel>)bDao.readByIdAutore(globalObject.libraryObject.libraryInput.autore.idAutore);
+                    if (books != null && books.Count > 0)
+                    {
+                        globalObject.libraryObject.libraryInput.autore.libri = books;
+                    }
+                    else
+                    {
+                        status = ApplicationErrorType.BOOK_NOT_FOUND;
+                    }
+                }
+                catch (VideoBookException e)
+                {
+                    status = e.errorType;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.AUTHOR_NOT_FOUND;
             }
 
             return status;

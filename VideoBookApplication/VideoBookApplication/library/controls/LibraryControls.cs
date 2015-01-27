@@ -76,7 +76,7 @@ namespace VideoBookApplication.library.controls
                 }
                 else
                 {
-                    status = ApplicationErrorType.EMPTY_BOOKS;
+                    status = ApplicationErrorType.BOOK_NOT_FOUND;
                 }
             }
             else
