@@ -254,6 +254,12 @@
     <Compile Include="library\view\SearchAuthorPanel.Designer.cs">
       <DependentUpon>SearchAuthorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\ShowBooksPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\ShowBooksPanel.Designer.cs">
+      <DependentUpon>ShowBooksPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\ShowCategoryPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -354,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\SearchAuthorPanel.resx">
       <DependentUpon>SearchAuthorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\ShowBooksPanel.resx">
+      <DependentUpon>ShowBooksPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\ShowCategoryPanel.resx">
       <DependentUpon>ShowCategoryPanel.cs</DependentUpon>

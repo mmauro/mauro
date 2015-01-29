@@ -225,14 +225,7 @@ namespace VideoBookApplication.library.view
             }
         }
 
-        private void closeOtherPanel()
-        {
-            parent.closePanel(GlobalOperation.LIB_NEW_BOOKS_CATEGORY);
-            parent.closePanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
-            parent.closePanel(GlobalOperation.LIB_SHOW_CAT);
-            parent.closePanel(GlobalOperation.LIB_SHOW_POS);
-            parent.closePanel(GlobalOperation.LIB_INFOBOOK);
-        }
+
 
         private void buttonGoogleBooks_Click(object sender, EventArgs e)
         {
@@ -273,13 +266,13 @@ namespace VideoBookApplication.library.view
 
         private void buttonAddCat_Click(object sender, EventArgs e)
         {
-            closeOtherPanel();
+            parent.closeOtherBooksPanel();
             parent.openPanel(GlobalOperation.LIB_NEW_BOOKS_CATEGORY);
         }
 
         private void buttonAddPos_Click(object sender, EventArgs e)
         {
-            closeOtherPanel();
+            parent.closeOtherBooksPanel();
             parent.openPanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
         }
 
@@ -415,6 +408,8 @@ namespace VideoBookApplication.library.view
         public void deleteInfo()
         {
             userDeleteInfo = true;
+            globalObject.libraryObject.tempModel.infoModel = null;
+            globalObject.libraryObject.tempModel.libro.informations = null;
         }
 
         private void resetPanelInfo()

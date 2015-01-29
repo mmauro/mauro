@@ -34,6 +34,7 @@ namespace VideoBookApplication.library.view
         private StatGraphCategoryPanel graphPanel = null;
         private StatGraphNumbersPanel graphNumberPanel = null;
         private SearchAuthorPanel searchAuthorPanel = null;
+        private ShowBooksPanel showBooksPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -211,6 +212,22 @@ namespace VideoBookApplication.library.view
                         }
                     }
                     break;
+                case GlobalOperation.LIB_SHOW_BOOKS:
+                    if (showBooksPanel == null)
+                    {
+                        if (newBooksPanel != null)
+                        {
+                            showBooksPanel = new ShowBooksPanel(ref globalObject, this);
+                            showBooksPanel.Location = new Point(newBooksPanel.Location.X + newBooksPanel.Size.Width + 10, newBooksPanel.Location.Y);
+                            this.Controls.Add(showBooksPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Show Book Panel Error");
+                        }
+                    }
+
+                    break;
                 case GlobalOperation.LIB_STATS_GRAPH:
                     if (graphPanel == null && graphNumberPanel == null)
                     {
@@ -262,6 +279,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_STATS);
             closePanel(GlobalOperation.LIB_STATS_GRAPH);
             closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
+            closePanel(GlobalOperation.LIB_SHOW_BOOKS);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -370,7 +388,13 @@ namespace VideoBookApplication.library.view
                         searchAuthorPanel = null;
                     }
                     break;
-
+                case GlobalOperation.LIB_SHOW_BOOKS:
+                    if (showBooksPanel != null)
+                    {
+                        showBooksPanel.Visible = false;
+                        showBooksPanel = null;
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -430,6 +454,16 @@ namespace VideoBookApplication.library.view
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
             }
+        }
+
+        public void closeOtherBooksPanel()
+        {
+            closePanel(GlobalOperation.LIB_NEW_BOOKS_CATEGORY);
+            closePanel(GlobalOperation.LIB_NEW_BOOKS_POSITION);
+            closePanel(GlobalOperation.LIB_SHOW_CAT);
+            closePanel(GlobalOperation.LIB_SHOW_POS);
+            closePanel(GlobalOperation.LIB_INFOBOOK);
+            closePanel(GlobalOperation.LIB_SHOW_BOOKS);
         }
     }
 }

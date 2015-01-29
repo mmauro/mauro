@@ -45,9 +45,10 @@ namespace VideoBookApplication.library.view
 
                 buttonBooks.Location = new Point(parent.Size.Width - (25 + buttonBooks.Size.Width), 10);
                 this.Controls.Add(buttonBooks);
-                if (globalObject.libraryObject.libraryInput.autore.idAutore == Configurator.getInstsance().getInt("notfound.value"))
+                buttonBooks.Visible = false;
+                if (globalObject.libraryObject.libraryInput.autore.libri != null && globalObject.libraryObject.libraryInput.autore.libri.Count > 0)
                 {
-                    buttonBooks.Visible = false;
+                    buttonBooks.Visible = true;
                 }
 
                 toolTip1.SetToolTip(buttonBooks, "Visualizzazione Libri");
@@ -62,7 +63,8 @@ namespace VideoBookApplication.library.view
 
         private void buttonBooks_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            frame.closeOtherBooksPanel();
+            frame.openPanel(GlobalOperation.LIB_SHOW_BOOKS);
         }
     }
 }

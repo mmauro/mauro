@@ -48,18 +48,21 @@ namespace VideoBookApplication.library.dao
         {
             List<BookModel> books = new List<BookModel>();
 
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
+
             try
             {
                 //String word = (string)value;
                 String query = Configurator.getInstsance().get("books.readmany.byauthor.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@idauth", idAutore);
 
                 LogUtility.printQueryLog(query, idAutore.ToString());
 
                 
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -117,7 +120,7 @@ namespace VideoBookApplication.library.dao
                             infoModel.image = reader.GetString("IMG");
                             infoModel.isbn = reader.GetString("ISBN");
                             infoModel.publisher = reader.GetString("EDITORE");
-                            infoModel.trama = reader.GetString("TRAMA");
+                            infoModel.trama = reader.GetString("TRAMA").Trim();
                             infoModel.urlScheda = reader.GetString("URL_SCHEDA");
                             infoModel.year = reader.GetString("YEAR");
                             model.informations = infoModel;
@@ -132,11 +135,11 @@ namespace VideoBookApplication.library.dao
                     }
                 }
 
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
+                //if (reader != null)
+                //{
+                //    reader.Close();
+                //}
+                //command.Dispose();
 
                 return books;
             }
@@ -144,6 +147,17 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_BOOK_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
 
@@ -222,7 +236,7 @@ namespace VideoBookApplication.library.dao
                             infoModel.image = reader.GetString("IMG");
                             infoModel.isbn = reader.GetString("ISBN");
                             infoModel.publisher = reader.GetString("EDITORE");
-                            infoModel.trama = reader.GetString("TRAMA");
+                            infoModel.trama = reader.GetString("TRAMA").Trim();
                             infoModel.urlScheda = reader.GetString("URL_SCHEDA");
                             infoModel.year = reader.GetString("YEAR");
                             model.informations = infoModel;
