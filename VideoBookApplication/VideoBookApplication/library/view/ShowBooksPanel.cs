@@ -26,6 +26,7 @@ namespace VideoBookApplication.library.view
             InitializeComponent();
             this.parent = parent;
             this.globalObject = globalObject;
+            
             initPanel();
         }
 
@@ -53,7 +54,7 @@ namespace VideoBookApplication.library.view
         {
             int i = 0;
             textBooks.Text = "";
-            foreach (BookModel model in globalObject.libraryObject.libraryInput.libri)
+            foreach (BookModel model in globalObject.libraryObject.libraryInput.autore.libri)
             {
                 int startText = textBooks.Text.Length;
                 String text = "";
@@ -82,7 +83,7 @@ namespace VideoBookApplication.library.view
                 text = "";
                 textBooks.AppendText(Environment.NewLine);
                 startText = textBooks.Text.Length;
-                text = globalObject.libraryObject.statistiche.lastBook.category.category;
+                text = model.category.category;
                 textBooks.AppendText(text);
                 textBooks.Select(startText, text.Length);
                 textBooks.SelectionFont = new Font("Calibri", 11);
