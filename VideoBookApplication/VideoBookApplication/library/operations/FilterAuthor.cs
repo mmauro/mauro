@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.common.operations;
 using VideoBookApplication.common.utility;
+using VideoBookApplication.library.model;
 using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.operations
@@ -32,25 +33,28 @@ namespace VideoBookApplication.library.operations
 
         public List<AuthorModel> filterAnd (List<AuthorModel> listElement, int numMinElement) {
             List<AuthorModel> filterList = new List<AuthorModel>();
-            Dictionary<AuthorModel, int> dictionaryList = new Dictionary<AuthorModel, int>();
+            Dictionary<Int32, FilterAuthorCustomObject> dictionaryList = new Dictionary<int, FilterAuthorCustomObject>();
 
             foreach (AuthorModel model in listElement)
             {
-                int value = 1;
-                if (dictionaryList.ContainsKey(model))
+                int hashCode = model.GetHashCode();
+                if (dictionaryList.ContainsKey(hashCode))
                 {
-                    value += dictionaryList[model];
+                    dictionaryList[hashCode].increment();
                 }
-                dictionaryList.Add(model, value);
+                else
+                {
+                    dictionaryList.Add(hashCode, new FilterAuthorCustomObject(model));
+                }
             }
 
             if (dictionaryList.Count > 0)
             {
-                foreach (KeyValuePair<AuthorModel, int> kvp in dictionaryList)
+                foreach (KeyValuePair<Int32, FilterAuthorCustomObject> kvp in dictionaryList)
                 {
-                    if (kvp.Value >= numMinElement)
+                    if (kvp.Value.value >= numMinElement)
                     {
-                        filterList.Add(kvp.Key);
+                        filterList.Add(kvp.Value.model);
                     }
                 }
             }
@@ -60,12 +64,14 @@ namespace VideoBookApplication.library.operations
 
         public List<AuthorModel> filterOr (List<AuthorModel> listElement) {
             List<AuthorModel> filterList = new List<AuthorModel>();
+            List<int> dictionaryList = new List<int>();
 
             foreach (AuthorModel model in listElement)
             {
-                if (!filterList.Contains(model))
-                {
+                int hashCode = model.GetHashCode();
+                if (!dictionaryList.Contains(hashCode)) {
                     filterList.Add(model);
+                    dictionaryList.Add(hashCode);
                 }
             }
 

@@ -187,6 +187,7 @@
     <Compile Include="library\model\database\WordMasterLibriModel.cs" />
     <Compile Include="library\model\database\WordMasterNomeModel.cs" />
     <Compile Include="library\model\database\WordMasterCognomeModel.cs" />
+    <Compile Include="library\model\FilterAuthorCustomObject.cs" />
     <Compile Include="library\model\IndexElementsObject.cs" />
     <Compile Include="library\model\InputLibraryApplicationObject.cs" />
     <Compile Include="library\model\LibraryApplicationObject.cs" />

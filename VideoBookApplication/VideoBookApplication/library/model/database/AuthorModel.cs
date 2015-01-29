@@ -8,6 +8,9 @@ namespace VideoBookApplication.library.model.database
 {
     public class AuthorModel
     {
+
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public int idAutore { get; set; }
         public string cognome {get; set;}
         public string nome { get; set; }
@@ -15,15 +18,21 @@ namespace VideoBookApplication.library.model.database
 
         public override int GetHashCode()
         {
+            int hash = -1;
             if (idAutore > 0)
             {
-                return idAutore;
+                hash = idAutore;
             }
             else
             {
                 String value = cognome + nome;
-                return value.GetHashCode();
+                hash = value.GetHashCode();
+                //return value.GetHashCode();
             }
+
+            log.Info("HC - " + hash.ToString());
+            return hash;
+
         }
 
         public bool Equals(AuthorModel other)
