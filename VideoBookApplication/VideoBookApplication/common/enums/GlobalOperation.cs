@@ -29,6 +29,7 @@ namespace VideoBookApplication.common.enums
         LIB_STATS,
         LIB_STATS_GRAPH,
         LIB_SEARCH_NEW_BOOK,
-        LIB_SHOW_BOOKS
+        LIB_SHOW_BOOKS,
+        LIB_CHOOSE_AUTHOR
     }
 }

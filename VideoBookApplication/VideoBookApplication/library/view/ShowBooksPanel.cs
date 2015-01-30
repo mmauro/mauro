@@ -39,8 +39,13 @@ namespace VideoBookApplication.library.view
             titlePanel.Location = new Point(0, 0);
             this.Controls.Add(titlePanel);
 
-            textBooks.Size = new Size(this.Size.Width - 50, this.Size.Height - (titlePanel.Location.Y + 130 + titlePanel.Size.Height));
-            textBooks.Location = new Point(25, titlePanel.Location.Y + titlePanel.Size.Height + 10);
+            labelNumBooks.Text = "Libri Trovati : " + globalObject.libraryObject.libraryInput.autore.libri.Count;
+            labelNumBooks.Size = new Size(this.Size.Width, 30);
+            labelNumBooks.Location = new Point(0,titlePanel.Location.Y + 20 + titlePanel.Size.Height);
+            this.Controls.Add(labelNumBooks);
+
+            textBooks.Size = new Size(this.Size.Width - 50, this.Size.Height - (titlePanel.Location.Y + 160 + titlePanel.Size.Height));
+            textBooks.Location = new Point(25, titlePanel.Location.Y + titlePanel.Size.Height + 60);
             this.Controls.Add(textBooks);
 
             displayBooks();

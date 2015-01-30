@@ -30,6 +30,7 @@
         {
             this.textBooks = new System.Windows.Forms.RichTextBox();
             this.buttonOk = new System.Windows.Forms.Button();
+            this.labelNumBooks = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBooks
@@ -55,6 +56,17 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
+            // labelNumBooks
+            // 
+            this.labelNumBooks.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumBooks.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelNumBooks.Location = new System.Drawing.Point(0, 0);
+            this.labelNumBooks.Name = "labelNumBooks";
+            this.labelNumBooks.Size = new System.Drawing.Size(100, 23);
+            this.labelNumBooks.TabIndex = 0;
+            this.labelNumBooks.Text = "label1";
+            this.labelNumBooks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ShowBooksPanel
             // 
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -67,5 +79,6 @@
 
         private System.Windows.Forms.RichTextBox textBooks;
         private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.Label labelNumBooks;
     }
 }
