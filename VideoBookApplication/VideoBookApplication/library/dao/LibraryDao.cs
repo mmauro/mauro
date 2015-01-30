@@ -126,6 +126,10 @@ namespace VideoBookApplication.library.dao
                     }
 
                 }
+                else
+                {
+                    idAutore = globalObject.libraryObject.libraryInput.autore.idAutore;
+                }
 
                 if (status == ApplicationErrorType.SUCCESS)
                 {
