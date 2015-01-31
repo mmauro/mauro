@@ -39,16 +39,17 @@ namespace VideoBookApplication.library.dao
         public IEnumerable<PositionModel> readAll()
         {
             List<PositionModel> arrayPos = new List<PositionModel>();
-
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("position.readall.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 LogUtility.printQueryLog(query, null);
 
                 PositionModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -59,11 +60,6 @@ namespace VideoBookApplication.library.dao
                         arrayPos.Add(model);
                     }
                 }
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
 
                 return arrayPos;
             }
@@ -71,6 +67,17 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_POS_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
 
@@ -103,17 +110,19 @@ namespace VideoBookApplication.library.dao
 
         private PositionModel readPositionByName(string position) 
         {
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("position.read.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@pos", position);
 
                 LogUtility.printQueryLog(query, position);
 
                 PositionModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -123,36 +132,43 @@ namespace VideoBookApplication.library.dao
                         model.position = reader.GetString("POSIZIONE");
                     }
                 }
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-
-                command.Dispose();
-
+                
                 return model;
             }
             catch (Exception e)
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_POS_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
 
         }
 
         private PositionModel readPositionById(int position)
         {
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("position.readbyid.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@idpos", position);
 
                 LogUtility.printQueryLog(query, position.ToString());
 
                 PositionModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -163,19 +179,23 @@ namespace VideoBookApplication.library.dao
                     }
                 }
 
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-
-                command.Dispose();
-
-                return model;
+               return model;
             }
             catch (Exception e)
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_POS_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
 
         }

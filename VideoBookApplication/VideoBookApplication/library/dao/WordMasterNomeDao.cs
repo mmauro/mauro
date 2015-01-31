@@ -24,18 +24,20 @@ namespace VideoBookApplication.library.dao
 
         public WordMasterNomeModel readOne(object value)
         {
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String word = (string)value;
                 String query = Configurator.getInstsance().get("word2nome.readone.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@wnome", word);
 
                 LogUtility.printQueryLog(query, word);
 
                 WordMasterNomeModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
 
@@ -58,19 +60,24 @@ namespace VideoBookApplication.library.dao
 
                     }
                 }
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-
-                command.Dispose();
-
+               
                 return model;
             }
             catch (Exception e)
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_WORD_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
 

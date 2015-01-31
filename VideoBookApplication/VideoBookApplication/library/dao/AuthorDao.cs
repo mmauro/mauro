@@ -39,24 +39,20 @@ namespace VideoBookApplication.library.dao
         public int countElement()
         {
             int value = Configurator.getInstsance().getInt("notfound.value");
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
-                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("author.countall.query"), DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(Configurator.getInstsance().get("author.countall.query"), DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 LogUtility.printQueryLog(Configurator.getInstsance().get("author.countall.query"), null);
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
                     {
                         value = reader.GetInt32("cnt");
                     }
-                }
-
-
-                if (reader != null)
-                {
-                    reader.Close();
                 }
 
                 return value;
@@ -66,6 +62,17 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.COUNT_BOOK_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
 

@@ -52,19 +52,20 @@ namespace VideoBookApplication.common.dao
         public IEnumerable<ReservedModel> readMany(object value)
         {
             List<ReservedModel> arrayReserved = new List<ReservedModel>();
-
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 int type = (int)value;
 
                 String query = Configurator.getInstsance().get("reserved.read.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@typeres", type);
 
                 LogUtility.printQueryLog(query, type.ToString());
 
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -76,11 +77,6 @@ namespace VideoBookApplication.common.dao
                     }
                 }
 
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
 
                 return arrayReserved;
             }
@@ -88,6 +84,17 @@ namespace VideoBookApplication.common.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_RESERVED_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
 

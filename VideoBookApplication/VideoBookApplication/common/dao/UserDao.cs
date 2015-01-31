@@ -75,17 +75,19 @@ namespace VideoBookApplication.common.dao
         private UsersModel getUserByName(String user)
         {
             UsersModel model = null;
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("users.read.query");
 
                 //Prepare Command
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@user", user);
                 LogUtility.printQueryLog(query, user);
 
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows) {
                     while (reader.Read()) {
                         if (model == null) {
@@ -101,18 +103,23 @@ namespace VideoBookApplication.common.dao
                     }
                 }
 
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
-
                 return model;
             }
             catch (Exception e)
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_USER_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
     }

@@ -17,18 +17,19 @@ namespace VideoBookApplication.library.dao
 
         public Dictionary<string, int> countCategory()
         {
-            
 
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("stat.catbookcount.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
 
                 LogUtility.printQueryLog(query, null);
 
                 Dictionary<string, int> categoryCount = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     categoryCount = new Dictionary<string, int>();
@@ -39,18 +40,23 @@ namespace VideoBookApplication.library.dao
                     }
                 }
 
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
-
                 return categoryCount;
             }
             catch (Exception e)
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_CAT_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
     }

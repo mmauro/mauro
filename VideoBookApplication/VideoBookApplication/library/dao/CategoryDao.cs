@@ -67,16 +67,17 @@ namespace VideoBookApplication.library.dao
         public IEnumerable<CategoryModel> readAll()
         {
             List<CategoryModel> arrayCat = new List<CategoryModel>();
-
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("category.readall.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 LogUtility.printQueryLog(query, null);
 
                 CategoryModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -88,12 +89,6 @@ namespace VideoBookApplication.library.dao
                     }
                 }
 
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
-
                 return arrayCat;
             }
             catch (Exception e)
@@ -101,23 +96,36 @@ namespace VideoBookApplication.library.dao
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_CAT_ERROR);
             }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
+            }
 
         }
 
 
         private CategoryModel readCategoryByName(string category)
         {
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("category.read.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@cat", category);
 
                 LogUtility.printQueryLog(query, category);
 
                 CategoryModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -128,12 +136,6 @@ namespace VideoBookApplication.library.dao
                     }
                 }
 
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
-
                 return model;
             }
             catch (Exception e)
@@ -141,21 +143,34 @@ namespace VideoBookApplication.library.dao
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_CAT_ERROR);
             }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
+            }
         }
 
         private CategoryModel readCategoryById(int category)
         {
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("category.readbyid.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 command.Parameters.AddWithValue("@idcat", category);
 
                 LogUtility.printQueryLog(query, category.ToString());
 
                 CategoryModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -166,18 +181,23 @@ namespace VideoBookApplication.library.dao
                     }
                 }
 
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
-
                 return model;
             }
             catch (Exception e)
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_CAT_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
 

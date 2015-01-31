@@ -33,15 +33,17 @@ namespace VideoBookApplication.common.dao
         public IEnumerable<StemmerForceModel> readAll()
         {
             List<StemmerForceModel> stemmerList = new List<StemmerForceModel>();
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
                 String query = Configurator.getInstsance().get("stemmer.readall.query");
-                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
                 command.Prepare();
                 LogUtility.printQueryLog(query, null);
 
                 StemmerForceModel model = null;
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -52,19 +54,23 @@ namespace VideoBookApplication.common.dao
                         stemmerList.Add(model);
                     }
                 }
-
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                command.Dispose();
-
                 return stemmerList;
             }
             catch (Exception e)
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_STEMMER_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
     }

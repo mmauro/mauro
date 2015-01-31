@@ -277,24 +277,20 @@ namespace VideoBookApplication.library.dao
         private int readIdAutore()
         {
             int value = Configurator.getInstsance().getInt("notfound.value");
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
-                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("author.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command = new MySqlCommand(Configurator.getInstsance().get("author.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
                 command.Prepare();
                 LogUtility.printQueryLog(Configurator.getInstsance().get("author.readmaxid.query"), null);
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
                     {
                         value = reader.GetInt32("id_autore");
                     }
-                }
-
-
-                if (reader != null)
-                {
-                    reader.Close();
                 }
 
                 return value;
@@ -304,6 +300,17 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_AUTHOR_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
 
@@ -327,24 +334,20 @@ namespace VideoBookApplication.library.dao
         private int readIdNota()
         {
             int value = Configurator.getInstsance().getInt("notfound.value");
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
-                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("booknote.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command = new MySqlCommand(Configurator.getInstsance().get("booknote.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
                 command.Prepare();
                 LogUtility.printQueryLog(Configurator.getInstsance().get("booknote.readmaxid.query"), null);
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
                     {
                         value = reader.GetInt32("id_nota");
                     }
-                    
-                }
-
-                if (reader != null)
-                {
-                    reader.Close();
                 }
 
                 return value;
@@ -354,6 +357,17 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_AUTHOR_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
         }
 
@@ -383,12 +397,14 @@ namespace VideoBookApplication.library.dao
         private int readIdInfo()
         {
             int value = Configurator.getInstsance().getInt("notfound.value");
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
-                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("infobook.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command = new MySqlCommand(Configurator.getInstsance().get("infobook.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
                 command.Prepare();
                 LogUtility.printQueryLog(Configurator.getInstsance().get("infobook.readmaxid.query"), null);
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -396,11 +412,6 @@ namespace VideoBookApplication.library.dao
                         value = reader.GetInt32("id_info");
                     }
 
-                }
-
-                if (reader != null)
-                {
-                    reader.Close();
                 }
 
                 return value;
@@ -411,18 +422,31 @@ namespace VideoBookApplication.library.dao
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_AUTHOR_ERROR);
             }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
+            }
         }
 
         private int readIdWord(string word)
         {
             int value = Configurator.getInstsance().getInt("notfound.value");
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
-                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("wordmaster.readbyword.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command = new MySqlCommand(Configurator.getInstsance().get("wordmaster.readbyword.query"), DatabaseControl.getInstance().getConnection(), transaction);
                 command.Prepare();
                 command.Parameters.AddWithValue("@word", word);
                 LogUtility.printQueryLog(Configurator.getInstsance().get("wordmaster.readbyword.query"), word);
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -444,6 +468,17 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_WORD_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
 
 
@@ -552,12 +587,14 @@ namespace VideoBookApplication.library.dao
         private int readIdBook()
         {
             int value = Configurator.getInstsance().getInt("notfound.value");
+            MySqlDataReader reader = null;
+            MySqlCommand command = null;
             try
             {
-                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("books.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command = new MySqlCommand(Configurator.getInstsance().get("books.readmaxid.query"), DatabaseControl.getInstance().getConnection(), transaction);
                 command.Prepare();
                 LogUtility.printQueryLog(Configurator.getInstsance().get("books.readmaxid.query"), null);
-                MySqlDataReader reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
@@ -566,12 +603,6 @@ namespace VideoBookApplication.library.dao
                     }
 
                 }
-
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-
                 return value;
 
             }
@@ -579,6 +610,17 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.READ_BOOK_ERROR);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
 
 
