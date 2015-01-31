@@ -18,80 +18,81 @@ namespace VideoBookApplication.common.enums
         }
 
         /** SUCCESSO */
-        public static ApplicationErrorType SUCCESS = new ApplicationErrorType(0, "Success");
+        public static ApplicationErrorType SUCCESS = new ApplicationErrorType(0, "Successo");
 
         /** COMMON ERROR 1 - 100 */
-        public static ApplicationErrorType FAILURE = new ApplicationErrorType(1, "Generic Failure");
-        public static ApplicationErrorType NOT_IMPLEMENTED = new ApplicationErrorType(2, "Not Implemented");
-        public static ApplicationErrorType INVALID_TYPE = new ApplicationErrorType(3, "Type is Invalid");
-        public static ApplicationErrorType INVALID_INIT = new ApplicationErrorType(4, "Application not Properly Initialized");
-        public static ApplicationErrorType EMPTY_RESERVED = new ApplicationErrorType(5, "Reserved can't be Null or Empty");
-        public static ApplicationErrorType NOT_ALLOWED = new ApplicationErrorType(6, "Operation is not Allowed");
-        public static ApplicationErrorType ERROR_RESERVED = new ApplicationErrorType(7, "Error Get Reserved");
-        public static ApplicationErrorType OPEN_PANEL_ERROR = new ApplicationErrorType(8, "Error Open Panel");
-        public static ApplicationErrorType LOAD_RESERVED_ERROR = new ApplicationErrorType(9, "Error Read Reserved Words");
-        public static ApplicationErrorType LOAD_STEMMER_ERROR = new ApplicationErrorType(10, "Error Read Stemmer Forms");
-        public static ApplicationErrorType INDEXER_INVALID_VALUE = new ApplicationErrorType(11, "Indexer Invalid Value");
-        public static ApplicationErrorType INDEXER_PREPARE_ERROR = new ApplicationErrorType(12, "Indexer Problem");
-        public static ApplicationErrorType NO_INDEX = new ApplicationErrorType(13, "Value Could not be Indexed");
-        public static ApplicationErrorType INVALID_VALUE = new ApplicationErrorType(14, "Invalid Value");
-        public static ApplicationErrorType WEBSERVICE_ERROR = new ApplicationErrorType(15, "Web Service Error");
-        public static ApplicationErrorType WEBSERVICE_PARSER_ERROR = new ApplicationErrorType(16, "Web Service Parser Error");
-        public static ApplicationErrorType OPERATION_ERROR = new ApplicationErrorType(17, "Operation Error");
-        public static ApplicationErrorType READ_RESERVED_ERROR = new ApplicationErrorType(18, "Read Reserved Error");
-        public static ApplicationErrorType WRITE_RESERVED_ERROR = new ApplicationErrorType(19, "Write Reserved Error");
-        public static ApplicationErrorType READ_STEMMER_ERROR = new ApplicationErrorType(20, "Read Stemmer Error");
-        public static ApplicationErrorType WRITE_STEMMER_ERROR = new ApplicationErrorType(21, "Write Stemmer Error");
+        public static ApplicationErrorType FAILURE = new ApplicationErrorType(1, "Fallimento");
+        public static ApplicationErrorType NOT_IMPLEMENTED = new ApplicationErrorType(2, "Funzionalità non Implementata");
+        public static ApplicationErrorType INVALID_VALUE = new ApplicationErrorType(3, "Valore non Valido");
+        public static ApplicationErrorType INVALID_INIT = new ApplicationErrorType(4, "Applicazione non Inizializzata Correttamente");
+        public static ApplicationErrorType EMPTY_RESERVED = new ApplicationErrorType(5, "La Riservata non può Essere Nulla o Vuota");
+        public static ApplicationErrorType NOT_ALLOWED = new ApplicationErrorType(6, "Operazione non Permessa");
+        public static ApplicationErrorType ERROR_RESERVED = new ApplicationErrorType(7, "Errore Riservata");
+        public static ApplicationErrorType OPEN_PANEL_ERROR = new ApplicationErrorType(8, "Errore Durante l'Apertura del Pannello");
+        public static ApplicationErrorType LOAD_RESERVED_ERROR = new ApplicationErrorType(9, "Errore Durante il Caricamento delle Riservate");
+        public static ApplicationErrorType LOAD_STEMMER_ERROR = new ApplicationErrorType(10, "Errore Durante la Lettura delle Parole Stemmate");
+        public static ApplicationErrorType INDEXER_INVALID_VALUE = new ApplicationErrorType(11, "Valore non Valido per l'Indicizzazione");
+        public static ApplicationErrorType INDEXER_PREPARE_ERROR = new ApplicationErrorType(12, "Problemi Durante l'Indicizzazione");
+        public static ApplicationErrorType NO_INDEX = new ApplicationErrorType(13, "Il Valore non può Essere Indicizzato");
+        public static ApplicationErrorType WEBSERVICE_ERROR = new ApplicationErrorType(14, "Errore Chiamata Servizio Web");
+        public static ApplicationErrorType WEBSERVICE_PARSER_ERROR = new ApplicationErrorType(15, "Errore Risposta del Servizio Web");
+        public static ApplicationErrorType OPERATION_ERROR = new ApplicationErrorType(16, "Errore Esecuzione dell'Operazione Richiesta");
+        public static ApplicationErrorType READ_RESERVED_ERROR = new ApplicationErrorType(17, "Errore Lettura Parole Riservate");
+        public static ApplicationErrorType WRITE_RESERVED_ERROR = new ApplicationErrorType(18, "Errore di Scrittura delle Parole Riservate");
+        public static ApplicationErrorType READ_STEMMER_ERROR = new ApplicationErrorType(19, "Errore Lettura Parole Stemmate");
+        public static ApplicationErrorType WRITE_STEMMER_ERROR = new ApplicationErrorType(20, "Errore Scrittura Parole Stemmate");
+        public static ApplicationErrorType READ_WORD_ERROR = new ApplicationErrorType(21, "Errore Lettura Parole Indicizzate");
+        public static ApplicationErrorType WRITE_WORD_ERROR = new ApplicationErrorType(22, "Errore Scrittura Parole Indicizzate");
+
 
 
         /** LIBRARY OPERATION ERROR 101 - 200 */
-        public static ApplicationErrorType EMPTY_CATEGORY = new ApplicationErrorType(101, "Category can't be Null or Empty");
-        public static ApplicationErrorType EMPTY_POSITION = new ApplicationErrorType(102, "Position can't be Null or Empty");
-        public static ApplicationErrorType CATEGORY_PRESENT = new ApplicationErrorType(103, "Category Already Present");
-        public static ApplicationErrorType POSITION_PRESENT = new ApplicationErrorType(104, "Position Already Present");
-        public static ApplicationErrorType EMPTY_FIRSTAME = new ApplicationErrorType(105, "Firstname can't be Null or Empty");
-        public static ApplicationErrorType AUTHOR_NOT_FOUND = new ApplicationErrorType(106, "Author not Found");
-        public static ApplicationErrorType CATEGORY_ERROR = new ApplicationErrorType(107, "Category Error");
-        public static ApplicationErrorType POSITION_ERROR = new ApplicationErrorType(108, "Position Error");
-        public static ApplicationErrorType EMPTY_TITLE = new ApplicationErrorType(109, "Title can't be Null or Empty");
-        public static ApplicationErrorType NO_ADD_BOOK = new ApplicationErrorType(110, "Unable to Add new Book");
-        public static ApplicationErrorType BOOK_NOT_FOUND = new ApplicationErrorType(110, "Books not Found");
-        public static ApplicationErrorType WRITE_AUTHOR_ERROR = new ApplicationErrorType(110, "Write Author Error");
-        public static ApplicationErrorType READ_AUTHOR_ERROR = new ApplicationErrorType(111, "Read Author Error");
-        public static ApplicationErrorType WRITE_NOTE_ERROR = new ApplicationErrorType(112, "Write Book Note Error");
-        public static ApplicationErrorType READ_NOTE_ERROR = new ApplicationErrorType(113, "Read Book Note Error");
-        public static ApplicationErrorType READ_WORD_ERROR = new ApplicationErrorType(114, "Read Index Word Error");
-        public static ApplicationErrorType WRITE_WORD_ERROR = new ApplicationErrorType(115, "Write Index Word Error");
-        public static ApplicationErrorType WRITE_W2AUTORE_ERROR = new ApplicationErrorType(116, "Write Word 2 Author Error");
-        public static ApplicationErrorType WRITE_BOOKINFO_ERROR = new ApplicationErrorType(117, "Write Book Additional Information Error");
-        public static ApplicationErrorType READ_BOOKINFO_ERROR = new ApplicationErrorType(118, "Read Book Additional Information Error");
-        public static ApplicationErrorType WRITE_BOOK_ERROR = new ApplicationErrorType(119, "Write Book Error");
-        public static ApplicationErrorType READ_BOOK_ERROR = new ApplicationErrorType(120, "Read Book Error");
-        public static ApplicationErrorType WRITE_W2BOOK_ERROR = new ApplicationErrorType(121, "Write Word 2 Book Error");
-        public static ApplicationErrorType WRITE_CAT_ERROR = new ApplicationErrorType(122, "Write Category Error");
-        public static ApplicationErrorType READ_CAT_ERROR = new ApplicationErrorType(123, "Read Category Error");
-        public static ApplicationErrorType WRITE_POS_ERROR = new ApplicationErrorType(124, "Write Position Error");
-        public static ApplicationErrorType READ_POS_ERROR = new ApplicationErrorType(125, "Read Position Error");
-        public static ApplicationErrorType COUNT_BOOK_ERROR = new ApplicationErrorType(125, "Count Book Error");
-        public static ApplicationErrorType COUNT_AUTHOR_ERROR = new ApplicationErrorType(126, "Count Author Error");
+        public static ApplicationErrorType EMPTY_CATEGORY = new ApplicationErrorType(101, "La Categoria non può Essere Nulla o Vuota");
+        public static ApplicationErrorType EMPTY_POSITION = new ApplicationErrorType(102, "La Posizione non può Essere Nulla o Vuota");
+        public static ApplicationErrorType CATEGORY_PRESENT = new ApplicationErrorType(103, "Categoria già Presente");
+        public static ApplicationErrorType POSITION_PRESENT = new ApplicationErrorType(104, "Posizione già Presente");
+        public static ApplicationErrorType EMPTY_FIRSTAME = new ApplicationErrorType(105, "Il Cognome non può Essere Nullo o Vuoto");
+        public static ApplicationErrorType AUTHOR_NOT_FOUND = new ApplicationErrorType(106, "Autore non Trovato");
+        public static ApplicationErrorType CATEGORY_ERROR = new ApplicationErrorType(107, "Errore Gestione Categorie");
+        public static ApplicationErrorType POSITION_ERROR = new ApplicationErrorType(108, "Errore Gestione Posizioni");
+        public static ApplicationErrorType EMPTY_TITLE = new ApplicationErrorType(109, "Il Titolo non può Essere Nullo o Vuoto");
+        public static ApplicationErrorType NO_ADD_BOOK = new ApplicationErrorType(110, "Impossibile Aggiungere un Nuovo Libro");
+        public static ApplicationErrorType BOOK_NOT_FOUND = new ApplicationErrorType(110, "Libro non Trovato");
+        public static ApplicationErrorType WRITE_AUTHOR_ERROR = new ApplicationErrorType(110, "Errore Scrittura Autore");
+        public static ApplicationErrorType READ_AUTHOR_ERROR = new ApplicationErrorType(111, "Errore Lettura Autore");
+        public static ApplicationErrorType WRITE_NOTE_ERROR = new ApplicationErrorType(112, "Errore Scrittura Note Aggiuntive per il Libro");
+        public static ApplicationErrorType READ_NOTE_ERROR = new ApplicationErrorType(113, "Errore Lettura Note Aggiuntive per il Libro");
+        public static ApplicationErrorType WRITE_W2AUTORE_ERROR = new ApplicationErrorType(116, "Errore Scrittura Parole per Autori");
+        public static ApplicationErrorType WRITE_BOOKINFO_ERROR = new ApplicationErrorType(117, "Errore Scrittura Informazioni Aggiuntive per Libro");
+        public static ApplicationErrorType READ_BOOKINFO_ERROR = new ApplicationErrorType(118, "Errore Lettura Informazioni Aggiuntive per Libro");
+        public static ApplicationErrorType WRITE_BOOK_ERROR = new ApplicationErrorType(119, "Errore Scrittura Libro");
+        public static ApplicationErrorType READ_BOOK_ERROR = new ApplicationErrorType(120, "Errore Lettura Libro");
+        public static ApplicationErrorType WRITE_W2BOOK_ERROR = new ApplicationErrorType(121, "Errore Scrittura Parole per Libri");
+        public static ApplicationErrorType WRITE_CAT_ERROR = new ApplicationErrorType(122, "Errore Scrittura Categoria");
+        public static ApplicationErrorType READ_CAT_ERROR = new ApplicationErrorType(123, "Errore Lettura Categorie");
+        public static ApplicationErrorType WRITE_POS_ERROR = new ApplicationErrorType(124, "Erorre Scrittura Posizioni");
+        public static ApplicationErrorType READ_POS_ERROR = new ApplicationErrorType(125, "Errore Lettura Posizioni");
+        public static ApplicationErrorType COUNT_BOOK_ERROR = new ApplicationErrorType(125, "Errore Calcolo Numero di Libri");
+        public static ApplicationErrorType COUNT_AUTHOR_ERROR = new ApplicationErrorType(126, "Errore Calcolo Numero di Autori");
 
         /** DATABASE ERROR 901 - 920 */
-        public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(901, "Failure Connection to Database");
+        public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(901, "Errore di Connessione al Database");
 
         /** COMMON OPERATION ERROR 921 - 950*/
-        public static ApplicationErrorType EMPTY_USERNAME = new ApplicationErrorType(921, "Username can't be Null or Empty");
-        public static ApplicationErrorType USER_NOT_FOUND = new ApplicationErrorType(922, "User not Found");
-        public static ApplicationErrorType READ_USER_ERROR = new ApplicationErrorType(923, "Read User Error");
-        public static ApplicationErrorType WRITE_USER_ERROR = new ApplicationErrorType(924, "Write User Error");
+        public static ApplicationErrorType EMPTY_USERNAME = new ApplicationErrorType(921, "Il Nome Utente non può Essere Nullo o Vuoto");
+        public static ApplicationErrorType USER_NOT_FOUND = new ApplicationErrorType(922, "Utente non Trovato");
+        public static ApplicationErrorType READ_USER_ERROR = new ApplicationErrorType(923, "Errore Lettura Utente");
+        public static ApplicationErrorType WRITE_USER_ERROR = new ApplicationErrorType(924, "Errore Scrittura Utente");
 
 
         /** WARNING 1001 */
-        public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning Not Intialized");
-        public static ApplicationErrorType AUTHOR_FIRSTNAME_FOUND_WARN = new ApplicationErrorType(1002, "Warning: Found Author with same Firstname");
-        public static ApplicationErrorType AUTHOR_FOUND_WARN = new ApplicationErrorType(1003, "Warning: Found Author with same Firstname, Name");
-        public static ApplicationErrorType INFOBOOK_NOT_FOUND = new ApplicationErrorType(1004, "No Additional Information Found");
-        public static ApplicationErrorType TITLE_DIFFERENT_WARN = new ApplicationErrorType(1005, "Title Are Different. Check Value");
-        public static ApplicationErrorType INFO_DELETE_BYUSER_WARN = new ApplicationErrorType(1006, "Informations Detele by User");
+        public static ApplicationErrorType NOT_INIT_WARN = new ApplicationErrorType(1001, "Warning: Non Inizializzato");
+        public static ApplicationErrorType AUTHOR_FIRSTNAME_FOUND_WARN = new ApplicationErrorType(1002, "Warning: Trovati Altri Autori con Lo Stesso Cognome");
+        public static ApplicationErrorType AUTHOR_FOUND_WARN = new ApplicationErrorType(1003, "Warning: Trovati Autori Simili o Uguali");
+        public static ApplicationErrorType INFOBOOK_NOT_FOUND = new ApplicationErrorType(1004, "Warning: Nessuna Informazione Aggiuntiva Trovata");
+        public static ApplicationErrorType TITLE_DIFFERENT_WARN = new ApplicationErrorType(1005, "Warning: I Titolo Sono Differenti. Controllare i Valori");
+        public static ApplicationErrorType INFO_DELETE_BYUSER_WARN = new ApplicationErrorType(1006, "Warning: Informazioni Cancellate dall'Utente");
+        public static ApplicationErrorType AUTHOR_AMBIG_WARN = new ApplicationErrorType(1007, "Warning: Trovati più Autori");
 
 
     }
