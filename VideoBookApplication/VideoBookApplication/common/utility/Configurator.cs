@@ -97,12 +97,12 @@ namespace VideoBookApplication.common.utility
                 }
                 catch (Exception e)
                 {
-                    return 0;
+                    return Configurator.getInstsance().getInt("notfound.value");
                 }
             }
             else
             {
-                return 0;
+                return Configurator.getInstsance().getInt("notfound.value");
             }
         }
 

@@ -35,6 +35,7 @@ namespace VideoBookApplication.library.view
         private StatGraphNumbersPanel graphNumberPanel = null;
         private SearchAuthorPanel searchAuthorPanel = null;
         private ShowBooksPanel showBooksPanel = null;
+        private SelectAuthorPanel selectAuthorPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -257,6 +258,14 @@ namespace VideoBookApplication.library.view
 
                     }
                     break;
+                case GlobalOperation.LIB_CHOOSE_AUTHOR:
+                    if (selectAuthorPanel == null)
+                    {
+                        selectAuthorPanel = new SelectAuthorPanel(ref globalObject, this);
+                        selectAuthorPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(selectAuthorPanel);
+                    }
+                    break;
 
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
@@ -280,6 +289,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_STATS_GRAPH);
             closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
             closePanel(GlobalOperation.LIB_SHOW_BOOKS);
+            closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -393,6 +403,13 @@ namespace VideoBookApplication.library.view
                     {
                         showBooksPanel.Visible = false;
                         showBooksPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_CHOOSE_AUTHOR:
+                    if (selectAuthorPanel != null)
+                    {
+                        selectAuthorPanel.Visible = false;
+                        selectAuthorPanel = null;
                     }
                     break;
                 default:

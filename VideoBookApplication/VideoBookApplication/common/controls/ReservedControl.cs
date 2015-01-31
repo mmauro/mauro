@@ -24,7 +24,7 @@ namespace VideoBookApplication.common.controls
                 }
                 else
                 {
-                    status = ApplicationErrorType.INVALID_TYPE;
+                    status = ApplicationErrorType.INVALID_VALUE;
                 }
             return status;
         }

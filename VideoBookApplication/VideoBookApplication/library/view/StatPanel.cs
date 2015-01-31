@@ -76,6 +76,11 @@ namespace VideoBookApplication.library.view
             this.Controls.Add(buttonOk);
 
             buttonGraph.Location = new Point(buttonOk.Location.X - (buttonGraph.Size.Width + 30), buttonOk.Location.Y);
+            if (globalObject.libraryObject.statistiche.numAutori == 0 && globalObject.libraryObject.statistiche.numLibri == 0)
+            {
+                //Non ho nessuna informazione per visualizzare grafici: nascondo il pulsante
+                buttonGraph.Visible = false;
+            }
             this.Controls.Add(buttonGraph);
 
             toolTip1.SetToolTip(buttonGraph, "Visualizzazione Grafici Statistiche");

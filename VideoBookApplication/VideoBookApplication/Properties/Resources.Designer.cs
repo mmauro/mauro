@@ -317,6 +317,16 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap next {
+            get {
+                object obj = ResourceManager.GetObject("next", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap no_image {
             get {
                 object obj = ResourceManager.GetObject("no_image", resourceCulture);
@@ -330,6 +340,16 @@ namespace VideoBookApplication.Properties {
         internal static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap previous {
+            get {
+                object obj = ResourceManager.GetObject("previous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -434,10 +454,12 @@ namespace VideoBookApplication.Properties {
         ///### LEVENSTHEIN DISTANCE MAX
         ///levensthein.max.distance = 4
         ///
+        ///### TOP CATEGORY VIEW
+        ///topcat.view = 5
+        ///
         ///### Google Books API
         ///google.books.browser.api.key = AIzaSyCpuZOgKmwxODZiuWEWWIhb9ToCOEm5_3Q
-        ///google.books.schema = https
-        ///google.books.host = www [rest of string was truncated]&quot;;.
+        ///google.books. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Videobook {
             get {

@@ -27,7 +27,7 @@ namespace VideoBookApplication.library.operations
                 case FilterType.FILTER_OR:
                     return filterOr(listElement);
                 default:
-                    throw new VideoBookException(ApplicationErrorType.INVALID_TYPE);
+                    throw new VideoBookException(ApplicationErrorType.INVALID_VALUE);
             }
         }
 

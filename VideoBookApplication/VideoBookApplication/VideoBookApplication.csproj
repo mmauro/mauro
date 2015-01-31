@@ -255,6 +255,12 @@
     <Compile Include="library\view\SearchAuthorPanel.Designer.cs">
       <DependentUpon>SearchAuthorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\SelectAuthorPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\SelectAuthorPanel.Designer.cs">
+      <DependentUpon>SelectAuthorPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\ShowBooksPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -362,6 +368,9 @@
     <EmbeddedResource Include="library\view\SearchAuthorPanel.resx">
       <DependentUpon>SearchAuthorPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="library\view\SelectAuthorPanel.resx">
+      <DependentUpon>SelectAuthorPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="library\view\ShowBooksPanel.resx">
       <DependentUpon>ShowBooksPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -443,6 +452,8 @@
     <None Include="img\plus.png" />
     <None Include="img\no_image.jpg" />
     <None Include="img\save.png" />
+    <None Include="img\next.png" />
+    <None Include="img\previous.png" />
     <Content Include="img\sw.png" />
     <None Include="img\write.png" />
     <None Include="img\trash.png" />

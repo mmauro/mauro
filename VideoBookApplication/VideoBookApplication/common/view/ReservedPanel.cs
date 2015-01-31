@@ -124,7 +124,7 @@ namespace VideoBookApplication.common.view
             }
             else
             {
-                DisplayManager.displayError(ApplicationErrorType.INVALID_TYPE);
+                DisplayManager.displayError(ApplicationErrorType.INVALID_VALUE);
             }
         }
     }

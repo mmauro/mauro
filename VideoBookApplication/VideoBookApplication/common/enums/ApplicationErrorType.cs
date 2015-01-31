@@ -74,6 +74,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType READ_POS_ERROR = new ApplicationErrorType(125, "Errore Lettura Posizioni");
         public static ApplicationErrorType COUNT_BOOK_ERROR = new ApplicationErrorType(125, "Errore Calcolo Numero di Libri");
         public static ApplicationErrorType COUNT_AUTHOR_ERROR = new ApplicationErrorType(126, "Errore Calcolo Numero di Autori");
+        public static ApplicationErrorType NO_AUTHOR_SELECTED = new ApplicationErrorType(127, "Nessun Autore Selezionato");
 
         /** DATABASE ERROR 901 - 920 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(901, "Errore di Connessione al Database");

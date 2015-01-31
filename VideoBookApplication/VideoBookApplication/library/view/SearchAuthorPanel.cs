@@ -96,6 +96,9 @@ namespace VideoBookApplication.library.view
                     if (globalObject.libraryObject.libraryInput.autori != null && globalObject.libraryObject.libraryInput.autori.Count > 0)
                     {
                         log.Info("Autori Trovati = " + globalObject.libraryObject.libraryInput.autori.Count);
+                        DisplayManager.displayWarning(ApplicationErrorType.AUTHOR_AMBIG_WARN, "Selezionare Un Autore Per Proseguire");
+                        parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
+                        parent.openPanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
                     }
                     else
                     {

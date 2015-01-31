@@ -58,7 +58,7 @@ namespace VideoBookApplication.common.dao
             {
                 return getUserByName((String)value);
             }
-            throw new VideoBookException(ApplicationErrorType.INVALID_TYPE);
+            throw new VideoBookException(ApplicationErrorType.INVALID_VALUE);
         }
 
         public IEnumerable<UsersModel> readMany(object value)
