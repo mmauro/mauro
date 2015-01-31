@@ -61,8 +61,17 @@ namespace VideoBookApplication.library.view
         private void displayPieChartBooksNumber()
         {
 
-            String[] key = { "Libri Cartacei", "Libri Ebook" };
-            double[] values = { globalObject.libraryObject.statistiche.numLibriCarta, globalObject.libraryObject.statistiche.ebook };
+            double percCartacei = 0;
+            double percEbook = 0;
+
+            if (globalObject.libraryObject.statistiche.numLibri > 0)
+            {
+                percCartacei = Math.Round((double)((globalObject.libraryObject.statistiche.numLibriCarta / globalObject.libraryObject.statistiche.numLibri) * 100));
+                percEbook = 100 - percCartacei;
+            }
+
+            String[] key = { "Libri Cartacei - " + percCartacei + "%", "Libri Ebook" + percEbook + "%" };
+            double[] values = { percCartacei, percEbook};
 
             //pieGraphNumberBook.BackColor = Color.Red;
             pieGraphNumberBook.GraphPane.AddPieSlices(values, key);
