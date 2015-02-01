@@ -81,7 +81,24 @@ namespace VideoBookApplication.library.view
 
         private void buttonCheck_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ApplicationErrorType status = control.searchAuthors(textNome.Text, textCognome.Text, ref globalObject);
+            if (status == ApplicationErrorType.SUCCESS && globalObject.libraryObject.libraryInput.autori != null && globalObject.libraryObject.libraryInput.autori.Count > 0)
+            {
+                DisplayManager.displayWarning(ApplicationErrorType.AUTHOR_FOUND_WARN);
+                //Apertura di Finestra di Visualizzazione
+                parent.openPanel(GlobalOperation.LIB_SHOW_AUTHOR);
+            }
+            else
+            {
+                if (status != ApplicationErrorType.AUTHOR_NOT_FOUND)
+                {
+                    DisplayManager.displayMessage(status);
+                }
+                else
+                {
+                    DisplayManager.displayError(status);
+                }
+            }
         }
 
         private void buttonOk_Click(object sender, EventArgs e)

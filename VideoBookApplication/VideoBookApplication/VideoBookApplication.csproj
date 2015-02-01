@@ -261,6 +261,12 @@
     <Compile Include="library\view\SelectAuthorPanel.Designer.cs">
       <DependentUpon>SelectAuthorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\ShowAuthorPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\ShowAuthorPanel.Designer.cs">
+      <DependentUpon>ShowAuthorPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\ShowBooksPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -370,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\SelectAuthorPanel.resx">
       <DependentUpon>SelectAuthorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\ShowAuthorPanel.resx">
+      <DependentUpon>ShowAuthorPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\ShowBooksPanel.resx">
       <DependentUpon>ShowBooksPanel.cs</DependentUpon>

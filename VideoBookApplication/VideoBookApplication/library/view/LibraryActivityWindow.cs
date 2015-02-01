@@ -36,6 +36,7 @@ namespace VideoBookApplication.library.view
         private SearchAuthorPanel searchAuthorPanel = null;
         private ShowBooksPanel showBooksPanel = null;
         private SelectAuthorPanel selectAuthorPanel = null;
+        private ShowAuthorPanel showAuthorPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
 
@@ -266,7 +267,21 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(selectAuthorPanel);
                     }
                     break;
-
+                case GlobalOperation.LIB_SHOW_AUTHOR:
+                    if (showAuthorPanel == null)
+                    {
+                        if (newAuthorPanel != null)
+                        {
+                            showAuthorPanel = new ShowAuthorPanel(ref globalObject, this);
+                            showAuthorPanel.Location = new Point(newAuthorPanel.Location.X + newAuthorPanel.Size.Width + 10, newAuthorPanel.Location.Y);
+                            this.Controls.Add(showAuthorPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Show Author Panel");
+                        }
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -290,6 +305,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
             closePanel(GlobalOperation.LIB_SHOW_BOOKS);
             closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
+            closePanel(GlobalOperation.LIB_SHOW_AUTHOR);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -410,6 +426,13 @@ namespace VideoBookApplication.library.view
                     {
                         selectAuthorPanel.Visible = false;
                         selectAuthorPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_SHOW_AUTHOR:
+                    if (showAuthorPanel != null)
+                    {
+                        showAuthorPanel.Visible = false;
+                        showAuthorPanel = null;
                     }
                     break;
                 default:

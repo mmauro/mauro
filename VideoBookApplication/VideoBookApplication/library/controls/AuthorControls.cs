@@ -25,6 +25,9 @@ namespace VideoBookApplication.library.controls
             List<AuthorModel> elencoAutoriCognome = null;
             List<AuthorModel> elencoAutoriNome = null;
 
+            //pulizia degli oggetti
+            globalObject.libraryObject.libraryInput.destroy();
+
             if (cognome != null && !cognome.Equals(""))
             {
                 Indexer indexCognome = new Indexer(cognome, IndexerType.INDEX_AUTHOR);
