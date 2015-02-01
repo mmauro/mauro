@@ -64,7 +64,7 @@ namespace VideoBookApplication.library.view
             this.Controls.Add(buttonShowCat);
 
             //Tooltip
-            toolTip1.SetToolTip(buttonOk, "Inserisci Rieservata");
+            toolTip1.SetToolTip(buttonOk, "Inserisci Nuova Categoria");
             toolTip1.SetToolTip(buttonClose, "Annulla");
             toolTip1.SetToolTip(buttonShowCat, "Visualizza Categorie Esistenti");
 

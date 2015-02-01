@@ -63,7 +63,7 @@ namespace VideoBookApplication.library.view
             this.Controls.Add(buttonSearch);
 
             //tooltip
-            toolTip1.SetToolTip(buttonSearch, "Salva Autore");
+            toolTip1.SetToolTip(buttonSearch, "Ricerca Autore");
             toolTip1.SetToolTip(buttonClose, "Annulla");
         }
 

@@ -52,6 +52,8 @@ namespace VideoBookApplication.library.view
 
             buttonOk.Location = new Point((this.Size.Width / 2) - (buttonOk.Size.Width / 2), textBooks.Location.Y + textBooks.Size.Height + 20);
             this.Controls.Add(buttonOk);
+
+            toolTip1.SetToolTip(buttonOk, "Chiusura Finestra");
         }
 
 

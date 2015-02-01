@@ -90,6 +90,12 @@ namespace VideoBookApplication.library.view
             buttonNext.Location = new Point(this.Size.Width - (15 + buttonNext.Size.Width), buttonOk.Location.Y);
             this.Controls.Add(buttonNext);
 
+            //tooltip
+            toolTip1.SetToolTip(buttonCancel, "Annulla");
+            toolTip1.SetToolTip(buttonNext, "Avanti");
+            toolTip1.SetToolTip(buttonOk, "Seleziona Autore");
+            toolTip1.SetToolTip(buttonPrev, "Precedente");
+
             //Visualizzazione dati
             displayAuthors();
 

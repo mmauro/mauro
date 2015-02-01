@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textPosition = new System.Windows.Forms.RichTextBox();
             this.buttonOk = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // textPosition
@@ -65,5 +67,6 @@
 
         private System.Windows.Forms.RichTextBox textPosition;
         private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

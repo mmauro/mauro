@@ -41,7 +41,7 @@ namespace VideoBookApplication.common.view
             this.Controls.Add(buttonReserved);
 
             //toolTip
-            toolTip1.SetToolTip(buttonReserved, "Parole Riservate");
+            toolTip1.SetToolTip(buttonReserved, "Gestione Parole Riservate");
 
         }
 

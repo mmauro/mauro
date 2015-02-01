@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBooks = new System.Windows.Forms.RichTextBox();
             this.buttonOk = new System.Windows.Forms.Button();
             this.labelNumBooks = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // textBooks
@@ -80,5 +82,6 @@
         private System.Windows.Forms.RichTextBox textBooks;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Label labelNumBooks;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

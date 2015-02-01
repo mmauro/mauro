@@ -56,6 +56,7 @@ namespace VideoBookApplication.library.view
 
             displayElements();
 
+            toolTip1.SetToolTip(buttonOk, "Chiusura Finestra");
         }
 
         private void displayElements()

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoBookApplication.common.controls;
+using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
@@ -59,33 +60,33 @@ namespace VideoBookApplication.advanced.view
 
         public void openPanel(common.enums.GlobalOperation operation)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public void closePanel()
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public void closePanel(common.enums.GlobalOperation operation)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public void closeMenu()
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public void openMenu(common.enums.GlobalOperation operation)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
 
         public void executeOperations(common.enums.GlobalOperation operation)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }
 }
