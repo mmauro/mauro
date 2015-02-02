@@ -201,6 +201,12 @@
     <Compile Include="library\view\InfoBookPanel.Designer.cs">
       <DependentUpon>InfoBookPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\DeleteMenuLibrary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\DeleteMenuLibrary.designer.cs">
+      <DependentUpon>DeleteMenuLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\LibraryActivityWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +353,9 @@
     <EmbeddedResource Include="library\view\InfoBookPanel.resx">
       <DependentUpon>InfoBookPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="library\view\DeleteMenuLibrary.resx">
+      <DependentUpon>DeleteMenuLibrary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="library\view\LibraryActivityWindow.resx">
       <DependentUpon>LibraryActivityWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -429,18 +438,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\add-author.png" />
-    <None Include="img\add_location.png" />
-    <None Include="img\add_category.png" />
-    <None Include="img\add_book.png" />
-    <None Include="img\add_position.png" />
     <None Include="img\add_author.fw.png" />
     <None Include="img\add_books.fw.png" />
     <None Include="img\add_category.fw.png" />
     <None Include="img\add_position.fw.png" />
     <Content Include="img\advancedsettings.png" />
     <Content Include="img\Books.png" />
-    <None Include="img\books_add.png" />
     <None Include="img\browser.png" />
     <Content Include="img\button_cancel.png" />
     <Content Include="img\button_ok.png" />

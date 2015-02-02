@@ -39,6 +39,7 @@ namespace VideoBookApplication.library.view
         private ShowAuthorPanel showAuthorPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
+        private DeleteMenuLibrary deleteMenu = null;
 
         public LibraryActivityWindow(ref GlobalApplicationObject globalObject)
         {
@@ -441,12 +442,6 @@ namespace VideoBookApplication.library.view
             }
         }
 
-
-        public void closeMenu()
-        {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
-        }
-
         public void openMenu(GlobalOperation operation)
         {
             switch (operation)
@@ -457,6 +452,14 @@ namespace VideoBookApplication.library.view
                         insertMenu = new InsertMenuLibrary(ref globalObject, this);
                         insertMenu.Location = new Point(0, 0);
                         panelMenu2.Controls.Add(insertMenu);
+                    }
+                    break;
+                case GlobalOperation.LIB_DELETE_MENU:
+                    if (deleteMenu == null)
+                    {
+                        deleteMenu = new DeleteMenuLibrary(ref globalObject, this);
+                        deleteMenu.Location = new Point(0, 0);
+                        panelMenu2.Controls.Add(deleteMenu);
                     }
                     break;
                 default:
@@ -505,5 +508,40 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_INFOBOOK);
             closePanel(GlobalOperation.LIB_SHOW_BOOKS);
         }
+
+
+        public void closeMenu(GlobalOperation operation)
+        {
+            switch (operation)
+            {
+                case GlobalOperation.LIB_INSERT_MENU:
+                    if (insertMenu != null)
+                    {
+                        insertMenu.Visible = false;
+                        insertMenu = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_DELETE_MENU:
+                    if (deleteMenu != null)
+                    {
+                        deleteMenu.Visible = false;
+                        deleteMenu = null;
+                    }
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                    break;
+
+            }
+        }
+
+        public void closeMenu()
+        {
+            closeMenu(GlobalOperation.LIB_DELETE_MENU);
+            closeMenu(GlobalOperation.LIB_INSERT_MENU);
+        }
+
+
+
     }
 }

@@ -12,6 +12,7 @@ namespace VideoBookApplication.common.controls
         void openPanel(GlobalOperation operation);
         void closePanel();
         void closePanel(GlobalOperation operation);
+        void closeMenu(GlobalOperation operation);
         void closeMenu();
         void openMenu(GlobalOperation operation);
         void executeOperations(GlobalOperation operation);

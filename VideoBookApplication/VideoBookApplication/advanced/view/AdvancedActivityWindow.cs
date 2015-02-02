@@ -88,5 +88,11 @@ namespace VideoBookApplication.advanced.view
         {
             throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
+
+
+        public void closeMenu(GlobalOperation operation)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
     }
 }

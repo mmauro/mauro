@@ -70,12 +70,14 @@ namespace VideoBookApplication.common.view
 
         private void buttonNew_Click(object sender, EventArgs e)
         {
+            parent.closeMenu();
             parent.openMenu(GlobalOperation.LIB_INSERT_MENU);
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closeMenu();
+            parent.openMenu(GlobalOperation.LIB_DELETE_MENU);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
