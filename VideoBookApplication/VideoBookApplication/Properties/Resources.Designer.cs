@@ -65,7 +65,17 @@ namespace VideoBookApplication.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap add_author {
             get {
-                object obj = ResourceManager.GetObject("add-author", resourceCulture);
+                object obj = ResourceManager.GetObject("add_author", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_book {
+            get {
+                object obj = ResourceManager.GetObject("add_book", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +96,16 @@ namespace VideoBookApplication.Properties {
         internal static System.Drawing.Bitmap add_location {
             get {
                 object obj = ResourceManager.GetObject("add_location", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_position {
+            get {
+                object obj = ResourceManager.GetObject("add_position", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

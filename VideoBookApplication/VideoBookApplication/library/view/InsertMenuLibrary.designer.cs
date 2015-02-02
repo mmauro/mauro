@@ -53,7 +53,7 @@
             // buttonAddBook
             // 
             this.buttonAddBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddBook.Image = global::VideoBookApplication.Properties.Resources.books_add;
+            this.buttonAddBook.Image = global::VideoBookApplication.Properties.Resources.add_book;
             this.buttonAddBook.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAddBook.Location = new System.Drawing.Point(0, 0);
             this.buttonAddBook.Name = "buttonAddBook";
@@ -81,7 +81,7 @@
             // buttonAddPosition
             // 
             this.buttonAddPosition.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddPosition.Image = global::VideoBookApplication.Properties.Resources.add_location;
+            this.buttonAddPosition.Image = global::VideoBookApplication.Properties.Resources.add_position;
             this.buttonAddPosition.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAddPosition.Location = new System.Drawing.Point(0, 0);
             this.buttonAddPosition.Name = "buttonAddPosition";

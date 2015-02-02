@@ -422,6 +422,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="resources\VIDEOBOOK.mwb" />
+    <None Include="resources\VideoBookApplication-01.02.2015.log" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -432,6 +433,8 @@
     <None Include="img\add-author.png" />
     <None Include="img\add_location.png" />
     <None Include="img\add_category.png" />
+    <None Include="img\add_book.png" />
+    <None Include="img\add_position.png" />
     <Content Include="img\advancedsettings.png" />
     <Content Include="img\Books.png" />
     <None Include="img\books_add.png" />
