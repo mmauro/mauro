@@ -422,7 +422,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="resources\VIDEOBOOK.mwb" />
-    <None Include="resources\VideoBookApplication-01.02.2015.log" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
