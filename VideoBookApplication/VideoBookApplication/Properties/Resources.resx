@@ -139,17 +139,11 @@
   <data name="advancedsettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\advancedsettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="add_location" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\add_location.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\trash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="kchart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\kchart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="books_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\books_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TextEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\TextEdit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,9 +171,6 @@
   </data>
   <data name="Videobook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\conf\Videobook.properties;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="add_category" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\add_category.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="resword" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\resword.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -232,13 +223,55 @@
   <data name="previous" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\previous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="add_book" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\add_book.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="add_author_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\add_author.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="add_position" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\add_position.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="add_books_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\add_books.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="add_author" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\add-author.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="add_category_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\add_category.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add_position_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\add_position.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_author_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\edit_author.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_book_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\edit_book.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_category_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\edit_category.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_position_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\edit_position.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="generic_search_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\generic_search.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remove_author_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\remove_author.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remove_books_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\remove_books.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remove_category_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\remove_category.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remove_position_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\remove_position.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search_author_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\search_author.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search_book_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\search_book.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search_category_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\search_category.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search_position_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\search_position.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

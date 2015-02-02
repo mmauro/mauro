@@ -39,7 +39,7 @@
             // buttonAddAuthor
             // 
             this.buttonAddAuthor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddAuthor.Image = global::VideoBookApplication.Properties.Resources.add_author;
+            this.buttonAddAuthor.Image = global::VideoBookApplication.Properties.Resources.add_author_fw;
             this.buttonAddAuthor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAddAuthor.Location = new System.Drawing.Point(0, 0);
             this.buttonAddAuthor.Name = "buttonAddAuthor";
@@ -53,7 +53,7 @@
             // buttonAddBook
             // 
             this.buttonAddBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddBook.Image = global::VideoBookApplication.Properties.Resources.add_book;
+            this.buttonAddBook.Image = global::VideoBookApplication.Properties.Resources.add_books_fw;
             this.buttonAddBook.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAddBook.Location = new System.Drawing.Point(0, 0);
             this.buttonAddBook.Name = "buttonAddBook";
@@ -67,7 +67,7 @@
             // buttonAddCategory
             // 
             this.buttonAddCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddCategory.Image = global::VideoBookApplication.Properties.Resources.add_category;
+            this.buttonAddCategory.Image = global::VideoBookApplication.Properties.Resources.add_category_fw;
             this.buttonAddCategory.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAddCategory.Location = new System.Drawing.Point(0, 0);
             this.buttonAddCategory.Name = "buttonAddCategory";
@@ -81,7 +81,7 @@
             // buttonAddPosition
             // 
             this.buttonAddPosition.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddPosition.Image = global::VideoBookApplication.Properties.Resources.add_position;
+            this.buttonAddPosition.Image = global::VideoBookApplication.Properties.Resources.add_position_fw;
             this.buttonAddPosition.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAddPosition.Location = new System.Drawing.Point(0, 0);
             this.buttonAddPosition.Name = "buttonAddPosition";

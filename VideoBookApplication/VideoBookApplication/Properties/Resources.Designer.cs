@@ -63,9 +63,9 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_author {
+        internal static System.Drawing.Bitmap add_author_fw {
             get {
-                object obj = ResourceManager.GetObject("add_author", resourceCulture);
+                object obj = ResourceManager.GetObject("add_author_fw", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_book {
+        internal static System.Drawing.Bitmap add_books_fw {
             get {
-                object obj = ResourceManager.GetObject("add_book", resourceCulture);
+                object obj = ResourceManager.GetObject("add_books_fw", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_category {
+        internal static System.Drawing.Bitmap add_category_fw {
             get {
-                object obj = ResourceManager.GetObject("add_category", resourceCulture);
+                object obj = ResourceManager.GetObject("add_category_fw", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,19 +93,9 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_location {
+        internal static System.Drawing.Bitmap add_position_fw {
             get {
-                object obj = ResourceManager.GetObject("add_location", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap add_position {
-            get {
-                object obj = ResourceManager.GetObject("add_position", resourceCulture);
+                object obj = ResourceManager.GetObject("add_position_fw", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -140,16 +130,6 @@ namespace VideoBookApplication.Properties {
         internal static System.Drawing.Bitmap Books {
             get {
                 object obj = ResourceManager.GetObject("Books", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap books_add {
-            get {
-                object obj = ResourceManager.GetObject("books_add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -237,9 +217,59 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit_author_fw {
+            get {
+                object obj = ResourceManager.GetObject("edit_author_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_book_fw {
+            get {
+                object obj = ResourceManager.GetObject("edit_book_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_category_fw {
+            get {
+                object obj = ResourceManager.GetObject("edit_category_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_position_fw {
+            get {
+                object obj = ResourceManager.GetObject("edit_position_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exit {
             get {
                 object obj = ResourceManager.GetObject("exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap generic_search_fw {
+            get {
+                object obj = ResourceManager.GetObject("generic_search_fw", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -377,6 +407,46 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap remove_author_fw {
+            get {
+                object obj = ResourceManager.GetObject("remove_author_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove_books_fw {
+            get {
+                object obj = ResourceManager.GetObject("remove_books_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove_category_fw {
+            get {
+                object obj = ResourceManager.GetObject("remove_category_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove_position_fw {
+            get {
+                object obj = ResourceManager.GetObject("remove_position_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap restore_db {
             get {
                 object obj = ResourceManager.GetObject("restore-db", resourceCulture);
@@ -410,6 +480,46 @@ namespace VideoBookApplication.Properties {
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_author_fw {
+            get {
+                object obj = ResourceManager.GetObject("search_author_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_book_fw {
+            get {
+                object obj = ResourceManager.GetObject("search_book_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_category_fw {
+            get {
+                object obj = ResourceManager.GetObject("search_category_fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_position_fw {
+            get {
+                object obj = ResourceManager.GetObject("search_position_fw", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
