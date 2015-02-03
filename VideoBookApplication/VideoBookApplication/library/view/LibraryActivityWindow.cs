@@ -40,6 +40,8 @@ namespace VideoBookApplication.library.view
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
+        private SearchMenuLibrary searchMenu = null;
+        private EditMenuLibrary editMenu = null;
 
         public LibraryActivityWindow(ref GlobalApplicationObject globalObject)
         {
@@ -462,6 +464,23 @@ namespace VideoBookApplication.library.view
                         panelMenu2.Controls.Add(deleteMenu);
                     }
                     break;
+                case GlobalOperation.LIB_MODIFY_MENU:
+                    if (editMenu == null)
+                    {
+                        editMenu = new EditMenuLibrary(ref globalObject, this);
+                        editMenu.Location = new Point(0, 0);
+                        panelMenu2.Controls.Add(editMenu);
+                    }
+                    break;
+                case GlobalOperation.LIB_SEARCH_MENU:
+                    if (searchMenu == null)
+                    {
+                        searchMenu = new SearchMenuLibrary(ref globalObject, this);
+                        searchMenu.Location = new Point(0, 0);
+                        panelMenu2.Controls.Add(searchMenu);
+                    }
+                    break;
+
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -528,6 +547,20 @@ namespace VideoBookApplication.library.view
                         deleteMenu = null;
                     }
                     break;
+                case GlobalOperation.LIB_SEARCH_MENU:
+                    if (searchMenu != null)
+                    {
+                        searchMenu.Visible = false;
+                        searchMenu = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_MODIFY_MENU:
+                    if (editMenu != null)
+                    {
+                        editMenu.Visible = false;
+                        editMenu = null;
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -539,6 +572,8 @@ namespace VideoBookApplication.library.view
         {
             closeMenu(GlobalOperation.LIB_DELETE_MENU);
             closeMenu(GlobalOperation.LIB_INSERT_MENU);
+            closeMenu(GlobalOperation.LIB_MODIFY_MENU);
+            closeMenu(GlobalOperation.LIB_SEARCH_MENU);
         }
 
 

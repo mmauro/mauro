@@ -45,7 +45,7 @@
             this.buttonDelAuthor.Name = "buttonDelAuthor";
             this.buttonDelAuthor.Size = new System.Drawing.Size(127, 90);
             this.buttonDelAuthor.TabIndex = 0;
-            this.buttonDelAuthor.Text = "Cancellazione Autore";
+            this.buttonDelAuthor.Text = "Canc.  Autore";
             this.buttonDelAuthor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonDelAuthor.UseVisualStyleBackColor = true;
             this.buttonDelAuthor.Click += new System.EventHandler(this.buttonDelAuthor_Click);
@@ -59,7 +59,7 @@
             this.buttonDelBook.Name = "buttonDelBook";
             this.buttonDelBook.Size = new System.Drawing.Size(127, 90);
             this.buttonDelBook.TabIndex = 0;
-            this.buttonDelBook.Text = "Cancellazione Libro";
+            this.buttonDelBook.Text = "Canc. Libro";
             this.buttonDelBook.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonDelBook.UseVisualStyleBackColor = true;
             this.buttonDelBook.Click += new System.EventHandler(this.buttonDelBook_Click);
@@ -73,7 +73,7 @@
             this.buttonDelCategory.Name = "buttonDelCategory";
             this.buttonDelCategory.Size = new System.Drawing.Size(127, 90);
             this.buttonDelCategory.TabIndex = 0;
-            this.buttonDelCategory.Text = "Cancellazione Categoria";
+            this.buttonDelCategory.Text = "Canc. Categoria";
             this.buttonDelCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonDelCategory.UseVisualStyleBackColor = true;
             this.buttonDelCategory.Click += new System.EventHandler(this.buttonDelCategory_Click);
@@ -87,7 +87,7 @@
             this.buttonDelPosition.Name = "buttonDelPosition";
             this.buttonDelPosition.Size = new System.Drawing.Size(127, 90);
             this.buttonDelPosition.TabIndex = 0;
-            this.buttonDelPosition.Text = "Cancellazione Posizione";
+            this.buttonDelPosition.Text = "Canc. Posizione";
             this.buttonDelPosition.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonDelPosition.UseVisualStyleBackColor = true;
             this.buttonDelPosition.Click += new System.EventHandler(this.buttonDelPosition_Click);

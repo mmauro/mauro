@@ -15,14 +15,14 @@ using VideoBookApplication.common.enums;
 
 namespace VideoBookApplication.common.view
 {
-    public partial class DeleteMenuLibrary : Panel
+    public partial class EditMenuLibrary : Panel
     {
         private LibraryActivityWindow parent;
 
         private static int numButton = 4;
         private GlobalApplicationObject globalObject;
 
-        public DeleteMenuLibrary(ref GlobalApplicationObject globalObject,  LibraryActivityWindow parent)
+        public EditMenuLibrary(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.parent = parent;
@@ -36,44 +36,44 @@ namespace VideoBookApplication.common.view
             this.Size = new Size(LayoutManager.menuHeight, (numButton*90)+(5*(numButton+1)));
 
             //Button new
-            buttonDelAuthor.Location = new Point(5, 5);
-            this.Controls.Add(buttonDelAuthor);
+            buttonModifyAuthor.Location = new Point(5, 5);
+            this.Controls.Add(buttonModifyAuthor);
 
             //Button delete
-            buttonDelBook.Location = new Point(5, buttonDelAuthor.Location.Y + buttonDelAuthor.Size.Height + 5);
-            this.Controls.Add(buttonDelBook);
+            buttonModifyBook.Location = new Point(5, buttonModifyAuthor.Location.Y + buttonModifyAuthor.Size.Height + 5);
+            this.Controls.Add(buttonModifyBook);
 
             //Button Modify
-            buttonDelCategory.Location = new Point(5, buttonDelBook.Location.Y + buttonDelBook.Size.Height + 5);
-            this.Controls.Add(buttonDelCategory);
+            buttonModifyCategory.Location = new Point(5, buttonModifyBook.Location.Y + buttonModifyBook.Size.Height + 5);
+            this.Controls.Add(buttonModifyCategory);
 
             //Button Search
-            buttonDelPosition.Location = new Point(5, buttonDelCategory.Location.Y + buttonDelCategory.Size.Height + 5);
-            this.Controls.Add(buttonDelPosition);
+            buttonModifyPosition.Location = new Point(5, buttonModifyCategory.Location.Y + buttonModifyCategory.Size.Height + 5);
+            this.Controls.Add(buttonModifyPosition);
 
             //toolTip
-            toolTip1.SetToolTip(buttonDelBook, "Cancella Libri");
-            toolTip1.SetToolTip(buttonDelAuthor, "Cancella Autore");
-            toolTip1.SetToolTip(buttonDelPosition, "Cancella Posizione");
-            toolTip1.SetToolTip(buttonDelCategory, "Cancella Categoria");
+            toolTip1.SetToolTip(buttonModifyBook, "Modifica Libri");
+            toolTip1.SetToolTip(buttonModifyAuthor, "Modifica Autore");
+            toolTip1.SetToolTip(buttonModifyPosition, "Modifica Posizione");
+            toolTip1.SetToolTip(buttonModifyCategory, "Modifica Categoria");
         }
 
-        private void buttonDelAuthor_Click(object sender, EventArgs e)
+        private void buttonModifyPosition_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
-        private void buttonDelBook_Click(object sender, EventArgs e)
+        private void buttonModifyCategory_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
-        private void buttonDelCategory_Click(object sender, EventArgs e)
+        private void buttonModifyAuthor_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
-        private void buttonDelPosition_Click(object sender, EventArgs e)
+        private void buttonModifyBook_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }

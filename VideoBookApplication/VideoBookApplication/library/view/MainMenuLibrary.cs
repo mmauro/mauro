@@ -82,12 +82,14 @@ namespace VideoBookApplication.common.view
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closeMenu();
+            parent.openMenu(GlobalOperation.LIB_SEARCH_MENU);
         }
 
         private void buttonModify_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closeMenu();
+            parent.openMenu(GlobalOperation.LIB_MODIFY_MENU);
         }
 
         private void buttonReport_Click(object sender, EventArgs e)

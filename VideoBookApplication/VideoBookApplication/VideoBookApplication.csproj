@@ -195,6 +195,18 @@
     <Compile Include="library\model\TempLibraryModel.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
     <Compile Include="library\operations\GoogleBooksWebService.cs" />
+    <Compile Include="library\view\SearchMenuLibrary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\SearchMenuLibrary.designer.cs">
+      <DependentUpon>SearchMenuLibrary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="library\view\EditMenuLibrary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\EditMenuLibrary.designer.cs">
+      <DependentUpon>EditMenuLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\InfoBookPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -349,6 +361,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="common\view\WindowsMainActivity.resx">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\SearchMenuLibrary.resx">
+      <DependentUpon>SearchMenuLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\EditMenuLibrary.resx">
+      <DependentUpon>EditMenuLibrary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\InfoBookPanel.resx">
       <DependentUpon>InfoBookPanel.cs</DependentUpon>
