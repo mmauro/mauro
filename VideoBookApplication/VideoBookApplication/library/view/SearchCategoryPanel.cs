@@ -23,6 +23,7 @@ namespace VideoBookApplication.library.view
         private List<ItemCombo> listItemsCat = new List<ItemCombo>();
         private CategoryModel defaultCategory = null;
         private CategoryControls catControl = new CategoryControls();
+        private LibraryControls libControl = new LibraryControls();
 
         public SearchCategoryPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
@@ -90,7 +91,7 @@ namespace VideoBookApplication.library.view
                 defaultCategory = catControl.read(Configurator.getInstsance().get("catpos.default.value"));
                 if (defaultCategory == null)
                 {
-                    status = ApplicationErrorType.READ_CAT_ERROR;
+                    status = ApplicationErrorType.EMPTY_CATEGORY;
                 }
 
             }
@@ -104,7 +105,8 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
+            libControl.deleteCategory(catValue.value, defaultCategory.idCategory);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

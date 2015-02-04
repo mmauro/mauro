@@ -14,6 +14,9 @@ namespace VideoBookApplication.library.controls
 {
     public class LibraryControls
     {
+
+        private LibraryDao dao = new LibraryDao();
+
         public ApplicationErrorType write(ref GlobalApplicationObject globalObject)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
@@ -65,7 +68,6 @@ namespace VideoBookApplication.library.controls
                     {
                         try
                         {
-                            LibraryDao dao = new LibraryDao();
                             status = dao.writeInformations(globalObject);
                         }
                         catch (VideoBookException e)
@@ -85,6 +87,29 @@ namespace VideoBookApplication.library.controls
             }
 
             return status;
+        }
+
+        public ApplicationErrorType deleteCategory(int categoryToDelete, int defaultCategory)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            if ( categoryToDelete != Configurator.getInstsance().getInt("notfound.value") && defaultCategory != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                try
+                {
+                    status = dao.deleteCategory(categoryToDelete, defaultCategory);
+                }
+                catch (VideoBookException e)
+                {
+                    status = e.errorType;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.EMPTY_CATEGORY;
+            }
+
+            return status;
+
         }
     }
 }

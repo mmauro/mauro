@@ -256,6 +256,73 @@ namespace VideoBookApplication.library.dao
             }
         }
 
+
+        public ApplicationErrorType deleteCategory(int categoryDelete, int categoryDefault)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            try
+            {
+
+                updateBook(categoryDelete, categoryDefault);
+                deleteCat(categoryDelete);
+
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    log.Info("DONE");
+                    transaction.Commit();
+                }
+                else
+                {
+                    log.Error("FAILURE");
+                    transaction.Rollback();
+                }
+            }
+            catch (VideoBookException e)
+            {
+                transaction.Rollback();
+                throw e;
+            }
+
+            return status;
+        }
+
+        private void updateBook(int categoryDelete, int categoryDefault)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("book.updatecat.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("book.updatecat.query"), categoryDefault.ToString(), categoryDelete.ToString());
+                command.Parameters.AddWithValue("@idcatnew", categoryDefault);
+                command.Parameters.AddWithValue("@idcatold", categoryDelete);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.UPDATE_BOOK_ERROR);
+            }
+        }
+
+        private void deleteCat(int categoryDelete)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("category.delete.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("category.delete.query"), categoryDelete.ToString());
+                command.Parameters.AddWithValue("@idcat", categoryDelete);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DELETE_CATEGORY_ERROR);
+            }
+        }
+
+
         private void writeAutore(AuthorModel autore)
         {
             try
