@@ -70,7 +70,8 @@ namespace VideoBookApplication.common.view
 
         private void buttonDelCategory_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closePanel();
+            parent.openPanel(GlobalOperation.LIB_SEARCHCAT_DELETE);
         }
 
         private void buttonDelPosition_Click(object sender, EventArgs e)

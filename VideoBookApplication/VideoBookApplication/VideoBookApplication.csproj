@@ -195,6 +195,12 @@
     <Compile Include="library\model\TempLibraryModel.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
     <Compile Include="library\operations\GoogleBooksWebService.cs" />
+    <Compile Include="library\view\SearchCategoryPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\SearchCategoryPanel.Designer.cs">
+      <DependentUpon>SearchCategoryPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\SearchMenuLibrary.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -362,6 +368,9 @@
     <EmbeddedResource Include="common\view\WindowsMainActivity.resx">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="library\view\SearchCategoryPanel.resx">
+      <DependentUpon>SearchCategoryPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="library\view\SearchMenuLibrary.resx">
       <DependentUpon>SearchMenuLibrary.cs</DependentUpon>
     </EmbeddedResource>
@@ -475,6 +484,7 @@
     <None Include="img\edit_book.fw.png" />
     <None Include="img\edit_category.fw.png" />
     <None Include="img\edit_position.fw.png" />
+    <None Include="img\eraser.png" />
     <Content Include="img\exit.png" />
     <None Include="img\google.png" />
     <None Include="img\generic_search.fw.png" />

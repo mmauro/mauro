@@ -37,6 +37,7 @@ namespace VideoBookApplication.library.view
         private ShowBooksPanel showBooksPanel = null;
         private SelectAuthorPanel selectAuthorPanel = null;
         private ShowAuthorPanel showAuthorPanel = null;
+        private SearchCategoryPanel searchCatPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
@@ -285,6 +286,14 @@ namespace VideoBookApplication.library.view
                         }
                     }
                     break;
+                case GlobalOperation.LIB_SEARCHCAT_DELETE:
+                    if (searchCatPanel == null)
+                    {
+                        searchCatPanel = new SearchCategoryPanel(ref globalObject, this);
+                        searchCatPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(searchCatPanel);
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -309,6 +318,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SHOW_BOOKS);
             closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
             closePanel(GlobalOperation.LIB_SHOW_AUTHOR);
+            closePanel(GlobalOperation.LIB_SEARCHCAT_DELETE);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -436,6 +446,13 @@ namespace VideoBookApplication.library.view
                     {
                         showAuthorPanel.Visible = false;
                         showAuthorPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_SEARCHCAT_DELETE:
+                    if (searchCatPanel != null)
+                    {
+                        searchCatPanel.Visible = false;
+                        searchCatPanel = null;
                     }
                     break;
                 default:
