@@ -66,7 +66,8 @@ namespace VideoBookApplication.library.view
 
             if (globalObject.libraryObject.statistiche.numLibri > 0)
             {
-                percCartacei = Math.Round((double)((globalObject.libraryObject.statistiche.numLibriCarta / globalObject.libraryObject.statistiche.numLibri) * 100));
+                float division = (float)globalObject.libraryObject.statistiche.numLibriCarta / (float)globalObject.libraryObject.statistiche.numLibri;
+                percCartacei = Math.Round(division * 100);
                 percEbook = 100 - percCartacei;
             }
 

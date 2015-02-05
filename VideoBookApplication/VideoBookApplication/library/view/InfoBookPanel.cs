@@ -121,7 +121,7 @@ namespace VideoBookApplication.library.view
             this.Controls.Add(buttonOk);
 
             buttonWeb.Location = new Point(35, buttonOk.Location.Y);
-            this.Visible = false;
+            buttonWeb.Visible = false;
             this.Controls.Add(buttonWeb);
 
             //tooltip
