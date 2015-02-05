@@ -93,6 +93,9 @@ namespace VideoBookApplication.library.view
 
         public void openPanel(GlobalOperation operation)
         {
+
+            globalObject.currentOperation = operation;
+
             switch (operation)
             {
                 case GlobalOperation.RESERVED:
@@ -296,6 +299,7 @@ namespace VideoBookApplication.library.view
                     break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                    globalObject.currentOperation = GlobalOperation.UNDEFINED;
                     break;
             }
         }
@@ -323,6 +327,7 @@ namespace VideoBookApplication.library.view
 
         public void closePanel(GlobalOperation operation)
         {
+            globalObject.currentOperation = GlobalOperation.UNDEFINED;
             switch (operation)
             {
                 case GlobalOperation.RESERVED:

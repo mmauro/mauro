@@ -8,6 +8,9 @@ namespace VideoBookApplication.common.enums
 {
     public enum GlobalOperation
     {
+        /** NON INIZIALIZZATA */
+        UNDEFINED,
+
         /** COMMON */
         RESERVED,
 

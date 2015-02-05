@@ -14,6 +14,8 @@ namespace VideoBookApplication.common.model
         public UsersModel user { get; set;}
         public LibraryApplicationObject libraryObject { get; set; }
 
+        public GlobalOperation currentOperation { get; set; }
+
         public ActivityType activity { get; set; }
 
         public GlobalApplicationObject() 
@@ -21,6 +23,7 @@ namespace VideoBookApplication.common.model
             libraryObject = new LibraryApplicationObject();
             activity = ActivityType.UNDEFINED;
             user = null;
+            currentOperation = GlobalOperation.UNDEFINED;
         }
 
         public void destroy()

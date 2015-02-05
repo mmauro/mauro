@@ -24,12 +24,14 @@ namespace VideoBookApplication.library.view
         private CategoryModel defaultCategory = null;
         private CategoryControls catControl = new CategoryControls();
         private LibraryControls libControl = new LibraryControls();
+        private GlobalOperation currentOperation = GlobalOperation.UNDEFINED;
 
         public SearchCategoryPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.globalObject = globalObject;
             this.parent = parent;
+            this.currentOperation = this.globalObject.currentOperation;
             ApplicationErrorType status = refreshData();
             if (status == ApplicationErrorType.SUCCESS)
             {
@@ -105,8 +107,27 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
-            libControl.deleteCategory(catValue.value, defaultCategory.idCategory);
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            switch (currentOperation)
+            {
+                case GlobalOperation.LIB_SEARCHCAT_DELETE:
+                    ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
+                    status = libControl.deleteCategory(catValue.value, defaultCategory.idCategory);
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        DisplayManager.displayMessage(ApplicationErrorType.SUCCESS, "Categoria Cancellata con Successo");
+                        parent.closePanel();
+                    }
+                    else
+                    {
+                        DisplayManager.displayError(status);
+                    }
+
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
+                    break;
+            }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
