@@ -38,6 +38,7 @@ namespace VideoBookApplication.library.view
         private SelectAuthorPanel selectAuthorPanel = null;
         private ShowAuthorPanel showAuthorPanel = null;
         private SearchCategoryPanel searchCatPanel = null;
+        private SearchPositionPanel searchPosPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
@@ -297,6 +298,15 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(searchCatPanel);
                     }
                     break;
+                case GlobalOperation.LIB_SEARCHPOS_DELETE:
+                    if (searchPosPanel == null)
+                    {
+                        searchPosPanel = new SearchPositionPanel(ref globalObject, this);
+                        searchPosPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(searchPosPanel);
+                    }
+                    break;
+
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     globalObject.currentOperation = GlobalOperation.UNDEFINED;
@@ -323,6 +333,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
             closePanel(GlobalOperation.LIB_SHOW_AUTHOR);
             closePanel(GlobalOperation.LIB_SEARCHCAT_DELETE);
+            closePanel(GlobalOperation.LIB_SEARCHPOS_DELETE);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -458,6 +469,13 @@ namespace VideoBookApplication.library.view
                     {
                         searchCatPanel.Visible = false;
                         searchCatPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_SEARCHPOS_DELETE:
+                    if (searchPosPanel != null)
+                    {
+                        searchPosPanel.Visible = false;
+                        searchPosPanel = null;
                     }
                     break;
                 default:

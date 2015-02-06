@@ -111,5 +111,29 @@ namespace VideoBookApplication.library.controls
             return status;
 
         }
+
+        public ApplicationErrorType deletePosition(int posToDelete, int defaultPos)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            if (posToDelete != Configurator.getInstsance().getInt("notfound.value") && defaultPos != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                try
+                {
+                    status = dao.deletePosition(posToDelete, defaultPos);
+                }
+                catch (VideoBookException e)
+                {
+                    status = e.errorType;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.EMPTY_POSITION;
+            }
+
+            return status;
+
+        }
+
     }
 }

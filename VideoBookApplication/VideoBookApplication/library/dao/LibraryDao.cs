@@ -264,7 +264,7 @@ namespace VideoBookApplication.library.dao
             try
             {
 
-                updateBook(categoryDelete, categoryDefault);
+                updateBookCategory(categoryDelete, categoryDefault);
                 deleteCat(categoryDelete);
 
                 if (status == ApplicationErrorType.SUCCESS)
@@ -287,7 +287,37 @@ namespace VideoBookApplication.library.dao
             return status;
         }
 
-        private void updateBook(int categoryDelete, int categoryDefault)
+        public ApplicationErrorType deletePosition(int posDelete, int posDefault)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            try
+            {
+
+                updateBookPosition(posDelete, posDefault);
+                deletePos(posDelete);
+
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    log.Info("DONE");
+                    transaction.Commit();
+                }
+                else
+                {
+                    log.Error("FAILURE");
+                    transaction.Rollback();
+                }
+            }
+            catch (VideoBookException e)
+            {
+                transaction.Rollback();
+                throw e;
+            }
+
+            return status;
+        }
+
+        private void updateBookCategory(int categoryDelete, int categoryDefault)
         {
             try
             {
@@ -304,6 +334,42 @@ namespace VideoBookApplication.library.dao
                 throw new VideoBookException(ApplicationErrorType.UPDATE_BOOK_ERROR);
             }
         }
+
+        private void updateBookPosition(int posDelete, int posDefault)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("book.updatepos.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("book.updatepos.query"), posDefault.ToString(), posDelete.ToString());
+                command.Parameters.AddWithValue("@idposnew", posDefault);
+                command.Parameters.AddWithValue("@idposold", posDelete);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.UPDATE_BOOK_ERROR);
+            }
+        }
+
+        private void deletePos(int posDelete)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("position.delete.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("position.delete.query"), posDelete.ToString());
+                command.Parameters.AddWithValue("@idpos", posDelete);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DELETE_CATEGORY_ERROR);
+            }
+        }
+
 
         private void deleteCat(int categoryDelete)
         {
@@ -711,9 +777,6 @@ namespace VideoBookApplication.library.dao
                 throw new VideoBookException(ApplicationErrorType.WRITE_W2BOOK_ERROR);
             }
         }
-
-
-
 
     }
 }

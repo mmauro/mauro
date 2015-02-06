@@ -76,7 +76,8 @@ namespace VideoBookApplication.common.view
 
         private void buttonDelPosition_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closePanel();
+            parent.openPanel(GlobalOperation.LIB_SEARCHPOS_DELETE);
         }
     }
 }
