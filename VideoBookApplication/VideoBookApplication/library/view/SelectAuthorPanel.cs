@@ -21,6 +21,7 @@ namespace VideoBookApplication.library.view
 
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private GlobalOperation currentOperation = GlobalOperation.UNDEFINED;
 
         double numPages = 0;
         double currentPages = 0;
@@ -32,6 +33,7 @@ namespace VideoBookApplication.library.view
             InitializeComponent();
             this.globalObject = globalObject;
             this.parent = parent;
+            this.currentOperation = globalObject.currentOperation;
             currentPages = 1;
             numPages = Math.Ceiling((double)(globalObject.libraryObject.libraryInput.autori.Count / numMaxElement));
             initPanel();
@@ -175,16 +177,23 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            ApplicationErrorType status = selectAuthor();
-            if (status == ApplicationErrorType.SUCCESS)
-            {
-                parent.closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
-                parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
-            }
-            else
-            {
-                DisplayManager.displayError(status);
-            }
+            switch (currentOperation) { 
+                case GlobalOperation.LIB_CHOOSE_AUTHOR:
+                    ApplicationErrorType status = selectAuthor();
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        parent.closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
+                        parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
+                    }
+                    else
+                    {
+                        DisplayManager.displayError(status);
+                    }
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                    break;
+        }
         }
 
         private void buttonNext_Click(object sender, EventArgs e)

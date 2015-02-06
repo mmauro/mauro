@@ -259,6 +259,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_SEARCH_NEW_BOOK:
+                case GlobalOperation.LIB_SEARCHAUTHOR_DELETE:
                     if (searchAuthorPanel == null)
                     {
                         searchAuthorPanel = new SearchAuthorPanel(ref globalObject, this);
@@ -268,6 +269,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_CHOOSE_AUTHOR:
+                case GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE:
                     if (selectAuthorPanel == null)
                     {
                         selectAuthorPanel = new SelectAuthorPanel(ref globalObject, this);
@@ -331,9 +333,11 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
             closePanel(GlobalOperation.LIB_SHOW_BOOKS);
             closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
+            closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE);
             closePanel(GlobalOperation.LIB_SHOW_AUTHOR);
             closePanel(GlobalOperation.LIB_SEARCHCAT_DELETE);
             closePanel(GlobalOperation.LIB_SEARCHPOS_DELETE);
+            closePanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -437,6 +441,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_SEARCH_NEW_BOOK:
+                case GlobalOperation.LIB_SEARCHAUTHOR_DELETE:
                     if (searchAuthorPanel != null)
                     {
                         searchAuthorPanel.Visible = false;
@@ -451,6 +456,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_CHOOSE_AUTHOR:
+                case GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE:
                     if (selectAuthorPanel != null)
                     {
                         selectAuthorPanel.Visible = false;

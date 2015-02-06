@@ -21,6 +21,7 @@ namespace VideoBookApplication.library.view
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private GlobalOperation currentOperation = GlobalOperation.UNDEFINED;
         private AuthorControls control = new AuthorControls();
 
         public SearchAuthorPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
@@ -28,6 +29,7 @@ namespace VideoBookApplication.library.view
             InitializeComponent();
             this.globalObject = globalObject;
             this.parent = parent;
+            this.currentOperation = this.globalObject.currentOperation;
             initPanel();
         }
 
@@ -87,8 +89,16 @@ namespace VideoBookApplication.library.view
                     }
                     else
                     {
-                        parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
-                        parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
+                        switch (currentOperation)
+                        {
+                            case GlobalOperation.LIB_SEARCH_NEW_BOOK:
+                                parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
+                                parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
+                                break;
+                            default:
+                                DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                                break;
+                        }
                     }
                 }
                 else
@@ -97,8 +107,17 @@ namespace VideoBookApplication.library.view
                     {
                         log.Info("Autori Trovati = " + globalObject.libraryObject.libraryInput.autori.Count);
                         DisplayManager.displayWarning(ApplicationErrorType.AUTHOR_AMBIG_WARN, "Selezionare Un Autore Per Proseguire");
-                        parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
-                        parent.openPanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
+                        switch (currentOperation)
+                        {
+                            case GlobalOperation.LIB_SEARCH_NEW_BOOK:
+                                parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
+                                parent.openPanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
+                                break;
+                            default:
+                                parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
+                                parent.openPanel(GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE);                                
+                                break;
+                        }
                     }
                     else
                     {

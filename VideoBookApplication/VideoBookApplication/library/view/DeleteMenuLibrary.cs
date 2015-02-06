@@ -60,7 +60,8 @@ namespace VideoBookApplication.common.view
 
         private void buttonDelAuthor_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closePanel();
+            parent.openPanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
         }
 
         private void buttonDelBook_Click(object sender, EventArgs e)
