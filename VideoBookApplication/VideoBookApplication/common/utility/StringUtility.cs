@@ -11,7 +11,7 @@ namespace VideoBookApplication.common.utility
     class StringUtility
     {
 
-        private static string alfaPattern = "[^àèìòù'A-Za-z0-9 ]";
+        private static string alfaPattern = "[^àèìòùA-Za-z0-9 ]";
 
         public static string addSpaceAfterSpecialChar(string word)
         {

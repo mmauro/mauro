@@ -70,13 +70,24 @@ namespace VideoBookApplication.common.operations
                                 string parola = singleWords[i];
                                 if (!reserved.Contains(parola))
                                 {
-                                    if (this.indexerType.useStemmer)
+                                    if (parola.Length > 1)
                                     {
-                                        parola = stemmer.stem(parola);
+                                        if (this.indexerType.useStemmer)
+                                        {
+                                            parola = stemmer.stem(parola);
+                                        }
+                                        if (!words.Contains(parola))
+                                        {
+                                            words.Add(parola);
+                                        }
                                     }
-                                    if (!words.Contains(parola))
+                                    else
                                     {
-                                        words.Add(parola);
+                                        //Con Parole di una sola lettera non uso lo stemmer
+                                        if (this.indexerType.singleWordSave && !words.Contains(parola))
+                                        {
+                                            words.Add(parola);
+                                        }
                                     }
                                 }
                             }
