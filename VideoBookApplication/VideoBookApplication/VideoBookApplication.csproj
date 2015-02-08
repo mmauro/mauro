@@ -195,6 +195,7 @@
     <Compile Include="library\model\TempLibraryModel.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
     <Compile Include="library\operations\GoogleBooksWebService.cs" />
+    <Compile Include="library\utility\DisplayUtility.cs" />
     <Compile Include="library\view\DeleteAuthorPanel.cs">
       <SubType>Component</SubType>
     </Compile>

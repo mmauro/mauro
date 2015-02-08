@@ -11,6 +11,7 @@ using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
+using VideoBookApplication.library.utility;
 
 namespace VideoBookApplication.library.view
 {
@@ -39,7 +40,7 @@ namespace VideoBookApplication.library.view
                 labelTesto.Location = new Point(10, 20);
                 this.Controls.Add(labelTesto);
 
-                labelAutore.Text = StringUtility.formatAuthorName(globalObject.libraryObject.libraryInput.autore);
+                labelAutore.Text = DisplayUtility.formatAuthorName(globalObject.libraryObject.libraryInput.autore);
                 labelAutore.Location = new Point(100, 20);
                 this.Controls.Add(labelAutore);
 

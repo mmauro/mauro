@@ -12,6 +12,7 @@ using VideoBookApplication.common.view;
 using VideoBookApplication.common.model;
 using VideoBookApplication.library.model.database;
 using VideoBookApplication.common.enums;
+using VideoBookApplication.library.utility;
 
 namespace VideoBookApplication.library.view
 {
@@ -53,7 +54,7 @@ namespace VideoBookApplication.library.view
         private void displayElements()
         {
             foreach (AuthorModel model in globalObject.libraryObject.libraryInput.autori) {
-                textAuthor.AppendText(StringUtility.formatAuthorName(model));
+                textAuthor.AppendText(DisplayUtility.formatAuthorName(model));
                 textAuthor.AppendText(Environment.NewLine);
             }
         }

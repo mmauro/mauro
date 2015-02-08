@@ -12,6 +12,7 @@ using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
 using VideoBookApplication.library.controls;
+using VideoBookApplication.library.utility;
 
 namespace VideoBookApplication.library.view
 {
@@ -177,7 +178,7 @@ namespace VideoBookApplication.library.view
             if (globalObject.libraryObject.statistiche.lastBook != null)
             {
                 int startText = 0;
-                string text = StringUtility.formatAuthorName(globalObject.libraryObject.statistiche.lastBook.autore);
+                string text = DisplayUtility.formatAuthorName(globalObject.libraryObject.statistiche.lastBook.autore);
                 textLastBook.AppendText(text);
                 textLastBook.Select(startText, text.Length);
                 textLastBook.SelectionColor = Color.Blue;
@@ -207,7 +208,7 @@ namespace VideoBookApplication.library.view
 
                 textLastBook.AppendText(Environment.NewLine);
                 startText = textLastBook.Text.Length;
-                text = globalObject.libraryObject.statistiche.lastBook.category.category;
+                text = "Categoria: " + DisplayUtility.formatCategory(globalObject.libraryObject.statistiche.lastBook.category.category);
                 textLastBook.AppendText(text);
                 textLastBook.Select(startText, text.Length);
                 textLastBook.SelectionFont = new Font("Calibri", 11);

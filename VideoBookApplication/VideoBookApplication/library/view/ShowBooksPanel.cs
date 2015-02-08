@@ -12,6 +12,7 @@ using VideoBookApplication.common.view;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.library.model.database;
+using VideoBookApplication.library.utility;
 
 namespace VideoBookApplication.library.view
 {
@@ -96,7 +97,7 @@ namespace VideoBookApplication.library.view
                 text = "";
                 textBooks.AppendText(Environment.NewLine);
                 startText = textBooks.Text.Length;
-                text = model.category.category;
+                text = "Categoria: " + DisplayUtility.formatCategory(model.category.category);
                 textBooks.AppendText(text);
                 textBooks.Select(startText, text.Length);
                 textBooks.SelectionFont = new Font("Calibri", 11);

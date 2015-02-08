@@ -13,6 +13,7 @@ using VideoBookApplication.common.view;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.library.model.database;
 using VideoBookApplication.library.controls;
+using VideoBookApplication.library.utility;
 
 namespace VideoBookApplication.library.view
 {
@@ -128,7 +129,7 @@ namespace VideoBookApplication.library.view
 
             for (int i = startElement; i <= endElement; i++)
             {
-                displayAuthors(i, StringUtility.formatAuthorName(globalObject.libraryObject.libraryInput.autori[i]));
+                displayAuthors(i, DisplayUtility.formatAuthorName(globalObject.libraryObject.libraryInput.autori[i]));
             }
 
         }

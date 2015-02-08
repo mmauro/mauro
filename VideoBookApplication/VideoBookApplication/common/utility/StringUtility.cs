@@ -75,20 +75,6 @@ namespace VideoBookApplication.common.utility
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
         }
 
-        public static string formatAuthorName(AuthorModel autore)
-        {
-            string name = "";
-            if (autore != null)
-            {
-                if (autore.nome != null && !autore.nome.Trim().Equals(""))
-                {
-                    name += capitalize(autore.nome) + " ";
-                }
-                name += autore.cognome;
-            }
-            return name;
-        }
-
         public static String getYear(string year)
         {
             if (year != null && year.Length > 4)
