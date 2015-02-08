@@ -95,8 +95,12 @@ namespace VideoBookApplication.library.view
                                 parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
                                 parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
                                 break;
+                            case GlobalOperation.LIB_SEARCHAUTHOR_DELETE:
+                                parent.closePanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
+                                parent.openPanel(GlobalOperation.LIB_DELETE_AUTHOR);
+                                break;
                             default:
-                                DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
+                                DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
                                 break;
                         }
                     }
@@ -113,9 +117,12 @@ namespace VideoBookApplication.library.view
                                 parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
                                 parent.openPanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
                                 break;
+                            case GlobalOperation.LIB_SEARCHAUTHOR_DELETE:
+                                parent.closePanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
+                                parent.openPanel(GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE);
+                                break;
                             default:
-                                parent.closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
-                                parent.openPanel(GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE);                                
+                                DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
                                 break;
                         }
                     }

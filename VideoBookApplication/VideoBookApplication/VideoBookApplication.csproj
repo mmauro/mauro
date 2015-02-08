@@ -195,6 +195,12 @@
     <Compile Include="library\model\TempLibraryModel.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
     <Compile Include="library\operations\GoogleBooksWebService.cs" />
+    <Compile Include="library\view\DeleteAuthorPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\DeleteAuthorPanel.Designer.cs">
+      <DependentUpon>DeleteAuthorPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\SearchPositionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -373,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="common\view\WindowsMainActivity.resx">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\DeleteAuthorPanel.resx">
+      <DependentUpon>DeleteAuthorPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\SearchPositionPanel.resx">
       <DependentUpon>SearchPositionPanel.cs</DependentUpon>

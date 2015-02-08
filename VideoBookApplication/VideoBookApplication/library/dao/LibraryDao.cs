@@ -310,9 +310,42 @@ namespace VideoBookApplication.library.dao
             }
             catch (VideoBookException e)
             {
+                log.Error("FAILURE");
                 transaction.Rollback();
                 throw e;
             }
+
+            return status;
+        }
+
+
+        public ApplicationErrorType deleteAuthorsAndBook(AuthorModel model)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            try
+            {
+                //CAncellazione Autore
+                deleteAuthor(model.idAutore);
+
+                //Cancellazioe Parole Orfane di libri e autori
+                deleteOrphanWord();
+
+                //Cancellazione Note e Informazioni Aggiuntive Orfane dai libri
+                deleteOrphanBookInfo();
+                deleteOrphanBookNote();
+
+                log.Info("DONE");
+                transaction.Commit();
+
+            }
+            catch (VideoBookException e)
+            {
+                log.Error("FAILURE");
+                transaction.Rollback();
+                status = e.errorType;
+            }
+
 
             return status;
         }
@@ -777,6 +810,72 @@ namespace VideoBookApplication.library.dao
                 throw new VideoBookException(ApplicationErrorType.WRITE_W2BOOK_ERROR);
             }
         }
+
+        private void deleteAuthor(int authorModel)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("author.delete.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("author.delete.query"), authorModel.ToString());
+                command.Parameters.AddWithValue("@idauth", authorModel);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DELETE_AUTHOR_ERROR);
+            }
+        }
+
+        private void deleteOrphanWord()
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("wordmaster.delete.orphan.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("wordmaster.delete.orphan.query"), null);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DELETE_WORDMASTER_ERROR);
+            }
+        }
+
+        private void deleteOrphanBookNote()
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("booknote.delete.orphan.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("booknote.delete.orphan.query"), null);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DELETE_NOTEBOOK_ERROR);
+            }
+        }
+
+        private void deleteOrphanBookInfo()
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("infobook.delete.orphan.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("infobook.delete.orphan.query"), null);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DELETE_INFOBOOK_ERROR);
+            }
+        }
+
 
     }
 }

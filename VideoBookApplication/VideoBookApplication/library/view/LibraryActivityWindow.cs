@@ -39,6 +39,7 @@ namespace VideoBookApplication.library.view
         private ShowAuthorPanel showAuthorPanel = null;
         private SearchCategoryPanel searchCatPanel = null;
         private SearchPositionPanel searchPosPanel = null;
+        private DeleteAuthorPanel delAuthorPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
@@ -308,7 +309,19 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(searchPosPanel);
                     }
                     break;
+                case GlobalOperation.LIB_DELETE_AUTHOR:
+                    if (delAuthorPanel == null)
+                    {
+                        delAuthorPanel = new DeleteAuthorPanel(ref globalObject, this);
+                        delAuthorPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(delAuthorPanel);
 
+                        showBooksPanel = new ShowBooksPanel(ref globalObject, this);
+                        showBooksPanel.Location = new Point(delAuthorPanel.Location.X + delAuthorPanel.Size.Width + 15, delAuthorPanel.Location.Y);
+                        this.Controls.Add(showBooksPanel);
+
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     globalObject.currentOperation = GlobalOperation.UNDEFINED;
@@ -338,6 +351,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SEARCHCAT_DELETE);
             closePanel(GlobalOperation.LIB_SEARCHPOS_DELETE);
             closePanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
+            closePanel(GlobalOperation.LIB_DELETE_AUTHOR);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -484,6 +498,20 @@ namespace VideoBookApplication.library.view
                         searchPosPanel = null;
                     }
                     break;
+                case GlobalOperation.LIB_DELETE_AUTHOR:
+                    if (delAuthorPanel != null)
+                    {
+                        delAuthorPanel.Visible = false;
+                        delAuthorPanel = null;
+                    }
+
+                    if (showBooksPanel != null)
+                    {
+                        showBooksPanel.Visible = false;
+                        showBooksPanel = null;
+                    }
+                    break;
+
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;

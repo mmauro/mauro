@@ -177,23 +177,28 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            switch (currentOperation) { 
-                case GlobalOperation.LIB_CHOOSE_AUTHOR:
-                    ApplicationErrorType status = selectAuthor();
-                    if (status == ApplicationErrorType.SUCCESS)
-                    {
+            ApplicationErrorType status = selectAuthor();
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                switch (currentOperation)
+                {
+                    case GlobalOperation.LIB_CHOOSE_AUTHOR:
                         parent.closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
                         parent.openPanel(GlobalOperation.LIB_NEW_BOOKS);
-                    }
-                    else
-                    {
-                        DisplayManager.displayError(status);
-                    }
-                    break;
-                default:
-                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
-                    break;
-        }
+                        break;
+                    case GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE:
+                        parent.closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE);
+                        parent.openPanel(GlobalOperation.LIB_DELETE_AUTHOR);
+                        break;
+                    default:
+                        DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
+                        break;
+                }
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
         }
 
         private void buttonNext_Click(object sender, EventArgs e)

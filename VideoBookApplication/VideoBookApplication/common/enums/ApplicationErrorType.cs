@@ -77,6 +77,11 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType NO_AUTHOR_SELECTED = new ApplicationErrorType(127, "Nessun Autore Selezionato");
         public static ApplicationErrorType UPDATE_BOOK_ERROR = new ApplicationErrorType(128, "Modifica Libri Fallita");
         public static ApplicationErrorType DELETE_CATEGORY_ERROR = new ApplicationErrorType(129, "Errore Cancellazione Categoria");
+        public static ApplicationErrorType DELETE_AUTHOR_ERROR = new ApplicationErrorType(130, "Errore Cancellazione Autore");
+        public static ApplicationErrorType DELETE_WORDMASTER_ERROR = new ApplicationErrorType(131, "Errore Cancellazione Parole");
+        public static ApplicationErrorType DELETE_INFOBOOK_ERROR = new ApplicationErrorType(132, "Errore Cancellazione Informazioni Aggiuntive");
+        public static ApplicationErrorType DELETE_NOTEBOOK_ERROR = new ApplicationErrorType(133, "Errore Cancellazione Note");
+
 
         /** DATABASE ERROR 901 - 920 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(901, "Errore di Connessione al Database");

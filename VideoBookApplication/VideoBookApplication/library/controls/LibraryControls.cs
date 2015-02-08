@@ -138,5 +138,22 @@ namespace VideoBookApplication.library.controls
 
         }
 
+        public ApplicationErrorType deleteAuthorAndBook(ref GlobalApplicationObject globalObject)
+        {
+            LibraryDao dao = new LibraryDao();
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            if (globalObject.libraryObject.libraryInput.autore != null && globalObject.libraryObject.libraryInput.autore.idAutore != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                status = dao.deleteAuthorsAndBook(globalObject.libraryObject.libraryInput.autore);
+            }
+            else
+            {
+                status = ApplicationErrorType.AUTHOR_NOT_FOUND;
+            }
+
+            return status;
+        }
+
     }
 }

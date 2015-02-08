@@ -20,12 +20,14 @@ namespace VideoBookApplication.library.view
 
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private GlobalOperation currentOperation = GlobalOperation.UNDEFINED;
 
         public ShowBooksPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.parent = parent;
             this.globalObject = globalObject;
+            this.currentOperation = this.globalObject.currentOperation;
             
             initPanel();
         }
@@ -51,6 +53,10 @@ namespace VideoBookApplication.library.view
             displayBooks();
 
             buttonOk.Location = new Point((this.Size.Width / 2) - (buttonOk.Size.Width / 2), textBooks.Location.Y + textBooks.Size.Height + 20);
+            if (currentOperation == GlobalOperation.LIB_DELETE_AUTHOR)
+            {
+                buttonOk.Visible = false;
+            }
             this.Controls.Add(buttonOk);
 
             toolTip1.SetToolTip(buttonOk, "Chiusura Finestra");
