@@ -34,6 +34,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.buttonSearchCategory = new System.Windows.Forms.Button();
             this.buttonSearchPosition = new System.Windows.Forms.Button();
+            this.buttonGenericSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSearchAuthor
@@ -91,6 +92,20 @@
             this.buttonSearchPosition.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonSearchPosition.UseVisualStyleBackColor = true;
             this.buttonSearchPosition.Click += new System.EventHandler(this.buttonSearchPosition_Click);
+            // 
+            // buttonGenericSearch
+            // 
+            this.buttonGenericSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonGenericSearch.Image = global::VideoBookApplication.Properties.Resources.generic_search_fw;
+            this.buttonGenericSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonGenericSearch.Location = new System.Drawing.Point(0, 0);
+            this.buttonGenericSearch.Name = "buttonGenericSearch";
+            this.buttonGenericSearch.Size = new System.Drawing.Size(127, 90);
+            this.buttonGenericSearch.TabIndex = 0;
+            this.buttonGenericSearch.Text = "Ricerca Generica";
+            this.buttonGenericSearch.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonGenericSearch.UseVisualStyleBackColor = true;
+            this.buttonGenericSearch.Click += new System.EventHandler(this.buttonGenericSearch_Click);
             this.ResumeLayout(false);
 
         }
@@ -101,5 +116,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button buttonSearchCategory;
         private System.Windows.Forms.Button buttonSearchPosition;
+        private System.Windows.Forms.Button buttonGenericSearch;
     }
 }

@@ -19,7 +19,7 @@ namespace VideoBookApplication.common.view
     {
         private LibraryActivityWindow parent;
 
-        private static int numButton = 4;
+        private static int numButton = 5;
         private GlobalApplicationObject globalObject;
 
         public SearchMenuLibrary(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
@@ -51,11 +51,16 @@ namespace VideoBookApplication.common.view
             buttonSearchPosition.Location = new Point(5, buttonSearchCategory.Location.Y + buttonSearchCategory.Size.Height + 5);
             this.Controls.Add(buttonSearchPosition);
 
+            //Button Generic Search
+            buttonGenericSearch.Location = new Point(5, buttonSearchPosition.Location.Y + buttonSearchPosition.Size.Height + 5);
+            this.Controls.Add(buttonGenericSearch);
+
             //toolTip
             toolTip1.SetToolTip(buttonSearchBook, "Ricerca Libri");
             toolTip1.SetToolTip(buttonSearchAuthor, "Ricerca Autore");
             toolTip1.SetToolTip(buttonSearchPosition, "Ricerca Posizione");
             toolTip1.SetToolTip(buttonSearchCategory, "Ricerca Categoria");
+            toolTip1.SetToolTip(buttonGenericSearch, "Ricerca Generica");
         }
 
         private void buttonSearchBook_Click(object sender, EventArgs e)
@@ -74,6 +79,11 @@ namespace VideoBookApplication.common.view
         }
 
         private void buttonSearchCategory_Click(object sender, EventArgs e)
+        {
+            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
+
+        private void buttonGenericSearch_Click(object sender, EventArgs e)
         {
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
