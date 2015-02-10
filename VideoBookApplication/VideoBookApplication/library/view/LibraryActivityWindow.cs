@@ -40,6 +40,7 @@ namespace VideoBookApplication.library.view
         private SearchCategoryPanel searchCatPanel = null;
         private SearchPositionPanel searchPosPanel = null;
         private DeleteAuthorPanel delAuthorPanel = null;
+        private BookGenericSearchPanel genericSearchPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
@@ -322,6 +323,14 @@ namespace VideoBookApplication.library.view
 
                     }
                     break;
+                case GlobalOperation.LIB_SEARCHBOOK_DELETE:
+                    if (genericSearchPanel == null)
+                    {
+                        genericSearchPanel = new BookGenericSearchPanel(ref globalObject, this);
+                        genericSearchPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(genericSearchPanel);
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     globalObject.currentOperation = GlobalOperation.UNDEFINED;
@@ -352,6 +361,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SEARCHPOS_DELETE);
             closePanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
             closePanel(GlobalOperation.LIB_DELETE_AUTHOR);
+            closePanel(GlobalOperation.LIB_SEARCHBOOK_DELETE);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -511,7 +521,13 @@ namespace VideoBookApplication.library.view
                         showBooksPanel = null;
                     }
                     break;
-
+                case GlobalOperation.LIB_SEARCHBOOK_DELETE:
+                    if (genericSearchPanel != null)
+                    {
+                        genericSearchPanel.Visible = false;
+                        genericSearchPanel = null;
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;

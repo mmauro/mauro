@@ -202,6 +202,12 @@
     <Compile Include="library\view\DeleteAuthorPanel.Designer.cs">
       <DependentUpon>DeleteAuthorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\BookGenericSearchPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\BookGenericSearchPanel.Designer.cs">
+      <DependentUpon>BookGenericSearchPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\SearchPositionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -383,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\DeleteAuthorPanel.resx">
       <DependentUpon>DeleteAuthorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\BookGenericSearchPanel.resx">
+      <DependentUpon>BookGenericSearchPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\SearchPositionPanel.resx">
       <DependentUpon>SearchPositionPanel.cs</DependentUpon>
