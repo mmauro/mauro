@@ -27,6 +27,7 @@ namespace VideoBookApplication.library.view
         private List<ItemCombo> listItemsPos = new List<ItemCombo>();
         private CategoryControls catControl = new CategoryControls();
         private PositionControls posControl = new PositionControls();
+        private BooksControls bookControl = new BooksControls();
 
         private TabPage searchAuthorTab;
         private TabPage searchTitleTab;
@@ -211,6 +212,39 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            TabPage currentTab = tabSearchControl.SelectedTab;
+            if (currentTab == searchAuthorTab)
+            {
+                log.Info("Search By Author");
+            }
+            else if (currentTab == searchTitleTab)
+            {
+                log.Info("Search By Author");
+            }
+            else if (currentTab == searchCategoryTab)
+            {
+                ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
+                status = bookControl.getBookByCategory(ref globalObject, catValue.value);
+            }
+            else if (currentTab == searchPosTab)
+            {
+                log.Info("search By Position");
+            }
+            else
+            {
+                status = ApplicationErrorType.INVALID_TAB;
+            }
+
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                log.Info("Libri Trovati : " + globalObject.libraryObject.libraryInput.libri.Count);
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
+
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }

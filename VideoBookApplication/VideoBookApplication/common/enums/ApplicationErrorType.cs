@@ -43,6 +43,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType WRITE_STEMMER_ERROR = new ApplicationErrorType(20, "Errore Scrittura Parole Stemmate");
         public static ApplicationErrorType READ_WORD_ERROR = new ApplicationErrorType(21, "Errore Lettura Parole Indicizzate");
         public static ApplicationErrorType WRITE_WORD_ERROR = new ApplicationErrorType(22, "Errore Scrittura Parole Indicizzate");
+        public static ApplicationErrorType INVALID_TAB = new ApplicationErrorType(23, "Tab non Riconosciuto");
 
 
 
@@ -81,6 +82,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType DELETE_WORDMASTER_ERROR = new ApplicationErrorType(131, "Errore Cancellazione Parole");
         public static ApplicationErrorType DELETE_INFOBOOK_ERROR = new ApplicationErrorType(132, "Errore Cancellazione Informazioni Aggiuntive");
         public static ApplicationErrorType DELETE_NOTEBOOK_ERROR = new ApplicationErrorType(133, "Errore Cancellazione Note");
+        public static ApplicationErrorType EMPTY_BOOKS = new ApplicationErrorType(133, "Libri non Trovati");
 
 
         /** DATABASE ERROR 901 - 920 */

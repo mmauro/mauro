@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VideoBookApplication.common.enums;
+using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
+using VideoBookApplication.library.dao;
 using VideoBookApplication.library.model.database;
 using VideoBookApplication.library.operations;
 
@@ -78,6 +80,40 @@ namespace VideoBookApplication.library.controls
             }
 
             return model;
+        }
+
+        public ApplicationErrorType getBookByCategory(ref GlobalApplicationObject globalObject, int idCategory)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            if (idCategory != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                try
+                {
+                    BookDao dao = new BookDao();
+                    List<BookModel> libri = (List<BookModel>)dao.readByIdCategory(idCategory);
+                    if (libri != null && libri.Count > 0)
+                    {
+                        globalObject.libraryObject.libraryInput.libri = libri;
+                        if (libri.Count == 1)
+                        {
+                            globalObject.libraryObject.libraryInput.libro = libri[0];
+                        }
+                    }
+                    else
+                    {
+                        status = ApplicationErrorType.EMPTY_BOOKS;
+                    }
+                }
+                catch (VideoBookException e)
+                {
+                    status = e.errorType;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.EMPTY_CATEGORY;
+            }
+            return status;
         }
     }
 }
