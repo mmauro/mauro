@@ -10,7 +10,7 @@ using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.controls
 {
-    class PositionControl
+    class PositionControls
     {
 
         private PositionDao positionDao = new PositionDao();

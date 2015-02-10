@@ -353,7 +353,7 @@
       <DependentUpon>StartApp.cs</DependentUpon>
     </Compile>
     <Compile Include="library\controls\CategoryControls.cs" />
-    <Compile Include="library\controls\PositionControl.cs" />
+    <Compile Include="library\controls\PositionControls.cs" />
     <Compile Include="library\dao\CategoryDao.cs" />
     <Compile Include="library\dao\PositionDao.cs" />
     <Compile Include="library\model\database\CategoryModel.cs" />

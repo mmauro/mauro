@@ -23,7 +23,7 @@ namespace VideoBookApplication.library.view
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
 
-        private PositionControl control = new PositionControl();
+        private PositionControls control = new PositionControls();
 
         public NewPositionPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {

@@ -26,7 +26,7 @@ namespace VideoBookApplication.library.view
         private List<ItemCombo> listItemsCat = new List<ItemCombo>();
         private List<ItemCombo> listItemsPos = new List<ItemCombo>();
         private CategoryControls catControl = new CategoryControls();
-        private PositionControl posControl = new PositionControl();
+        private PositionControls posControl = new PositionControls();
 
         private TabPage searchAuthorTab;
         private TabPage searchTitleTab;
@@ -201,9 +201,6 @@ namespace VideoBookApplication.library.view
 
             return status;
         }
-
-
-
 
 
         private void buttonClose_Click(object sender, EventArgs e)

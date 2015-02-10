@@ -22,7 +22,7 @@ namespace VideoBookApplication.library.view
         private LibraryActivityWindow parent;
         private List<ItemCombo> listItemsCat = new List<ItemCombo>();
         private PositionModel defaultPos = null;
-        private PositionControl posControl = new PositionControl();
+        private PositionControls posControl = new PositionControls();
         private LibraryControls libControl = new LibraryControls();
         private GlobalOperation currentOperation = GlobalOperation.UNDEFINED;
 

@@ -36,7 +36,7 @@ namespace VideoBookApplication.common.operations
             //Position
             if (status == ApplicationErrorType.SUCCESS)
             {
-                PositionControl pcontrol = new PositionControl();
+                PositionControls pcontrol = new PositionControls();
                 status = pcontrol.write(Configurator.getInstsance().get("catpos.default.value"));
             }
 

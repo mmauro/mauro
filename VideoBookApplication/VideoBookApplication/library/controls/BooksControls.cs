@@ -65,7 +65,7 @@ namespace VideoBookApplication.library.controls
                     CategoryControls catControls = new CategoryControls();
                     model.category = catControls.read(idCategory);
 
-                    PositionControl posControl = new PositionControl();
+                    PositionControls posControl = new PositionControls();
                     model.position = posControl.read(idLocation);
                 }
                 catch (VideoBookException e)

@@ -173,7 +173,7 @@ namespace VideoBookApplication.library.view
             {
                 try
                 {
-                    PositionControl posControl = new PositionControl();
+                    PositionControls posControl = new PositionControls();
                     List<PositionModel> tmpPModel = posControl.getAllPosition(true);
                     if (tmpPModel != null && tmpPModel.Count > 0)
                     {

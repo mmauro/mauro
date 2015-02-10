@@ -29,7 +29,7 @@ namespace VideoBookApplication.library.view
 
             try
             {
-                PositionControl pc = new PositionControl();
+                PositionControls pc = new PositionControls();
                 listElements = pc.getAllPosition(false);
                 initPanel();
             }
