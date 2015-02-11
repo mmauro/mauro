@@ -115,5 +115,39 @@ namespace VideoBookApplication.library.controls
             }
             return status;
         }
+
+        public ApplicationErrorType getBookByPosition(ref GlobalApplicationObject globalObject, int idPos)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            if (idPos != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                try
+                {
+                    BookDao dao = new BookDao();
+                    List<BookModel> libri = (List<BookModel>)dao.readByIdPos(idPos);
+                    if (libri != null && libri.Count > 0)
+                    {
+                        globalObject.libraryObject.libraryInput.libri = libri;
+                        if (libri.Count == 1)
+                        {
+                            globalObject.libraryObject.libraryInput.libro = libri[0];
+                        }
+                    }
+                    else
+                    {
+                        status = ApplicationErrorType.EMPTY_BOOKS;
+                    }
+                }
+                catch (VideoBookException e)
+                {
+                    status = e.errorType;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.EMPTY_CATEGORY;
+            }
+            return status;
+        }
     }
 }

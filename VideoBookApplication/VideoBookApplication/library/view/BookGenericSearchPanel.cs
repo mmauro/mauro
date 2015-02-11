@@ -212,6 +212,7 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            globalObject.libraryObject.libraryInput.destroy();
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
             TabPage currentTab = tabSearchControl.SelectedTab;
             if (currentTab == searchAuthorTab)
@@ -224,12 +225,15 @@ namespace VideoBookApplication.library.view
             }
             else if (currentTab == searchCategoryTab)
             {
+                log.Info("search By Category");
                 ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
                 status = bookControl.getBookByCategory(ref globalObject, catValue.value);
             }
             else if (currentTab == searchPosTab)
             {
                 log.Info("search By Position");
+                ItemCombo posValue = (ItemCombo)comboPosition.SelectedItem;
+                status = bookControl.getBookByPosition(ref globalObject, posValue.value);
             }
             else
             {
