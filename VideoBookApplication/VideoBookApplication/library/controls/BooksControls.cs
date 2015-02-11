@@ -149,5 +149,53 @@ namespace VideoBookApplication.library.controls
             }
             return status;
         }
+
+        public ApplicationErrorType getBookByAuthor(ref GlobalApplicationObject globalObject, string cognome, string nome)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            AuthorControls authorControl = new AuthorControls();
+            status = authorControl.searchAuthors(nome, cognome, ref globalObject);
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                if (globalObject.libraryObject.libraryInput.autori != null && globalObject.libraryObject.libraryInput.autori.Count > 0)
+                {
+                    globalObject.libraryObject.libraryInput.libri = new List<BookModel>();
+                    BookDao dao = new BookDao();
+                    try
+                    {
+                        foreach (AuthorModel model in globalObject.libraryObject.libraryInput.autori)
+                        {
+                            List<BookModel> tmpBooks = (List<BookModel>)dao.readByIdAutore(model.idAutore);
+                            if (tmpBooks != null && tmpBooks.Count > 0)
+                            {
+                                globalObject.libraryObject.libraryInput.libri.AddRange(tmpBooks);
+                            }
+                        }
+
+                        if (globalObject.libraryObject.libraryInput.libri.Count > 0)
+                        {
+                            if (globalObject.libraryObject.libraryInput.libri.Count == 1)
+                            {
+                                globalObject.libraryObject.libraryInput.libro = globalObject.libraryObject.libraryInput.libri[0];
+                            }
+                        }
+                        else
+                        {
+                            status = ApplicationErrorType.EMPTY_BOOKS;
+                        }
+
+                    }
+                    catch (VideoBookException e)
+                    {
+                        status = e.errorType;
+                    }
+                }
+                else
+                {
+                    status = ApplicationErrorType.AUTHOR_NOT_FOUND;
+                }
+            }
+            return status;
+        }
     }
 }
