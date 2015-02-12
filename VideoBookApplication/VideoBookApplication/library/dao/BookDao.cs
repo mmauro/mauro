@@ -130,6 +130,12 @@ namespace VideoBookApplication.library.dao
                             model.informations = null;
                         }
 
+                        author.idAutore = reader.GetInt32("ID_AUTORE");
+                        author.cognome = reader.GetString("COGNOME");
+                        author.nome = reader.GetString("NOME");
+                        model.autore = author;
+
+
                         books.Add(model);
 
                     }
@@ -243,6 +249,12 @@ namespace VideoBookApplication.library.dao
                             model.informations = null;
                         }
 
+                        author.idAutore = reader.GetInt32("ID_AUTORE");
+                        author.cognome = reader.GetString("COGNOME");
+                        author.nome = reader.GetString("NOME");
+                        model.autore = author;
+
+
                         books.Add(model);
 
                     }
@@ -355,6 +367,11 @@ namespace VideoBookApplication.library.dao
                         {
                             model.informations = null;
                         }
+
+                        author.idAutore = reader.GetInt32("ID_AUTORE");
+                        author.cognome = reader.GetString("COGNOME");
+                        author.nome = reader.GetString("NOME");
+                        model.autore = author;
 
                         books.Add(model);
 
