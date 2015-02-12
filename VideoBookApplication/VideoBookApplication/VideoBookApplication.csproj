@@ -180,6 +180,7 @@
     <Compile Include="library\dao\StatDao.cs" />
     <Compile Include="library\dao\WordMasterCognomeDao.cs" />
     <Compile Include="library\dao\WordMasterNomeDao.cs" />
+    <Compile Include="library\dao\WordMasterTitleDao.cs" />
     <Compile Include="library\model\database\AuthorModel.cs" />
     <Compile Include="library\model\database\BookInfoModel.cs" />
     <Compile Include="library\model\database\BookModel.cs" />
@@ -187,12 +188,14 @@
     <Compile Include="library\model\database\WordMasterLibriModel.cs" />
     <Compile Include="library\model\database\WordMasterNomeModel.cs" />
     <Compile Include="library\model\database\WordMasterCognomeModel.cs" />
+    <Compile Include="library\model\FilterBookCustomObject.cs" />
     <Compile Include="library\model\FilterAuthorCustomObject.cs" />
     <Compile Include="library\model\IndexElementsObject.cs" />
     <Compile Include="library\model\InputLibraryApplicationObject.cs" />
     <Compile Include="library\model\LibraryApplicationObject.cs" />
     <Compile Include="library\model\StatObject.cs" />
     <Compile Include="library\model\TempLibraryModel.cs" />
+    <Compile Include="library\operations\FilterBook.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
     <Compile Include="library\operations\GoogleBooksWebService.cs" />
     <Compile Include="library\utility\DisplayUtility.cs" />

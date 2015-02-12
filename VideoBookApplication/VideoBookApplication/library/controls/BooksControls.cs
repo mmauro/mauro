@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.common.model;
+using VideoBookApplication.common.operations;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.library.dao;
 using VideoBookApplication.library.model.database;
@@ -197,5 +198,69 @@ namespace VideoBookApplication.library.controls
             }
             return status;
         }
+
+
+        public ApplicationErrorType getBookByTitle(ref GlobalApplicationObject globalObject, string titolo)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            List<BookModel> tmpBookResults = new List<BookModel>();
+            if (titolo != null && !titolo.Equals(""))
+            {
+                Indexer indexTitle = new Indexer(titolo, IndexerType.INDEX_BOOK_TITLE);
+                status = indexTitle.status;
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    WordMasterTitleDao titleDao = new WordMasterTitleDao();
+                    try
+                    {
+                        foreach (string word in indexTitle.words)
+                        {
+                            if (status == ApplicationErrorType.SUCCESS)
+                            {
+                                WordMasterLibriModel paroleLibri = titleDao.readOne(word);
+                                if ( paroleLibri != null && paroleLibri.libri != null && paroleLibri.libri.Count > 0 )
+                                {
+                                    tmpBookResults.AddRange(paroleLibri.libri);
+                                }
+                                else
+                                {
+                                    status = ApplicationErrorType.EMPTY_BOOKS;
+                                }
+                            }
+                        }
+                    }
+                    catch (VideoBookException e)
+                    {
+                        status = e.errorType;
+                    }
+
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        FilterBook filter = new FilterBook(FilterType.FILTER_AND);
+                        tmpBookResults = filter.filter(tmpBookResults, indexTitle.words.Count);
+                        if (tmpBookResults != null && tmpBookResults.Count > 0)
+                        {
+                            globalObject.libraryObject.libraryInput.libri = tmpBookResults;
+                            if (globalObject.libraryObject.libraryInput.libri.Count == 1)
+                            {
+                                globalObject.libraryObject.libraryInput.libro = globalObject.libraryObject.libraryInput.libri[0];
+                            }
+                        }
+                        else
+                        {
+                            status = ApplicationErrorType.EMPTY_BOOKS;
+                        }
+                    }
+
+
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.EMPTY_TITLE;
+            }
+            return status;
+        }
+
     }
 }

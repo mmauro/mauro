@@ -222,7 +222,8 @@ namespace VideoBookApplication.library.view
             }
             else if (currentTab == searchTitleTab)
             {
-                log.Info("Search By Author");
+                log.Info("Search By Title");
+                status = bookControl.getBookByTitle(ref globalObject, textTitle.Text);
             }
             else if (currentTab == searchCategoryTab)
             {
