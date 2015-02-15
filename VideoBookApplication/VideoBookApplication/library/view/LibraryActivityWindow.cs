@@ -41,6 +41,7 @@ namespace VideoBookApplication.library.view
         private SearchPositionPanel searchPosPanel = null;
         private DeleteAuthorPanel delAuthorPanel = null;
         private BookGenericSearchPanel genericSearchPanel = null;
+        private SelectBookPanel selectBookPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
@@ -331,6 +332,14 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(genericSearchPanel);
                     }
                     break;
+                case GlobalOperation.LIB_CHOOSE_BOOK_DELETE:
+                    if (selectBookPanel == null)
+                    {
+                        selectBookPanel = new SelectBookPanel(ref globalObject, this);
+                        selectBookPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(selectBookPanel);
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     globalObject.currentOperation = GlobalOperation.UNDEFINED;
@@ -362,6 +371,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
             closePanel(GlobalOperation.LIB_DELETE_AUTHOR);
             closePanel(GlobalOperation.LIB_SEARCHBOOK_DELETE);
+            closePanel(GlobalOperation.LIB_CHOOSE_BOOK_DELETE);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -526,6 +536,13 @@ namespace VideoBookApplication.library.view
                     {
                         genericSearchPanel.Visible = false;
                         genericSearchPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_CHOOSE_BOOK_DELETE:
+                    if (selectBookPanel != null)
+                    {
+                        selectBookPanel.Visible = false;
+                        selectBookPanel = null;
                     }
                     break;
                 default:

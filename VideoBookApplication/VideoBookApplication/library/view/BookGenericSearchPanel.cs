@@ -244,14 +244,23 @@ namespace VideoBookApplication.library.view
 
             if (status == ApplicationErrorType.SUCCESS)
             {
-                log.Info("Libri Trovati : " + globalObject.libraryObject.libraryInput.libri.Count);
+                if (globalObject.libraryObject.libraryInput.libro != null)
+                {
+                    //Gestione caso 1 solo libro trovato
+                }
+                else
+                {
+                    //Gestione caso più libri trovati
+                    log.Info("Libri Trovati : " + globalObject.libraryObject.libraryInput.libri.Count);
+                    parent.closePanel();
+                    parent.openPanel(GlobalOperation.LIB_CHOOSE_BOOK_DELETE);
+                }
             }
             else
             {
                 DisplayManager.displayError(status);
             }
 
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }
 }
