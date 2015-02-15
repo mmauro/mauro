@@ -246,7 +246,21 @@ namespace VideoBookApplication.library.view
             {
                 if (globalObject.libraryObject.libraryInput.libro != null)
                 {
-                    //Gestione caso 1 solo libro trovato
+                    log.Info("Libri Trovati : 1");
+
+                    //salvo anche autori per uso futuro
+                    globalObject.libraryObject.libraryInput.autore = globalObject.libraryObject.libraryInput.libro.autore;
+                    AuthorControls control = new AuthorControls();
+                    status = control.addBooksToAuthor(ref globalObject);
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        parent.closePanel();
+                        parent.openPanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
+                    }
+                    else
+                    {
+                        DisplayManager.displayError(status);
+                    }
                 }
                 else
                 {
