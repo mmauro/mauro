@@ -261,18 +261,87 @@ namespace VideoBookApplication.library.view
         private void buttonNext_Click(object sender, EventArgs e)
         {
             currentPages++;
+            displayBooks();
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
             currentPages--;
+            displayBooks();
             DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ApplicationErrorType status = selectAuthor();
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
+        }
+
+        private ApplicationErrorType selectAuthor()
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            if (radioAuth1.Checked || radioAuth2.Checked || radioAuth3.Checked || radioAuth4.Checked || radioAuth5.Checked || radioAuth6.Checked)
+            {
+                int idxRadio = Configurator.getInstsance().getInt("notfound.value");
+                if (radioAuth1.Checked)
+                {
+                    idxRadio = 1;
+                }
+                if (radioAuth2.Checked)
+                {
+                    idxRadio = 2;
+                }
+                if (radioAuth3.Checked)
+                {
+                    idxRadio = 3;
+                }
+                if (radioAuth4.Checked)
+                {
+                    idxRadio = 4;
+                }
+                if (radioAuth5.Checked)
+                {
+                    idxRadio = 5;
+                }
+                if (radioAuth6.Checked)
+                {
+                    idxRadio = 6;
+                }
+
+                int indexAuthor = getIndexBook(idxRadio);
+                if (indexAuthor >= 0 && indexAuthor < globalObject.libraryObject.libraryInput.libri.Count)
+                {
+                    BookModel tmpModel = globalObject.libraryObject.libraryInput.libri[indexAuthor];
+                    globalObject.libraryObject.libraryInput.destroy();
+                    globalObject.libraryObject.libraryInput.libro = tmpModel;
+                } 
+                else 
+                {
+                    status = ApplicationErrorType.INVALID_VALUE;
+                }
+
+            }
+            else
+            {
+                status = ApplicationErrorType.NO_BOOK_SELECTED;
+            }
+            return status;
+        }
+
+
+        private int getIndexBook(int idxRadio)
+        {
+            int index = Configurator.getInstsance().getInt("notfound.value");
+            index = (int)(idxRadio - 1 + ((currentPages - 1) * numMaxElement));
+            return index;
         }
 
 
