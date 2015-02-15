@@ -44,6 +44,8 @@ namespace VideoBookApplication.common.enums
         LIB_CHOOSE_AUTHOR_DELETE,
         LIB_DELETE_AUTHOR,
         LIB_SEARCHBOOK_DELETE,
-        LIB_CHOOSE_BOOK_DELETE
+        LIB_CHOOSE_BOOK_DELETE,
+        LIB_DETAIL_BOOK_DELETE,
+        LIB_SHOW_BOOKS_DETAIL
     }
 }

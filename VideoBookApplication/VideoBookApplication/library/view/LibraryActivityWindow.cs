@@ -42,6 +42,7 @@ namespace VideoBookApplication.library.view
         private DeleteAuthorPanel delAuthorPanel = null;
         private BookGenericSearchPanel genericSearchPanel = null;
         private SelectBookPanel selectBookPanel = null;
+        private DetailBookPanel detailBookPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
@@ -239,6 +240,21 @@ namespace VideoBookApplication.library.view
                             DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Show Book Panel Error");
                         }
                     }
+                    break;
+                case GlobalOperation.LIB_SHOW_BOOKS_DETAIL:
+                    if (showBooksPanel == null)
+                    {
+                        if (detailBookPanel != null)
+                        {
+                            showBooksPanel = new ShowBooksPanel(ref globalObject, this);
+                            showBooksPanel.Location = new Point(detailBookPanel.Location.X + detailBookPanel.Size.Width + 10, detailBookPanel.Location.Y);
+                            this.Controls.Add(showBooksPanel);
+                        }
+                        else
+                        {
+                            DisplayManager.displayError(ApplicationErrorType.OPEN_PANEL_ERROR, "Show Book Panel Error From Detail");
+                        }
+                    }
 
                     break;
                 case GlobalOperation.LIB_STATS_GRAPH:
@@ -340,6 +356,14 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(selectBookPanel);
                     }
                     break;
+                case GlobalOperation.LIB_DETAIL_BOOK_DELETE:
+                    if (detailBookPanel == null)
+                    {
+                        detailBookPanel = new DetailBookPanel(ref globalObject, this);
+                        detailBookPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(detailBookPanel);
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     globalObject.currentOperation = GlobalOperation.UNDEFINED;
@@ -363,6 +387,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_STATS_GRAPH);
             closePanel(GlobalOperation.LIB_SEARCH_NEW_BOOK);
             closePanel(GlobalOperation.LIB_SHOW_BOOKS);
+            closePanel(GlobalOperation.LIB_SHOW_BOOKS_DETAIL);
             closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR);
             closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE);
             closePanel(GlobalOperation.LIB_SHOW_AUTHOR);
@@ -372,6 +397,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_DELETE_AUTHOR);
             closePanel(GlobalOperation.LIB_SEARCHBOOK_DELETE);
             closePanel(GlobalOperation.LIB_CHOOSE_BOOK_DELETE);
+            closePanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -483,6 +509,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_SHOW_BOOKS:
+                case GlobalOperation.LIB_SHOW_BOOKS_DETAIL:
                     if (showBooksPanel != null)
                     {
                         showBooksPanel.Visible = false;
@@ -543,6 +570,13 @@ namespace VideoBookApplication.library.view
                     {
                         selectBookPanel.Visible = false;
                         selectBookPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_DETAIL_BOOK_DELETE:
+                    if (detailBookPanel != null)
+                    {
+                        detailBookPanel.Visible = false;
+                        detailBookPanel = null;
                     }
                     break;
                 default:

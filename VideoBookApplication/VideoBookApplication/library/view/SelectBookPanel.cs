@@ -13,6 +13,7 @@ using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
 using VideoBookApplication.library.model.database;
 using VideoBookApplication.library.utility;
+using VideoBookApplication.library.controls;
 
 namespace VideoBookApplication.library.view
 {
@@ -277,7 +278,8 @@ namespace VideoBookApplication.library.view
             ApplicationErrorType status = selectAuthor();
             if (status == ApplicationErrorType.SUCCESS)
             {
-                
+                parent.closePanel();
+                parent.openPanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
             }
             else
             {
@@ -322,6 +324,11 @@ namespace VideoBookApplication.library.view
                     BookModel tmpModel = globalObject.libraryObject.libraryInput.libri[indexAuthor];
                     globalObject.libraryObject.libraryInput.destroy();
                     globalObject.libraryObject.libraryInput.libro = tmpModel;
+
+                    //salvo anche autori per uso futuro
+                    globalObject.libraryObject.libraryInput.autore = tmpModel.autore;
+                    AuthorControls control = new AuthorControls();
+                    status = control.addBooksToAuthor(ref globalObject);
                 } 
                 else 
                 {

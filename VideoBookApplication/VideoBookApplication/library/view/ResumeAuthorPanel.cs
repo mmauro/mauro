@@ -21,12 +21,15 @@ namespace VideoBookApplication.library.view
         private GlobalApplicationObject globalObject;
         private Panel parent;
         private LibraryActivityWindow frame;
+        private GlobalOperation currentOperation;
+
         public ResumeAuthorPanel(ref GlobalApplicationObject globalObject, Panel parent, LibraryActivityWindow frame)
         {
             InitializeComponent();
             this.parent = parent;
             this.globalObject = globalObject;
             this.frame = frame;
+            currentOperation = this.globalObject.currentOperation;
             initPanel();
         }
 
@@ -65,7 +68,17 @@ namespace VideoBookApplication.library.view
         private void buttonBooks_Click(object sender, EventArgs e)
         {
             frame.closeOtherBooksPanel();
-            frame.openPanel(GlobalOperation.LIB_SHOW_BOOKS);
+            switch (currentOperation) { 
+                case GlobalOperation.LIB_NEW_BOOKS:
+                    frame.openPanel(GlobalOperation.LIB_SHOW_BOOKS);
+                    break;
+                case GlobalOperation.LIB_DETAIL_BOOK_DELETE:
+                    frame.openPanel(GlobalOperation.LIB_SHOW_BOOKS_DETAIL);
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
+                    break;
+        }
         }
     }
 }
