@@ -78,7 +78,7 @@ namespace VideoBookApplication.library.view
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
                     break;
-        }
+            }
         }
     }
 }

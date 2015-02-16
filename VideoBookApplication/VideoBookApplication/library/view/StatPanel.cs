@@ -208,7 +208,7 @@ namespace VideoBookApplication.library.view
 
                 textLastBook.AppendText(Environment.NewLine);
                 startText = textLastBook.Text.Length;
-                text = "Categoria: " + DisplayUtility.formatCategory(globalObject.libraryObject.statistiche.lastBook.category.category);
+                text = "Categoria: " + DisplayUtility.formatCategoryPosition(globalObject.libraryObject.statistiche.lastBook.category.category);
                 textLastBook.AppendText(text);
                 textLastBook.Select(startText, text.Length);
                 textLastBook.SelectionFont = new Font("Calibri", 11);

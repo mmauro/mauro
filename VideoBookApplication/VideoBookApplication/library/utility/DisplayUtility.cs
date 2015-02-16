@@ -24,7 +24,7 @@ namespace VideoBookApplication.library.utility
             return name;
         }
 
-        public static string formatCategory(string category)
+        public static string formatCategoryPosition(string category)
         {
             string cat = "";
             if (category != null && !category.Equals("")) 

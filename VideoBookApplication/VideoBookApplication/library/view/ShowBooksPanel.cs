@@ -97,7 +97,7 @@ namespace VideoBookApplication.library.view
                 text = "";
                 textBooks.AppendText(Environment.NewLine);
                 startText = textBooks.Text.Length;
-                text = "Categoria: " + DisplayUtility.formatCategory(model.category.category);
+                text = "Categoria: " + DisplayUtility.formatCategoryPosition(model.category.category);
                 textBooks.AppendText(text);
                 textBooks.Select(startText, text.Length);
                 textBooks.SelectionFont = new Font("Calibri", 11);

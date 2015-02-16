@@ -83,7 +83,7 @@ namespace VideoBookApplication.library.view
             {
                 if (itemIndex < Configurator.getInstsance().getInt("topcat.view"))
                 {
-                    string[] row = new string[] { DisplayUtility.formatCategory(entry.Key), entry.Value.ToString() };
+                    string[] row = new string[] { DisplayUtility.formatCategoryPosition(entry.Key), entry.Value.ToString() };
                     dataGridCategory.Rows.Add(row);
                     itemIndex++;
                 }
@@ -111,7 +111,7 @@ namespace VideoBookApplication.library.view
             int index = 0;
             foreach (KeyValuePair<string, int> entry in globalObject.libraryObject.statistiche.categoryDistribution)
             {
-                key[index] = DisplayUtility.formatCategory(entry.Key);
+                key[index] = DisplayUtility.formatCategoryPosition(entry.Key);
                 values[index] = entry.Value;
                 index++;
             }
