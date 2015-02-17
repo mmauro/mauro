@@ -228,7 +228,7 @@ namespace VideoBookApplication.library.view
             else
             {
                 textLastBook.Text = "Nessun Libro Trovato";
-                textLastBook.Select(1, textLastBook.Text.Length);
+                textLastBook.Select(0, textLastBook.Text.Length);
                 textLastBook.SelectionFont = new Font("Calibri", 12, FontStyle.Italic);
                 textLastBook.SelectionColor = Color.Red;
             }
