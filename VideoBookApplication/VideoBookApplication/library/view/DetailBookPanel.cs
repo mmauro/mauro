@@ -12,6 +12,7 @@ using VideoBookApplication.common.enums;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
 using VideoBookApplication.library.utility;
+using VideoBookApplication.library.controls;
 
 namespace VideoBookApplication.library.view
 {
@@ -102,6 +103,55 @@ namespace VideoBookApplication.library.view
             }
             groupBox1.Controls.Add(textNote);
 
+            //Informazioni Aggiuntive
+            if (globalObject.libraryObject.libraryInput.libro.informations != null)
+            {
+                imageBox.SizeMode = PictureBoxSizeMode.Zoom;
+                if (globalObject.libraryObject.libraryInput.libro.informations.image != null && !globalObject.libraryObject.libraryInput.libro.informations.image.Equals(""))
+                {
+                    imageBox.Load(globalObject.libraryObject.libraryInput.libro.informations.image);
+                }
+                else
+                {
+                    imageBox.Image = global::VideoBookApplication.Properties.Resources.no_image;
+                }
+                imageBox.Location = new Point(15, 30);
+                groupBox2.Controls.Add(imageBox);
+
+                labelEditore.Location = new Point(imageBox.Location.X + imageBox.Size.Width + 15, imageBox.Location.Y);
+                groupBox2.Controls.Add(labelEditore);
+
+                textEditore.Location = new Point(labelEditore.Location.X, labelEditore.Location.Y + 25);
+                textEditore.Text = globalObject.libraryObject.libraryInput.libro.informations.publisher;
+                groupBox2.Controls.Add(textEditore);
+
+                labelIsbn.Location = new Point(textEditore.Location.X, textEditore.Location.Y + 40);
+                groupBox2.Controls.Add(labelIsbn);
+
+                textIsbn.Location = new Point(labelIsbn.Location.X, labelIsbn.Location.Y + 25);
+                textIsbn.Text = globalObject.libraryObject.libraryInput.libro.informations.isbn;
+                groupBox2.Controls.Add(textIsbn);
+
+                labelYear.Location = new Point(textIsbn.Location.X, textIsbn.Location.Y + 40);
+                groupBox2.Controls.Add(labelYear);
+
+                textYear.Location = new Point(labelYear.Location.X, labelYear.Location.Y + 25);
+                textYear.Text = globalObject.libraryObject.libraryInput.libro.informations.year;
+                groupBox2.Controls.Add(textYear);
+
+                labelTrama.Location = new Point(15, imageBox.Location.Y + imageBox.Size.Height + 33);
+                groupBox2.Controls.Add(labelTrama);
+
+                textTrama.Location = new Point(labelTrama.Location.X, labelTrama.Location.Y + 25);
+                if (globalObject.libraryObject.libraryInput.libro.informations.trama != null && !globalObject.libraryObject.libraryInput.libro.informations.trama.Trim().Equals(""))
+                {
+                    textTrama.Text = globalObject.libraryObject.libraryInput.libro.informations.trama;
+                }
+                groupBox2.Controls.Add(textTrama);
+
+
+            }
+
 
             //Gestione pulsanti
             buttonOk.Location = new Point(this.Size.Width - (10 + buttonOk.Size.Width), groupBox2.Location.Y + groupBox2.Size.Height + 10);
@@ -114,7 +164,29 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ApplicationErrorType status = ApplicationErrorType.NOT_INIT_WARN;
+            LibraryControls libControl = new LibraryControls();
+            if (globalObject.libraryObject.libraryInput.autore.libri.Count == 1)
+            {
+                //Cancellare Completamente Autore
+                DisplayManager.displayWarning(ApplicationErrorType.DELETE_AUTHOR_WARN);
+                status = libControl.deleteAuthorAndBook(ref globalObject);
+            }
+            else
+            {
+                //Cancellare solo il libro
+                status = ApplicationErrorType.NOT_IMPLEMENTED;
+            }
+
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                DisplayManager.displayMessage(status, "Libro Cancellato con Successo");
+                parent.closePanel();
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

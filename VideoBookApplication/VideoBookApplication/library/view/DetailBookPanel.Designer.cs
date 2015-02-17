@@ -43,7 +43,17 @@
             this.textNote = new System.Windows.Forms.RichTextBox();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
+            this.imageBox = new System.Windows.Forms.PictureBox();
+            this.labelEditore = new System.Windows.Forms.Label();
+            this.textEditore = new System.Windows.Forms.TextBox();
+            this.textIsbn = new System.Windows.Forms.TextBox();
+            this.labelIsbn = new System.Windows.Forms.Label();
+            this.labelYear = new System.Windows.Forms.Label();
+            this.textYear = new System.Windows.Forms.TextBox();
+            this.labelTrama = new System.Windows.Forms.Label();
+            this.textTrama = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -195,10 +205,98 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
+            // imageBox
+            // 
+            this.imageBox.ErrorImage = global::VideoBookApplication.Properties.Resources.no_image;
+            this.imageBox.Location = new System.Drawing.Point(0, 0);
+            this.imageBox.Name = "imageBox";
+            this.imageBox.Size = new System.Drawing.Size(150, 200);
+            this.imageBox.TabIndex = 0;
+            this.imageBox.TabStop = false;
+            // 
+            // labelEditore
+            // 
+            this.labelEditore.AutoSize = true;
+            this.labelEditore.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEditore.Location = new System.Drawing.Point(0, 0);
+            this.labelEditore.Name = "labelEditore";
+            this.labelEditore.Size = new System.Drawing.Size(100, 23);
+            this.labelEditore.TabIndex = 0;
+            this.labelEditore.Text = "Editore";
+            // 
+            // textEditore
+            // 
+            this.textEditore.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEditore.Location = new System.Drawing.Point(83, 52);
+            this.textEditore.Name = "textEditore";
+            this.textEditore.ReadOnly = true;
+            this.textEditore.Size = new System.Drawing.Size(180, 27);
+            this.textEditore.TabIndex = 3;
+            // 
+            // textIsbn
+            // 
+            this.textIsbn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textIsbn.Location = new System.Drawing.Point(83, 52);
+            this.textIsbn.Name = "textIsbn";
+            this.textIsbn.ReadOnly = true;
+            this.textIsbn.Size = new System.Drawing.Size(180, 27);
+            this.textIsbn.TabIndex = 3;
+            // 
+            // labelIsbn
+            // 
+            this.labelIsbn.AutoSize = true;
+            this.labelIsbn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIsbn.Location = new System.Drawing.Point(0, 0);
+            this.labelIsbn.Name = "labelIsbn";
+            this.labelIsbn.Size = new System.Drawing.Size(100, 23);
+            this.labelIsbn.TabIndex = 0;
+            this.labelIsbn.Text = "ISBN";
+            // 
+            // labelYear
+            // 
+            this.labelYear.AutoSize = true;
+            this.labelYear.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelYear.Location = new System.Drawing.Point(0, 0);
+            this.labelYear.Name = "labelYear";
+            this.labelYear.Size = new System.Drawing.Size(100, 23);
+            this.labelYear.TabIndex = 0;
+            this.labelYear.Text = "Anno di Pubblicazione";
+            // 
+            // textYear
+            // 
+            this.textYear.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textYear.Location = new System.Drawing.Point(83, 52);
+            this.textYear.Name = "textYear";
+            this.textYear.ReadOnly = true;
+            this.textYear.Size = new System.Drawing.Size(180, 27);
+            this.textYear.TabIndex = 3;
+            // 
+            // labelTrama
+            // 
+            this.labelTrama.AutoSize = true;
+            this.labelTrama.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTrama.Location = new System.Drawing.Point(0, 0);
+            this.labelTrama.Name = "labelTrama";
+            this.labelTrama.Size = new System.Drawing.Size(100, 23);
+            this.labelTrama.TabIndex = 0;
+            this.labelTrama.Text = "Trama";
+            // 
+            // textTrama
+            // 
+            this.textTrama.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textTrama.Location = new System.Drawing.Point(0, 0);
+            this.textTrama.Name = "textTrama";
+            this.textTrama.ReadOnly = true;
+            this.textTrama.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.textTrama.Size = new System.Drawing.Size(350, 100);
+            this.textTrama.TabIndex = 0;
+            this.textTrama.Text = "";
+            // 
             // DetailBookPanel
             // 
             this.Size = new System.Drawing.Size(800, 650);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -220,5 +318,14 @@
         private System.Windows.Forms.RichTextBox textNote;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.PictureBox imageBox;
+        private System.Windows.Forms.Label labelEditore;
+        private System.Windows.Forms.TextBox textEditore;
+        private System.Windows.Forms.TextBox textIsbn;
+        private System.Windows.Forms.Label labelIsbn;
+        private System.Windows.Forms.Label labelYear;
+        private System.Windows.Forms.TextBox textYear;
+        private System.Windows.Forms.Label labelTrama;
+        private System.Windows.Forms.RichTextBox textTrama;
     }
 }
