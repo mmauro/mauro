@@ -350,6 +350,34 @@ namespace VideoBookApplication.library.dao
             return status;
         }
 
+        public ApplicationErrorType deleteBooks(BookModel model)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            try
+            {
+                //CAncellazione Autore
+                deleteBook(model.idLibro);
+
+                //Cancellazioe Parole Orfane di libri e autori
+                deleteOrphanWord();
+
+                //Cancellazione Note e Informazioni Aggiuntive Orfane dai libri
+                deleteOrphanBookInfo();
+                deleteOrphanBookNote();
+
+                log.Info("DONE");
+                transaction.Commit();
+
+            }
+            catch (VideoBookException e)
+            {
+                log.Error("FAILURE");
+                transaction.Rollback();
+                status = e.errorType;
+            }
+            return status;
+        }
+
         private void updateBookCategory(int categoryDelete, int categoryDefault)
         {
             try
@@ -825,6 +853,23 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.DELETE_AUTHOR_ERROR);
+            }
+        }
+
+        private void deleteBook(int bookId)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("book.delete.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("book.delete.query"), bookId.ToString());
+                command.Parameters.AddWithValue("@idbook", bookId);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.DELETE_BOOK_ERROR);
             }
         }
 

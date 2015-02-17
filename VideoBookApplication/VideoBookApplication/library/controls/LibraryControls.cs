@@ -155,5 +155,24 @@ namespace VideoBookApplication.library.controls
             return status;
         }
 
+        public ApplicationErrorType deleteBook(ref GlobalApplicationObject globalObject)
+        {
+            LibraryDao dao = new LibraryDao();
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            if (globalObject.libraryObject.libraryInput.libro != null && globalObject.libraryObject.libraryInput.libro.idLibro != Configurator.getInstsance().getInt("notfound.value"))
+            {
+                status = dao.deleteBooks(globalObject.libraryObject.libraryInput.libro);
+            }
+            else
+            {
+                status = ApplicationErrorType.BOOK_NOT_FOUND;
+            }
+
+            return status;
+
+
+        }
+
     }
 }

@@ -175,7 +175,7 @@ namespace VideoBookApplication.library.view
             else
             {
                 //Cancellare solo il libro
-                status = ApplicationErrorType.NOT_IMPLEMENTED;
+                status = libControl.deleteBook(ref globalObject);
             }
 
             if (status == ApplicationErrorType.SUCCESS)
