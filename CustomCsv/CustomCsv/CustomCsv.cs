@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CustomCsv
 {
-    public class Class1
+    public class CustomCsv
     {
+        
     }
 }
