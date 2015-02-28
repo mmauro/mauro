@@ -200,5 +200,11 @@ namespace VideoBookApplication.library.dao
 
         }
 
+
+
+        public void update(PositionModel obj)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
     }
 }

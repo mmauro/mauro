@@ -31,17 +31,17 @@ namespace VideoBookApplication.library.dao
 
         public IEnumerable<BookModel> readMany(object value)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public IEnumerable<BookModel> readAll()
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public void write(BookModel obj)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public IEnumerable<BookModel> readByIdAutore(int idAutore)
@@ -644,6 +644,12 @@ namespace VideoBookApplication.library.dao
                     command.Dispose();
                 }
             }
+        }
+
+
+        public void update(BookModel obj)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }
 }

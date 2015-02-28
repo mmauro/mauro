@@ -102,5 +102,11 @@ namespace VideoBookApplication.common.dao
         {
             throw new NotImplementedException();
         }
+
+
+        public void update(ReservedModel obj)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
     }
 }

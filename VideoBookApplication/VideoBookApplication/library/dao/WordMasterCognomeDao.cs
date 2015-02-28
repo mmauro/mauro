@@ -77,17 +77,23 @@ namespace VideoBookApplication.library.dao
 
         public IEnumerable<WordMasterCognomeModel> readMany(object value)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public IEnumerable<WordMasterCognomeModel> readAll()
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         public void write(WordMasterCognomeModel obj)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
+
+
+        public void update(WordMasterCognomeModel obj)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }
 }

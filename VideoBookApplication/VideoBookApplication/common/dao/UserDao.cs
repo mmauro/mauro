@@ -122,5 +122,11 @@ namespace VideoBookApplication.common.dao
                 }
             }
         }
+
+
+        public void update(UsersModel obj)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
     }
 }

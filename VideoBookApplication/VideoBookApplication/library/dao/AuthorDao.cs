@@ -78,7 +78,13 @@ namespace VideoBookApplication.library.dao
 
         public int countElement(object value)
         {
-            throw new NotImplementedException();
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
+
+
+        public void update(AuthorModel obj)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
         }
     }
 }

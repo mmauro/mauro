@@ -73,5 +73,11 @@ namespace VideoBookApplication.common.dao
                 }
             }
         }
+
+
+        public void update(StemmerForceModel obj)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
     }
 }

@@ -90,5 +90,11 @@ namespace VideoBookApplication.library.dao
         {
             throw new NotImplementedException();
         }
+
+
+        public void update(WordMasterNomeModel obj)
+        {
+            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+        }
     }
 }
