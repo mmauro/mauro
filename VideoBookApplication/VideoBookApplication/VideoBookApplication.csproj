@@ -217,6 +217,12 @@
     <Compile Include="library\view\DetailBookPanel.Designer.cs">
       <DependentUpon>DetailBookPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\EditCategoryPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\EditCategoryPanel.Designer.cs">
+      <DependentUpon>EditCategoryPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\SearchPositionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -411,6 +417,9 @@
     <EmbeddedResource Include="library\view\DetailBookPanel.resx">
       <DependentUpon>DetailBookPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="library\view\EditCategoryPanel.resx">
+      <DependentUpon>EditCategoryPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="library\view\SearchPositionPanel.resx">
       <DependentUpon>SearchPositionPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -562,6 +571,7 @@
     <None Include="img\search_book.fw.png" />
     <None Include="img\search_category.fw.png" />
     <None Include="img\search_position.fw.png" />
+    <None Include="img\pen.png" />
     <Content Include="img\sw.png" />
     <None Include="img\write.png" />
     <None Include="img\trash.png" />

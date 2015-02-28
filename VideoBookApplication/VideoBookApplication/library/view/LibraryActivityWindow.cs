@@ -43,11 +43,13 @@ namespace VideoBookApplication.library.view
         private BookGenericSearchPanel genericSearchPanel = null;
         private SelectBookPanel selectBookPanel = null;
         private DetailBookPanel detailBookPanel = null;
+        private EditCategoryPanel editCatPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
         private SearchMenuLibrary searchMenu = null;
         private EditMenuLibrary editMenu = null;
+        
 
         public LibraryActivityWindow(ref GlobalApplicationObject globalObject)
         {
@@ -364,6 +366,14 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(detailBookPanel);
                     }
                     break;
+                case GlobalOperation.LIB_EDIT_CAT:
+                    if (editCatPanel == null)
+                    {
+                        editCatPanel = new EditCategoryPanel(ref globalObject, this);
+                        editCatPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(editCatPanel);
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     globalObject.currentOperation = GlobalOperation.UNDEFINED;
@@ -398,6 +408,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SEARCHBOOK_DELETE);
             closePanel(GlobalOperation.LIB_CHOOSE_BOOK_DELETE);
             closePanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
+            closePanel(GlobalOperation.LIB_EDIT_CAT);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -577,6 +588,13 @@ namespace VideoBookApplication.library.view
                     {
                         detailBookPanel.Visible = false;
                         detailBookPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_EDIT_CAT:
+                    if (editCatPanel != null)
+                    {
+                        editCatPanel.Visible = false;
+                        editCatPanel = null;
                     }
                     break;
                 default:

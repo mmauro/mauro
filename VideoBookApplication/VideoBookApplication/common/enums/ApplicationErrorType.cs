@@ -105,6 +105,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType INFO_DELETE_BYUSER_WARN = new ApplicationErrorType(1006, "Warning: Informazioni Cancellate dall'Utente");
         public static ApplicationErrorType AUTHOR_AMBIG_WARN = new ApplicationErrorType(1007, "Warning: Trovati più Autori");
         public static ApplicationErrorType DELETE_AUTHOR_WARN = new ApplicationErrorType(1008, "L'Autore Verrà Cancellato");
+        public static ApplicationErrorType NO_CATEGORY_WARN = new ApplicationErrorType(1009, "Nessuna Categoria Trovata");
 
 
     }

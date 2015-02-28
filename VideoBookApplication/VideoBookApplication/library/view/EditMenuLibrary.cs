@@ -65,7 +65,8 @@ namespace VideoBookApplication.common.view
 
         private void buttonModifyCategory_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closePanel();
+            parent.openPanel(GlobalOperation.LIB_EDIT_CAT);
         }
 
         private void buttonModifyAuthor_Click(object sender, EventArgs e)
