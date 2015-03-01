@@ -106,6 +106,7 @@
     <Compile Include="common\dao\UserDao.cs" />
     <Compile Include="common\enums\ActivityType.cs" />
     <Compile Include="common\enums\ApplicationErrorType.cs" />
+    <Compile Include="common\enums\FileFilterType.cs" />
     <Compile Include="common\enums\FilterType.cs" />
     <Compile Include="common\enums\GlobalOperation.cs" />
     <Compile Include="common\enums\IndexerType.cs" />
@@ -169,6 +170,8 @@
     <Compile Include="common\view\WindowsMainActivity.designer.cs">
       <DependentUpon>WindowsMainActivity.cs</DependentUpon>
     </Compile>
+    <Compile Include="customCSV\common\FormatterCSV.cs" />
+    <Compile Include="customCSV\operations\WriteCSV.cs" />
     <Compile Include="library\controls\AuthorControls.cs" />
     <Compile Include="library\controls\BooksControls.cs" />
     <Compile Include="library\controls\LibraryControls.cs" />

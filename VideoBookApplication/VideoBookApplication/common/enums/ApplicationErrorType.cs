@@ -89,8 +89,13 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType CATEGORY_EQUALS_VALUE = new ApplicationErrorType(138, "Categoria non Modificata");
         public static ApplicationErrorType UPDATE_CAT_ERROR = new ApplicationErrorType(138, "Errore Aggironamento Categoria");
 
+        /** CUSTOM CSV ERROR 801 - 900 */
+        public static ApplicationErrorType INVALID_FILENAME = new ApplicationErrorType(801, "Nome File non Valido");
+        public static ApplicationErrorType OPEN_STREAM_ERROR = new ApplicationErrorType(802, "Errore nell'Apertura dello Stream");
+
         /** DATABASE ERROR 901 - 920 */
-        public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(901, "Errore di Connessione al Database");
+        public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(902, "Errore di Connessione al Database");
+
 
         /** COMMON OPERATION ERROR 921 - 950*/
         public static ApplicationErrorType EMPTY_USERNAME = new ApplicationErrorType(921, "Il Nome Utente non può Essere Nullo o Vuoto");
