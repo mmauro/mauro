@@ -129,7 +129,21 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            ItemCombo catValue = (ItemCombo)comboCategory.SelectedItem;
+            CategoryModel selectedCategory = new CategoryModel();
+            selectedCategory.idCategory = catValue.value;
+            selectedCategory.category = catValue.text;
+
+            ApplicationErrorType status = catControl.updateCategory(selectedCategory, textCategory.Text);
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                parent.closePanel();
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
+            
         }
     }
 }

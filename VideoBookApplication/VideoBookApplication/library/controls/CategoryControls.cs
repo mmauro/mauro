@@ -118,5 +118,59 @@ namespace VideoBookApplication.library.controls
             }
         }
 
+        public ApplicationErrorType updateCategory(CategoryModel oldCat, string newCatValue)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            if (oldCat != null)
+            {
+                if (newCatValue != null && !newCatValue.Trim().Equals(""))
+                {
+                    try
+                    {
+                        if (!newCatValue.Trim().ToLower().Equals(oldCat.category))
+                        {
+                            CategoryModel testModel = categoryDao.readOne(newCatValue.Trim().ToLower());
+                            if (testModel != null)
+                            {
+                                status = ApplicationErrorType.CATEGORY_PRESENT;
+                            }
+                        }
+                        else
+                        {
+                            status = ApplicationErrorType.CATEGORY_EQUALS_VALUE;
+                        }
+                    }
+                    catch (VideoBookException e)
+                    {
+                        status = e.errorType;
+                    }
+
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        //Posso salvare la categoria
+                        oldCat.category = newCatValue.Trim().ToLower();
+                        try
+                        {
+                            categoryDao.update(oldCat);
+                        }
+                        catch (VideoBookException e)
+                        {
+                            status = e.errorType;
+                        }
+                    }
+                }
+                else
+                {
+                    status = ApplicationErrorType.EMPTY_CATEGORY;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.CATEGORY_NOT_FOUND;
+            }
+
+            return status;
+        }
+
     }
 }

@@ -85,6 +85,9 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType EMPTY_BOOKS = new ApplicationErrorType(134, "Libri non Trovati");
         public static ApplicationErrorType NO_BOOK_SELECTED = new ApplicationErrorType(135, "Nessun Libro Selezionato");
         public static ApplicationErrorType DELETE_BOOK_ERROR = new ApplicationErrorType(136, "Errore Cancellazione Libro");
+        public static ApplicationErrorType CATEGORY_NOT_FOUND = new ApplicationErrorType(137, "Categoria non Trovata");
+        public static ApplicationErrorType CATEGORY_EQUALS_VALUE = new ApplicationErrorType(138, "Categoria non Modificata");
+        public static ApplicationErrorType UPDATE_CAT_ERROR = new ApplicationErrorType(138, "Errore Aggironamento Categoria");
 
         /** DATABASE ERROR 901 - 920 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(901, "Errore di Connessione al Database");

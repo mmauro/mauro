@@ -30,7 +30,6 @@ namespace VideoBookApplication.library.dao
                 command.Parameters.AddWithValue("@cat", obj.category);
                 LogUtility.printQueryLog(query, obj.category);
 
-
                 //Execute Command
                 command.ExecuteNonQuery();
 
@@ -206,7 +205,30 @@ namespace VideoBookApplication.library.dao
 
         public void update(CategoryModel obj)
         {
-            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+            MySqlTransaction transaction = DatabaseControl.getInstance().getConnection().BeginTransaction();
+            try
+            {
+                String query = Configurator.getInstsance().get("category.update.query");
+
+                //Prepare Command
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@newcat", obj.category);
+                command.Parameters.AddWithValue("@idcat", obj.idCategory);
+                LogUtility.printQueryLog(query, obj.category, obj.idCategory.ToString());
+
+                //Execute Command
+                command.ExecuteNonQuery();
+
+                //Commit
+                transaction.Commit();
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.UPDATE_CAT_ERROR);
+            }
         }
     }
 }
