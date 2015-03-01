@@ -197,6 +197,16 @@ namespace VideoBookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap csv {
+            get {
+                object obj = ResourceManager.GetObject("csv", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap document {
             get {
                 object obj = ResourceManager.GetObject("document", resourceCulture);
@@ -209,7 +219,7 @@ namespace VideoBookApplication.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap dump_db {
             get {
-                object obj = ResourceManager.GetObject("dump-db", resourceCulture);
+                object obj = ResourceManager.GetObject("dump_db", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -260,6 +270,16 @@ namespace VideoBookApplication.Properties {
         internal static System.Drawing.Bitmap eraser {
             get {
                 object obj = ResourceManager.GetObject("eraser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Excel {
+            get {
+                object obj = ResourceManager.GetObject("Excel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -469,7 +489,7 @@ namespace VideoBookApplication.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap restore_db {
             get {
-                object obj = ResourceManager.GetObject("restore-db", resourceCulture);
+                object obj = ResourceManager.GetObject("restore_db", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -614,6 +634,16 @@ namespace VideoBookApplication.Properties {
         internal static string Videobook {
             get {
                 return ResourceManager.GetString("Videobook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Word {
+            get {
+                object obj = ResourceManager.GetObject("Word", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

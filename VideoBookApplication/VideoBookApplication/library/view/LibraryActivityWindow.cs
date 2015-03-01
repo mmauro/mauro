@@ -49,6 +49,7 @@ namespace VideoBookApplication.library.view
         private DeleteMenuLibrary deleteMenu = null;
         private SearchMenuLibrary searchMenu = null;
         private EditMenuLibrary editMenu = null;
+        private ExportReportMenu reportMenu = null;
         
 
         public LibraryActivityWindow(ref GlobalApplicationObject globalObject)
@@ -639,7 +640,14 @@ namespace VideoBookApplication.library.view
                         panelMenu2.Controls.Add(searchMenu);
                     }
                     break;
-
+                case GlobalOperation.LIB_REPORT_MENU:
+                    if (reportMenu == null)
+                    {
+                        reportMenu = new ExportReportMenu(ref globalObject, this);
+                        reportMenu.Location = new Point(0, 0);
+                        panelMenu2.Controls.Add(reportMenu);
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -720,6 +728,13 @@ namespace VideoBookApplication.library.view
                         editMenu = null;
                     }
                     break;
+                case GlobalOperation.LIB_REPORT_MENU:
+                    if (reportMenu != null)
+                    {
+                        reportMenu.Visible = false;
+                        reportMenu = null;
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     break;
@@ -732,6 +747,7 @@ namespace VideoBookApplication.library.view
             closeMenu(GlobalOperation.LIB_DELETE_MENU);
             closeMenu(GlobalOperation.LIB_INSERT_MENU);
             closeMenu(GlobalOperation.LIB_MODIFY_MENU);
+            closeMenu(GlobalOperation.LIB_REPORT_MENU);
             closeMenu(GlobalOperation.LIB_SEARCH_MENU);
         }
 

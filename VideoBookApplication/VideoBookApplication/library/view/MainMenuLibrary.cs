@@ -94,7 +94,8 @@ namespace VideoBookApplication.common.view
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closeMenu();
+            parent.openMenu(GlobalOperation.LIB_REPORT_MENU);
         }
 
         private void buttonStats_Click(object sender, EventArgs e)

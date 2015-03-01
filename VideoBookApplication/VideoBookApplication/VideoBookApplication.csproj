@@ -223,6 +223,12 @@
     <Compile Include="library\view\EditCategoryPanel.Designer.cs">
       <DependentUpon>EditCategoryPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\ExportReportMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\ExportReportMenu.designer.cs">
+      <DependentUpon>ExportReportMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\SearchPositionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -420,6 +426,9 @@
     <EmbeddedResource Include="library\view\EditCategoryPanel.resx">
       <DependentUpon>EditCategoryPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="library\view\ExportReportMenu.resx">
+      <DependentUpon>ExportReportMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="library\view\SearchPositionPanel.resx">
       <DependentUpon>SearchPositionPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -543,6 +552,8 @@
     <None Include="img\edit_category.fw.png" />
     <None Include="img\edit_position.fw.png" />
     <None Include="img\eraser.png" />
+    <None Include="img\csv.png" />
+    <None Include="img\Excel.png" />
     <Content Include="img\exit.png" />
     <None Include="img\google.png" />
     <None Include="img\generic_search.fw.png" />
@@ -576,6 +587,7 @@
     <None Include="img\write.png" />
     <None Include="img\trash.png" />
     <None Include="img\TextEdit.png" />
+    <None Include="img\Word.png" />
     <Content Include="resources\VideoBook.sql" />
   </ItemGroup>
   <ItemGroup>

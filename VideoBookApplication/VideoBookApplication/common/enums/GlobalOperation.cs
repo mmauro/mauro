@@ -19,6 +19,7 @@ namespace VideoBookApplication.common.enums
         LIB_DELETE_MENU,
         LIB_MODIFY_MENU,
         LIB_SEARCH_MENU,
+        LIB_REPORT_MENU,
 
         /** LIBRARY OPERATION */
         LIB_NEW_CATEGORY,
