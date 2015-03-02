@@ -172,6 +172,8 @@
     </Compile>
     <Compile Include="customCSV\common\FileUtility.cs" />
     <Compile Include="customCSV\common\FormatterCSV.cs" />
+    <Compile Include="customCSV\common\model\FieldInfoModel.cs" />
+    <Compile Include="customCSV\common\ProcessRow.cs" />
     <Compile Include="customCSV\operations\WriteCSV.cs" />
     <Compile Include="library\controls\AuthorControls.cs" />
     <Compile Include="library\controls\BooksControls.cs" />

@@ -92,6 +92,10 @@ namespace VideoBookApplication.common.enums
         /** CUSTOM CSV ERROR 801 - 900 */
         public static ApplicationErrorType INVALID_FILENAME = new ApplicationErrorType(801, "Nome File non Valido");
         public static ApplicationErrorType OPEN_STREAM_ERROR = new ApplicationErrorType(802, "Errore nell'Apertura dello Stream");
+        public static ApplicationErrorType INVALID_HEADER = new ApplicationErrorType(803, "Header non Valido");
+        public static ApplicationErrorType INVALID_INFO_MODEL = new ApplicationErrorType(804, "Errore Campo");
+        public static ApplicationErrorType INVALID_ROW = new ApplicationErrorType(805, "Riga non Valida");
+        public static ApplicationErrorType WRITE_STREAM_ERROR = new ApplicationErrorType(806, "Fallimento Scrittura CSV");
 
         /** DATABASE ERROR 901 - 920 */
         public static ApplicationErrorType CONNECTION_ERROR = new ApplicationErrorType(902, "Errore di Connessione al Database");
