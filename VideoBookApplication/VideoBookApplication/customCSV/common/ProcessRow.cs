@@ -42,6 +42,27 @@ namespace VideoBookApplication.customCSV.common
             return value;
         }
 
+        public string processRow(Dictionary<string, FieldInfoModel> fieldList, List<String> header)
+        {
+            string value = "";
+            foreach (string fieldName in header)
+            {
+                if (fieldList.ContainsKey(fieldName))
+                {
+                    value += formatter.cellSeparator + processField(fieldList[fieldName]);
+                }
+                else
+                {
+                    throw new VideoBookException(ApplicationErrorType.FIELD_ERROR);
+                }
+            }
+            if (value.StartsWith(formatter.cellSeparator))
+            {
+                value = value.Substring(formatter.cellSeparator.Length);
+            }
+            return value;
+        }
+
         public string processField(FieldInfoModel model)
         {
             if (model != null)

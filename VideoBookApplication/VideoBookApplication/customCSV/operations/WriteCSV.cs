@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.customCSV.common;
+using VideoBookApplication.customCSV.common.model;
 
 namespace VideoBookApplication.customCSV.operations
 {
@@ -95,11 +96,35 @@ namespace VideoBookApplication.customCSV.operations
                     fileUtil.restoreBackup();
                     throw new VideoBookException(ApplicationErrorType.INVALID_ROW);
                 }
-
             }
             else
             {
                 fileUtil.restoreBackup();
+                throw new VideoBookException(ApplicationErrorType.INVALID_HEADER);
+            }
+        }
+
+        public void write(Object element, List<string> header)
+        {
+            if (header != null && header.Count > 0)
+            {
+                if (element != null)
+                {
+                    ProcessCustomObject process = new ProcessCustomObject();
+                    Dictionary<string, FieldInfoModel> listFields = process.getInfoModels(element);
+                    if (listFields != null && listFields.Count > 0)
+                    {
+                        ProcessRow processRow = new ProcessRow(formatter);
+                        string row = processRow.processRow(listFields, header);
+                    }
+                }
+                else
+                {
+                    throw new VideoBookException(ApplicationErrorType.INVALID_OBJECT);
+                }
+            }
+            else
+            {
                 throw new VideoBookException(ApplicationErrorType.INVALID_HEADER);
             }
         }
