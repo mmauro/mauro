@@ -114,6 +114,7 @@
     <Compile Include="common\model\database\ReservedModel.cs" />
     <Compile Include="common\model\database\StemmerForceModel.cs" />
     <Compile Include="common\model\database\UsersModel.cs" />
+    <Compile Include="common\model\FileObject.cs" />
     <Compile Include="common\model\GlobalApplicationObject.cs" />
     <Compile Include="common\model\IApplicationObject.cs" />
     <Compile Include="common\model\ItemCombo.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="common\view\AboutVideoBook.Designer.cs">
       <DependentUpon>AboutVideoBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="common\view\SaveDisplayDialog.cs" />
     <Compile Include="common\view\TitlePanel.cs">
       <SubType>Component</SubType>
     </Compile>

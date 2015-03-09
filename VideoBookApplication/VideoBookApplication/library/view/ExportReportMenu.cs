@@ -56,17 +56,23 @@ namespace VideoBookApplication.common.view
 
         private void buttonReportCSV_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            globalObject.fileOperation = new FileObject(FileFilterType.CSV_FILE);
+            SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
+            //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonReportExcel_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            globalObject.fileOperation = new FileObject(FileFilterType.EXCEL_FILE);
+            SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
+            //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonReportWord_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            globalObject.fileOperation = new FileObject(FileFilterType.WORD_FILE);
+            SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
+            //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
     }

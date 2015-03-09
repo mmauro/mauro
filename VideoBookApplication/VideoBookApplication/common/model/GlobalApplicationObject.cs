@@ -18,12 +18,15 @@ namespace VideoBookApplication.common.model
 
         public ActivityType activity { get; set; }
 
+        public FileObject fileOperation { get; set; }
+
         public GlobalApplicationObject() 
         {
             libraryObject = new LibraryApplicationObject();
             activity = ActivityType.UNDEFINED;
             user = null;
             currentOperation = GlobalOperation.UNDEFINED;
+            fileOperation = null;
         }
 
         public void destroy()
@@ -32,6 +35,10 @@ namespace VideoBookApplication.common.model
             libraryObject = new LibraryApplicationObject();
             user = null;
             activity = ActivityType.UNDEFINED;
+            if (fileOperation != null)
+            {
+                fileOperation = null;
+            }
         }
     }
 }

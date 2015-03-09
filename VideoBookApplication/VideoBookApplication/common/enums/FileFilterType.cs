@@ -17,8 +17,8 @@ namespace VideoBookApplication.common.enums
             this.dialogFilter = dialogFilter;
         }
 
-        public FileFilterType CSV_FILE = new FileFilterType(".csv", "CSV files (*.csv)|*.csv");
-        public FileFilterType EXCEL_FILE = new FileFilterType(".xlsx", "Excel files (*.xlsx)|*.xlsx");      
-        public FileFilterType WORD_FILE = new FileFilterType(".docx", "Word files (*.docx)|*.docx");
+        public static FileFilterType CSV_FILE = new FileFilterType(".csv", "CSV files (*.csv)|*.csv");
+        public static FileFilterType EXCEL_FILE = new FileFilterType(".xlsx", "Excel files (*.xlsx)|*.xlsx");      
+        public static FileFilterType WORD_FILE = new FileFilterType(".docx", "Word files (*.docx)|*.docx");
     }
 }
