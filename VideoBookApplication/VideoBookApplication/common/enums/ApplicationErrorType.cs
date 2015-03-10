@@ -44,7 +44,7 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType READ_WORD_ERROR = new ApplicationErrorType(21, "Errore Lettura Parole Indicizzate");
         public static ApplicationErrorType WRITE_WORD_ERROR = new ApplicationErrorType(22, "Errore Scrittura Parole Indicizzate");
         public static ApplicationErrorType INVALID_TAB = new ApplicationErrorType(23, "Tab non Riconosciuto");
-
+        public static ApplicationErrorType CANCEL_OPERATION = new ApplicationErrorType(24, "Operazione Annullata");
 
 
         /** LIBRARY OPERATION ERROR 101 - 200 */

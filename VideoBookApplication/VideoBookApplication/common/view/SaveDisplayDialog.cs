@@ -16,6 +16,8 @@ namespace VideoBookApplication.common.view
 
         private GlobalApplicationObject globalObject;
 
+        public DialogResult dialogResult { get; private set; }
+
         public SaveDisplayDialog(ref GlobalApplicationObject globalObject) {
             this.globalObject = globalObject;
             display();
@@ -29,14 +31,16 @@ namespace VideoBookApplication.common.view
                 saveFileDialog1.Filter = this.globalObject.fileOperation.filter.dialogFilter;
                 saveFileDialog1.Title = getTitleByFilter();
                 saveFileDialog1.Title = "Salva Report";
-                saveFileDialog1.ShowDialog();
+                dialogResult = saveFileDialog1.ShowDialog();
 
-
-                //Scelta del nome File
-                if (saveFileDialog1.FileName != null && !saveFileDialog1.FileName.Equals(""))
+                if (dialogResult == DialogResult.OK)
                 {
-                    log.Info("filename Selezionato = " + saveFileDialog1.FileName);
-                    globalObject.fileOperation.fileName = saveFileDialog1.FileName;
+                    //Scelta del nome File
+                    if (saveFileDialog1.FileName != null && !saveFileDialog1.FileName.Equals(""))
+                    {
+                        log.Info("filename Selezionato = " + saveFileDialog1.FileName);
+                        globalObject.fileOperation.fileName = saveFileDialog1.FileName;
+                    }
                 }
 
             }

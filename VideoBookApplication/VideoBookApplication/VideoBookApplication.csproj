@@ -181,6 +181,7 @@
     <Compile Include="library\controls\AuthorControls.cs" />
     <Compile Include="library\controls\BooksControls.cs" />
     <Compile Include="library\controls\LibraryControls.cs" />
+    <Compile Include="library\controls\ReportControls.cs" />
     <Compile Include="library\controls\StatControls.cs" />
     <Compile Include="library\controls\WordMasterControl.cs" />
     <Compile Include="library\dao\AuthorDao.cs" />

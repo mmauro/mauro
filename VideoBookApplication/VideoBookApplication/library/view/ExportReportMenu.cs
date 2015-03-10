@@ -11,6 +11,7 @@ using VideoBookApplication.common.utility;
 using VideoBookApplication.library.view;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.enums;
+using VideoBookApplication.library.controls;
 
 
 namespace VideoBookApplication.common.view
@@ -21,12 +22,15 @@ namespace VideoBookApplication.common.view
 
         private static int numButton = 3;
         private GlobalApplicationObject globalObject;
+        private SaveDisplayDialog dialog;
+        private ReportControls controls = new ReportControls();
 
         public ExportReportMenu(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
         {
             InitializeComponent();
             this.parent = parent;
             this.globalObject = globalObject;
+            dialog = null;
             initPanel();
         }
 
@@ -47,6 +51,12 @@ namespace VideoBookApplication.common.view
             buttonReportWord.Location = new Point(5, buttonReportExcel.Location.Y + buttonReportExcel.Size.Height + 5);
             this.Controls.Add(buttonReportWord);
 
+            if (!controls.canSaveReport())
+            {
+                buttonReportCSV.Enabled = false;
+                buttonReportExcel.Enabled = false;
+                buttonReportWord.Enabled = false;
+            }
 
             //toolTip
             toolTip1.SetToolTip(buttonReportExcel, "Crea Report in formato Excel");
@@ -58,6 +68,7 @@ namespace VideoBookApplication.common.view
         {
             globalObject.fileOperation = new FileObject(FileFilterType.CSV_FILE);
             SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
+            getFileNameFromDiaolog();
             //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
@@ -65,15 +76,37 @@ namespace VideoBookApplication.common.view
         {
             globalObject.fileOperation = new FileObject(FileFilterType.EXCEL_FILE);
             SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
+            getFileNameFromDiaolog();
             //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonReportWord_Click(object sender, EventArgs e)
         {
             globalObject.fileOperation = new FileObject(FileFilterType.WORD_FILE);
-            SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
+            getFileNameFromDiaolog();
             //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
+        private void getFileNameFromDiaolog()
+        {
+            SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
+            if (dialog.dialogResult == DialogResult.OK)
+            {
+                
+                ApplicationErrorType status = controls.saveReport(ref globalObject);
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    DisplayManager.displayMessage(ApplicationErrorType.SUCCESS);
+                }
+                else
+                {
+                    DisplayManager.displayError(status);
+                }
+            }
+            else
+            {
+                DisplayManager.displayError(ApplicationErrorType.CANCEL_OPERATION);
+            }
+        }
     }
 }
