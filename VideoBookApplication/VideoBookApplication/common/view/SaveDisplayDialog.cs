@@ -25,10 +25,10 @@ namespace VideoBookApplication.common.view
 
         private void display()
         {
-            if (globalObject.fileOperation != null && globalObject.fileOperation.filter != null)
+            if (globalObject.reportObject != null && globalObject.reportObject.filter != null)
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = this.globalObject.fileOperation.filter.dialogFilter;
+                saveFileDialog1.Filter = this.globalObject.reportObject.filter.dialogFilter;
                 saveFileDialog1.Title = getTitleByFilter();
                 saveFileDialog1.Title = "Salva Report";
                 dialogResult = saveFileDialog1.ShowDialog();
@@ -39,7 +39,7 @@ namespace VideoBookApplication.common.view
                     if (saveFileDialog1.FileName != null && !saveFileDialog1.FileName.Equals(""))
                     {
                         log.Info("filename Selezionato = " + saveFileDialog1.FileName);
-                        globalObject.fileOperation.fileName = saveFileDialog1.FileName;
+                        globalObject.reportObject.fileName = saveFileDialog1.FileName;
                     }
                 }
 
@@ -52,15 +52,15 @@ namespace VideoBookApplication.common.view
 
         private String getTitleByFilter()
         {
-            if (globalObject.fileOperation.filter == FileFilterType.CSV_FILE)
+            if (globalObject.reportObject.filter == FileFilterType.CSV_FILE)
             {
                 return "Salvataggio File CSV";
             }
-            if (globalObject.fileOperation.filter == FileFilterType.EXCEL_FILE)
+            if (globalObject.reportObject.filter == FileFilterType.EXCEL_FILE)
             {
                 return "Salvataggio File Microsoft Excel";
             }
-            if (globalObject.fileOperation.filter == FileFilterType.WORD_FILE)
+            if (globalObject.reportObject.filter == FileFilterType.WORD_FILE)
             {
                 return "Salvataggio File Microsoft Word";
             }

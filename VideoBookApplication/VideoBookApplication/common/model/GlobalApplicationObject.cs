@@ -18,7 +18,7 @@ namespace VideoBookApplication.common.model
 
         public ActivityType activity { get; set; }
 
-        public FileObject fileOperation { get; set; }
+        public ReportObject reportObject { get; set; }
 
         public GlobalApplicationObject() 
         {
@@ -26,7 +26,7 @@ namespace VideoBookApplication.common.model
             activity = ActivityType.UNDEFINED;
             user = null;
             currentOperation = GlobalOperation.UNDEFINED;
-            fileOperation = null;
+            reportObject = null;
         }
 
         public void destroy()
@@ -35,9 +35,9 @@ namespace VideoBookApplication.common.model
             libraryObject = new LibraryApplicationObject();
             user = null;
             activity = ActivityType.UNDEFINED;
-            if (fileOperation != null)
+            if (reportObject != null)
             {
-                fileOperation = null;
+                reportObject = null;
             }
         }
     }

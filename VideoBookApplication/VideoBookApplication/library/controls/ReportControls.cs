@@ -15,6 +15,36 @@ namespace VideoBookApplication.library.controls
         public ApplicationErrorType saveReport(ref GlobalApplicationObject globalObject)
         {
             ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            if (globalObject.reportObject != null)
+            {
+                if (globalObject.reportObject.fileName != null && !globalObject.reportObject.fileName.Equals(""))
+                {
+                    switch (globalObject.reportObject.reportType)
+                    {
+                        case ReportType.CSV:
+                            status = ApplicationErrorType.NOT_IMPLEMENTED;
+                            break;
+                        case ReportType.EXCEL:
+                            status = ApplicationErrorType.NOT_IMPLEMENTED;
+                            break;
+                        case ReportType.WORD:
+                            status = ApplicationErrorType.NOT_IMPLEMENTED;
+                            break;
+                        default:
+                            status = ApplicationErrorType.NOT_ALLOWED;
+                            break;
+                    }
+                }
+                else
+                {
+                    status = ApplicationErrorType.INVALID_FILENAME;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.NOT_ALLOWED;
+            }
             return status;
         }
 

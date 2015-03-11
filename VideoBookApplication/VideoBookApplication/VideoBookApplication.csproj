@@ -110,11 +110,12 @@
     <Compile Include="common\enums\FilterType.cs" />
     <Compile Include="common\enums\GlobalOperation.cs" />
     <Compile Include="common\enums\IndexerType.cs" />
+    <Compile Include="common\enums\ReportType.cs" />
     <Compile Include="common\enums\ReservedType.cs" />
     <Compile Include="common\model\database\ReservedModel.cs" />
     <Compile Include="common\model\database\StemmerForceModel.cs" />
     <Compile Include="common\model\database\UsersModel.cs" />
-    <Compile Include="common\model\FileObject.cs" />
+    <Compile Include="common\model\ReportObject.cs" />
     <Compile Include="common\model\GlobalApplicationObject.cs" />
     <Compile Include="common\model\IApplicationObject.cs" />
     <Compile Include="common\model\ItemCombo.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="library\controls\WordMasterControl.cs" />
     <Compile Include="library\dao\AuthorDao.cs" />
     <Compile Include="library\dao\BookDao.cs" />
+    <Compile Include="library\dao\CSVDao.cs" />
     <Compile Include="library\dao\LibraryDao.cs" />
     <Compile Include="library\dao\StatDao.cs" />
     <Compile Include="library\dao\WordMasterCognomeDao.cs" />
@@ -195,6 +197,7 @@
     <Compile Include="library\model\database\BookInfoModel.cs" />
     <Compile Include="library\model\database\BookModel.cs" />
     <Compile Include="library\model\database\BookNoteModel.cs" />
+    <Compile Include="library\model\database\CSVModel.cs" />
     <Compile Include="library\model\database\WordMasterLibriModel.cs" />
     <Compile Include="library\model\database\WordMasterNomeModel.cs" />
     <Compile Include="library\model\database\WordMasterCognomeModel.cs" />
@@ -208,6 +211,7 @@
     <Compile Include="library\operations\FilterBook.cs" />
     <Compile Include="library\operations\FilterAuthor.cs" />
     <Compile Include="library\operations\GoogleBooksWebService.cs" />
+    <Compile Include="library\utility\CSVUtility.cs" />
     <Compile Include="library\utility\DisplayUtility.cs" />
     <Compile Include="library\view\DeleteAuthorPanel.cs">
       <SubType>Component</SubType>

@@ -7,21 +7,24 @@ using VideoBookApplication.common.enums;
 
 namespace VideoBookApplication.common.model
 {
-    public class FileObject
+    public class ReportObject
     {
         public string fileName { get; set; }
         public FileFilterType filter { get; set; }
+        public ReportType reportType { get; set; }
 
-        public FileObject(FileFilterType filter)
+        public ReportObject(FileFilterType filter, ReportType reportType)
         {
             this.filter = filter;
+            this.reportType = reportType;
             this.fileName = null;
         }
 
-        public FileObject()
+        public ReportObject()
         {
             this.filter = null;
             this.fileName = null;
+            this.reportType = ReportType.UNDEFINED;
         }
 
     }
