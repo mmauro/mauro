@@ -16,14 +16,14 @@ namespace VideoBookApplication.customCSV.operations
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private FormatterCSV formatter = null;
         private StreamWriter writer = null;
-        private FileUtility fileUtil = null;
+        private VideoBookApplication.customCSV.common.FileUtility fileUtil = null;
 
         public WriteCSV(string fileName)
         {
             formatter = FormatterCSV.DEFAULT_FORMATTER;
 
             //Creazione di Backup di file Esistente
-            fileUtil = new FileUtility(fileName);
+            fileUtil = new VideoBookApplication.customCSV.common.FileUtility(fileName);
 
             //Apertuta dello stream;
             open(fileName);

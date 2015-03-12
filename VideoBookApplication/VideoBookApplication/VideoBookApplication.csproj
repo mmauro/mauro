@@ -124,6 +124,7 @@
     <Compile Include="common\operations\InitDatabase.cs" />
     <Compile Include="common\operations\Stemmer.cs" />
     <Compile Include="common\utility\Configurator.cs" />
+    <Compile Include="common\utility\FileUtility.cs" />
     <Compile Include="common\utility\LayoutManager.cs" />
     <Compile Include="common\utility\LogUtility.cs" />
     <Compile Include="common\utility\StringUtility.cs" />

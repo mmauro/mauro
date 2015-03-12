@@ -12,12 +12,14 @@ using VideoBookApplication.library.view;
 using VideoBookApplication.common.model;
 using VideoBookApplication.common.enums;
 using VideoBookApplication.library.controls;
+using System.Diagnostics;
 
 
 namespace VideoBookApplication.common.view
 {
     public partial class ExportReportMenu : Panel
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private LibraryActivityWindow parent;
 
         private static int numButton = 3;
@@ -93,6 +95,17 @@ namespace VideoBookApplication.common.view
                 if (status == ApplicationErrorType.SUCCESS)
                 {
                     DisplayManager.displayMessage(ApplicationErrorType.SUCCESS);
+
+                    //Apertura Folder...
+                    try
+                    {
+                        Process.Start("explorer.exe", @FileUtility.getFolder(globalObject.reportObject.fileName));
+                    }
+                    catch (Exception e)
+                    {
+                        log.Error(e.Message);
+                    }
+
                 }
                 else
                 {
