@@ -187,7 +187,7 @@
     <Compile Include="library\controls\WordMasterControl.cs" />
     <Compile Include="library\dao\AuthorDao.cs" />
     <Compile Include="library\dao\BookDao.cs" />
-    <Compile Include="library\dao\CSVDao.cs" />
+    <Compile Include="library\dao\ReportDao.cs" />
     <Compile Include="library\dao\LibraryDao.cs" />
     <Compile Include="library\dao\StatDao.cs" />
     <Compile Include="library\dao\WordMasterCognomeDao.cs" />
@@ -197,7 +197,7 @@
     <Compile Include="library\model\database\BookInfoModel.cs" />
     <Compile Include="library\model\database\BookModel.cs" />
     <Compile Include="library\model\database\BookNoteModel.cs" />
-    <Compile Include="library\model\database\CSVModel.cs" />
+    <Compile Include="library\model\database\ReportModel.cs" />
     <Compile Include="library\model\database\WordMasterLibriModel.cs" />
     <Compile Include="library\model\database\WordMasterNomeModel.cs" />
     <Compile Include="library\model\database\WordMasterCognomeModel.cs" />

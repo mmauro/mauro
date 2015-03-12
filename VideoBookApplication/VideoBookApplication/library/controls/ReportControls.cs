@@ -23,13 +23,10 @@ namespace VideoBookApplication.library.controls
                     switch (globalObject.reportObject.reportType)
                     {
                         case ReportType.CSV:
-                            status = ApplicationErrorType.NOT_IMPLEMENTED;
-                            break;
                         case ReportType.EXCEL:
-                            status = ApplicationErrorType.NOT_IMPLEMENTED;
-                            break;
                         case ReportType.WORD:
-                            status = ApplicationErrorType.NOT_IMPLEMENTED;
+                            ReportDao dao = new ReportDao();
+                            status  = dao.readAll(globalObject);
                             break;
                         default:
                             status = ApplicationErrorType.NOT_ALLOWED;

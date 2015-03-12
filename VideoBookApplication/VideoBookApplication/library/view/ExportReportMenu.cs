@@ -67,15 +67,12 @@ namespace VideoBookApplication.common.view
         private void buttonReportCSV_Click(object sender, EventArgs e)
         {
             globalObject.reportObject = new ReportObject(FileFilterType.CSV_FILE, ReportType.CSV);
-            SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
             getFileNameFromDiaolog();
-            //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void buttonReportExcel_Click(object sender, EventArgs e)
         {
             globalObject.reportObject = new ReportObject(FileFilterType.EXCEL_FILE, ReportType.EXCEL);
-            SaveDisplayDialog dialog = new SaveDisplayDialog(ref globalObject);
             getFileNameFromDiaolog();
             //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
@@ -84,7 +81,6 @@ namespace VideoBookApplication.common.view
         {
             globalObject.reportObject = new ReportObject(FileFilterType.WORD_FILE, ReportType.WORD);
             getFileNameFromDiaolog();
-            //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
         }
 
         private void getFileNameFromDiaolog()

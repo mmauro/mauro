@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VideoBookApplication.library.model.database
 {
-    public class CSVModel
+    public class ReportModel
     {
         public string cognome { get; set; }
         public string nome { get; set; }
