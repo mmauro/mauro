@@ -60,6 +60,16 @@ namespace VideoBookApplication.customCSV.common
             {
                 value = value.Substring(formatter.cellSeparator.Length);
             }
+
+            if (value != null && !value.Equals(""))
+            {
+                value += formatter.rowSeparator;
+            }
+            else
+            {
+                throw new VideoBookException(ApplicationErrorType.INVALID_ROW);
+            }
+
             return value;
         }
 

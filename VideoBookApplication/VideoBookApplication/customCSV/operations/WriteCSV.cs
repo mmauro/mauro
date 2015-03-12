@@ -116,6 +116,14 @@ namespace VideoBookApplication.customCSV.operations
                     {
                         ProcessRow processRow = new ProcessRow(formatter);
                         string row = processRow.processRow(listFields, header);
+                        if (row != null && !row.Equals(""))
+                        {
+                            writer.Write(row);
+                        }
+                        else
+                        {
+                            throw new VideoBookException(ApplicationErrorType.INVALID_ROW);
+                        }
                     }
                 }
                 else
