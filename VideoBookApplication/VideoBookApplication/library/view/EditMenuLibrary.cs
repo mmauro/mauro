@@ -60,7 +60,8 @@ namespace VideoBookApplication.common.view
 
         private void buttonModifyPosition_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closePanel();
+            parent.openPanel(GlobalOperation.LIB_EDIT_POS);
         }
 
         private void buttonModifyCategory_Click(object sender, EventArgs e)

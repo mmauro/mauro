@@ -1,6 +1,6 @@
 ﻿namespace VideoBookApplication.library.view
 {
-    partial class EditCategoryPanel
+    partial class EditPositionPanel
     {
         /// <summary> 
         /// Required designer variable.
@@ -46,7 +46,7 @@
             this.labelCategory.Name = "labelCategory";
             this.labelCategory.Size = new System.Drawing.Size(100, 23);
             this.labelCategory.TabIndex = 0;
-            this.labelCategory.Text = "Categoria";
+            this.labelCategory.Text = "Posizione";
             // 
             // labelNewCat
             // 
@@ -56,7 +56,7 @@
             this.labelNewCat.Name = "labelNewCat";
             this.labelNewCat.Size = new System.Drawing.Size(100, 23);
             this.labelNewCat.TabIndex = 0;
-            this.labelNewCat.Text = "Nuova Categoria";
+            this.labelNewCat.Text = "Nuova Posizione";
             // 
             // comboCategory
             // 
@@ -99,7 +99,7 @@
             this.textCategory.Size = new System.Drawing.Size(350, 27);
             this.textCategory.TabIndex = 3;
             // 
-            // EditCategoryPanel
+            // EditPositionPanel
             // 
             this.Size = new System.Drawing.Size(400, 300);
             this.ResumeLayout(false);

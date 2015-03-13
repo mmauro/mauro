@@ -68,12 +68,14 @@ namespace VideoBookApplication.common.view
 
         private void buttonReportCSV_Click(object sender, EventArgs e)
         {
+            parent.closePanel();
             globalObject.reportObject = new ReportObject(FileFilterType.CSV_FILE, ReportType.CSV);
             getFileNameFromDiaolog();
         }
 
         private void buttonReportExcel_Click(object sender, EventArgs e)
         {
+            parent.closePanel();
             globalObject.reportObject = new ReportObject(FileFilterType.EXCEL_FILE, ReportType.EXCEL);
             getFileNameFromDiaolog();
             //DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
@@ -81,6 +83,7 @@ namespace VideoBookApplication.common.view
 
         private void buttonReportWord_Click(object sender, EventArgs e)
         {
+            parent.closePanel();
             globalObject.reportObject = new ReportObject(FileFilterType.WORD_FILE, ReportType.WORD);
             getFileNameFromDiaolog();
         }

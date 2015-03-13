@@ -232,6 +232,12 @@
     <Compile Include="library\view\DetailBookPanel.Designer.cs">
       <DependentUpon>DetailBookPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="library\view\EditPositionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="library\view\EditPositionPanel.Designer.cs">
+      <DependentUpon>EditPositionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="library\view\EditCategoryPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\DetailBookPanel.resx">
       <DependentUpon>DetailBookPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="library\view\EditPositionPanel.resx">
+      <DependentUpon>EditPositionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="library\view\EditCategoryPanel.resx">
       <DependentUpon>EditCategoryPanel.cs</DependentUpon>

@@ -44,6 +44,7 @@ namespace VideoBookApplication.library.view
         private SelectBookPanel selectBookPanel = null;
         private DetailBookPanel detailBookPanel = null;
         private EditCategoryPanel editCatPanel = null;
+        private EditPositionPanel editPosPanel = null;
 
         private InsertMenuLibrary insertMenu = null;
         private DeleteMenuLibrary deleteMenu = null;
@@ -375,6 +376,14 @@ namespace VideoBookApplication.library.view
                         this.Controls.Add(editCatPanel);
                     }
                     break;
+                case GlobalOperation.LIB_EDIT_POS:
+                    if (editPosPanel == null)
+                    {
+                        editPosPanel = new EditPositionPanel(ref globalObject, this);
+                        editPosPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(editPosPanel);
+                    }
+                    break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED);
                     globalObject.currentOperation = GlobalOperation.UNDEFINED;
@@ -410,6 +419,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_CHOOSE_BOOK_DELETE);
             closePanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
             closePanel(GlobalOperation.LIB_EDIT_CAT);
+            closePanel(GlobalOperation.LIB_EDIT_POS);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -596,6 +606,13 @@ namespace VideoBookApplication.library.view
                     {
                         editCatPanel.Visible = false;
                         editCatPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_EDIT_POS:
+                    if (editPosPanel != null)
+                    {
+                        editPosPanel.Visible = false;
+                        editPosPanel = null;
                     }
                     break;
                 default:
