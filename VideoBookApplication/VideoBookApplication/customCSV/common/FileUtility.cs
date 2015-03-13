@@ -88,7 +88,7 @@ namespace VideoBookApplication.customCSV.common
             if (index >= 0)
             {
                 //estrazione folder e filename
-                folder = this.fileName.Substring(0, index);
+                folder = this.fileName.Substring(0, index + 1);
                 file = this.fileName.Substring(index+1);
                 if (file != null && !file.Equals(""))
                 {

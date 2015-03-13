@@ -24,6 +24,7 @@ namespace VideoBookApplication.customCSV.operations
 
             //Creazione di Backup di file Esistente
             fileUtil = new VideoBookApplication.customCSV.common.FileUtility(fileName);
+            fileUtil.backupFile();
 
             //Apertuta dello stream;
             open(fileName);
@@ -122,17 +123,20 @@ namespace VideoBookApplication.customCSV.operations
                         }
                         else
                         {
+                            fileUtil.restoreBackup();
                             throw new VideoBookException(ApplicationErrorType.INVALID_ROW);
                         }
                     }
                 }
                 else
                 {
+                    fileUtil.restoreBackup();
                     throw new VideoBookException(ApplicationErrorType.INVALID_OBJECT);
                 }
             }
             else
             {
+                fileUtil.restoreBackup();
                 throw new VideoBookException(ApplicationErrorType.INVALID_HEADER);
             }
         }
