@@ -35,22 +35,30 @@ namespace VideoBookApplication.library.dao
 
                 initReport(globalObject.reportObject.fileName, globalObject.reportObject.reportType);
 
-                ReportModel model = new ReportModel();
-                model.cognome = "COGNOME";
-                model.nome = "NOME";
-                model.titolo = "TITOLO";
-                model.serie = "SERIE";
-                processModel(model, globalObject.reportObject.reportType);
-                
+                ProcessHeader(globalObject.reportObject.reportType);
 
                 if (reader != null && reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        model = new ReportModel();
+
+                        ReportModel model = new ReportModel();
                         model.cognome = reader.GetString("COGNOME");
                         model.nome = reader.GetString("NOME");
                         model.titolo = reader.GetString("TITOLO");
+                        model.serie = reader.GetString("SERIE");
+                        model.dtInsert = reader.GetDateTime("DT_INSERT");
+                        model.flEbook = reader.GetBoolean("FL_EBOOK");
+                        model.categoria = DisplayUtility.formatCategoryPosition(reader.GetString("CATEGORIA"));
+                        model.posizione = DisplayUtility.formatCategoryPosition(reader.GetString("POSIZIONE"));
+                        model.nota = reader.GetString("NOTA").Trim();
+                        model.trama = reader.GetString("TRAMA").Trim();
+                        model.img = reader.GetString("IMG");
+                        model.annoPubblicazione = reader.GetString("YEAR");
+                        model.editore = reader.GetString("EDITORE");
+                        model.isbn = reader.GetString("ISBN");
+
+
                         processModel(model, globalObject.reportObject.reportType);
                     }
                 }
@@ -113,7 +121,22 @@ namespace VideoBookApplication.library.dao
                     throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
                 default:
                     throw new VideoBookException(ApplicationErrorType.NOT_ALLOWED);
+            }
+        }
 
+        private void ProcessHeader(ReportType reportType)
+        {
+            switch (reportType)
+            {
+                case ReportType.CSV:
+                    writerCSV.writeHeader(CSVUtility.getCSVFirstRow());
+                    break;
+                case ReportType.WORD:
+                    throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+                case ReportType.EXCEL:
+                    throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+                default:
+                    throw new VideoBookException(ApplicationErrorType.NOT_ALLOWED);
             }
         }
 

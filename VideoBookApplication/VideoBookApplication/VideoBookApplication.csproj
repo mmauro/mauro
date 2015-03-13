@@ -603,6 +603,7 @@
     <None Include="img\trash.png" />
     <None Include="img\TextEdit.png" />
     <None Include="img\Word.png" />
+    <Content Include="resources\Readme.txt" />
     <Content Include="resources\VideoBook.sql" />
   </ItemGroup>
   <ItemGroup>
