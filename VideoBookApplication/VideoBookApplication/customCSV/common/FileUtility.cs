@@ -18,13 +18,14 @@ namespace VideoBookApplication.customCSV.common
         {
             this.fileName = fileName;
             this.backupFileName = getBackupFileName();
-            backupFile();
+            //backupFile();
         }
 
         public void backupFile()
         {
             if (File.Exists(fileName))
             {
+                log.Info("Existing File...");
                 try
                 {
                     File.Copy(fileName, backupFileName, true);
@@ -37,6 +38,7 @@ namespace VideoBookApplication.customCSV.common
             }
             else
             {
+                log.Info("Backup File Name = null");
                 backupFileName = null;
             }
         }
@@ -65,11 +67,16 @@ namespace VideoBookApplication.customCSV.common
                     try
                     {
                         File.Delete(backupFileName);
+                        log.Error("DELETE : " + backupFileName);
                     }
                     catch (Exception e)
                     {
                         log.Error(e.Message);
                     }
+                }
+                else
+                {
+                    log.Info("Backup non presente");
                 }
             }
         }
