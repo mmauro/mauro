@@ -191,6 +191,9 @@ namespace VideoBookApplication.library.view
                         parent.closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE);
                         parent.openPanel(GlobalOperation.LIB_DELETE_AUTHOR);
                         break;
+                    case GlobalOperation.LIB_CHOOSE_AUTHOR_EDIT:
+                        DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+                        break;
                     default:
                         DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
                         break;

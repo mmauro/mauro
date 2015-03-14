@@ -294,6 +294,7 @@ namespace VideoBookApplication.library.view
                     break;
                 case GlobalOperation.LIB_CHOOSE_AUTHOR:
                 case GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE:
+                case GlobalOperation.LIB_CHOOSE_AUTHOR_EDIT:
                     if (selectAuthorPanel == null)
                     {
                         selectAuthorPanel = new SelectAuthorPanel(ref globalObject, this);
@@ -422,6 +423,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_EDIT_CAT);
             closePanel(GlobalOperation.LIB_EDIT_POS);
             closePanel(GlobalOperation.LIB_SEARCHAUTHOR_EDIT);
+            closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR_EDIT);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -543,6 +545,7 @@ namespace VideoBookApplication.library.view
                     break;
                 case GlobalOperation.LIB_CHOOSE_AUTHOR:
                 case GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE:
+                case GlobalOperation.LIB_CHOOSE_AUTHOR_EDIT:
                     if (selectAuthorPanel != null)
                     {
                         selectAuthorPanel.Visible = false;

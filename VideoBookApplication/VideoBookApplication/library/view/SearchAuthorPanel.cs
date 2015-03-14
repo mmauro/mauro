@@ -99,6 +99,9 @@ namespace VideoBookApplication.library.view
                                 parent.closePanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
                                 parent.openPanel(GlobalOperation.LIB_DELETE_AUTHOR);
                                 break;
+                            case GlobalOperation.LIB_SEARCHAUTHOR_EDIT:
+                                DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+                                break;
                             default:
                                 DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
                                 break;
@@ -120,6 +123,8 @@ namespace VideoBookApplication.library.view
                             case GlobalOperation.LIB_SEARCHAUTHOR_DELETE:
                                 parent.closePanel(GlobalOperation.LIB_SEARCHAUTHOR_DELETE);
                                 parent.openPanel(GlobalOperation.LIB_CHOOSE_AUTHOR_DELETE);
+                                break;
+                            case GlobalOperation.LIB_SEARCHAUTHOR_EDIT:
                                 break;
                             default:
                                 DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
