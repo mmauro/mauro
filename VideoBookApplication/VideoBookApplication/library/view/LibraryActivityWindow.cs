@@ -283,6 +283,7 @@ namespace VideoBookApplication.library.view
                     break;
                 case GlobalOperation.LIB_SEARCH_NEW_BOOK:
                 case GlobalOperation.LIB_SEARCHAUTHOR_DELETE:
+                case GlobalOperation.LIB_SEARCHAUTHOR_EDIT:
                     if (searchAuthorPanel == null)
                     {
                         searchAuthorPanel = new SearchAuthorPanel(ref globalObject, this);
@@ -420,6 +421,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
             closePanel(GlobalOperation.LIB_EDIT_CAT);
             closePanel(GlobalOperation.LIB_EDIT_POS);
+            closePanel(GlobalOperation.LIB_SEARCHAUTHOR_EDIT);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -524,6 +526,7 @@ namespace VideoBookApplication.library.view
                     break;
                 case GlobalOperation.LIB_SEARCH_NEW_BOOK:
                 case GlobalOperation.LIB_SEARCHAUTHOR_DELETE:
+                case GlobalOperation.LIB_SEARCHAUTHOR_EDIT:
                     if (searchAuthorPanel != null)
                     {
                         searchAuthorPanel.Visible = false;
