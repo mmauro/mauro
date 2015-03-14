@@ -204,7 +204,30 @@ namespace VideoBookApplication.library.dao
 
         public void update(PositionModel obj)
         {
-            throw new VideoBookException(ApplicationErrorType.NOT_IMPLEMENTED);
+            MySqlTransaction transaction = DatabaseControl.getInstance().getConnection().BeginTransaction();
+            try
+            {
+                String query = Configurator.getInstsance().get("position.update.query");
+
+                //Prepare Command
+                MySqlCommand command = new MySqlCommand(query, DatabaseControl.getInstance().getConnection());
+                command.Prepare();
+                command.Parameters.AddWithValue("@newpos", obj.position);
+                command.Parameters.AddWithValue("@idpos", obj.idPosition);
+                LogUtility.printQueryLog(query, obj.position, obj.idPosition.ToString());
+
+                //Execute Command
+                command.ExecuteNonQuery();
+
+                //Commit
+                transaction.Commit();
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.UPDATE_POS_ERROR);
+            }
         }
     }
 }

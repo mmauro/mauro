@@ -113,6 +113,63 @@ namespace VideoBookApplication.library.controls
                 throw e;
             }
         }
+
+        public ApplicationErrorType updatePosition(PositionModel oldCat, string newPosValue)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            if (oldCat != null)
+            {
+                if (newPosValue != null && !newPosValue.Trim().Equals(""))
+                {
+                    try
+                    {
+                        if (!newPosValue.Trim().ToLower().Equals(oldCat.position))
+                        {
+                            PositionModel testModel = positionDao.readOne(newPosValue.Trim().ToLower());
+                            if (testModel != null)
+                            {
+                                status = ApplicationErrorType.POSITION_PRESENT;
+                            }
+                        }
+                        else
+                        {
+                            status = ApplicationErrorType.POSITION_EQUALS_VALUE;
+                        }
+                    }
+                    catch (VideoBookException e)
+                    {
+                        status = e.errorType;
+                    }
+
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        //Posso salvare la categoria
+                        oldCat.position = newPosValue.Trim().ToLower();
+                        try
+                        {
+                            positionDao.update(oldCat);
+                        }
+                        catch (VideoBookException e)
+                        {
+                            status = e.errorType;
+                        }
+                    }
+                }
+                else
+                {
+                    status = ApplicationErrorType.EMPTY_POSITION;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.POSITION_NOT_FOUND;
+            }
+
+
+
+
+            return status;
+        }
     }
 
 

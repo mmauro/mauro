@@ -88,7 +88,10 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType DELETE_BOOK_ERROR = new ApplicationErrorType(136, "Errore Cancellazione Libro");
         public static ApplicationErrorType CATEGORY_NOT_FOUND = new ApplicationErrorType(137, "Categoria non Trovata");
         public static ApplicationErrorType CATEGORY_EQUALS_VALUE = new ApplicationErrorType(138, "Categoria non Modificata");
-        public static ApplicationErrorType UPDATE_CAT_ERROR = new ApplicationErrorType(138, "Errore Aggironamento Categoria");
+        public static ApplicationErrorType UPDATE_CAT_ERROR = new ApplicationErrorType(139, "Errore Aggironamento Categoria");
+        public static ApplicationErrorType POSITION_EQUALS_VALUE = new ApplicationErrorType(140, "Posizione non Modificata");
+        public static ApplicationErrorType POSITION_NOT_FOUND = new ApplicationErrorType(141, "Posizione non Trovata");
+        public static ApplicationErrorType UPDATE_POS_ERROR = new ApplicationErrorType(142, "Errore Aggironamento Posizione");
 
         /** CUSTOM CSV ERROR 801 - 900 */
         public static ApplicationErrorType INVALID_FILENAME = new ApplicationErrorType(801, "Nome File non Valido");
