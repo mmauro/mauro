@@ -21,6 +21,7 @@ namespace VideoBookApplication.library.view
 
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private GlobalOperation currentOperation = GlobalOperation.UNDEFINED;
         private AuthorControls control = new AuthorControls();
 
         public DeleteAuthorPanel(ref GlobalApplicationObject globalObject, LibraryActivityWindow parent)
@@ -28,6 +29,7 @@ namespace VideoBookApplication.library.view
             InitializeComponent();
             this.globalObject = globalObject;
             this.parent = parent;
+            this.currentOperation = this.globalObject.currentOperation;
             initPanel();
         }
 
@@ -50,10 +52,12 @@ namespace VideoBookApplication.library.view
 
             //text box
             textCognome.Location = new Point(labelCognome.Location.X, labelCognome.Location.Y + 30);
+            textCognome.ReadOnly = isReadOnlyText();
             textCognome.Text = globalObject.libraryObject.libraryInput.autore.cognome;
             this.Controls.Add(textCognome);
 
             textNome.Location = new Point(labelNome.Location.X, labelNome.Location.Y + 30);
+            textNome.ReadOnly = isReadOnlyText();
             textNome.Text = globalObject.libraryObject.libraryInput.autore.nome;
             this.Controls.Add(textNome);
 
@@ -78,6 +82,20 @@ namespace VideoBookApplication.library.view
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            switch (currentOperation)
+            {
+                case GlobalOperation.LIB_DELETE_AUTHOR:
+                    deleteAutore();
+                    break;
+                default:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
+                    break;
+            }
+        }
+
+
+        private void deleteAutore()
+        {
             LibraryControls controls = new LibraryControls();
             ApplicationErrorType status = controls.deleteAuthorAndBook(ref globalObject);
             if (status == ApplicationErrorType.SUCCESS)
@@ -89,6 +107,28 @@ namespace VideoBookApplication.library.view
             else
             {
                 DisplayManager.displayError(status);
+            }
+        }
+
+        private string getTitleLabel()
+        {
+            switch (currentOperation)
+            {
+                case GlobalOperation.LIB_DELETE_AUTHOR:
+                    return "Autore da Cancellare";
+                default:
+                    return "";
+            }
+        }
+
+        private bool isReadOnlyText()
+        {
+            switch (currentOperation)
+            {
+                case GlobalOperation.LIB_DELETE_AUTHOR:
+                    return true;
+                default:
+                    return true;
             }
         }
     }
