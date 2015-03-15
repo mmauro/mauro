@@ -346,6 +346,14 @@ namespace VideoBookApplication.library.view
 
                     }
                     break;
+                case GlobalOperation.LIB_EDIT_AUTHOR:
+                    if (delAuthorPanel == null)
+                    {
+                        delAuthorPanel = new DeleteAuthorPanel(ref globalObject, this);
+                        delAuthorPanel.Location = new Point(panelMenu1.Size.Width + 15, logoutPanel.Height + 15);
+                        this.Controls.Add(delAuthorPanel);
+                    }
+                    break;
                 case GlobalOperation.LIB_SEARCHBOOK_DELETE:
                     if (genericSearchPanel == null)
                     {
@@ -424,6 +432,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_EDIT_POS);
             closePanel(GlobalOperation.LIB_SEARCHAUTHOR_EDIT);
             closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR_EDIT);
+            closePanel(GlobalOperation.LIB_EDIT_AUTHOR);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -584,6 +593,13 @@ namespace VideoBookApplication.library.view
                     {
                         showBooksPanel.Visible = false;
                         showBooksPanel = null;
+                    }
+                    break;
+                case GlobalOperation.LIB_EDIT_AUTHOR:
+                    if (delAuthorPanel != null)
+                    {
+                        delAuthorPanel.Visible = false;
+                        delAuthorPanel = null;
                     }
                     break;
                 case GlobalOperation.LIB_SEARCHBOOK_DELETE:

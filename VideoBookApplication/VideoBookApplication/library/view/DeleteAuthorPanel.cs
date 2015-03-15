@@ -39,7 +39,7 @@ namespace VideoBookApplication.library.view
             this.BackColor = LayoutManager.getPanelColor();
 
             //Title
-            TitlePanel titlePanel = new TitlePanel("Autore Da Cancellare", this);
+            TitlePanel titlePanel = new TitlePanel(getTitleLabel(), this);
             titlePanel.Location = new Point(0, 0);
             this.Controls.Add(titlePanel);
 
@@ -72,6 +72,8 @@ namespace VideoBookApplication.library.view
             toolTip1.SetToolTip(buttonOk, "Cancella Autore");
             toolTip1.SetToolTip(buttonClose, "Annulla");
 
+            editFinalButtons();
+
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -86,6 +88,9 @@ namespace VideoBookApplication.library.view
             {
                 case GlobalOperation.LIB_DELETE_AUTHOR:
                     deleteAutore();
+                    break;
+                case GlobalOperation.LIB_EDIT_AUTHOR:
+                    DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
                     break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
@@ -116,6 +121,8 @@ namespace VideoBookApplication.library.view
             {
                 case GlobalOperation.LIB_DELETE_AUTHOR:
                     return "Autore da Cancellare";
+                case GlobalOperation.LIB_EDIT_AUTHOR:
+                    return "Modifica Autore";
                 default:
                     return "";
             }
@@ -127,9 +134,31 @@ namespace VideoBookApplication.library.view
             {
                 case GlobalOperation.LIB_DELETE_AUTHOR:
                     return true;
+                case GlobalOperation.LIB_EDIT_AUTHOR:
+                    return false;
                 default:
                     return true;
             }
         }
+
+        private void editFinalButtons()
+        {
+            switch (currentOperation)
+            {
+                case GlobalOperation.LIB_DELETE_AUTHOR:
+                    toolTip1.SetToolTip(buttonOk, "Cancella Autore");
+                    buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.eraser;
+                    break;
+                case GlobalOperation.LIB_EDIT_AUTHOR:
+                    toolTip1.SetToolTip(buttonOk, "Modifica Autore");
+                    buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.pen;
+                    break;
+                default:
+                    toolTip1.SetToolTip(buttonOk, "Cancella Autore");
+                    break;
+
+            }
+        }
+
     }
 }
