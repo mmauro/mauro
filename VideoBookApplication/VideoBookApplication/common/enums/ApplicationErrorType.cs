@@ -92,6 +92,9 @@ namespace VideoBookApplication.common.enums
         public static ApplicationErrorType POSITION_EQUALS_VALUE = new ApplicationErrorType(140, "Posizione non Modificata");
         public static ApplicationErrorType POSITION_NOT_FOUND = new ApplicationErrorType(141, "Posizione non Trovata");
         public static ApplicationErrorType UPDATE_POS_ERROR = new ApplicationErrorType(142, "Errore Aggironamento Posizione");
+        public static ApplicationErrorType AUTHOR_EQUALS_VALUE = new ApplicationErrorType(143, "Autore non Modificato");
+        public static ApplicationErrorType AUTHOR_PREPARE_DELETE_ERROR = new ApplicationErrorType(144, "Errore Durannte la Preparazione alla Cancellazione dell'Autore");
+        public static ApplicationErrorType UPDATE_AUTHOR_ERROR = new ApplicationErrorType(145, "Errore Aggironamento Autore");
 
         /** CUSTOM CSV ERROR 801 - 900 */
         public static ApplicationErrorType INVALID_FILENAME = new ApplicationErrorType(801, "Nome File non Valido");

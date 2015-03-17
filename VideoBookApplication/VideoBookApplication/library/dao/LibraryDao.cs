@@ -378,6 +378,140 @@ namespace VideoBookApplication.library.dao
             return status;
         }
 
+        public ApplicationErrorType updateAuthor(AuthorModel model, List<string> cognomeAdd, List<string> cognomeDelete, List<string> nomeAdd, List<string> nomeDelete)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            try
+            {
+                //Update Autore
+                updateAuthor(model);
+
+                //cancellazione word2cognome
+                foreach (string word in cognomeDelete)
+                {
+                    if (status == ApplicationErrorType.SUCCESS)
+                    {
+                        int idWord = readIdWord(word);
+                        if (idWord != Configurator.getInstsance().getInt("notfound.value"))
+                        {
+                            deleteWord2Cognome(idWord, model.idAutore);
+                        }
+                        else
+                        {
+                            status = ApplicationErrorType.READ_WORD_ERROR;
+                        }
+                    }
+                }
+
+                //cancellazione word2nome
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    foreach (string word in nomeDelete)
+                    {
+                        if (status == ApplicationErrorType.SUCCESS)
+                        {
+                            int idWord = readIdWord(word);
+                            if (idWord != Configurator.getInstsance().getInt("notfound.value"))
+                            {
+                                deleteWord2Nome(idWord, model.idAutore);
+                            }
+                            else
+                            {
+                                status = ApplicationErrorType.READ_WORD_ERROR;
+                            }
+                        }
+                    }
+                }
+
+
+                //Cancellazione Parole Orfane
+                deleteOrphanWord();
+
+                //Inserimento Nuove parole per cognome
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    foreach (string word in cognomeAdd)
+                    {
+                        if (status == ApplicationErrorType.SUCCESS)
+                        {
+                            int idWord = readIdWord(word);
+                            if (idWord == Configurator.getInstsance().getInt("notfound.value"))
+                            {
+                                log.Info("Word Not Found : write");
+                                writeWord(word);
+                                idWord = readIdWord(word);
+                                if (idWord != Configurator.getInstsance().getInt("notfound.value"))
+                                {
+                                    writeWord2Cognome(idWord, model.idAutore);
+                                }
+                                else
+                                {
+                                    status = ApplicationErrorType.READ_WORD_ERROR;
+                                }
+                            }
+                            else
+                            {
+                                log.Info("Word Found");
+                                writeWord2Cognome(idWord, model.idAutore);
+                            }
+                        }
+                        
+                    }
+                }
+
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    foreach (string word in nomeAdd)
+                    {
+                        if (status == ApplicationErrorType.SUCCESS)
+                        {
+                            int idWord = readIdWord(word);
+                            if (idWord == Configurator.getInstsance().getInt("notfound.value"))
+                            {
+                                log.Info("Word Not Found : write");
+                                writeWord(word);
+                                idWord = readIdWord(word);
+                                if (idWord != Configurator.getInstsance().getInt("notfound.value"))
+                                {
+                                    writeWord2Nome(idWord, model.idAutore);
+                                }
+                                else
+                                {
+                                    status = ApplicationErrorType.READ_WORD_ERROR;
+                                }
+                            }
+                            else
+                            {
+                                log.Info("Word Found");
+                                writeWord2Nome(idWord, model.idAutore);
+                            }
+                        }
+
+                    }
+                }
+
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    transaction.Commit();
+                }
+                else
+                {
+                    transaction.Rollback();
+                }
+
+            }
+            catch (VideoBookException e)
+            {
+                log.Error(e.errorType.message);
+                transaction.Rollback();
+                status = e.errorType;
+            }
+
+
+            return status;
+        }
+
         private void updateBookCategory(int categoryDelete, int categoryDefault)
         {
             try
@@ -918,6 +1052,61 @@ namespace VideoBookApplication.library.dao
             {
                 log.Error(e.Message);
                 throw new VideoBookException(ApplicationErrorType.DELETE_INFOBOOK_ERROR);
+            }
+        }
+
+        private void updateAuthor(AuthorModel model)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("author.update.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("author.update.query"), model.cognome, model.nome, model.idAutore.ToString());
+                command.Parameters.AddWithValue("@cogn", model.cognome);
+                command.Parameters.AddWithValue("@nam", model.nome);
+                command.Parameters.AddWithValue("@idauth", model.idAutore);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.UPDATE_AUTHOR_ERROR);
+            }
+        }
+
+        private void deleteWord2Cognome(int idWord, int idAutore)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("word2cognome.delete.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("word2cognome.delete.query"), idWord.ToString(), idAutore.ToString());
+                command.Parameters.AddWithValue("@idw", idWord);
+                command.Parameters.AddWithValue("@ida", idAutore);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.UPDATE_AUTHOR_ERROR);
+            }
+        }
+
+        private void deleteWord2Nome(int idWord, int idAutore)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(Configurator.getInstsance().get("word2nome.delete.query"), DatabaseControl.getInstance().getConnection(), transaction);
+                command.Prepare();
+                LogUtility.printQueryLog(Configurator.getInstsance().get("word2nome.delete.query"), idWord.ToString(), idAutore.ToString());
+                command.Parameters.AddWithValue("@idw", idWord);
+                command.Parameters.AddWithValue("@ida", idAutore);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new VideoBookException(ApplicationErrorType.UPDATE_AUTHOR_ERROR);
             }
         }
 

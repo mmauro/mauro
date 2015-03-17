@@ -12,6 +12,7 @@ using VideoBookApplication.common.model;
 using VideoBookApplication.common.utility;
 using VideoBookApplication.common.view;
 using VideoBookApplication.library.controls;
+using VideoBookApplication.library.model.database;
 
 namespace VideoBookApplication.library.view
 {
@@ -90,7 +91,7 @@ namespace VideoBookApplication.library.view
                     deleteAutore();
                     break;
                 case GlobalOperation.LIB_EDIT_AUTHOR:
-                    DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+                    modifyAuthor();
                     break;
                 default:
                     DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
@@ -98,6 +99,28 @@ namespace VideoBookApplication.library.view
             }
         }
 
+
+        private void modifyAuthor()
+        {
+            LibraryControls controls = new LibraryControls();
+            AuthorModel model = new AuthorModel();
+            model.cognome = textCognome.Text;
+            model.nome = textNome.Text;
+            ApplicationErrorType status = controls.updateAuthor(ref globalObject, model);
+            if (status == ApplicationErrorType.SUCCESS)
+            {
+                DisplayManager.displayMessage(ApplicationErrorType.SUCCESS, "Modifica Autore Riuscita");
+                globalObject.libraryObject.destroy();
+                parent.closePanel();
+            }
+            else
+            {
+                DisplayManager.displayError(status);
+            }
+
+
+
+        }
 
         private void deleteAutore()
         {
@@ -154,9 +177,9 @@ namespace VideoBookApplication.library.view
                     buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.pen;
                     break;
                 default:
-                    toolTip1.SetToolTip(buttonOk, "Cancella Autore");
+                    buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.eraser;
+                    toolTip1.SetToolTip(buttonOk, "");
                     break;
-
             }
         }
 

@@ -15,7 +15,7 @@ namespace VideoBookApplication.library.controls
     public class LibraryControls
     {
 
-        
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ApplicationErrorType write(ref GlobalApplicationObject globalObject)
         {
@@ -171,6 +171,152 @@ namespace VideoBookApplication.library.controls
 
             return status;
 
+
+        }
+
+        public ApplicationErrorType updateAuthor(ref GlobalApplicationObject globalObject, AuthorModel newAuthor)
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+            bool modificaCognome = false;
+            bool modificaNome = false;
+
+            List<String> cognomeAdd = new List<string>();
+            List<String> cognomeDelete = new List<string>();
+            List<String> nomeAdd = new List<string>();
+            List<String> nomeDelete = new List<string>();
+
+
+            Indexer indexOld = null;
+            Indexer indexNew = null;
+
+            if (newAuthor != null && newAuthor.cognome != null && !newAuthor.cognome.Trim().Equals(""))
+            {
+                if (globalObject.libraryObject.libraryInput.autore != null && globalObject.libraryObject.libraryInput.autore.idAutore != Configurator.getInstsance().getInt("notfound.value"))
+                {
+                    modificaCognome = compare(globalObject.libraryObject.libraryInput.autore.cognome, newAuthor.cognome);
+                    modificaNome = compare(globalObject.libraryObject.libraryInput.autore.nome, newAuthor.nome);
+
+
+                    if (modificaNome || modificaCognome)
+                    {
+                        //Ho delle modifiche da salvare
+                        if (modificaCognome)
+                        {
+                            indexOld = new Indexer(globalObject.libraryObject.libraryInput.autore.cognome, IndexerType.INDEX_AUTHOR);
+                            indexNew = new Indexer(newAuthor.cognome, IndexerType.INDEX_AUTHOR);
+
+                            if (indexNew.status == ApplicationErrorType.SUCCESS && indexOld.status == ApplicationErrorType.SUCCESS)
+                            {
+                                prepareIndexerValue(indexOld.words, indexNew.words, ref cognomeDelete, ref cognomeAdd);
+                                if (cognomeAdd.Count == 0 && cognomeDelete.Count == 0)
+                                {
+                                    log.Error("Preparazione Cognome");
+                                    status = ApplicationErrorType.AUTHOR_PREPARE_DELETE_ERROR;
+                                }
+                            }
+                            else
+                            {
+                                status = ApplicationErrorType.INDEXER_PREPARE_ERROR;
+                            }
+
+                        }
+
+                        if (status == ApplicationErrorType.SUCCESS && modificaNome)
+                        {
+                            indexOld = new Indexer(globalObject.libraryObject.libraryInput.autore.nome, IndexerType.INDEX_AUTHOR);
+                            indexNew = new Indexer(newAuthor.nome, IndexerType.INDEX_AUTHOR);
+
+                            if (indexNew.status == ApplicationErrorType.SUCCESS && indexOld.status == ApplicationErrorType.SUCCESS)
+                            {
+                                prepareIndexerValue(indexOld.words, indexNew.words, ref nomeDelete, ref nomeAdd);
+                                if (nomeAdd.Count == 0 && nomeDelete.Count == 0)
+                                {
+                                    log.Error("Preparazione Nome");
+                                    status = ApplicationErrorType.AUTHOR_PREPARE_DELETE_ERROR;
+                                }
+                            }
+                            else
+                            {
+                                status = ApplicationErrorType.INDEXER_PREPARE_ERROR;
+                            }
+
+                        }
+
+                        if (status == ApplicationErrorType.SUCCESS)
+                        {
+                            newAuthor.idAutore = globalObject.libraryObject.libraryInput.autore.idAutore;
+                            //Chiamata DAO
+                            LibraryDao dao = new LibraryDao();
+                            status = dao.updateAuthor(newAuthor, cognomeAdd, cognomeDelete, nomeAdd, nomeDelete);
+                        }
+
+                    }
+                    else
+                    {
+                        status = ApplicationErrorType.AUTHOR_EQUALS_VALUE;
+                    }
+
+
+                }
+                else
+                {
+                    status = ApplicationErrorType.AUTHOR_NOT_FOUND;
+                }
+            }
+            else
+            {
+                status = ApplicationErrorType.EMPTY_FIRSTAME;
+            }
+
+            return status;
+        }
+
+        private bool compare(String oldValue, String newValue)
+        {
+
+            if (oldValue == null && newValue == null)
+            {
+                return false;
+            }
+
+            if (oldValue == null && newValue != null)
+            {
+                return true;
+            }
+
+            if (oldValue != null && newValue == null)
+            {
+                return true;
+            }
+
+            bool flag = !oldValue.Trim().ToLower().Equals(newValue.Trim().ToLower());
+            return flag;
+
+        }
+
+        private void prepareIndexerValue(List<String> inputOldValue, List<String> inputNewValue, ref List<String> deleteValue, ref List<String> addValue)
+        {
+            if (inputOldValue != null && inputOldValue.Count > 0)
+            {
+                foreach (string value in inputOldValue)
+                {
+                    if (!inputNewValue.Contains(value))
+                    {
+                        deleteValue.Add(value);
+                    }
+                }
+            }
+
+            if (inputNewValue != null && inputNewValue.Count > 0) 
+            {
+                foreach (string value in inputNewValue)
+                {
+                    if (!inputOldValue.Contains(value))
+                    {
+                        addValue.Add(value);
+                    }
+                }
+            }
 
         }
 
