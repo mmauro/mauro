@@ -223,12 +223,34 @@ namespace VideoBookApplication.library.controls
 
                         if (status == ApplicationErrorType.SUCCESS && modificaNome)
                         {
-                            indexOld = new Indexer(globalObject.libraryObject.libraryInput.autore.nome, IndexerType.INDEX_AUTHOR);
-                            indexNew = new Indexer(newAuthor.nome, IndexerType.INDEX_AUTHOR);
+                            List<string> oldWords = new List<string>();
+                            List<string> newWords = new List<string>();
 
-                            if (indexNew.status == ApplicationErrorType.SUCCESS && indexOld.status == ApplicationErrorType.SUCCESS)
+
+                            if (globalObject.libraryObject.libraryInput.autore.nome != null && !globalObject.libraryObject.libraryInput.autore.nome.Equals(""))
                             {
-                                prepareIndexerValue(indexOld.words, indexNew.words, ref nomeDelete, ref nomeAdd);
+                                indexOld = new Indexer(globalObject.libraryObject.libraryInput.autore.nome, IndexerType.INDEX_AUTHOR);
+                                status = indexOld.status;
+                                if (status == ApplicationErrorType.SUCCESS)
+                                {
+                                    oldWords = indexOld.words;
+                                }
+                            }
+
+                            if (status == ApplicationErrorType.SUCCESS && newAuthor.nome != null && !newAuthor.nome.Trim().Equals(""))
+                            {
+                                indexNew = new Indexer(newAuthor.nome, IndexerType.INDEX_AUTHOR);
+                                status = indexNew.status;
+                                if (status == ApplicationErrorType.SUCCESS)
+                                {
+                                    newWords = indexNew.words;
+                                }
+                            }
+                            
+
+                            if (status == ApplicationErrorType.SUCCESS)
+                            {
+                                prepareIndexerValue(oldWords, newWords, ref nomeDelete, ref nomeAdd);
                                 if (nomeAdd.Count == 0 && nomeDelete.Count == 0)
                                 {
                                     log.Error("Preparazione Nome");
