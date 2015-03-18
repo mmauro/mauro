@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.containerPanel = new System.Windows.Forms.Panel();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -42,6 +43,7 @@
             this.comboPosition = new System.Windows.Forms.ComboBox();
             this.labelTitle = new System.Windows.Forms.Label();
             this.textTitle = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // containerPanel
@@ -199,5 +201,6 @@
         private System.Windows.Forms.ComboBox comboPosition;
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.TextBox textTitle;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -78,7 +78,8 @@ namespace VideoBookApplication.common.view
 
         private void buttonModifyBook_Click(object sender, EventArgs e)
         {
-            DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+            parent.closePanel();
+            parent.openPanel(GlobalOperation.LIB_SEARCHBOOK_EDIT);
         }
     }
 }

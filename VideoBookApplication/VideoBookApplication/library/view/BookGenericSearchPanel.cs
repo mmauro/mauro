@@ -51,7 +51,7 @@ namespace VideoBookApplication.library.view
             int iControl = 0;
 
             //Title
-            TitlePanel titlePanel = new TitlePanel("Ricerca Generica", this);
+            TitlePanel titlePanel = new TitlePanel("Ricerca Libro", this);
             titlePanel.Location = new Point(0, 0);
             this.Controls.Add(titlePanel);
 
@@ -131,11 +131,18 @@ namespace VideoBookApplication.library.view
 
 
             //buttons
-            buttonOk.Location = new Point(this.Size.Width - (25 + buttonOk.Size.Width), containerPanel.Location.Y + containerPanel.Size.Height + 20);
+            buttonClose.Location = new Point(this.Size.Width - (25 + buttonOk.Size.Width), containerPanel.Location.Y + containerPanel.Size.Height + 20);
+            this.Controls.Add(buttonClose);
+
+            buttonOk.Location = new Point(buttonClose.Location.X - (10 + buttonOk.Size.Width), buttonClose.Location.Y);
             this.Controls.Add(buttonOk);
 
-            buttonClose.Location = new Point(buttonOk.Location.X - (10 + buttonClose.Size.Width), buttonOk.Location.Y);
-            this.Controls.Add(buttonClose);
+            toolTip1.SetToolTip(buttonClose, "Chiusura Finestra");
+            toolTip1.SetToolTip(buttonOk, "");
+
+            setImageButton();
+
+
         }
 
 
@@ -244,37 +251,75 @@ namespace VideoBookApplication.library.view
 
             if (status == ApplicationErrorType.SUCCESS)
             {
-                if (globalObject.libraryObject.libraryInput.libro != null)
+                switch (currentOperation)
                 {
-                    log.Info("Libri Trovati : 1");
-
-                    //salvo anche autori per uso futuro
-                    globalObject.libraryObject.libraryInput.autore = globalObject.libraryObject.libraryInput.libro.autore;
-                    AuthorControls control = new AuthorControls();
-                    status = control.addBooksToAuthor(ref globalObject);
-                    if (status == ApplicationErrorType.SUCCESS)
-                    {
-                        parent.closePanel();
-                        parent.openPanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
-                    }
-                    else
-                    {
-                        DisplayManager.displayError(status);
-                    }
-                }
-                else
-                {
-                    //Gestione caso più libri trovati
-                    log.Info("Libri Trovati : " + globalObject.libraryObject.libraryInput.libri.Count);
-                    parent.closePanel();
-                    parent.openPanel(GlobalOperation.LIB_CHOOSE_BOOK_DELETE);
+                    case GlobalOperation.LIB_SEARCHBOOK_DELETE:
+                        operationDelete();
+                        break;
+                    case GlobalOperation.LIB_SEARCHBOOK_EDIT:
+                        DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+                        break;
+                    default:
+                        DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
+                        break;
                 }
             }
             else
             {
                 DisplayManager.displayError(status);
             }
-
         }
+
+        private void setImageButton()
+        {
+
+            switch (currentOperation) {
+                case GlobalOperation.LIB_SEARCHBOOK_DELETE:
+                    this.buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.eraser;
+                    toolTip1.SetToolTip(buttonOk, "Cancella Libro");
+                    break;
+                case GlobalOperation.LIB_SEARCHBOOK_EDIT:
+                    this.buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.pen;
+                    toolTip1.SetToolTip(buttonOk, "Modifica Libro");
+                    break;
+                default:
+                    this.buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.eraser;
+                    toolTip1.SetToolTip(buttonOk, "");
+                    break;
+            } 
+        }
+
+        private void operationDelete()
+        {
+
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            if (globalObject.libraryObject.libraryInput.libro != null)
+            {
+                log.Info("Libri Trovati : 1");
+
+                //salvo anche autori per uso futuro
+                globalObject.libraryObject.libraryInput.autore = globalObject.libraryObject.libraryInput.libro.autore;
+                AuthorControls control = new AuthorControls();
+                status = control.addBooksToAuthor(ref globalObject);
+                if (status == ApplicationErrorType.SUCCESS)
+                {
+                    parent.closePanel();
+                    parent.openPanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
+                }
+                else
+                {
+                    DisplayManager.displayError(status);
+                }
+            }
+            else
+            {
+                //Gestione caso più libri trovati
+                log.Info("Libri Trovati : " + globalObject.libraryObject.libraryInput.libri.Count);
+                parent.closePanel();
+                parent.openPanel(GlobalOperation.LIB_CHOOSE_BOOK_DELETE);
+            }
+        }
+
     }
 }

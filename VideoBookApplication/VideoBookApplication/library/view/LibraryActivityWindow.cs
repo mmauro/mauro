@@ -355,6 +355,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_SEARCHBOOK_DELETE:
+                case GlobalOperation.LIB_SEARCHBOOK_EDIT:
                     if (genericSearchPanel == null)
                     {
                         genericSearchPanel = new BookGenericSearchPanel(ref globalObject, this);
@@ -433,6 +434,7 @@ namespace VideoBookApplication.library.view
             closePanel(GlobalOperation.LIB_SEARCHAUTHOR_EDIT);
             closePanel(GlobalOperation.LIB_CHOOSE_AUTHOR_EDIT);
             closePanel(GlobalOperation.LIB_EDIT_AUTHOR);
+            closePanel(GlobalOperation.LIB_SEARCHBOOK_EDIT);
         }
 
         public void closePanel(GlobalOperation operation)
@@ -603,6 +605,7 @@ namespace VideoBookApplication.library.view
                     }
                     break;
                 case GlobalOperation.LIB_SEARCHBOOK_DELETE:
+                case GlobalOperation.LIB_SEARCHBOOK_EDIT:
                     if (genericSearchPanel != null)
                     {
                         genericSearchPanel.Visible = false;
