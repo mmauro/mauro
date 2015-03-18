@@ -53,6 +53,7 @@ namespace VideoBookApplication.common.enums
         LIB_SEARCHAUTHOR_EDIT,
         LIB_CHOOSE_AUTHOR_EDIT,
         LIB_EDIT_AUTHOR,
-        LIB_SEARCHBOOK_EDIT
+        LIB_SEARCHBOOK_EDIT,
+        LIB_CHOOSE_BOOK_EDIT
     }
 }

@@ -24,6 +24,7 @@ namespace VideoBookApplication.library.view
 
         private GlobalApplicationObject globalObject;
         private LibraryActivityWindow parent;
+        private GlobalOperation currentOperation;
 
         private double numPages;
         private double currentPages;
@@ -33,6 +34,7 @@ namespace VideoBookApplication.library.view
             InitializeComponent();
             this.globalObject = globalObject;
             this.parent = parent;
+            this.currentOperation = this.globalObject.currentOperation;
             currentPages = 1;
             numPages = Math.Ceiling((double)(globalObject.libraryObject.libraryInput.libri.Count / numMaxElement));
             initPanel();
@@ -278,8 +280,19 @@ namespace VideoBookApplication.library.view
             ApplicationErrorType status = selectAuthor();
             if (status == ApplicationErrorType.SUCCESS)
             {
-                parent.closePanel();
-                parent.openPanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
+                switch (currentOperation)
+                {
+                    case GlobalOperation.LIB_CHOOSE_BOOK_DELETE:
+                        parent.closePanel();
+                        parent.openPanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
+                        break;
+                    case GlobalOperation.LIB_CHOOSE_BOOK_EDIT:
+                        DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+                        break;
+                    default:
+                        DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
+                        break;
+                }
             }
             else
             {

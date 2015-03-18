@@ -257,7 +257,7 @@ namespace VideoBookApplication.library.view
                         operationDelete();
                         break;
                     case GlobalOperation.LIB_SEARCHBOOK_EDIT:
-                        DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+                        operationEdit();
                         break;
                     default:
                         DisplayManager.displayError(ApplicationErrorType.NOT_ALLOWED, currentOperation.ToString());
@@ -318,6 +318,37 @@ namespace VideoBookApplication.library.view
                 log.Info("Libri Trovati : " + globalObject.libraryObject.libraryInput.libri.Count);
                 parent.closePanel();
                 parent.openPanel(GlobalOperation.LIB_CHOOSE_BOOK_DELETE);
+            }
+        }
+
+        private void operationEdit()
+        {
+            ApplicationErrorType status = ApplicationErrorType.SUCCESS;
+
+            if (globalObject.libraryObject.libraryInput.libro != null)
+            {
+                log.Info("Libri Trovati : 1");
+                DisplayManager.displayError(ApplicationErrorType.NOT_IMPLEMENTED);
+                ////salvo anche autori per uso futuro
+                //globalObject.libraryObject.libraryInput.autore = globalObject.libraryObject.libraryInput.libro.autore;
+                //AuthorControls control = new AuthorControls();
+                //status = control.addBooksToAuthor(ref globalObject);
+                //if (status == ApplicationErrorType.SUCCESS)
+                //{
+                //    parent.closePanel();
+                //    parent.openPanel(GlobalOperation.LIB_DETAIL_BOOK_DELETE);
+                //}
+                //else
+                //{
+                //    DisplayManager.displayError(status);
+                //}
+            }
+            else
+            {
+                //Gestione caso più libri trovati
+                log.Info("Libri Trovati : " + globalObject.libraryObject.libraryInput.libri.Count);
+                parent.closePanel();
+                parent.openPanel(GlobalOperation.LIB_CHOOSE_BOOK_EDIT);
             }
         }
 
