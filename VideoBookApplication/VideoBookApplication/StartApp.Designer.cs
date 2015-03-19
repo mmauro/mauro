@@ -51,7 +51,7 @@
             // 
             this.buttonOk.BackgroundImage = global::VideoBookApplication.Properties.Resources.button_ok;
             this.buttonOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonOk.Location = new System.Drawing.Point(254, 136);
+            this.buttonOk.Location = new System.Drawing.Point(269, 136);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(48, 48);
             this.buttonOk.TabIndex = 1;

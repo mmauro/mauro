@@ -66,7 +66,7 @@ namespace VideoBookApplication.library.view
             buttonClose.Location = new Point(this.Width - (buttonClose.Size.Width + 25), textNome.Location.Y + 60);
             this.Controls.Add(buttonClose);
 
-            buttonOk.Location = new Point(buttonClose.Location.X - (buttonOk.Size.Width + 20), textNome.Location.Y + 60);
+            buttonOk.Location = new Point(buttonClose.Location.X - (buttonOk.Size.Width + 10), textNome.Location.Y + 60);
             this.Controls.Add(buttonOk);
 
             //tooltip

@@ -76,7 +76,7 @@ namespace VideoBookApplication.library.view
             buttonOk.Location = new Point(this.Size.Width - (20 + buttonOk.Size.Height), groupBox2.Location.Y + groupBox2.Size.Height + 10);
             this.Controls.Add(buttonOk);
 
-            buttonGraph.Location = new Point(buttonOk.Location.X - (buttonGraph.Size.Width + 30), buttonOk.Location.Y);
+            buttonGraph.Location = new Point(buttonOk.Location.X - (buttonGraph.Size.Width + 10), buttonOk.Location.Y);
             if (globalObject.libraryObject.statistiche.numAutori == 0 && globalObject.libraryObject.statistiche.numLibri == 0)
             {
                 //Non ho nessuna informazione per visualizzare grafici: nascondo il pulsante

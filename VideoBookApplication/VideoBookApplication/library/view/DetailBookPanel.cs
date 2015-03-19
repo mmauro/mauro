@@ -154,11 +154,14 @@ namespace VideoBookApplication.library.view
 
 
             //Gestione pulsanti
-            buttonOk.Location = new Point(this.Size.Width - (10 + buttonOk.Size.Width), groupBox2.Location.Y + groupBox2.Size.Height + 10);
+            buttonClose.Location = new Point(this.Size.Width - (10 + buttonOk.Size.Width), groupBox2.Location.Y + groupBox2.Size.Height + 10);
+            this.Controls.Add(buttonClose);
+
+            buttonOk.Location = new Point(buttonClose.Location.X - (10 + buttonOk.Size.Width), buttonClose.Location.Y);
             this.Controls.Add(buttonOk);
 
-            buttonClose.Location = new Point(buttonOk.Location.X - (10 + buttonClose.Size.Width), buttonOk.Location.Y);
-            this.Controls.Add(buttonClose);
+            toolTip1.SetToolTip(buttonClose, "Annulla");
+            toolTip1.SetToolTip(buttonOk, "Cancella Libro");
 
         }
 

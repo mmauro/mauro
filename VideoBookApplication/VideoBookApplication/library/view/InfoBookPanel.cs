@@ -117,7 +117,7 @@ namespace VideoBookApplication.library.view
             buttonClose.Location = new Point(this.Size.Width - (35 + buttonClose.Size.Width), textTrama.Location.Y + textTrama.Size.Height + 50);
             this.Controls.Add(buttonClose);
 
-            buttonOk.Location = new Point(buttonClose.Location.X - (buttonOk.Size.Width + 15), buttonClose.Location.Y);
+            buttonOk.Location = new Point(buttonClose.Location.X - (buttonOk.Size.Width + 10), buttonClose.Location.Y);
             this.Controls.Add(buttonOk);
 
             buttonWeb.Location = new Point(35, buttonOk.Location.Y);

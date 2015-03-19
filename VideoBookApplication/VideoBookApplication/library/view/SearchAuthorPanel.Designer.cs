@@ -98,6 +98,7 @@
             // 
             // SearchAuthorPanel
             // 
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Size = new System.Drawing.Size(450, 230);
             this.ResumeLayout(false);
 

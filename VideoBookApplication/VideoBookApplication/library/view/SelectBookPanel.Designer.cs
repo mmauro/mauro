@@ -235,6 +235,7 @@
             // 
             // SelectBookPanel
             // 
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Size = new System.Drawing.Size(350, 700);
             this.ResumeLayout(false);
 

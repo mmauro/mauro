@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textTitle = new System.Windows.Forms.TextBox();
@@ -52,6 +53,7 @@
             this.textYear = new System.Windows.Forms.TextBox();
             this.labelTrama = new System.Windows.Forms.Label();
             this.textTrama = new System.Windows.Forms.RichTextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
             this.SuspendLayout();
@@ -294,6 +296,7 @@
             // 
             // DetailBookPanel
             // 
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Size = new System.Drawing.Size(800, 650);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
@@ -327,5 +330,6 @@
         private System.Windows.Forms.TextBox textYear;
         private System.Windows.Forms.Label labelTrama;
         private System.Windows.Forms.RichTextBox textTrama;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

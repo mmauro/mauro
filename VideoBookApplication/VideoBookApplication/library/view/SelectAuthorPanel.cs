@@ -81,10 +81,10 @@ namespace VideoBookApplication.library.view
             groupBoxControls.Controls.Add(radioAuth6);
 
             //Pulsanti
-            buttonOk.Location = new Point(this.Size.Width / 2 - (10 + buttonOk.Size.Width), groupBoxControls.Location.Y + groupBoxControls.Size.Height + 20);
+            buttonOk.Location = new Point(this.Size.Width / 2 - (15 + buttonOk.Size.Width), groupBoxControls.Location.Y + groupBoxControls.Size.Height + 20);
             this.Controls.Add(buttonOk);
 
-            buttonCancel.Location = new Point(this.Size.Width / 2 + 10, buttonOk.Location.Y);
+            buttonCancel.Location = new Point(this.Size.Width / 2 + 5, buttonOk.Location.Y);
             this.Controls.Add(buttonCancel);
 
             buttonPrev.Location = new Point(15, buttonOk.Location.Y);

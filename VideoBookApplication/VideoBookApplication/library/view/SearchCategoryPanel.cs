@@ -64,11 +64,11 @@ namespace VideoBookApplication.library.view
             }
             this.Controls.Add(comboCategory);
 
-            buttonOk.Location = new Point(this.Size.Width - (buttonOk.Size.Width + 25), comboCategory.Location.Y + 45);
-            this.Controls.Add(buttonOk);
-
-            buttonClose.Location = new Point(buttonOk.Location.X - (buttonOk.Size.Width + 10), buttonOk.Location.Y);
+            buttonClose.Location = new Point(this.Size.Width - (buttonOk.Size.Width + 25), comboCategory.Location.Y + 45);
             this.Controls.Add(buttonClose);
+
+            buttonOk.Location = new Point(buttonClose.Location.X - (buttonOk.Size.Width + 10), buttonClose.Location.Y);
+            this.Controls.Add(buttonOk);
 
         }
 
